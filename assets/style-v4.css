@@ -474,5 +474,59 @@ body.layout{min-height:100svh; display:flex; flex-direction:column;}
 }
 background-image: url('hero-sun.jpg');
 background-image: url('/sscc-preview/assets/hero-sun.jpg');
+/* ====== Header (světlejší, větší logo, zlatý titulek) ====== */
+.site-header{
+  background: linear-gradient(to bottom, rgba(24,30,24,.96), rgba(12,16,12,.90));
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  height: 76px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 24px;
+}
+.site-header .logo{
+  height: 64px;
+  width: auto;
+  display: block;
+}
+.site-header .brand-title{
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f5e3a8; /* jemně zlatavá */
+}
+
+/* ====== H1/H2 menší a klidnější ====== */
+h1, .project-title{ font-size: 1.85rem; line-height: 1.3; }
+h2, .project-subtitle{ font-size: 1.35rem; }
+
+/* ====== “Slunce” na stránce projektů (není v obsahu, jen pozadí) ====== */
+.page-projects{
+  position: relative;
+  background: radial-gradient(
+    circle at 15% 20%,
+    rgba(255, 230, 160, 0.14),
+    rgba(10, 14, 10, 0.95)
+  );
+}
+.page-projects::after{
+  content: "";
+  position: absolute;
+  top: -120px; right: -160px;
+  width: 580px; height: 580px;
+  background: url('assets/hero-sun.jpg') center/cover no-repeat;
+  opacity: .15;
+  filter: blur(1px) saturate(1.1);
+  pointer-events: none;
+}
+
+/* ====== Patička níž + decentní oddělení ====== */
+.site-footer{
+  margin-top: 64px;
+  padding: 24px 0 32px;
+  border-top: 1px solid rgba(255,255,255,.06);
+  text-align: center;
+  font-size: .86rem;
+  opacity: .92;
+}
 
 
