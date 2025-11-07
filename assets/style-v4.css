@@ -471,4 +471,5 @@ body.layout{min-height:100svh; display:flex; flex-direction:column;}
   color: #ffe8a4;
 }
 background-image: url('hero-sun.jpg');
+background-image: url('/sscc-preview/assets/hero-sun.jpg');
 
