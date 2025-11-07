@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projekty | SSCC — SolarSpace Carbon Cycle (Preview)</title>
+
+  <!-- Globální styl webu (pokud je k dispozici) -->
+  <link rel="stylesheet" href="style-v4.css" />
+
+  <!-- Page-scoped drobná vrstva: tmavé pozadí, glow vlevo, layout jedné karty -->
+  <style>
+    /* ---------- Pozadí stránky: tmavé + jemné "slunce" vlevo ---------- */
+    :root{
+      --bg:         #0b1411;
+      --panel:      rgba(18, 26, 23, 0.82);
+      --panel-2:    rgba(18, 26, 23, 0.66);
+      --ink:        #e7f4e9;
+      --muted:      #a9c5b0;
+      --accent:     #ffd76a;
+      --accent-2:   #f1b93b;
+      --badge:      #22362c;
+      --line:       rgba(255,255,255,.06);
+      --ok:         #9be2b1;
+      --btn:        #1c2e26;
+      --btn-line:   rgba(255,255,255,.08);
+      --btn-hover:  #233a30;
+      --shadow-1:   0 12px 35px rgba(0,0,0,.45);
+      --shadow-2:   0 22px 60px rgba(0,0,0,.55);
+      --radius-xl:  20px;
+      --radius-2xl: 26px;
+    }
+
+    html,body{
+      background:
+        radial-gradient(1200px 800px at 12% 8%,
+          rgba(255,221,120,.22),
+          rgba(250,200,95,.12) 40%,
+          rgba(255,190,80,.06) 55%,
+          rgba(0,0,0,0) 70%)
+        ,linear-gradient(#0b1411, #0b1411);
+      color:var(--ink);
+      min-height:100%;
+    }
+
+    /* ---------- Hlavička ---------- */
+    .site-header{
+      position:sticky; top:0; z-index:50;
+      background:linear-gradient(to bottom, rgba(12,18,16,.9), rgba(12,18,16,.65));
+      border-bottom:1px solid var(--line);
+      backdrop-filter:saturate(120%) blur(6px);
+    }
+    .header-row{
+      max-width:1180px; margin:auto; padding:14px 18px; display:flex; gap:18px; align-items:center;
+    }
+    .brand{ display:flex; gap:12px; align-items:center; }
+    .brand .logo{
+      width:38px; height:38px; object-fit:cover; border-radius:10px; box-shadow:0 6px 20px rgba(0,0,0,.35);
+    }
+    .title{ font-size:18px; letter-spacing:.3px; margin:0; color:var(--ink); font-weight:700; }
+    .nav{ margin-left:auto; display:flex; gap:12px; }
+    .nav a{
+      padding:10px 12px; border-radius:12px;
+      color:var(--ink); text-decoration:none; font-weight:600; font-size:14px;
+      background:transparent; border:1px solid transparent;
+    }
+    .nav a[aria-current="page"]{
+      background:var(--badge); border-color:var(--line);
+    }
+    .nav a:hover{ background:var(--btn-hover); }
+
+    /* ---------- Blok úvodu ---------- */
+    .page-wrap{ max-width:1180px; margin:26px auto 80px; padding:0 18px; }
+    .kicker{ color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.12em; font-size:12px; }
+    .page-title{ margin:.25rem 0 1rem; font-size:42px; line-height:1.14; }
+    .page-intro{ color:var(--muted); max-width:800px; }
+
+    /* ---------- Karta projektu ---------- */
+    .project-card{
+      display:grid; grid-template-columns: 1.1fr 1.2fr; gap:26px;
+      background:linear-gradient(180deg, var(--panel), var(--panel-2));
+      border:1px solid var(--line);
+      border-radius:var(--radius-2xl);
+      box-shadow:var(--shadow-1);
+      padding:26px;
+      margin-top:28px;
+    }
+    .project-ill{
+      min-height:300px; border-radius:16px; border:1px solid var(--line);
+      background:
+        radial-gradient(600px 450px at 30% 30%,
+          rgba(255,210,110,.18), rgba(255,210,110,.08) 45%, rgba(0,0,0,0) 66%)
+        ,linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+      box-shadow:var(--shadow-2) inset;
+      position:relative; overflow:hidden;
+    }
+    .ill-caption{
+      position:absolute; left:16px; bottom:14px;
+      background:rgba(10,14,12,.6); border:1px solid var(--line);
+      color:var(--muted); font-size:12px; padding:8px 10px; border-radius:10px;
+      backdrop-filter:blur(2px); box-shadow:0 8px 22px rgba(0,0,0,.35);
+    }
+
+    .project-body h2{
+      margin:0 0 10px; font-size:34px; line-height:1.16;
+    }
+    .badges{ display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 14px; }
+    .badge{
+      display:inline-flex; align-items:center; gap:6px;
+      font-weight:700; color:var(--ink); background:var(--badge);
+      border:1px solid var(--line); border-radius:100px; padding:8px 12px; font-size:13px;
+    }
+    .badge .dot{ width:8px; height:8px; border-radius:99px; background:var(--accent); box-shadow:0 0 16px var(--accent); }
+
+    .project-body p{ color:var(--muted); margin:0 0 18px; }
+
+    .cta-row{ display:flex; gap:12px; flex-wrap:wrap; }
+    .btn{
+      background:var(--btn); color:var(--ink);
+      border:1px solid var(--btn-line); padding:10px 14px; border-radius:12px;
+      text-decoration:none; font-weight:700; font-size:14px;
+    }
+    .btn:hover{ background:var(--btn-hover); }
+    .btn.primary{
+      background:linear-gradient(180deg, #1f332a, #1a2a23); border-color:var(--btn-line);
+    }
+
+    /* ---------- Patička ---------- */
+    .site-footer{
+      margin-top:60px; padding:26px 18px; border-top:1px solid var(--line);
+      color:var(--muted); text-align:center; background:rgba(12,18,16,.4);
+    }
+
+    /* ---------- Responzivita ---------- */
+    @media (max-width: 920px){
+      .page-title{ font-size:34px; }
+      .project-card{ grid-template-columns: 1fr; }
+      .project-ill{ min-height:220px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======= HEADER (sjednocený, bez EN) ======= -->
+  <header class="site-header">
+    <div class="header-row">
+      <div class="brand">
+        <img src="assets/sscc-logo.jpg" alt="SSCC" class="logo" />
+        <h1 class="title">SolarSpace Carbon Cycle</h1>
+      </div>
+      <nav class="nav" aria-label="Hlavní navigace">
+        <a href="index.html">SSCC</a>
+        <a href="projekty.html" aria-current="page">Projekty</a>
+        <a href="spoluprace.html">Spolupráce</a>
+        <a href="edukace.html">Edukace</a>
+        <a href="konsorcium.html">Konsorcium</a>
+      </nav>
+    </div>
+  </header>
+  <!-- ======= /HEADER ======= -->
+
+
+  <main class="page-wrap">
+    <div class="kicker">Projekty</div>
+    <h2 class="page-title">Orbitální solární farma → přenos energie</h2>
+    <p class="page-intro">Přehled pilotních aktivit a otevřených iniciativ SSCC. Níže je první – detailní – projektový blok. Další projekty schováme, dokud je nebudeme chtít odemknout.</p>
+
+    <!-- JEDEN PROJEKT (orbitální solární farma) -->
+    <section class="project-card" aria-labelledby="p1">
+      <figure class="project-ill" aria-hidden="true">
+        <figcaption class="ill-caption">Koncept přenosu energie z orbitální solární farmy</figcaption>
+      </figure>
+
+      <div class="project-body">
+        <h2 id="p1">Orbitální solární farma → přenos energie</h2>
+
+        <div class="badges" aria-label="Kategorie projektu">
+          <span class="badge"><span class="dot"></span> Studie bezpečnosti</span>
+          <span class="badge"><span class="dot"></span> Účinnost &amp; ekonomika</span>
+          <span class="badge"><span class="dot"></span> Mikrovlnný příjem</span>
+        </div>
+
+        <p>Pilotní studie přenosu energie z orbitální solární farmy a bezpečný příjem v pozemní stanici. Zaměřujeme se na <strong>účinnost</strong>, <strong>regulační rámec</strong> a <strong>nutná bezpečnostní opatření</strong> spojená s mikrovlnným (případně laserovým) paprskem.</p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="spoluprace.html">Zapojit se</a>
+          <a class="btn" href="konsorcium.html">Konsorcium &amp; role</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- ======= FOOTER (sjednocený) ======= -->
+  <footer class="site-footer">
+    <small>© <span id="year"></span> SSCC — SolarSpace Carbon Cycle · Preview</small>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <!-- ======= /FOOTER ======= -->
+
+</body>
+</html>
