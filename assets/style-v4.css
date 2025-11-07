@@ -470,4 +470,5 @@ body.layout{min-height:100svh; display:flex; flex-direction:column;}
   background: linear-gradient(180deg, rgba(255,210,90,.18), rgba(60,50,10,.15));
   color: #ffe8a4;
 }
+background-image: url('hero-sun.jpg');
 
