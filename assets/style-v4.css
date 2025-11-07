@@ -379,4 +379,32 @@ body::before{
   opacity: .92;
   pointer-events: none;
 }
+/* Hlavička světlejší + jemný blur */
+.site-header{
+  position: sticky; top:0; z-index:100;
+  background: rgba(26,32,28,.72);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.header-row{ max-width:1200px; margin:auto; padding:12px 20px;
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+}
+.brand{display:flex; align-items:center; gap:12px;}
+.brand-logo{height:48px; width:auto; border-radius:10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.25);
+}
+@media (min-width:980px){ .brand-logo{height:56px;} }
+
+.brand-title{display:flex; align-items:baseline; gap:10px; font-weight:700;}
+.brand-abbrev{font-variation-settings:"wght" 800; letter-spacing:.2px;}
+.brand-sep{opacity:.6}
+.brand-name{opacity:.95}
+
+.nav a{
+  display:inline-block; padding:8px 14px; border-radius:999px;
+  font-size:clamp(14px, 1.2vw, 16.5px);
+  color:rgba(255,255,255,.92); text-decoration:none;
+}
+.nav a:hover{ background:rgba(255,255,255,.08); }
+.nav a.active{ background:rgba(255,255,255,.12); }
 
