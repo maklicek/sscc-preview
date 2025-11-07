@@ -407,4 +407,67 @@ body::before{
 }
 .nav a:hover{ background:rgba(255,255,255,.08); }
 .nav a.active{ background:rgba(255,255,255,.12); }
+/* jemnější, ale výrazné tituly */
+h1{
+  font-size:clamp(28px, 3.8vw, 42px);
+  line-height:1.15;
+  letter-spacing:.2px;
+}
+h2{
+  font-size:clamp(22px, 2.8vw, 30px);
+  line-height:1.22;
+}
+.projects-hero{ position:relative; overflow:hidden; }
+
+/* slunce na pravé straně */
+.projects-hero::after{
+  content:"";
+  position:absolute; right:-10vw; top:-12vh;
+  width:min(50vw, 760px); aspect-ratio:1/1;
+  background: url("assets/hero-sun.jpg") center/contain no-repeat;
+  opacity:.35;
+  pointer-events:none;
+  mix-blend-mode:screen;
+  filter: drop-shadow(0 24px 50px rgba(255,200,80,.25));
+}
+@media (max-width:900px){
+  .projects-hero::after{ right:-24vw; top:-16vh; width:min(80vw,700px); opacity:.32; }
+}
+.panel{
+  position:relative;
+  background:
+    radial-gradient(120% 200% at 12% 0%, rgba(255,240,160,.06), rgba(60,80,60,.02) 45%, rgba(0,0,0,.35) 100%),
+    linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.12));
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.08);
+  overflow:hidden;
+}
+/* měkké okraje (maskování) */
+.panel::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  -webkit-mask-image: radial-gradient(150% 100% at 50% 0%, #000 40%, transparent 90%);
+  mask-image: radial-gradient(150% 100% at 50% 0%, #000 40%, transparent 90%);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), transparent 60%);
+  opacity:.6;
+}
+html,body{height:100%;}
+body.layout{min-height:100svh; display:flex; flex-direction:column;}
+.container{flex:1 0 auto;}
+.site-footer{margin-top:auto; padding:18px 20px; text-align:center;
+  color:rgba(255,255,255,.72); border-top:1px solid rgba(255,255,255,.06);
+  background: rgba(12,16,14,.6);
+}
+.status-chip{
+  display:inline-block; padding:6px 10px; border-radius:999px;
+  font-size:12.5px; letter-spacing:.2px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.06);
+  color:rgba(255,255,255,.9);
+}
+.status-idea{
+  border-color: rgba(255,210,90,.35);
+  background: linear-gradient(180deg, rgba(255,210,90,.18), rgba(60,50,10,.15));
+  color: #ffe8a4;
+}
 
