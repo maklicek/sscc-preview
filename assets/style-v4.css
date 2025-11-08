@@ -634,3 +634,18 @@ body{
   box-shadow: 0 8px 22px rgba(0,0,0,.35);
   pointer-events: none; /* klik projde na odkaz <a>, ne na <img> */
 }
+/* ======================================
+   NOVÁ HLAVIČKA + KONTEJNER + TYPOGRAFIE
+   Přidáno 2025-11-08 — aktuální verze layoutu SSCC
+====================================== */
+.site-header .brand { gap: .875rem; }
+.logo { width: 2.5rem; height: 2.5rem; }
+@media (min-width: 1024px) { .logo { width: 3rem; height: 3rem; } }
+.site-header { padding: .75rem 1.25rem; }
+.main-nav { gap: 2.25rem; }
+@media (min-width: 1280px){ .main-nav { gap: 2.75rem; } }
+:root{ --gold:#e0c878; --fg:#d8e6d8; --muted:#b1c2b1; }
+h1{ font-weight:700; letter-spacing:.2px; }
+h2{ font-weight:600; letter-spacing:.1px; }
+body{ color:var(--fg); }
+.gold{ color:var(--gold); }
