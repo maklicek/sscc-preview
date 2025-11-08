@@ -897,3 +897,19 @@ main.container {
   border-radius: 0;
   object-fit: contain;
 }
+/* HLAVIČKA – žádné prosvítání textu pod ní */
+.site-header {
+  background: #0f2a1f !important;          /* plná, neprůhledná barva hlavičky */
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  filter: none !important;
+  box-shadow: 0 2px 14px rgba(0,0,0,.25);   /* jemný stín, můžeš klidně zmenšit nebo vypnout */
+  z-index: 1000;                            /* ať je spolehlivě nad obsahem */
+}
+
+/* Pro jistotu, kdyby tam byl nějaký pseudo-overlay z dřívějška */
+.site-header::before,
+.site-header::after {
+  content: none !important;
+  display: none !important;
+}
