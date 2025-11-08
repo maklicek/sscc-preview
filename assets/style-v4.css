@@ -9,112 +9,57 @@ html, body {
 }
 
 /* ===== HLAVIČKA ===== */
-.site-header {
-.site-header {
-  background: linear-gradient(to bottom, #1b3a2e, #0e241a);
-  color: #e0c878;
-  text-align: left;
-  padding: 0.5rem 2rem 0.5rem 90px; /* přidá prostor vlevo pro logo */
-  position: relative;
-  z-index: 10;
+/* ====== HLAVIČKA ====== */
+.logo-floating {
+  position: fixed;        /* mimo flow, ať nehne s headerem */
+  top: 12px;
+  left: 14px;
+  width: 56px;            /* klidně změň na 64–72 podle chuti */
+  height: auto;
+  z-index: 1000;          /* nad vším */
 }
 
+.site-header {
+  position: sticky;       /* drží se nahoře při scrollu */
+  top: 0;
+  z-index: 500;
+  background: rgba(6, 31, 23, 0.85); /* jemně světlejší než pozadí */
+  backdrop-filter: saturate(120%) blur(4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.18) inset,
+              0 1px 0 rgba(255,255,255,.05);
+}
+
+/* vnitřek hlavičky – vyhradíme místo pro „plovoucí“ logo */
 .header-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 14px 20px 14px 88px; /* ⟵ rezerva pro logo (56px + mezera) */
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 28px;
 }
 
 .site-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin: 0;
+  font-weight: 700;
+  letter-spacing: .2px;
 }
 
-.main-nav a {
-  color: #e0c878;
-  text-decoration: none;
-  margin-left: 1.5rem;
-  font-size: 0.95rem;
-}
-
-.main-nav a:hover {
-  color: #fff3c2;
-}
-
-/* ===== OBSAH ===== */
+/* ====== OBSAH ====== */
+/* odsunout obsah pod hlavičku – výška hlavičky ~60–70px */
 .container {
-  padding: 3rem 10%;
-  text-align: left;
-  line-height: 1.7;
+  max-width: 980px;
+  margin: 84px auto 48px;   /* ⟵ top = rezerva pod headerem */
+  padding: 0 20px;
 }
 
-h2 {
-  color: #f3d677;
-}
-
-/* ===== LOGO mimo hlavičku ===== */
-/* ——— Plovoucí logo ——— */
-.logo-floating {
-  position: fixed;          /* mimo tok, drží nahoře vlevo */
-  top: 12px;
-  left: 20px;
-  width: 78px;              /* celková „krabička“ loga */
-  height: 78px;
-  z-index: 1000;
-  display: block;
-  line-height: 0;           /* žádné mezery kolem obrázku */
-}
-
-/* ještě jistota, kdyby se změnila pozice jinými styly */
-.logo-floating:not(:root) {
-  position: fixed;
-}
-
-/* Samotný obrázek – 100 % šířky boxu loga */
-.logo-floating img,
-img.logo-sscc {
-  width: 100% !important;
-  height: auto !important;
-  display: block;
-  border-radius: 12px;       /* jemné „karetové“ rohy, klidně dej 0 */
-  box-shadow: 0 0 20px rgba(255, 210, 80, 0.25);
-}
-
-/* jemná interakce */
-.logo-floating img:hover {
-  transform: scale(1.05);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 0 28px rgba(255, 230, 100, 0.35);
-}
-
-/* Hlavičku lehce posuneme doprava, ať se logo nepřekrývá s názvem */
-.site-header,
-.header-inner {
-  padding-left: 120px;
-}
-
-
-/* ===== PATIČKA ===== */
+/* ====== PATIČKA ====== */
 .site-footer {
-  text-align: center;
-  padding: 0.5rem;
-  background: linear-gradient(to top, #0f2a1f, #0c1f17);
-  color: #bfae6b;
-  font-size: 0.8rem;
-}
-/* ===== Layout – patička vždy dole, čistý sloupec ===== */
-html, body {
-  height: 100%;
-}
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  background: #061e17;           /* tmavě zelená */
-  color: #e9d788;                 /* „zlaté“ písmo */
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Cantarell, "Helvetica Neue", Arial, sans-serif;
+  max-width: 1120px;
+  margin: 64px auto 24px;   /* ať se „nelepí“ k obsahu ani k hlavičce */
+  padding: 18px 20px;
+  color: #e0cf78;
+  opacity: .9;
+  border-top: 1px solid rgba(255,255,255,.08);
 }
 
 /* ===== Plovoucí logo – mimo tok, malé ===== */
