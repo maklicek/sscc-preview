@@ -185,3 +185,83 @@ body {
   border-top: 1px solid rgba(233, 215, 136, 0.08);
 }
 .site-footer small { opacity: 0.9; }
+/* ---- Layout proměnné ---- */
+:root{
+  --header-h: 72px;               /* výška hlavičky */
+  --footer-h: 56px;               /* výška patičky */
+  --pad-x: clamp(16px, 5vw, 64px);
+}
+
+/* Tělo – uděláme místo pro hlavičku a patičku */
+html, body{ height: 100%; }
+body{
+  padding-top: var(--header-h);                  /* rezerva pro hlavičku */
+  background: radial-gradient(ellipse at top center, #0f2a1f 0%, #08150e 80%);
+  color: #e0c878;
+}
+
+/* ---- Plovoucí logo ---- */
+.logo-floating{
+  position: fixed;
+  left: 16px;
+  top: 12px;
+  width: 58px;                 /* aby nepřekrývalo menu */
+  height: 58px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  z-index: 30;                 /* nad vším ostatním */
+}
+.logo-floating img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---- Hlavička ---- */
+.site-header{
+  position: fixed;             /* držíme ji nahoře */
+  inset: 0 0 auto 0;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--pad-x);
+  padding-left: calc(var(--pad-x) + 72px); /* rezerva pro plovoucí logo vlevo */
+  background: linear-gradient(to bottom, rgba(19,41,30,.9), rgba(19,41,30,.6));
+  backdrop-filter: blur(3px);
+  z-index: 20;
+}
+.site-title{
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: .3px;
+}
+.main-nav a{
+  color: #e0c878;
+  text-decoration: none;
+  margin-left: 22px;
+  font-weight: 600;
+}
+.main-nav a:hover{ text-decoration: underline; }
+
+/* ---- Obsah ---- */
+.container{
+  padding: 32px var(--pad-x);
+  max-width: 1200px;
+  margin: 0 auto;
+  /* min. výška: celé okno minus hlavička a patička */
+  min-height: calc(100vh - var(--header-h) - var(--footer-h));
+}
+
+/* ---- Patička ---- */
+.site-footer{
+  height: var(--footer-h);
+  display: grid;
+  place-items: center;
+  padding: 0 var(--pad-x);
+  background: linear-gradient(to top, rgba(19,41,30,.9), rgba(19,41,30,.4));
+  border-top: 1px solid rgba(224,200,120,.18);
+  color: #e0c878;
+}
+.site-footer small{ opacity: .9; }
