@@ -528,5 +528,119 @@ h2, .project-subtitle{ font-size: 1.35rem; }
   font-size: .86rem;
   opacity: .92;
 }
+/* ===========================
+   Design tokens (zlaté tóny)
+   =========================== */
+:root{
+  --gold:        #f5e3a8;
+  --gold-strong: #ffdd75;
+  --ink:         #cfd5cc;
+  --panel:       rgba(10,14,10,.92);
+  --panel-2:     rgba(14,19,14,.86);
+  --edge:        rgba(255,255,255,.06);
+}
+
+/* ======================================
+   Full-bleed background se sluncem
+   ====================================== */
+html, body{
+  min-height: 100%;
+  background:
+    radial-gradient(1200px 800px at 85% 15%, rgba(255,200,60,.22), rgba(0,0,0,0) 70%),
+    url("assets/hero-sun.jpg") right -60px top -120px / cover no-repeat,
+    #0b0f0b;
+  background-attachment: scroll, fixed, scroll; /* ten obrázek drží „za stránkou“ */
+  color: var(--ink);
+}
+
+/* Pokud jsi měl někde předtím <img> jako „pozadí“ stránky, zruš to.
+   Pozadí řešíme výhradně přes body. */
+
+/* ======================================
+   Hlavička (světlejší), logo přes výšku
+   ====================================== */
+.site-header{
+  position: sticky; top: 0; z-index: 30;
+  height: 88px;                       /* vyšší header */
+  display: flex; align-items: center; gap: 16px;
+  padding: 0 28px 0 20px;
+  background: linear-gradient(to bottom,
+              rgba(26,32,26,.92), rgba(18,24,18,.88));
+  border-bottom: 1px solid var(--edge);
+  backdrop-filter: blur(6px);
+}
+
+.site-header .logo{
+  height: calc(100% - 16px);         /* logo přes výšku hlavičky */
+  width: auto; display:block;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.35));
+}
+
+.site-header .brand-title{
+  font-weight: 700;
+  font-size: 1.25rem;                 /* větší text */
+  letter-spacing: .2px;
+  color: var(--gold);
+  margin-right: auto;
+  white-space: nowrap;
+}
+
+.main-nav a{
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 1rem;                    /* zvětšená navigace */
+  padding: 10px 12px;
+  border-radius: 10px;
+  transition: color .18s ease, background .18s ease;
+}
+.main-nav a:hover{ color: var(--gold-strong); background: rgba(255,255,255,.04); }
+.main-nav a.active{ color: var(--gold); }
+
+/* ======================================
+   Nadpisy a akcenty (zlaté)
+   ====================================== */
+h1, h2, h3, .page-title{
+  color: var(--gold);
+}
+h1{ font-size: clamp(1.8rem, 3.2vw, 2.6rem); line-height: 1.2; }
+h2{ font-size: clamp(1.4rem, 2.4vw, 2rem); }
+h3{ font-size: clamp(1.15rem, 2vw, 1.5rem); }
+
+.badge, .chip, .btn.primary{
+  color: #0c0f0c;
+  background: linear-gradient(to bottom, var(--gold-strong), var(--gold));
+  border: none;
+}
+
+/* ======================================
+   Projektový panel & card “měkčí”
+   ====================================== */
+.project-card, .content-panel{
+  background: linear-gradient(to bottom right, var(--panel), var(--panel-2));
+  border: 1px solid var(--edge);
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.03);
+}
+
+/* Orámování obrazové „vitríny“ v projektu (vlevo) */
+.figure-frame{
+  background: radial-gradient(600px 280px at 50% 25%,
+               rgba(255,200,60,.08), rgba(255,200,60,0) 65%),
+              rgba(0,0,0,.2);
+  border: 1px solid rgba(255,255,255,.04);
+}
+
+/* ======================================
+   Patička – níž a čistěji
+   ====================================== */
+.site-footer{
+  margin-top: 72px;
+  padding: 22px 0 36px;
+  text-align: center;
+  border-top: 1px solid var(--edge);
+  color: var(--ink);
+  opacity: .95;
+}
 
 
