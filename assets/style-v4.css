@@ -10,10 +10,11 @@ html, body {
 
 /* ===== HLAVIČKA ===== */
 .site-header {
+.site-header {
   background: linear-gradient(to bottom, #1b3a2e, #0e241a);
   color: #e0c878;
   text-align: left;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 2rem 0.5rem 90px; /* přidá prostor vlevo pro logo */
   position: relative;
   z-index: 10;
 }
