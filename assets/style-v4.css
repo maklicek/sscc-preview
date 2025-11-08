@@ -169,8 +169,8 @@ body{
 .page-projects .project-card::after {
   content: "";
   position: absolute;
-  right: -140px;
-  top: -120px;
+  right: -200px;
+  top: -160px;
   width: 560px;
   height: 560px;
   background-image: url('/sscc-preview/assets/hero-sun.jpg'); /* nebo jen 'hero-sun.jpg', pokud je CSS i obrázek v /assets/ */
