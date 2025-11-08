@@ -729,3 +729,25 @@ body {
 /* ====== Vypnutí starých experimentů (pro jistotu) ====== */
 .logo-floating { display: none !important; }
 .site-footer[style*="position:fixed"] { position: relative !important; bottom: auto !important; }
+/* === ÚPRAVA LOGA === */
+.logo {
+  height: 72px;                /* zvětší logo na výšku hlavičky */
+  width: auto;                 /* šířka se dopočítá podle poměru stran */
+  border-radius: 0;            /* ostré rohy, ne zaoblené */
+  object-fit: contain;         /* zachová proporce a neřeže okraje */
+  box-shadow: none;            /* bez stínu, ať je čisté */
+  margin-left: 4px;            /* lehké odsazení od okraje */
+}
+
+/* úprava hlavičky pro sladění výšky */
+.site-header {
+  min-height: 80px;            /* pevnější výška hlavičky */
+  display: flex;
+  align-items: center;
+}
+
+/* sladění brand bloku, aby se logo s textem dobře zarovnaly */
+.header-inner {
+  align-items: center;
+  gap: 16px;
+}
