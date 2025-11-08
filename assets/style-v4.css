@@ -810,3 +810,90 @@ main.container {
   image-rendering: auto;
   object-fit: contain;
 }
+/* =============== LAYOUT: sticky header + sticky footer =============== */
+:root {
+  --header-h: 72px;              /* klidně uprav výšku hlavičky */
+}
+
+/* Žádné nechtěné scrolly navíc */
+html, body { 
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Flex layout: hlavička – obsah – patička */
+body {
+  min-height: 100svh;            /* nebo 100vh */
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;               /* svislý scroll jen když je potřeba */
+}
+
+/* Hlavička zůstává přilepená nahoře */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+}
+
+/* Obsah vyplní prostor mezi hlavičkou a patičkou */
+main.container {
+  flex: 1 0 auto;
+  /* nepřidávej sem velké margin-bottom, ať to zbytečně netvoří scroll */
+}
+
+/* Patička vždy u dna okna */
+.site-footer {
+  flex: 0 0 auto;
+  margin-top: auto;            /* kouzlo sticky footeru */
+  width: 100%;
+  text-align: center;
+  padding: 12px 16px;
+  color: var(--gold, #e0c878);
+}
+
+/* =============== ZRUŠIT „RÁMEČEK“ PATIČKY (card vzhled) =============== */
+/* V některých stylech mohl být footer zabalený do „karty“ – tady ho striktně
+   vyčistíme, aby byl plochý přes celou šířku. */
+.site-footer,
+.site-footer > * {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  backdrop-filter: none !important;
+  filter: none !important;
+  max-width: none !important;     /* žádné úzké boxy uprostřed */
+}
+
+/* Pro jistotu – pokud je uvnitř patičky nějaký .footer-inner/.card apod. */
+.site-footer .footer-inner,
+.site-footer .card,
+.site-footer .panel {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  max-width: none !important;
+}
+
+/* =============== Logo v hlavičce (rovné hrany a čitelnost) =============== */
+/* Nahraď .site-logo podle skutečné třídy containeru loga (např. .logo-floating) */
+.site-logo, .site-logo img,
+.logo-floating, .logo-floating img {
+  display: block;
+}
+
+.site-logo img,
+.logo-floating img {
+  height: calc(var(--header-h) - 12px);
+  width: auto;
+  border-radius: 0;
+  object-fit: contain;
+}
