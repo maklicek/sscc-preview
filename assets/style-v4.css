@@ -913,3 +913,138 @@ main.container {
   content: none !important;
   display: none !important;
 }
+/* ====== ZÁKLAD / PROMĚNNÉ ====== */
+:root{
+  --gold: #e0c878;
+  --bg:   #0f2a1f;
+  --bg-2: #132f24;
+  --text: #d6e0d9;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Zlatá typografie */
+h1, h2, h3, h4, h5, h6,
+.site-title,
+.main-nav a { color: var(--gold); }
+
+/* ====== HLAVIČKA ====== */
+.site-header{
+  background: var(--bg);                 /* plné, neprůhledné */
+  position: sticky; top: 0; z-index: 1000;
+  box-shadow: 0 2px 14px rgba(0,0,0,.25);
+}
+
+.header-inner{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1.25rem;
+  min-height: 72px;                      /* výška hlavičky */
+  padding: .5rem 1.25rem;
+}
+
+/* Logo vlevo – ostré a na výšku hlavičky */
+.logo-floating img,
+.site-header .brand img{
+  height: 56px;                          /* lehká rezerva vůči min-height */
+  width: auto;
+  display: block;
+  border-radius: 0;                       /* ostré rohy */
+}
+
+/* Brand (text) + navigace */
+.site-title{
+  font-weight: 700;
+  letter-spacing: .2px;
+}
+
+.main-nav{
+  display: flex;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.main-nav a{
+  text-decoration: none;
+  opacity: .9;
+  transition: opacity .15s ease, transform .15s ease;
+}
+
+.main-nav a:hover{
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+/* „aktivní“ odkaz (klidně přidej .is-active na aktuální stránku) */
+.main-nav a.is-active,
+.main-nav a[aria-current="page"]{
+  opacity: 1;
+  box-shadow: 0 2px 0 0 var(--gold) inset;
+}
+
+/* ====== OBSAH / KONTEJNER ====== */
+.container{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.25rem 1.25rem 3.5rem;
+}
+
+.container > h2{
+  margin-bottom: .75rem;
+}
+
+/* ať je odstup od hlavičky i při skocích na kotvy */
+:target { scroll-margin-top: 84px; }
+
+/* Jemný odlesk pozadí shora (na velkých displejích) */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 28vh;
+  background: radial-gradient(ellipse at top center,
+              rgba(255,255,255,.06) 0%,
+              rgba(255,255,255,0) 60%);
+  pointer-events: none;
+}
+
+/* ====== PATIČKA ====== */
+.site-footer{
+  margin-top: 3rem;
+  padding: 1.25rem;
+  text-align: center;
+  color: var(--gold);
+  border-top: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(to bottom, var(--bg), var(--bg-2));
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 960px){
+  .header-inner{
+    grid-template-columns: auto 1fr;
+    min-height: 64px;
+  }
+  .logo-floating img,
+  .site-header .brand img{ height: 48px; }
+  .main-nav{ gap: 1.15rem; }
+}
+
+@media (max-width: 720px){
+  .header-inner{
+    grid-template-columns: auto 1fr;
+    gap: .75rem;
+  }
+  .main-nav{
+    gap: .9rem;
+    flex-wrap: wrap;                      /* zatím bez burgeru – jen zalomit */
+  }
+  .container{
+    padding: 1.5rem 1rem 3rem;
+  }
+}
