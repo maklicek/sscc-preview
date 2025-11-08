@@ -496,3 +496,54 @@ body {
   border-top: 1px solid rgba(224, 232, 120, 0.08);
   background: linear-gradient(180deg, rgba(10, 24, 18, 0.65), rgba(10, 24, 18, 0.9));
 }
+/* ====== PLUJÍCÍ LOGO ====== */
+.logo-floating {
+  position: fixed;
+  top: 12px;
+  left: 14px;
+  width: 56px;           /* klidně 64–72 podle chuti */
+  height: auto;
+  z-index: 1000;
+}
+
+/* ====== HLAVIČKA ====== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  background: rgba(6, 31, 23, 0.85); /* lehce světlejší než pozadí */
+  backdrop-filter: saturate(120%) blur(4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.18) inset,
+              0 1px 0 rgba(255,255,255,.05);
+}
+
+.header-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 14px 20px 14px 88px; /* rezerva pro logo vlevo (56px + mezera) */
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.site-title {
+  font-weight: 700;
+  letter-spacing: .2px;
+}
+
+/* ====== OBSAH ====== */
+.container {
+  max-width: 980px;
+  margin: 84px auto 48px; /* odsune obsah pod sticky hlavičku */
+  padding: 0 20px;
+}
+
+/* ====== PATIČKA ====== */
+.site-footer {
+  max-width: 1120px;
+  margin: 64px auto 24px;
+  padding: 18px 20px;
+  color: #e0cf78;
+  opacity: .9;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
