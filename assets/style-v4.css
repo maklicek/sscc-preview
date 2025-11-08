@@ -54,27 +54,46 @@ h2 {
 }
 
 /* ===== LOGO mimo hlavičku ===== */
-.logo-floating img {
-  width: 70px;
-  height: auto;
-  border-radius: 0;
-  box-shadow: 0 0 20px rgba(255, 210, 80, 0.25);
-  position: relative;
-  top: 5px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* ——— Plovoucí logo ——— */
+.logo-floating {
+  position: fixed;          /* mimo tok, drží nahoře vlevo */
+  top: 12px;
+  left: 20px;
+  width: 78px;              /* celková „krabička“ loga */
+  height: 78px;
+  z-index: 1000;
+  display: block;
+  line-height: 0;           /* žádné mezery kolem obrázku */
 }
 
+/* ještě jistota, kdyby se změnila pozice jinými styly */
+.logo-floating:not(:root) {
+  position: fixed;
+}
+
+/* Samotný obrázek – 100 % šířky boxu loga */
+.logo-floating img,
+img.logo-sscc {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+  border-radius: 12px;       /* jemné „karetové“ rohy, klidně dej 0 */
+  box-shadow: 0 0 20px rgba(255, 210, 80, 0.25);
+}
+
+/* jemná interakce */
 .logo-floating img:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(255, 230, 100, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 0 28px rgba(255, 230, 100, 0.35);
 }
 
-.logo-floating img {
-  width: 55px;
-  height: 55px;
-  border-radius: 0;
-  box-shadow: 0 0 20px rgba(255, 210, 80, 0.25);
+/* Hlavičku lehce posuneme doprava, ať se logo nepřekrývá s názvem */
+.site-header,
+.header-inner {
+  padding-left: 120px;
 }
+
 
 /* ===== PATIČKA ===== */
 .site-footer {
