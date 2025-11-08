@@ -751,3 +751,62 @@ body {
   align-items: center;
   gap: 16px;
 }
+/* === Scroll jen když je ho potřeba === */
+html, body {
+  overflow-x: hidden;   /* žádný vodorovný scroll */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;     /* svislý scroll jen pokud je obsah delší než okno */
+}
+/* === ZÁKLADNÍ LAYOUT: hlavička, obsah, patička === */
+:root {
+  --header-h: 72px;            /* výška hlavičky – klidně uprav */
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  min-height: 100svh;          /* nebo 100vh; svh je lepší na mobilech */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hlavička zůstává nahoře při scrollu */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+}
+
+/* Hlavní obsah vyplní zbytek výšky */
+main.container {
+  flex: 1 0 auto;              /* růst – vyplní prostor mezi hlavičkou a patičkou */
+}
+
+/* Patička je vždy u dna okna, ale netlačí obsah nahoru */
+.site-footer {
+  flex: 0 0 auto;
+  margin-top: auto;            /* kouzlo sticky footeru */
+  padding-bottom: env(safe-area-inset-bottom);
+}
+/* === Logo v hlavičce === */
+/* Nahraď .site-logo podle tvé třídy odkazu/obalu loga v hlavičce */
+.site-logo, .site-logo img {
+  display: block;
+}
+
+.site-logo img {
+  height: calc(var(--header-h) - 14px);  /* slabá vnitřní rezerva */
+  width: auto;
+  border-radius: 0;                       /* rovné hrany */
+  image-rendering: auto;
+  object-fit: contain;
+}
