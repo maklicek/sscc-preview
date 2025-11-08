@@ -1,106 +1,77 @@
-:root{
-  --bg: #0e241c;         /* tmavě zelené pozadí */
-  --bg-grad-top: #132d23;
-  --bg-grad-mid: #0f261e;
-  --bg-grad-bot: #0b2019;
-
-  --header: #182f25;     /* o chlup světlejší */
-  --footer: #182f25;
-
-  --gold: #d6c27a;       /* zlatá pro texty */
-  --gold-soft: #bfae66;
-  --text: #e9e6d8;
+/* ===== ZÁKLAD ===== */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background: radial-gradient(ellipse at top center, #0f2a1f 0%, #08150e 80%);
+  color: #e0c878;
 }
 
-*{ box-sizing: border-box; }
-html, body{
-  height:100%;
-  margin:0;
-  font-family: "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  color: var(--text);
-  background:
-    radial-gradient(1200px 500px at 12% -10%, rgba(214,194,122,.12), transparent 60%),
-    linear-gradient(to bottom, var(--bg-grad-top), var(--bg-grad-mid) 40%, var(--bg-grad-bot));
-  background-color: var(--bg);
+/* ===== HLAVIČKA ===== */
+.site-header {
+  background: linear-gradient(to bottom, #1b3a2e, #0e241a);
+  color: #e0c878;
+  text-align: left;
+  padding: 0.5rem 2rem;
+  position: relative;
+  z-index: 10;
 }
 
-/* Plovoucí logo mimo header */
-.logo-floating{
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  display: inline-block;
-  width: 56px;
-  height: 56px;
-  z-index: 1000;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
-}
-.logo-floating img{
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit: contain;
-  border-radius: 8px; /* ostré → dej 0, pokud chceš úplně ostré hrany */
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Header */
-.site-header{
-  background: linear-gradient(to bottom, rgba(34,59,48,.9), rgba(24,47,37,.9));
-  border-bottom: 1px solid rgba(214,194,122,.14);
-  position: sticky;
-  top: 0;
-  z-index: 500;
-  backdrop-filter: blur(2px);
+.site-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
 }
-.header-inner{
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 18px 24px 16px;
-  display:flex;
-  align-items:center;
-  gap:24px;
-}
-.site-title{
-  margin:0;
-  font-size: 22px;
-  font-weight: 650;
-  letter-spacing:.2px;
-  color: var(--gold);
-}
-.main-nav{
-  margin-left:auto;
-  display:flex;
-  gap:22px;
-}
-.main-nav a{
-  color: var(--gold-soft);
+
+.main-nav a {
+  color: #e0c878;
   text-decoration: none;
-  font-weight: 500;
-  padding: 4px 0;
+  margin-left: 1.5rem;
+  font-size: 0.95rem;
 }
-.main-nav a:hover{ color: var(--gold); }
 
-/* Obsah */
-.container{
-  max-width: 960px;
-  margin: 56px auto 48px;
-  padding: 0 24px;
+.main-nav a:hover {
+  color: #fff3c2;
 }
-h2{
-  margin:0 0 12px 0;
-  font-weight: 700;
-  color: var(--gold);
-}
-p{ line-height: 1.7; }
 
-/* Footer */
-.site-footer{
-  margin-top: 64px;
-  padding: 18px 0 24px;
+/* ===== OBSAH ===== */
+.container {
+  padding: 3rem 10%;
+  text-align: left;
+  line-height: 1.7;
+}
+
+h2 {
+  color: #f3d677;
+}
+
+/* ===== LOGO mimo hlavičku ===== */
+.logo-floating {
+  position: absolute;
+  top: 12px;
+  left: 20px;
+  z-index: 100;
+}
+
+.logo-floating img {
+  width: 55px;
+  height: 55px;
+  border-radius: 0;
+  box-shadow: 0 0 20px rgba(255, 210, 80, 0.25);
+}
+
+/* ===== PATIČKA ===== */
+.site-footer {
   text-align: center;
-  color: var(--gold-soft);
-  border-top: 1px solid rgba(214,194,122,.14);
-  background: linear-gradient(to top, rgba(24,47,37,.9), rgba(24,47,37,.3));
+  padding: 0.5rem;
+  background: linear-gradient(to top, #0f2a1f, #0c1f17);
+  color: #bfae6b;
+  font-size: 0.8rem;
 }
-.site-footer small{ opacity:.95; }
-
