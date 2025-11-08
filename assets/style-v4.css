@@ -7,7 +7,7 @@
   --panel:rgba(0,0,0,.18);
   --border:rgba(232,204,120,.18);
   --bar:rgba(26,40,42,.58);  /* světlejší pro header/footer */
-}
+} 
 /* reset & base */
 *{box-sizing:border-box}
 html,body{height:100%}
