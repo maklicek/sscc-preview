@@ -101,16 +101,16 @@ body.elegant-green{
   font-size:14px;
   opacity:.9;
 }
-/* Pozadí – více světla shora, jemná aura (varianta A) */
+/* Pozadí – varianta A+ (rozšířená aura) */
 body.elegant-green{
-  --bg-top: rgba(245,223,120,0.16);   /* jemné zlaté světlo */
-  --bg-mid: rgba(18,42,30,0.96);      /* hladký přechod */
-  --bg-bot: rgba(8,20,14,1);          /* tmavý spodek */
+  --bg-top: rgba(245,223,120,0.18);   /* trochu silnější světlo */
+  --bg-mid: rgba(20,48,34,0.94);
+  --bg-bot: rgba(8,20,14,1);
 
   background: radial-gradient(
-      circle at 50% -10%,
+      circle at 50% -15%,
       var(--bg-top) 0%,
-      var(--bg-mid) 42%,
+      var(--bg-mid) 55%,
       var(--bg-bot) 100%
   );
   min-height:100vh;
