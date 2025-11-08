@@ -1,92 +1,102 @@
 :root{
-  --bg-0:#0c1812;         /* základní temně zelené pozadí */
-  --bg-1:#102017;         /* o tón světlejší */
-  --gold:#f1d37a;         /* zlaté písmo/akcent */
-  --gold-d:#c9b05f;       /* tmavší zlato */
-  --text:#e9f1eb;         /* světlá zeleň pro texty, když není zlato vhodné */
-  --shadow:0 10px 30px rgba(0,0,0,.35);
+  --bg-dark: #08140e;         /* základní tmavě zelené pozadí */
+  --bg-mid:  #0d2217;         /* o tón světlejší */
+  --bg-light:#132f22;         /* hlavička/patička */
+  --gold:    #e8d088;         /* základní zlatá */
+  --gold-soft:#f4e7b2;        /* světlejší varianta */
+  --shadow:  0 10px 30px rgba(0,0,0,.35);
+  --radius:  14px;
+  --font: "Inter", "Segoe UI", Roboto, sans-serif;
 }
 
-/* ---------- Reset drobnosti ---------- */
-*{ box-sizing:border-box; }
-html,body{ height:100%; }
-body{
-  margin:0;
-  color:var(--gold);
-  background:var(--bg-0);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Inter", "Helvetica Neue", Arial, sans-serif;
-  line-height:1.4;
+/* Reset */
+*{ box-sizing: border-box; margin:0; padding:0; }
+html,body{ height:100%; font-family:var(--font); color:var(--gold); background:var(--bg-dark); }
+
+/* Přechod tmavé do světlejší */
+body.elegant-green{
+  background: linear-gradient(to top, var(--bg-dark), var(--bg-mid));
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
 }
 
-/* ---------- Hlavička ---------- */
+/* Hlavička */
 .site-header{
-  position:sticky; top:0; z-index:10;
-  background: linear-gradient(to bottom, rgba(16,32,23,.90), rgba(16,32,23,.80));
+  background: linear-gradient(to bottom, var(--bg-light), rgba(19,47,34,.8));
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  box-shadow: var(--shadow);
   backdrop-filter: blur(4px);
-  border-bottom: 1px solid rgba(255,255,255,.04);
 }
 .header-inner{
-  max-width:1200px; margin:0 auto;
-  height:72px; display:flex; align-items:center; gap:24px;
-  padding:0 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  max-width:1200px;
+  margin:0 auto;
+  padding:10px 24px;
+  height:76px;
 }
-.brand{ display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--gold); }
-.logo{ height:56px; width:auto; border-radius:10px; box-shadow: var(--shadow); }
-.brand-text{ display:flex; align-items:baseline; gap:10px; }
-.brand-text .title{ font-weight:700; letter-spacing:.2px; }
-.brand-text .badge{
-  font-size:12px; padding:3px 8px; border-radius:999px;
-  background:rgba(241,211,122,.12); color:var(--gold-d);
-  border:1px solid rgba(241,211,122,.25);
+.logo{
+  height:58px;
+  width:auto;
+  border-radius:var(--radius);
 }
-
-.nav{ margin-left:auto; display:flex; gap:22px; }
+.brand{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  text-decoration:none;
+  color:var(--gold);
+}
+.brand-title{
+  font-size:20px;
+  font-weight:600;
+  letter-spacing:.4px;
+}
+.nav{
+  display:flex;
+  gap:26px;
+}
 .nav a{
-  color:var(--gold); text-decoration:none; opacity:.8;
-  padding:8px 0;
+  color:var(--gold);
+  text-decoration:none;
+  font-size:15px;
+  opacity:.85;
+  transition:opacity .2s;
 }
-.nav a:hover{ opacity:1; }
+.nav a:hover{
+  opacity:1;
+}
 
-/* ---------- Patička ---------- */
+/* Obsah */
+.content{
+  flex:1;
+  max-width:1100px;
+  margin:80px auto;
+  padding:0 24px;
+  text-align:left;
+  line-height:1.6;
+}
+.content h1{
+  font-size:28px;
+  font-weight:600;
+  color:var(--gold-soft);
+  margin-bottom:16px;
+}
+.content p{
+  font-size:17px;
+  color:var(--gold);
+  max-width:800px;
+}
+
+/* Patička */
 .site-footer{
-  background: var(--bg-1);
-  color:var(--gold-d);
-  border-top:1px solid rgba(255,255,255,.05);
-}
-.site-footer small{
-  display:block; max-width:1200px; margin:0 auto;
-  padding:14px 20px;
-}
-
-/* ---------- Stránka ---------- */
-.page{
-  min-height: calc(100dvh - 72px - 46px); /* viewport minus header minus footer */
-}
-
-/* ---------- Režim: clean ---------- */
-body.clean{
-  background: var(--bg-0);
-}
-
-/* ---------- Režim: hero-sun ---------- */
-body.hero-sun{
-  /* hero jako „wallpaper“ */
-  background:
-    linear-gradient(to bottom, rgba(16,32,23,.55) 0%, rgba(16,32,23,.25) 30%, rgba(16,32,23,.55) 100%),
-    url("assets/hero-sun.jpg") center / cover no-repeat fixed, var(--bg-0);
-}
-
-/* Mírně posuneme kompozici, ať je slunce vlevo + prostor vpravo pro budoucí obsah */
-@media (min-width: 900px){
-  body.hero-sun{
-    background-position: 15% 0, 15% 50%, center;
-    background-attachment: scroll, fixed, scroll;
-  }
-}
-
-/* Na mobilech bez hero – čistá varianta pro čitelnost a výkon */
-@media (max-width: 640px){
-  body.hero-sun{
-    background: var(--bg-0);
-  }
+  background: linear-gradient(to top, var(--bg-light), rgba(19,47,34,.9));
+  border-top:1px solid rgba(255,255,255,.08);
+  text-align:center;
+  color:var(--gold);
+  padding:14px 0;
+  font-size:14px;
+  opacity:.9;
 }
