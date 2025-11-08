@@ -1,125 +1,92 @@
-/* =========================================
-   SSCC – čistý základ společného stylu
-   ========================================= */
-
-/* ----- Reset & base ----- */
-* { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; }
-body {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  line-height: 1.5;
-  color: #cfd6cf;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-/* ----- Design tokens ----- */
 :root{
-  --bg-plain: #0b140f;               /* elegantní tmavozelená */
-  --ink:      #cfd6cf;
-  --ink-dim:  #aab2a9;
-
-  --gold:        #f5e3a8;
-  --gold-strong: #ffdd75;
-
-  --header-bg-1: rgba(28, 36, 28, .92);
-  --header-bg-2: rgba(18, 24, 18, .88);
-  --edge:        rgba(255,255,255,.07);
+  --bg-0:#0c1812;         /* základní temně zelené pozadí */
+  --bg-1:#102017;         /* o tón světlejší */
+  --gold:#f1d37a;         /* zlaté písmo/akcent */
+  --gold-d:#c9b05f;       /* tmavší zlato */
+  --text:#e9f1eb;         /* světlá zeleň pro texty, když není zlato vhodné */
+  --shadow:0 10px 30px rgba(0,0,0,.35);
 }
 
-/* =========================================
-   TÉMATA POZADÍ
-   Přepínání: <body class="plain"> nebo <body class="hero">
-   ========================================= */
-
-/* 1) Čistá tmavě zelená (bez čehokoli) */
-body.plain{
-  background: var(--bg-plain);
+/* ---------- Reset drobnosti ---------- */
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  color:var(--gold);
+  background:var(--bg-0);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Inter", "Helvetica Neue", Arial, sans-serif;
+  line-height:1.4;
 }
 
-/* 2) Čistá stránka se sluncem přes celou plochu */
-body.hero{
-  background:
-    url("hero-sun.jpg") center / cover no-repeat fixed,
-    var(--bg-plain);
-}
-
-/* =========================================
-   Hlavička (větší logo, světlejší průhled)
-   ========================================= */
-
+/* ---------- Hlavička ---------- */
 .site-header{
-  position: sticky; top: 0; z-index: 1000;
-  height: 92px;                       /* logo přes výšku hlavičky */
-  display: flex; align-items: center; gap: 16px;
-  padding: 0 28px 0 18px;
-  background: linear-gradient(to bottom, var(--header-bg-1), var(--header-bg-2));
-  border-bottom: 1px solid var(--edge);
-  backdrop-filter: blur(6px);
+  position:sticky; top:0; z-index:10;
+  background: linear-gradient(to bottom, rgba(16,32,23,.90), rgba(16,32,23,.80));
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgba(255,255,255,.04);
+}
+.header-inner{
+  max-width:1200px; margin:0 auto;
+  height:72px; display:flex; align-items:center; gap:24px;
+  padding:0 20px;
+}
+.brand{ display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--gold); }
+.logo{ height:56px; width:auto; border-radius:10px; box-shadow: var(--shadow); }
+.brand-text{ display:flex; align-items:baseline; gap:10px; }
+.brand-text .title{ font-weight:700; letter-spacing:.2px; }
+.brand-text .badge{
+  font-size:12px; padding:3px 8px; border-radius:999px;
+  background:rgba(241,211,122,.12); color:var(--gold-d);
+  border:1px solid rgba(241,211,122,.25);
 }
 
-.site-header .logo{
-  height: calc(100% - 16px);
-  width: auto; display: block;
-  filter: drop-shadow(0 1px 4px rgba(0,0,0,.35));
+.nav{ margin-left:auto; display:flex; gap:22px; }
+.nav a{
+  color:var(--gold); text-decoration:none; opacity:.8;
+  padding:8px 0;
 }
+.nav a:hover{ opacity:1; }
 
-/* Brand text výrazně vlevo; velká mezera k nav */
-.brand-title{
-  font-weight: 700;
-  font-size: 1.2rem;
-  letter-spacing: 0.2px;
-  color: var(--gold);
-  margin-right: auto;                 /* vytvoří velkou mezeru k navigaci */
-  white-space: nowrap;
-}
-
-/* Navigace vpravo – větší písmo */
-.main-nav a{
-  display: inline-block;
-  text-decoration: none;
-  color: var(--ink);
-  font-size: 1rem;
-  padding: 10px 12px;
-  border-radius: 10px;
-  transition: color .18s ease, background .18s ease;
-}
-.main-nav a:hover{ color: var(--gold-strong); background: rgba(255,255,255,.05); }
-.main-nav a.active{ color: var(--gold); }
-
-/* =========================================
-   Hlavní kontejner (zatím prázdný)
-   ========================================= */
-
-.page-wrap{
-  min-height: calc(100vh - 92px - 72px);
-  padding: 48px 20px 0;
-}
-
-/* =========================================
-   Patička – světlejší, níž, čistá
-   ========================================= */
+/* ---------- Patička ---------- */
 .site-footer{
-  margin-top: 72px;
-  padding: 20px 0 36px;
-  text-align: center;
-  color: var(--ink-dim);
-  border-top: 1px solid var(--edge);
-  background: linear-gradient(to top, rgba(255,255,255,.03), rgba(255,255,255,0));
+  background: var(--bg-1);
+  color:var(--gold-d);
+  border-top:1px solid rgba(255,255,255,.05);
+}
+.site-footer small{
+  display:block; max-width:1200px; margin:0 auto;
+  padding:14px 20px;
 }
 
-/* =========================================
-   Textové základní styly (akcenty do zlata)
-   ========================================= */
-h1, h2, h3 { color: var(--gold); margin: 0 0 12px; }
-h1 { font-size: clamp(1.8rem, 3.2vw, 2.6rem); line-height: 1.2; }
-h2 { font-size: clamp(1.4rem, 2.4vw, 2.0rem); }
-h3 { font-size: clamp(1.15rem,2vw, 1.5rem); }
+/* ---------- Stránka ---------- */
+.page{
+  min-height: calc(100dvh - 72px - 46px); /* viewport minus header minus footer */
+}
 
-p { margin: 0 0 1rem; color: var(--ink); }
+/* ---------- Režim: clean ---------- */
+body.clean{
+  background: var(--bg-0);
+}
 
-/* Utility: kdyby bylo potřeba něco dočasně skrýt */
-.visually-hidden{
-  position:absolute!important; width:1px;height:1px;overflow:hidden;
-  clip:rect(1px,1px,1px,1px); white-space:nowrap; border:0; padding:0;margin:0;
+/* ---------- Režim: hero-sun ---------- */
+body.hero-sun{
+  /* hero jako „wallpaper“ */
+  background:
+    linear-gradient(to bottom, rgba(16,32,23,.55) 0%, rgba(16,32,23,.25) 30%, rgba(16,32,23,.55) 100%),
+    url("assets/hero-sun.jpg") center / cover no-repeat fixed, var(--bg-0);
+}
+
+/* Mírně posuneme kompozici, ať je slunce vlevo + prostor vpravo pro budoucí obsah */
+@media (min-width: 900px){
+  body.hero-sun{
+    background-position: 15% 0, 15% 50%, center;
+    background-attachment: scroll, fixed, scroll;
+  }
+}
+
+/* Na mobilech bez hero – čistá varianta pro čitelnost a výkon */
+@media (max-width: 640px){
+  body.hero-sun{
+    background: var(--bg-0);
+  }
 }
