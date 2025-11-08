@@ -547,3 +547,90 @@ body {
   opacity: .9;
   border-top: 1px solid rgba(255,255,255,.08);
 }
+:root{
+  --header-h: 64px;        /* jednotná výška hlavičky */
+  --gap: 24px;
+}
+
+/* Stránka jako sloupec: footer zůstane dole */
+html, body{
+  height: 100%;
+}
+body{
+  margin: 0;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* tvé pozadí nechám – jen připomínka, ať zůstane */
+  background: radial-gradient(ellipse at top center,#0f2a1f 0%, #08150e 80%);
+  color: #e0c878;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* HLAVIČKA – sticky nahoře */
+.site-header{
+  position: sticky;    /* drží se horní hrany */
+  top: 0;
+  z-index: 1000;
+  height: var(--header-h);
+  background: rgba(6,31,23,.95);
+  backdrop-filter: saturate(120%) blur(4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.18) inset,
+              0 1px 0 rgba(255,255,255,.05);
+}
+.header-inner{
+  height: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+}
+.site-title{
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+.main-nav{
+  margin-left: auto;
+  display: flex;
+  gap: 20px;
+}
+.main-nav a{ color: #e0c878; text-decoration: none; }
+
+/* OBSAH – odstup pod sticky hlavičkou */
+.container{
+  max-width: 1000px;
+  width: min(100%, 1000px);
+  margin: calc(var(--header-h) + 20px) auto 0; /* prostor pod hlavičkou */
+  padding: 0 20px 24px;
+  flex: 1; /* vyplní zbytek výšky, aby footer seděl u dna */
+}
+
+/* PATIČKA u dna stránky */
+.site-footer{
+  padding: 14px 20px;
+  text-align: center;
+  color: #e0c878;
+  opacity: .9;
+}
+
+/* PLOVOUCÍ LOGO – nahoře vlevo, nad hlavičkou */
+.logo-floating{
+  position: fixed;     /* neodsunuje layout, „visí“ nad ním */
+  left: 16px;
+  top: 12px;
+  width: 56px;
+  height: 56px;
+  z-index: 1100;       /* nad hlavičkou */
+  display: block;
+}
+.logo-floating img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px; /* ostré ↔ zaoblené upravíš tady (0 = ostré) */
+  box-shadow: 0 8px 22px rgba(0,0,0,.35);
+  pointer-events: none; /* klik projde na odkaz <a>, ne na <img> */
+}
