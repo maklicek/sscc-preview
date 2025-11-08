@@ -103,3 +103,85 @@ img.logo-sscc {
   color: #bfae6b;
   font-size: 0.8rem;
 }
+/* ===== Layout – patička vždy dole, čistý sloupec ===== */
+html, body {
+  height: 100%;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: #061e17;           /* tmavě zelená */
+  color: #e9d788;                 /* „zlaté“ písmo */
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Cantarell, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ===== Plovoucí logo – mimo tok, malé ===== */
+.logo-floating {
+  position: fixed;        /* MIMO tok layoutu */
+  top: 12px;
+  left: 18px;
+  width: 78px;            /* úprava velikosti loga */
+  height: 78px;
+  z-index: 2000;          /* nad vším */
+  display: block;
+  line-height: 0;
+}
+.logo-floating img {
+  width: 100% !important; /* přebije i globální img styly */
+  height: auto !important;
+  display: block;
+  border-radius: 12px;    /* když chceš ostré hrany, dej 0 */
+  box-shadow: 0 0 20px rgba(255, 210, 80, 0.25);
+}
+
+/* ===== Hlavička ===== */
+.site-header {
+  position: sticky;       /* klidně můžeš vypnout, když nechceš sticky */
+  top: 0;
+  z-index: 1500;          /* nad obsahem, pod logem */
+  background: rgba(10, 38, 29, 0.95);   /* světlejší proužek */
+  backdrop-filter: blur(2px);           /* jemný efekt, lze odebrat */
+  border-bottom: 1px solid rgba(233, 215, 136, 0.08);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 14px 20px 14px 120px; /* odsazení kvůli logu vlevo */
+}
+.site-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.main-nav a {
+  color: #e9d788;
+  text-decoration: none;
+  opacity: 0.9;
+  margin-right: 16px;
+}
+.main-nav a:hover { opacity: 1; }
+
+/* ===== Obsah (vyplní prostor) ===== */
+.container {
+  flex: 1;                  /* zabere zbytek výšky – patička pak sedí dole */
+  max-width: 1100px;
+  margin: 48px auto;
+  padding: 0 24px;
+}
+.container h2 {
+  margin-top: 0;
+}
+
+/* ===== Patička ===== */
+.site-footer {
+  margin-top: auto;         /* posune patičku na dno stránky */
+  padding: 16px 20px;
+  text-align: center;
+  background: rgba(10, 38, 29, 0.95);
+  border-top: 1px solid rgba(233, 215, 136, 0.08);
+}
+.site-footer small { opacity: 0.9; }
