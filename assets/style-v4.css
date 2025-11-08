@@ -183,7 +183,7 @@ body{
 
 /* Logo větší + badge SSCC vedle názvu */
 .brand .logo{
-  width: 64px; height:auto; display:block;
+  width: 84px; height:auto; display:block;
 }
 .brand .title{
   display:flex; align-items:center; gap:.6rem;
@@ -252,22 +252,6 @@ body{
   overflow: hidden;
 }
 
-/* Jemné "slunce" vlevo – hero-sun.jpg + měkký přechod */
-.site-header::after{
-  content:"";
-  position:absolute; inset:0; pointer-events:none;
-  background:
-    radial-gradient(360px 260px at 8% 12%,
-      rgba(255,225,140,.26) 0%,
-      rgba(255,200,90,.10) 38%,
-      rgba(255,180,60,.05) 60%,
-      rgba(0,0,0,0) 82%),
-    url("assets/hero-sun.jpg") no-repeat 3% 6%/520px auto;
-  mix-blend-mode: screen;
-  filter: saturate(110%) blur(.6px);
-  opacity:.55;          /* případně zjemnit/zvýraznit */
-}
-
 /* Projektové karty – měkčí ohraničení */
 .project{
   background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.025));
@@ -314,22 +298,6 @@ body{
   backdrop-filter:saturate(130%) blur(6px);
   -webkit-backdrop-filter:saturate(130%) blur(6px);
   overflow:hidden;
-}
-
-/* --- Slunce vlevo v hlavičce (měkké) --- */
-.site-header::after{
-  content:"";
-  position:absolute; inset:0; pointer-events:none;
-  background:
-    radial-gradient(360px 260px at 8% 12%,
-      rgba(255,225,140,.26) 0%,
-      rgba(255,200,90,.10) 38%,
-      rgba(255,180,60,.05) 60%,
-      rgba(0,0,0,0) 82%),
-    url("assets/hero-sun.jpg") no-repeat 3% 6%/520px auto;
-  mix-blend-mode: screen;
-  filter: saturate(110%) blur(.6px);
-  opacity: .55;
 }
 
 /* --- Karty projektů jemně, bez ostrých hran --- */
@@ -511,7 +479,7 @@ h2, .project-subtitle{ font-size: 1.35rem; }
 .page-projects::after{
   content: "";
   position: absolute;
-  top: -120px; right: -160px;
+  top: -180px; right: -300px;
   width: 580px; height: 580px;
   background: url('assets/hero-sun.jpg') center/cover no-repeat;
   opacity: .15;
