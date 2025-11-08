@@ -649,3 +649,83 @@ h1{ font-weight:700; letter-spacing:.2px; }
 h2{ font-weight:600; letter-spacing:.1px; }
 body{ color:var(--fg); }
 .gold{ color:var(--gold); }
+/* ====== Layout stránky (sticky header + footer u dna) ====== */
+html, body { min-height: 100%; }
+body {
+  min-height: 100svh;                 /* spolehlivá výška i na mobilech */
+  display: flex;
+  flex-direction: column;
+}
+
+/* hlavní část roztáhne stránku, aby footer seděl u dna */
+.site-main { flex: 1 0 auto; }
+
+/* ====== HLAVIČKA ====== */
+.site-header {
+  position: sticky; top: 0; z-index: 500;
+  background: linear-gradient(to bottom, rgba(255,255,255,.06), rgba(255,255,255,0));
+  box-shadow: 0 8px 20px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.05);
+  backdrop-filter: saturate(120%) blur(4px);
+}
+
+.header-inner {
+  max-width: clamp(84rem, 82vw, 160rem);
+  margin: 0 auto;
+  padding: clamp(1.25rem, 2vw, 2rem) 2rem;
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 2rem);
+}
+
+/* značka vlevo (logo + název) */
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+
+.logo {
+  width: 48px; height: 48px; object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.35);
+}
+
+.site-title {
+  font-weight: 700;
+  letter-spacing: .3px;
+  color: #e0c878;    /* zlatá */
+  white-space: nowrap;
+}
+
+/* navigace vpravo */
+.main-nav {
+  margin-left: auto;
+  display: flex; align-items: center; gap: clamp(1rem, 2.4vw, 2.2rem);
+}
+
+.main-nav a {
+  color: #e0c878;
+  text-decoration: none;
+  font-weight: 600;
+  opacity: .9;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.main-nav a:hover { opacity: 1; transform: translateY(-1px); }
+
+/* ====== OBSAH ====== */
+.container {
+  max-width: clamp(84rem, 82vw, 160rem);
+  margin: 0 auto;
+  padding: clamp(1.25rem, 2vw, 2rem) 2rem;
+}
+
+/* ====== PATIČKA ====== */
+.site-footer {
+  position: relative;           /* jistota, že ji nic nedrží „fixed“ */
+  padding: 2rem;
+  text-align: center;
+  color: #e0c878;
+  opacity: .9;
+  background: linear-gradient(to top, rgba(255,255,255,.04), rgba(255,255,255,0));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+/* ====== Vypnutí starých experimentů (pro jistotu) ====== */
+.logo-floating { display: none !important; }
+.site-footer[style*="position:fixed"] { position: relative !important; bottom: auto !important; }
