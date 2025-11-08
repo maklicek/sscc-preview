@@ -465,3 +465,89 @@ body {
   object-fit: cover;
   display: block;
 }
+/* ===== Rozvržení stránky (footer až dolů) ===== */
+html, body {
+  height: 100%;
+}
+body {
+  min-height: 100svh;            /* nové viewport jednotky, bezpečné i s mobilními UI pruhy */
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(ellipse at top center, #0f2a1f 0%, #08150e 80%) no-repeat fixed;
+  color: #e0e878;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* ===== Plovoucí logo mimo hlavičku ===== */
+.logo-floating {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 2000;
+}
+.logo-floating img {
+  height: 84px;                 /* klidně uprav: 64–96px */
+  width: auto;
+  display: block;
+  border-radius: 0;             /* ostré rohy */
+}
+
+/* ===== Hlavička (sticky) ===== */
+.site-header {
+  position: sticky;             /* zůstává přilepená pod horní hranou */
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(180deg, rgba(18, 44, 34, 0.95), rgba(10, 24, 18, 0.95));
+  backdrop-filter: blur(2px);
+  border-bottom: 1px solid rgba(224, 232, 120, 0.08);
+  padding: 0.75rem 2rem;
+}
+
+/* vnitřek hlavičky – logo text + navigace v jedné řádce */
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.site-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: #e0e878;
+  margin: 0;
+}
+
+/* navigace vpravo */
+.main-nav a {
+  color: #d9d27a;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-size: 0.98rem;
+  opacity: 0.92;
+}
+.main-nav a:hover {
+  color: #ffe07a;
+  opacity: 1;
+}
+
+/* ===== Obsah – odsazení od sticky hlavičky ===== */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 2.2vw, 2rem);
+  margin-top: clamp(84px, 12vh, 160px);  /* odsazení pod hlavičku */
+}
+
+/* ===== Patička – vždy dolů ===== */
+.site-footer {
+  margin-top: auto;             /* klíč k „footer až dolů“ */
+  text-align: center;
+  padding: 1rem 0;
+  color: rgba(224, 232, 120, 0.75);
+  border-top: 1px solid rgba(224, 232, 120, 0.08);
+  background: linear-gradient(180deg, rgba(10, 24, 18, 0.65), rgba(10, 24, 18, 0.9));
+}
