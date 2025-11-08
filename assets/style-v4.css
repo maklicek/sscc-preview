@@ -257,34 +257,30 @@ body {
 /* Plovoucí logo — mimo hlavičku */
 .logo-floating {
   position: fixed;
-  left: 28px;         /* posun od levého okraje */
-  top: 14px;          /* posun od horního okraje */
-  width: 72px;        /* velikost loga */
+  left: 24px;
+  top: 10px;
+  width: 72px;          /* viditelná velikost loga */
   height: 72px;
-  z-index: 101;       /* nad hlavičkou */
+  z-index: 1000;        /* nad hlavičkou */
   display: block;
 }
+
 .logo-floating img {
   width: 100%;
   height: 100%;
   display: block;
-  border-radius: 12px; /* jemně zkosené (ne kruh) */
+  border-radius: 12px;  /* jemně zkosené rohy */
+  background: none;     /* kdyby se cache chovala divně */
 }
 
-/* Jemné světelko kolem loga */
+/* jemné světélko – to co teď vidíš */
 .logo-floating::after {
   content: "";
   position: absolute;
-  inset: -22px;
+  inset: -18px;
   background: radial-gradient(circle at 35% 30%,
               rgba(255, 220, 120, .35),
               rgba(255, 220, 120, 0) 55%);
   filter: blur(8px);
   pointer-events: none;
-}
-
-/* Responsivně menší logo */
-@media (max-width: 720px) {
-  .logo-floating { left: 14px; top: 10px; width: 56px; height: 56px; }
-  .site-title { font-size: 18px; }
 }
