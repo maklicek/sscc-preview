@@ -1161,3 +1161,112 @@ body::before{
   display: grid; gap: .75rem; justify-items: start;
 }
 .empty-state p{ margin: 0; opacity: .95; }
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nápady | SSCC — SolarSpace Carbon Cycle</title>
+  <link rel="stylesheet" href="assets/style-v4.css?v=7" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="brand">
+        <img src="assets/sscc-logo.jpg" alt="SSCC logo" class="logo">
+        <span class="site-title">SolarSpace Carbon Cycle — SSCC</span>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html">SSCC</a>
+        <a href="projekty.html">Projekty</a>
+        <a href="spoluprace.html">Spolupráce</a>
+        <a href="edukace.html">Edukace</a>
+        <a href="konsorcium.html">Konsorcium</a>
+        <a href="napady.html" aria-current="page">Nápady</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container site-main">
+    <section class="hero hero--left">
+      <h1>Nápady a hypotézy — hranice možného</h1>
+      <p class="lead">
+        Tady shromažďujeme smělé, ale smysluplné koncepty. Nejsou to závazné projekty;
+        slouží jako inspirace, diskusní podklad a „návody k přemýšlení“.
+      </p>
+    </section>
+
+    <!-- Naše nápady -->
+    <section class="ideas">
+      <div class="ideas-head">
+        <h2>Naše nápady</h2>
+        <p class="ideas-sub">Předvýběr témat, u kterých hledáme partnery a kritické oponentury.</p>
+      </div>
+
+      <div class="idea-grid">
+        <!-- Orbitální energie – přesunuto z projektů -->
+        <article class="idea-card">
+          <div class="idea-meta">
+            <span class="badge">Energie</span>
+            <span class="badge">Bezpečnost</span>
+            <span class="badge badge--study">Hypotéza</span>
+          </div>
+          <h3 class="idea-title">Přenos energie z orbitální solární farmy</h3>
+          <p class="idea-desc">
+            Jak navrhnout bezpečný pozemní příjem mikrovln, jaké jsou limity výkonu,
+            vyzařovacích diagramů a jak to zasadit do regulačního rámce? Cíl: scénáře,
+            které dávají smysl i v reálných podmínkách.
+          </p>
+        </article>
+
+        <!-- Yellowstone -->
+        <article class="idea-card">
+          <div class="idea-meta">
+            <span class="badge">Geosystémy</span>
+            <span class="badge">Rizika</span>
+            <span class="badge badge--pilot">Long-term</span>
+          </div>
+          <h3 class="idea-title">Yellowstone: jak oddálit katastrofu</h3>
+          <p class="idea-desc">
+            Mapování možností řízeného odvodu tepla, monitoringu tlaku a
+            včasné diagnostiky. Co je fyzikálně reálné, etické a jaká je
+            „cena“ za snížení rizika?
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Nápady čtenářů -->
+    <section class="ideas ideas--community" id="napady-komunity">
+      <div class="ideas-head">
+        <h2>Nápady čtenářů</h2>
+        <p class="ideas-sub">Pošli nám stručný koncept. Přidej 3–5 odrážek: cíl, princip, limity, přínos.</p>
+      </div>
+
+      <!-- Empty state (když zatím nejsou příspěvky) -->
+      <div class="empty-state">
+        <p>Zatím žádné veřejné příspěvky. Můžeš být první.</p>
+        <a class="btn btn--gold"
+           href="mailto:sscc@example.cz?subject=SSCC%20%E2%80%94%20N%C3%A1vrh%20n%C3%A1padu&body=Popi%C5%A1%20stru%C4%8Dn%C4%9B%20sv%C5%AFj%20n%C3%A1pad%20(3%E2%80%935%20odr%C3%A1%C5%BEek):%0A%E2%80%A2%20C%C3%ADl:%0A%E2%80%A2%20Princip:%0A%E2%80%A2%20Limity:%0A%E2%80%A2%20P%C5%99%C3%ADnos:%0A%E2%80%A2%20Kontakt:">
+          Poslat nápad e-mailem
+        </a>
+      </div>
+
+      <!-- Pokud někdy budou příspěvky, vložíš sem .idea-card ve stejném formátu jako výše -->
+      <div class="idea-grid idea-grid--community" hidden>
+        <!-- sem později -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>© <span id="year"></span> SSCC — SolarSpace Carbon Cycle</small>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
