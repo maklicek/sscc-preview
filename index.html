@@ -15,6 +15,7 @@
       <img src="assets/sscc-logo.jpg" alt="SSCC" class="logo">
       <span class="site-title">SolarSpace Carbon Cycle — SSCC</span>
     </a>
+<body data-page="napady">  <!-- na každé stránce jiná hodnota: sscc | projekty | napady ... -->
 
     <nav class="main-nav">
       <a href="sscc.html">SSCC</a>
@@ -61,6 +62,24 @@
     <a href="terms.html">Podmínky</a>
   </small>
 </footer>
+<script>
+  (function(){
+    const page = document.body.dataset.page || "";
+    const map = {
+      "sscc": "sscc.html",
+      "projekty": "projekty.html",
+      "spoluprace": "spoluprace.html",
+      "edukace": "edukace.html",
+      "konsorcium": "konsorcium.html",
+      "napady": "napady.html"
+    };
+    const current = map[page];
+    if(current){
+      const link = document.querySelector('.main-nav a[href="'+current+'"]');
+      if(link){ link.setAttribute('aria-current','page'); }
+    }
+  })();
+</script>
 
 </body>
 
