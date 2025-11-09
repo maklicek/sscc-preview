@@ -5,65 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projekty | SSCC — SolarSpace Carbon Cycle (Preview)</title>
 
-</div>
+  <!-- Globální styl -->
+  <link rel="stylesheet" href="assets/style-v4.css?v=7">
 
-  <!-- Globální styl webu (pokud je k dispozici) -->
- <link rel="stylesheet" href="assets/style-v4.css?v=7">
- 
-
-
-  <!-- Page-scoped drobná vrstva: tmavé pozadí, glow vlevo, layout jedné karty -->
+  <!-- Page-scoped CSS -->
   <style>
-    /* ---------- Pozadí stránky: tmavé + jemné "slunce" vlevo ---------- */
     :root{
-      --bg:         #0b1411;
-      --panel:      rgba(18, 26, 23, 0.82);
-      --panel-2:    rgba(18, 26, 23, 0.66);
-      --ink:        #e7f4e9;
-      --muted:      #a9c5b0;
-      --accent:     #ffd76a;
-      --accent-2:   #f1b93b;
-      --badge:      #22362c;
-      --line:       rgba(255,255,255,.06);
-      --ok:         #9be2b1;
-      --btn:        #1c2e26;
-      --btn-line:   rgba(255,255,255,.08);
-      --btn-hover:  #233a30;
-      --shadow-1:   0 12px 35px rgba(0,0,0,.45);
-      --shadow-2:   0 22px 60px rgba(0,0,0,.55);
-      --radius-xl:  20px;
-      --radius-2xl: 26px;
+      --bg:#0b1411; --panel:rgba(18,26,23,.82); /* ...atd... */
     }
-
     html,body{
       background:
         radial-gradient(1200px 800px at 12% 8%,
           rgba(255,221,120,.22),
           rgba(250,200,95,.12) 40%,
           rgba(255,190,80,.06) 55%,
-          rgba(0,0,0,0) 70%)
-        ,linear-gradient(#0b1411, #0b1411);
+          rgba(0,0,0,0) 70%),
+        linear-gradient(#0b1411,#0b1411);
       color:var(--ink);
       min-height:100%;
     }
-<header class="site-header">
-  <div class="header-inner">
-    <a href="index.html" class="brand">
-      <img src="assets/sscc-logo.jpg" alt="SSCC logo" class="logo">
-      <span class="site-title">SolarSpace Carbon Cycle — SSCC</span>
-    </a>
+    /* …další tvoje CSS… */
+  </style>
+</head>
 
-    <nav class="main-nav" id="mainNav">
-      <a href="sscc.html">SSCC</a>
-      <a href="projekty.html">Projekty</a>
-      <a href="spoluprace.html">Spolupráce</a>
-      <a href="edukace.html">Edukace</a>
-      <a href="konsorcium.html">Konsorcium</a>
-      <a href="napady.html">Nápady</a>
-    </nav>
-  </div>
-</header>
-
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/sscc-logo.jpg" alt="SSCC logo" class="logo">
+        <span class="site-title">SolarSpace Carbon Cycle — SSCC</span>
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <a href="sscc.html">SSCC</a>
+        <a href="projekty.html">Projekty</a>
+        <a href="spoluprace.html">Spolupráce</a>
+        <a href="edukace.html">Edukace</a>
+        <a href="konsorcium.html">Konsorcium</a>
+        <a href="napady.html">Nápady</a>
+      </nav>
+    </div>
+  </header>
     /* ---------- Blok úvodu ---------- */
     .page-wrap{ max-width:1180px; margin:26px auto 80px; padding:0 18px; }
     .kicker{ color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.12em; font-size:12px; }
