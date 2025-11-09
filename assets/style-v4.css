@@ -2833,3 +2833,34 @@ body {
   color: var(--gold);
   border: 1px solid rgba(224,200,120,.35);
 }
+<script>
+(async function () {
+  // vložení částí
+  for (const el of document.querySelectorAll('[data-include]')) {
+    const url = el.getAttribute('data-include');
+    try {
+      const resp = await fetch(url, { cache: "no-store" });
+      el.outerHTML = await resp.text();
+    } catch (e) {
+      console.error("Include failed:", url, e);
+    }
+  }
+
+  // po vložení: zvýrazni aktivní položku menu
+  const path = location.pathname.replace(/\/+$/, '').split('/').pop() || 'index.html';
+  const map = {
+    'index.html': 'nav-home',
+    'sscc.html': 'nav-sscc',
+    'projekty.html': 'nav-projekty',
+    'spoluprace.html': 'nav-spoluprace',
+    'edukace.html': 'nav-edukace',
+    'konsorcium.html': 'nav-konsorcium',
+    'napady.html': 'nav-napady'
+  };
+  const id = map[path] || '';
+  if (id) {
+    const a = document.getElementById(id);
+    if (a) a.classList.add('active');
+  }
+})();
+</script>
