@@ -1216,3 +1216,6 @@ body::before{
   display: grid; gap: .75rem; justify-items: start;
 }
 .empty-state p{ margin: 0; opacity: .95; }
+.notice{padding:.9rem 1rem;border:1px solid rgba(255,255,255,.15);border-radius:12px;margin:.75rem 0;background:rgba(0,0,0,.25)}
+.notice-protect{border-color:rgba(255,215,0,.35);background:linear-gradient(180deg,rgba(255,215,0,.07),rgba(0,0,0,.2))}
+.notice a{text-decoration:underline}
