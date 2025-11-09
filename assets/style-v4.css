@@ -1301,3 +1301,11 @@ body::before{
 .site-main{
   padding-top: clamp(8px, calc(var(--header-h) - 56px), 24px);
 }
+.site-footer{
+  margin-top: 4rem;
+  padding: 1.25rem 0 2.5rem;
+  text-align:center;
+  color: rgba(233,212,138,.85);
+  border-top: 1px solid rgba(233,212,138,.12);
+  background: radial-gradient(ellipse at top center, rgba(238,205,120,.04) 0%, rgba(0,0,0,0) 60%);
+}
