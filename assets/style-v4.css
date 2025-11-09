@@ -2706,3 +2706,130 @@ body {
   color: var(--gold);
   border: 1px solid rgba(224,200,120,.35);
 }
+/* ==== Jednotná hlavička napříč webem ==== */
+:root {
+  --header-h: 72px;         /* výška hlavičky */
+  --header-bg: rgba(6, 28, 24, 0.96);
+  --gold: #e0c878;
+}
+
+body {
+  /* aby nic nelezlo pod sticky header */
+  padding-top: var(--header-h);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* skutečná hlavička */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: var(--header-h);
+  background: var(--header-bg);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(224, 200, 120, .08);
+}
+
+.site-header .header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo {
+  /* větší a čitelnější logo */
+  height: 44px;          /* můžeš zvýšit na 48–52 px, jak bude vypadat */
+  width: auto;
+  border-radius: 10px;   /* mírné zakulacení, klidně 0 pokud chceš hranaté */
+  box-shadow: 0 0 0 1px rgba(224,200,120,.15);
+}
+
+.site-title {
+  font-weight: 700;
+  letter-spacing: .2px;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.main-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.main-nav a {
+  color: #d9d3b6;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 6px 8px;
+  border-radius: 10px;
+  transition: transform .12s ease, background-color .12s ease, color .12s ease;
+}
+
+.main-nav a:hover {
+  color: #fff;
+  background: rgba(224,200,120,.10);
+  transform: translateY(-1px);
+}
+
+/* jednoduché chování na mobilech (bez JS menu) */
+@media (max-width: 880px) {
+  .site-title { display: none; }     /* necháme jen logo, pro úsporu místa */
+  .main-nav { gap: 12px; overflow-x: auto; }
+  .main-nav a { white-space: nowrap; }
+}
+
+/* ==== Hero a obsah – aby neskákal pod hlavičku ==== */
+.hero, .page-hero, .hero-band {
+  padding-top: 8px;       /* drobné odsazení */
+}
+
+/* ==== Patička vždy u dna stránky ==== */
+.site-footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 24px 16px;
+  opacity: .9;
+}
+
+/* ==== Tlačítka – sjednocený vzhled ==== */
+.btn, .button, .cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .8rem 1.2rem;
+  background: linear-gradient(180deg, #e8d79e, #cbb36a);
+  color: #1a1f18;
+  font-weight: 800;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(224,200,120,.18);
+  border: 1px solid rgba(224,200,120,.45);
+  text-decoration: none;
+  transition: transform .08s ease, filter .12s ease;
+}
+
+.btn:hover, .button:hover, .cta:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+}
+
+/* sekundární / „duchové“ */
+.btn-ghost {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid rgba(224,200,120,.35);
+}
