@@ -4,261 +4,29 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nápady — SSCC</title>
-  <link rel="stylesheet" href="assets/style-v4.css?v=7">
-  <style>
-    /* lehký doplněk k existujícím stylům */
-    :root { --header-h: 72px; }
-    html { scroll-behavior: smooth; }
-    [id] { scroll-margin-top: var(--header-h); }
-
-    .local-nav {
-      position: sticky; top: calc(var(--header-h) + 8px);
-      z-index: 5; display: flex; gap: .75rem; flex-wrap: wrap;
-      background: rgba(0,0,0,.15); backdrop-filter: blur(8px);
-      border-radius: 999px; padding: .5rem .75rem; width: fit-content;
-      margin: 1rem auto 2rem; border: 1px solid rgba(255,255,255,.06);
-    }
-    .local-nav a { padding: .35rem .8rem; border-radius: 999px; }
-    .local-nav a:hover { background: rgba(255,255,255,.06); }
-
-    .grid-ideas { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); }
-    .card {
-      background: rgba(0,0,0,.25); border: 1px solid rgba(255,255,255,.08);
-      border-radius: 16px; padding: 1.1rem 1rem;
-      box-shadow: 0 10px 24px rgba(0,0,0,.25);
-    }
-    .card h3 { margin: .2rem 0 .5rem; }
-    .muted { opacity:.8; font-size:.95rem; }
-    .badge { font-size:.75rem; padding:.2rem .5rem; border:1px solid rgba(255,255,255,.25); border-radius:999px; }
-    .kpi { display:grid; grid-template-columns: 1fr 1fr; gap:.35rem .75rem; margin:.75rem 0; }
-    .kpi div { opacity:.85; }
-    .kpi b { opacity:1; }
-
-    .sim-wrap { display:grid; gap:1rem; grid-template-columns: 1fr 1fr; }
-    .sim-panel { background: rgba(0,0,0,.25); border-radius: 16px; padding: 1rem; border:1px solid rgba(255,255,255,.08); }
-    .sim-panel h3 { margin-top:0; }
-    .form-row { display:grid; grid-template-columns: 1fr 1fr; gap:.5rem 1rem; align-items:center; margin:.5rem 0; }
-    .form-row label { opacity:.9; }
-    .out { background: rgba(255,255,255,.06); padding:.75rem; border-radius:12px; font-variant-numeric: tabular-nums; }
-    .embed { aspect-ratio: 16/9; width:100%; border:0; border-radius:12px; background:#111; }
-    @media (max-width: 900px){ .sim-wrap{ grid-template-columns: 1fr; } }
-  </style>
+  <link rel="stylesheet" href="assets/style-v4.css?v=6" />
 </head>
-<body>
-  <!-- tvoje sdílená hlavička -->
- <header class="site-header">
-  <div class="header-inner">
-    <a href="index.html" class="brand" aria-label="SolarSpace Carbon Cycle — SSCC">
-      <img src="assets/sscc-logo.jpg" alt="SSCC" class="logo">
-      <span class="site-title">SolarSpace Carbon Cycle — SSCC</span>
-    </a>
-<body data-page="napady">  <!-- na každé stránce jiná hodnota: sscc | projekty | napady ... -->
-<a class="btn btn-primary" href="projekty.html">Projekty a roadmapa</a>
-<a class="btn btn-secondary" href="edukace.html#jak-to-funguje">Jak to funguje</a>
-
-    <nav class="main-nav">
-      <a href="sscc.html">SSCC</a>
-      <a href="projekty.html">Projekty</a>
-      <a href="spoluprace.html">Spolupráce</a>
-      <a href="edukace.html">Edukace</a>
-      <a href="konsorcium.html">Konsorcium</a>
-      <a href="napady.html">Nápady</a> <!-- ← NE #, ale napady.html -->
-    </nav>
-  </div>
-</header>
+<body data-page="napady">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="SolarSpace Carbon Cycle — SSCC">
+        <img src="assets/sscc-logo.jpg" alt="SSCC" class="logo" />
+        <span class="site-title">SolarSpace Carbon Cycle — SSCC</span>
+      </a>
+      <nav class="main-nav">
+        <a href="sscc.html">SSCC</a>
+        <a href="projekty.html">Projekty</a>
+        <a href="spoluprace.html">Spolupráce</a>
+        <a href="edukace.html">Edukace</a>
+        <a href="konsorcium.html">Konsorcium</a>
+        <a href="napady.html">Nápady</a>
+      </nav>
+    </div>
+  </header>
 
   <main class="container site-main">
-    <h1>Nápady & hypotézy — hranice možného</h1>
-    <p class="muted">Nejen statický text. Chceme interaktivní hřiště: simulace, videa a datasety pro chytré debaty.</p>
-
-    <!-- lokální navigace -->
-    <nav class="local-nav">
-      <a href="#geotermalni-inovace">Geotermální inovace</a>
-      <a href="#simulator">Simulátor</a>
-      <a href="#piloty">Piloty</a>
-      <a href="#hypotezy">Hypotézy</a>
-    </nav>
-
-    <!-- Geotermální inovace -->
-    <section id="geotermalni-inovace" class="section">
-      <h2>Geotermální inovace</h2>
-      <p class="muted">Odkazy na simulace (Jupyter/Replit), videa z experimentů, a tabulky trendů.</p>
-
-      <div class="grid-ideas">
-        <article class="card">
-          <div class="badge">EGS • DAC • NH₃</div>
-          <h3>Přenos energie z orbitální solární farmy</h3>
-          <p>Bezpečný pozemní příjem mikrovln (rectenna), limity výkonu, integrační scénáře do regulací.</p>
-          <iframe class="embed" src="about:blank" title="Replit/Jupyter (placeholder)"></iframe>
-        </article>
-
-        <article class="card">
-          <div class="badge">Geosystémy • Rizika</div>
-          <h3>Yellowstone: jak oddálit katastrofu</h3>
-          <p>Řízený odvod tepla, monitoring tlaku, diagnostika. Co je fyzikálně reálné a jaká je „cena“ za snížení rizika?</p>
-          <iframe class="embed" src="about:blank" title="Video (placeholder)"></iframe>
-        </article>
-      </div>
-    </section>
-
-    <!-- Simulátor -->
-    <section id="simulator" class="section">
-      <h2>Simulátor (EGS/DAC → NH₃)</h2>
-      <p class="muted">Zadej parametry – hrubý tepelný výkon, elektrický výkon a orientační produkce zeleného NH₃.</p>
-
-      <div class="sim-wrap">
-        <div class="sim-panel">
-          <h3>Vstupy</h3>
-          <div class="form-row">
-            <label for="mDot">Průtok média (kg/s)</label>
-            <input id="mDot" type="number" step="0.1" value="40">
-          </div>
-          <div class="form-row">
-            <label for="dT">ΔT — rozdíl teplot (°C)</label>
-            <input id="dT" type="number" step="1" value="35">
-          </div>
-          <div class="form-row">
-            <label for="etaTh">Účinnost tepelného okruhu η<sub>th</sub> (%)</label>
-            <input id="etaTh" type="number" step="1" value="80">
-          </div>
-          <div class="form-row">
-            <label for="etaEl">Účinnost el. konverze η<sub>el</sub> (%)</label>
-            <input id="etaEl" type="number" step="1" value="18">
-          </div>
-          <div class="form-row">
-            <label for="mwhPerT">MWh/t NH₃ (energie na syntézu)</label>
-            <input id="mwhPerT" type="number" step="0.1" value="12.5">
-          </div>
-          <button class="btn" id="simBtn">Spočítat</button>
-        </div>
-
-        <div class="sim-panel">
-          <h3>Výstupy</h3>
-          <div class="form-row">
-            <label>Hrubý tepelný výkon</label>
-            <div class="out" id="qTh">–</div>
-          </div>
-          <div class="form-row">
-            <label>Elektrický výkon (odhad)</label>
-            <div class="out" id="pEl">–</div>
-          </div>
-          <div class="form-row">
-            <label>NH₃ orientačně (t/den)</label>
-            <div class="out" id="nh3Day">–</div>
-          </div>
-          <p class="muted">Pozn.: cp ~ 4.18 kJ/kg·K (voda/solanka), NH₃ energetická náročnost může být 10–15 MWh/t podle technologie.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Piloty -->
-    <section id="piloty" class="section">
-      <h2>Pilotní projekty</h2>
-      <div class="grid-ideas">
-
-        <!-- Doupov -->
-        <article class="card">
-          <div class="badge">Pilot Doupov</div>
-          <h3>Decentralizovaný geotermální hub NH₃ (EGS + DAC)</h3>
-          <p>Rezervoáry tepla 100–120 °C u Plzně (~60 km). Pilot 5–10 MW, 5–10 t NH₃/den, 24/7 teplo pro elektrolýzu + HB.</p>
-          <div class="kpi">
-            <div>CAPEX</div><b>~1 mld Kč (40 % MF)</b>
-            <div>ROI</div><b>~30 % (6–8 let)</b>
-            <div>Kredity</div><b>50 €/t CO₂</b>
-            <div>Jobs</div><b>100+</b>
-          </div>
-          <p class="muted">Partneři: ČEZ (odběr), RINGEN (výzkum). Proof-of-concept pro EU huby.</p>
-        </article>
-
-        <!-- RD -->
-        <article class="card">
-          <div class="badge">Pilot RD</div>
-          <h3>Decentralizace RD (PV + DAC + PEM-eNRR)</h3>
-          <p>20 MWh/rok; 4–5 t NH₃/rok; plné nahrazení plynu, úspory 1.5–2 k €/rok, LCA &lt; 0.05 kg CO₂e/kg.</p>
-          <div class="kpi">
-            <div>Rozpočet</div><b>~40 k €</b>
-            <div>Grant</div><b>~90 % (NPO)</b>
-            <div>Doba</div><b>~15 měsíců</b>
-            <div>Pilot</div><b>Blansko</b>
-          </div>
-        </article>
-
-        <!-- Obec -->
-        <article class="card">
-          <div class="badge">Pilot Obec</div>
-          <h3>Obec 1 000 obyvatel / Město 10 000</h3>
-          <p>Odhad energetiky a nákladů: DAC 2–3 MWh/t CO₂, NH₃ 10–15 MWh/t, PV 1000 kWh/kWp/rok. DAC ~400 €/t/rok.</p>
-          <div class="kpi">
-            <div>RD</div><b>~400 / 4 000</b>
-            <div>Emise</div><b>~3 t CO₂/RD/rok</b>
-            <div>PV CAPEX</div><b>0.6 €/Wp</b>
-            <div>NH₃ OPEX</div><b>500–700 €/t</b>
-          </div>
-        </article>
-
-        <!-- Brno -->
-        <article class="card">
-          <div class="badge">Pilot Brno</div>
-          <h3>Brno Green NH₃ Cluster</h3>
-          <p>20–50 % nahrazení plynu NH₃; DAC 200–300 tis. t CO₂/rok; 50–100 tis. t NH₃/rok; PV 200–300 MWp.</p>
-          <div class="kpi">
-            <div>Rozpočet</div><b>20–50 mil. €</b>
-            <div>Granty</div><b>Horizon CL5 / TAČR</b>
-            <div>Doba</div><b>24–36 měsíců</b>
-            <div>TRL</div><b>6–8</b>
-          </div>
-        </article>
-
-        <!-- Ostrava -->
-        <article class="card">
-          <div class="badge">Pilot Ostrava</div>
-          <h3>SSCC pro domácnosti & průmysl + SBSP rectenna</h3>
-          <p>2 kW input → 1.5 kg NH₃/den; integrace DAC/CCUS, low-pressure katalýza, validace v ocelárnách.</p>
-          <div class="kpi">
-            <div>Frekvence</div><b>2.45 GHz</b>
-            <div>WP3</div><b>Amine-CCUS 90 % CO₂</b>
-            <div>LOI</div><b>TŽ / LIBERTY</b>
-            <div>Partneři</div><b>VUT, NitroVolt, EDP GAIA…</b>
-          </div>
-        </article>
-
-      </div>
-
-      <div class="card" style="margin-top:1rem;">
-        <h3>Šablona „mini-proposal“ (pro granty / investory)</h3>
-        <ol>
-          <li>Executive summary (½–1 str.)</li>
-          <li>Problém & příležitost (data, trh, emise)</li>
-          <li>Řešení (architektura, TRL, IP, bezpečnost)</li>
-          <li>Pilotní design (lokalita, kapacity, integrace)</li>
-          <li>Ekonomika (CAPEX/OPEX, LCOx, kredity, ROI, rizika)</li>
-          <li>Roadmapa & milníky (Gantt, TRL přechody)</li>
-          <li>Konsorcium & governance (role, LOI)</li>
-          <li>ESG & LCA, legislativa, povolení</li>
-          <li>Rozpočet & financování (granty, equity, dluh)</li>
-          <li>Annex: datasheety, studie, mapy, bezpečnost</li>
-        </ol>
-        <p class="muted">Tip: stejné členění drž i v PDF (5–10 stran), doplň přílohy v Excelu/CSV.</p>
-      </div>
-    </section>
-
-    <!-- Hypotézy / „pyramidy“ -->
-    <section id="hypotezy" class="section">
-      <h2>Hypotézy & výzkumné směry</h2>
-      <p class="muted">Následující část je <b>hypotetická</b> a vyžaduje nezávislou validaci. Slouží jako zadání pro měřitelné experimenty.</p>
-
-      <article class="card">
-        <div class="badge">Experimentální hypotéza</div>
-        <h3>Síť krystalů a stabilizace seismických zón (přehled)</h3>
-        <p>Stručné shrnutí (viz tvůj text): krystalické uzly (Gíza, Bílá, Göbekli, Teotihuacán, Stonehenge), rezonance 7.83/13.7 Hz, hypotetický vliv na seismickou energii. Plán experimentů: GPR skeny, xAI simulace, LED experiment 7.83 Hz.</p>
-        <ul class="muted">
-          <li>Fáze 1: geofyzikální skeny 5 lokalit (3 měsíce)</li>
-          <li>Fáze 2: cloud simulace s open daty (6 měsíců)</li>
-          <li>Rozpočet: 5 M USD (UNESCO/Tesla) – „výzva“</li>
-        </ul>
-        <p>Kontakt: Martin Klíč — martin.klic46@gmail.com</p>
-      </article>
-    </section>
+    <h1>Nápady a hypotézy</h1>
+    <p>Pracovní náčrt. Tady budou geotermální inovace, simulátor a návrhy čtenářů.</p>
   </main>
 
   <footer class="site-footer">
@@ -266,49 +34,11 @@
   </footer>
 
   <script>
-    // jednoduchý simulátor
-    const $ = id => document.getElementById(id);
-    function fmtMW(x){ return (x/1e6).toFixed(2) + ' MW'; }
-    function fmtKW(x){ return (x/1e3).toFixed(1) + ' kW'; }
-    function fmt(x){ return Number(x).toFixed(2); }
-
-    $('simBtn').addEventListener('click', () => {
-      const mDot   = parseFloat($('mDot').value || 0);   // kg/s
-      const dT     = parseFloat($('dT').value   || 0);   // K (°C)
-      const etaTh  = parseFloat($('etaTh').value|| 0)/100;
-      const etaEl  = parseFloat($('etaEl').value|| 0)/100;
-      const mwhPerT= parseFloat($('mwhPerT').value|| 12.5); // MWh / t NH3
-
-      const cp = 4180; // J/kg/K (voda/solanka)
-      const qRaw = mDot * cp * dT;          // W
-      const qTh  = qRaw * etaTh;            // W užitečné teplo
-      const pEl  = qTh  * etaEl;            // W el. výkon (odhad)
-
-      $('qTh').textContent = fmtMW(qTh);
-      $('pEl').textContent = pEl>1e6 ? fmtMW(pEl) : fmtKW(pEl);
-
-      // NH3 odhad: (P_el [MW] * 24 h) / (MWh/t) = t/den
-      const nh3Day = (pEl/1e6 * 24) / mwhPerT;
-      $('nh3Day').textContent = isFinite(nh3Day) ? fmt(nh3Day)+' t/den' : '–';
-    });
+    (function(){
+      const page=document.body.dataset.page||"";
+      const map={sscc:"sscc.html",projekty:"projekty.html",spoluprace:"spoluprace.html",edukace:"edukace.html",konsorcium:"konsorcium.html",napady:"napady.html"};
+      const current=map[page]; if(current){const a=document.querySelector('.main-nav a[href="'+current+'"]'); if(a) a.setAttribute('aria-current','page');}
+    })();
   </script>
-  (function(){
-    const page = document.body.dataset.page || "";
-    const map = {
-      "sscc": "sscc.html",
-      "projekty": "projekty.html",
-      "spoluprace": "spoluprace.html",
-      "edukace": "edukace.html",
-      "konsorcium": "konsorcium.html",
-      "napady": "napady.html"
-    };
-    const current = map[page];
-    if(current){
-      const link = document.querySelector('.main-nav a[href="'+current+'"]');
-      if(link){ link.setAttribute('aria-current','page'); }
-    }
-  })();
-</script>
-
 </body>
 </html>
