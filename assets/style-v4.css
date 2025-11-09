@@ -3024,3 +3024,36 @@ h1,h2,h3 { margin-block-start: 0.6em; }
   box-shadow: 0 10px 24px rgba(0,0,0,.25);
 }
 .btn.secondary{ background: rgba(241,210,122,.1); color: var(--gold); box-shadow: inset 0 0 0 1px rgba(241,210,122,.28); }
+/* --- Nouzová oprava hlavičky – projekty --- */
+.site-header{
+  position: sticky;   /* drží se nahoře při scrollu */
+  top: 0;
+  z-index: 9999;      /* nad vším ostatním */
+  background: rgba(6, 35, 28, .92);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 1px 0 rgba(255, 220, 120, .12);
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* kdyby přes ni ležel hero/overlay, uděláme je „pod“ a neklikatelně */
+.hero, .hero-overlay, .page-hero, .projects-hero{
+  position: relative;
+  z-index: 0;
+}
+.hero::before, .hero::after,
+.hero-overlay::before, .hero-overlay::after{
+  pointer-events: none;
+}
+
+/* Kdyby ji někde schovával selektor se zvýšenou specifitou */
+.projekty .site-header,
+.page--projekty .site-header{
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Pomůcka na diagnostiku – dočasně orámuje hlavičku, ať ji uvidíš */
+ /* .site-header { outline: 2px solid red !important; } */
