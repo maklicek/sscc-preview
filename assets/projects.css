@@ -1,0 +1,90 @@
+/* ===== Rozvržení „Projekty“ ===== */
+.pjs-layout{
+  display:grid; grid-template-columns: 320px 1fr; gap:26px;
+  max-width:1180px; margin:26px auto 80px; padding:0 18px;
+}
+.pjs-content{ min-width:0 }
+
+/* ===== Levý rozcestník ===== */
+.pjs-nav{
+  position:sticky; top:80px;
+  background:linear-gradient(180deg, var(--panel), var(--panel-2));
+  border:1px solid var(--line); border-radius:var(--radius-2xl); box-shadow:var(--shadow-1);
+  padding:10px;
+}
+.pjs-nav .pjs-acc{ margin:8px 0; border:1px solid var(--line); border-radius:16px; overflow:hidden }
+.pjs-nav summary{
+  list-style:none; cursor:pointer; user-select:none;
+  padding:12px 14px; background:rgba(255,255,255,.02); color:var(--ink); font-weight:800;
+}
+.pjs-nav summary::-webkit-details-marker{ display:none }
+.pjs-nav a{
+  display:block; padding:12px 14px; text-decoration:none;
+  color:var(--muted); border-top:1px solid var(--line); background:transparent;
+}
+.pjs-nav a:hover{ background:rgba(255,255,255,.03) }
+.pjs-nav a.is-active{
+  color:#0b1411; background:linear-gradient(180deg,#ffd76a,#f1b93b);
+  font-weight:800;
+}
+
+/* ===== Velká karta projektu ===== */
+.project-card{
+  display:grid; grid-template-columns: 1.1fr 1.2fr; gap:26px;
+  background:linear-gradient(180deg, var(--panel), var(--panel-2));
+  border:1px solid var(--line); border-radius:var(--radius-2xl); box-shadow:var(--shadow-1);
+  padding:26px;
+}
+.project-ill{
+  min-height:300px; border-radius:16px; border:1px solid var(--line);
+  background:
+    radial-gradient(600px 450px at 30% 30%, rgba(255,210,110,.18), rgba(255,210,110,.08) 45%, rgba(0,0,0,0) 66%),
+    linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+  box-shadow:var(--shadow-2) inset; position:relative; overflow:hidden;
+}
+.ill-caption{
+  position:absolute; left:16px; bottom:14px;
+  background:rgba(10,14,12,.6); border:1px solid var(--line);
+  color:var(--muted); font-size:12px; padding:8px 10px; border-radius:10px;
+  backdrop-filter:blur(2px); box-shadow:0 8px 22px rgba(0,0,0,.35);
+}
+.project-body h2{ margin:0 0 10px; font-size:34px }
+
+/* Badge řada u karty */
+.badges{ display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 14px }
+.badge{
+  display:inline-flex; align-items:center; gap:6px;
+  font-weight:700; color:var(--ink); background:var(--badge);
+  border:1px solid var(--line); border-radius:100px; padding:8px 12px; font-size:13px;
+}
+.badge .dot{ width:8px; height:8px; border-radius:99px; background:var(--accent); box-shadow:0 0 16px var(--accent) }
+.project-body p{ color:var(--muted); margin:0 0 18px }
+.cta-row{ display:flex; gap:12px; flex-wrap:wrap }
+
+/* ===== Doplňkové malé karty ===== */
+.pjs-card{
+  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+  border:1px solid var(--line); border-radius:20px; box-shadow:var(--shadow-1);
+  padding:18px 18px 16px; margin:20px 0;
+}
+.pjs-card__head{ display:flex; align-items:center; gap:12px; justify-content:space-between }
+.pjs-card__head h3{ margin:0; font-size:22px }
+.pjs-badge{
+  font-size:12px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+  background:var(--badge); border:1px solid var(--line); color:var(--ok); padding:6px 10px; border-radius:999px;
+}
+.pjs-badge--plan{ color:var(--accent) }
+.pjs-badge--study{ color:#b9cdfc }
+.pjs-card__text{ color:var(--muted); margin:10px 0 14px }
+.pjs-card__cta{ display:flex; gap:10px; flex-wrap:wrap }
+
+/* ===== Responzivita ===== */
+@media (max-width: 1024px){
+  .pjs-layout{ grid-template-columns: 280px 1fr }
+}
+@media (max-width: 920px){
+  .pjs-layout{ grid-template-columns: 1fr; gap:18px }
+  .pjs-nav{ position:static }
+  .project-card{ grid-template-columns: 1fr }
+  .project-ill{ min-height:220px }
+}
