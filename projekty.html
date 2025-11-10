@@ -9,115 +9,7 @@
 <link rel="stylesheet" href="assets/style-v4.css?v=8">
 <link rel="stylesheet" href="assets/projects.css?v=1">
 
-  <!-- Page-scoped CSS (jen CSS, žádné HTML) -->
-  <style>
-    :root{
-      --bg:#0b1411; --panel:rgba(18,26,23,.82); --panel-2:rgba(18,26,23,.66);
-      --ink:#e7f4e9; --muted:#a9c5b0; --accent:#ffd76a; --accent-2:#f1b93b;
-      --badge:#22362c; --line:rgba(255,255,255,.06); --ok:#9be2b1;
-      --btn:#1c2e26; --btn-line:rgba(255,255,255,.08); --btn-hover:#233a30;
-      --shadow-1:0 12px 35px rgba(0,0,0,.45); --shadow-2:0 22px 60px rgba(0,0,0,.55);
-      --radius-xl:20px; --radius-2xl:26px;
-    }
-    html,body{
-      background:
-        radial-gradient(1200px 800px at 12% 8%,
-          rgba(255,221,120,.22),
-          rgba(250,200,95,.12) 40%,
-          rgba(255,190,80,.06) 55%,
-          rgba(0,0,0,0) 70%),
-        linear-gradient(#0b1411,#0b1411);
-      color:var(--ink); min-height:100%;
-    }
-
-    /* ---------- Úvod ---------- */
-    .page-wrap{ max-width:1180px; margin:26px auto 80px; padding:0 18px; }
-    .kicker{ color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.12em; font-size:12px; }
-    .page-title{ margin:.25rem 0 1rem; font-size:42px; line-height:1.14; }
-    .page-intro{ color:var(--muted); max-width:800px; }
-
-    /* ---------- Layout se sidebarem ---------- */
-    .pjs-layout{ display:grid; grid-template-columns: 260px 1fr; gap:28px; margin-top:22px; }
-    .pjs-nav{
-      position:sticky; top:86px;
-      align-self:start;
-      background:linear-gradient(180deg,var(--panel),var(--panel-2));
-      border:1px solid var(--line); border-radius:18px; padding:16px;
-      box-shadow:var(--shadow-1);
-    }
-    .pjs-nav .pjs-acc{ margin:6px 0 10px; }
-    .pjs-nav summary{
-      cursor:pointer; list-style:none; font-weight:800; color:var(--ink);
-      padding:8px 10px; border-radius:10px;
-    }
-    .pjs-nav a{
-      display:block; padding:8px 12px; margin:2px 0; border-radius:10px;
-      color:var(--muted); text-decoration:none; font-weight:700;
-    }
-    .pjs-nav a:is(:hover,.is-active){ background:var(--btn-hover); color:var(--ink); }
-
-    .pjs-content{ display:flex; flex-direction:column; gap:22px; }
-
-    /* ---------- Karta projektu (velká) ---------- */
-    .project-card{
-      display:grid; grid-template-columns: 1.05fr 1.15fr; gap:26px;
-      background:linear-gradient(180deg, var(--panel), var(--panel-2));
-      border:1px solid var(--line); border-radius:var(--radius-2xl);
-      box-shadow:var(--shadow-1); padding:26px;
-    }
-    .project-ill{
-      min-height:300px; border-radius:16px; border:1px solid var(--line);
-      background:
-        radial-gradient(600px 450px at 30% 30%,
-          rgba(255,210,110,.18), rgba(255,210,110,.08) 45%, rgba(0,0,0,0) 66%),
-        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
-      box-shadow:var(--shadow-2) inset; position:relative; overflow:hidden;
-    }
-    .ill-caption{
-      position:absolute; left:16px; bottom:14px;
-      background:rgba(10,14,12,.6); border:1px solid var(--line);
-      color:var(--muted); font-size:12px; padding:8px 10px; border-radius:10px;
-      backdrop-filter:blur(2px); box-shadow:0 8px 22px rgba(0,0,0,.35);
-    }
-    .project-body h2{ margin:0 0 10px; font-size:34px; line-height:1.16; }
-    .badges{ display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 14px; }
-    .badge{ display:inline-flex; align-items:center; gap:6px; font-weight:700; color:var(--ink);
-            background:var(--badge); border:1px solid var(--line); border-radius:100px; padding:8px 12px; font-size:13px;}
-    .badge .dot{ width:8px; height:8px; border-radius:99px; background:var(--accent); box-shadow:0 0 16px var(--accent); }
-    .project-body p{ color:var(--muted); margin:0 0 18px; }
-    .cta-row{ display:flex; gap:12px; flex-wrap:wrap; }
-    .btn{ background:var(--btn); color:var(--ink); border:1px solid var(--btn-line); padding:10px 14px; border-radius:12px; text-decoration:none; font-weight:700; font-size:14px; }
-    .btn:hover{ background:var(--btn-hover); }
-    .btn.primary{ background:linear-gradient(180deg,#1f332a,#1a2a23); border-color:var(--btn-line); }
-
-    /* ---------- Doplňkové karty (příklad) ---------- */
-    .pjs-card{
-      background:linear-gradient(180deg,var(--panel),var(--panel-2));
-      border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow-1);
-      padding:18px 18px 16px;
-    }
-    .pjs-card__head{ display:flex; align-items:center; gap:10px; margin-bottom:8px; }
-    .pjs-badge{ font-weight:800; font-size:12px; padding:4px 8px; border-radius:999px; background:#203228; color:var(--ok); border:1px solid var(--line); }
-    .pjs-badge--plan{ color:#e7e09d; }
-    .pjs-badge--study{ color:#9ec8ff; }
-    .pjs-card__text{ color:var(--muted); margin:0 0 12px; }
-    .pjs-card__cta{ display:flex; gap:10px; flex-wrap:wrap; }
-
-    /* ---------- Patička ---------- */
-    .site-footer{ margin-top:60px; padding:26px 18px; border-top:1px solid var(--line);
-                  color:var(--muted); text-align:center; background:rgba(12,18,16,.4); }
-
-    /* ---------- Responzivita ---------- */
-    @media (max-width: 1024px){
-      .pjs-layout{ grid-template-columns: 1fr; }
-      .pjs-nav{ position:static; }
-      .project-card{ grid-template-columns: 1fr; }
-      .page-title{ font-size:36px; }
-    }
-    @media (max-width: 920px){
-      .project-ill{ min-height:220px; }
-    }
-  </style>
+  <!-- Page-scoped CSS (jen CSS, žádné HTML) -->>
 </head>
 
 <body data-page="projekty" class="page-projects">
@@ -141,14 +33,62 @@
 <main class="page-wrap">
   <div class="kicker">Projekty</div>
   <h2 class="page-title">Orbitální solární farma → přenos energie</h2>
-  <p class="page-intro">
-    Přehled pilotních aktivit a otevřených iniciativ SSCC. Níže je první – detailní – projektový blok.
-  </p>
-  <!-- TADY už hned pjs-layout se sidebar + sekce -->
+  <p class="page-intro">…úvodní odstavec…</p>
+
   <div class="pjs-layout">
-    <aside class="pjs-nav">…</aside>
+    <!-- Sidebar -->
+    <aside class="pjs-nav" aria-label="Projekty">
+      <details class="pjs-acc" open>
+        <summary>Orbitální solární</summary>
+        <a href="#p-orbital" class="is-active">Přenos energie</a>
+      </details>
+      <details class="pjs-acc">
+        <summary>DAC & NH₃</summary>
+        <a href="#p-rd">RD: DAC → NH₃</a>
+        <a href="#p-obec">Obec: DAC + NH₃ hub</a>
+        <a href="#p-doupov">Doupov: geotermální hub</a>
+      </details>
+      <details class="pjs-acc">
+        <summary>Další směry</summary>
+        <a href="#p-lidar">Lidar / rámec</a>
+        <a href="#p-bezpecnost">Bezpečnostní zóny</a>
+      </details>
+    </aside>
+
+    <!-- Obsah -->
     <div class="pjs-content">
-      <!-- karty/seznam sekcí; bez duplicitního „přehledu“ -->
+      <section id="p-orbital" data-pjs-section class="project-card" aria-labelledby="p1">
+        <figure class="project-ill" aria-hidden="true">
+          <figcaption class="ill-caption">Koncept přenosu energie z orbitální solární farmy</figcaption>
+        </figure>
+        <div class="project-body">
+          <h2 id="p1">Orbitální solární farma → přenos energie</h2>
+          <div class="badges">
+            <span class="badge"><span class="dot"></span> Studie bezpečnosti</span>
+            <span class="badge"><span class="dot"></span> Účinnost &amp; ekonomika</span>
+            <span class="badge"><span class="dot"></span> Mikrovlnný příjem</span>
+          </div>
+          <p>…text…</p>
+          <div class="cta-row">
+            <a class="btn primary" href="spoluprace.html">Zapojit se</a>
+            <a class="btn" href="konsorcium.html">Konsorcium & role</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="p-rd" data-pjs-section class="pjs-card">
+        <div class="pjs-card__head">
+          <h3>RD: DAC → zelený NH₃</h3>
+          <span class="pjs-badge pjs-badge--pilot">PILOT</span>
+        </div>
+        <p class="pjs-card__text">…</p>
+        <div class="pjs-card__cta">
+          <a class="btn primary" href="spoluprace.html">Zapojit se</a>
+          <a class="btn" href="konsorcium.html">Role & partneři</a>
+        </div>
+      </section>
+
+      <!-- další karty… -->
     </div>
   </div>
 </main>
