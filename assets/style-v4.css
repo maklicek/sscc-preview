@@ -270,3 +270,35 @@ main ul, main ol{ padding-left: 1.2rem; max-width: 880px; }
 main, .site-main, .page-wrap {
   padding-top: 16px;
 }
+/* Konzistentní šířka a odsazení */
+.container, .site-main, .page-wrap { 
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+/* Hlava stránky (nadpis + perex) */
+.page-head {
+  padding: 56px 0 18px;
+}
+.page-head h1 {
+  margin: 0 0 8px;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.15;
+}
+.page-head .lead {
+  color: var(--muted);
+  max-width: 72ch;
+}
+
+/* Tělo textu */
+.prose { 
+  max-width: 72ch; 
+}
+.prose h2 { 
+  margin-top: 28px; 
+  font-size: clamp(22px, 2.3vw, 30px);
+}
+.prose p, .prose li { 
+  line-height: 1.7; 
+}
