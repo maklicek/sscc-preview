@@ -1,44 +1,37 @@
-/* ====== overrides.css — jen doplňky, žádné mazání původního CSS ====== */
+/* ==== Layout – společné nastavení ==== */
 :root{
-  /* šířky kontejnerů – můžeš klidně ještě přidat/ubrat */
-  --container-max: 78rem;   /* ~1248 px */
-  --container-wide: 94rem;  /* ~1504 px */
-  --gutter: clamp(16px, 4vw, 40px);
+  /* tady si “roztáhneš střed” – klidně 1200–1280 px podle chuti */
+  --content-max: 1200px;
+  --gutter: 24px;
 }
 
-/* Výchozí kontejner (hlavička, patička, běžné bloky) */
-.container{
-  max-width: var(--container-max);
+/* Jednotná šířka kontejneru napříč stránkami */
+.container,
+.site-header .header-inner,
+.site-footer .footer-inner {
+  width: min(100% - 2*var(--gutter), var(--content-max));
   margin-inline: auto;
-  padding-inline: var(--gutter);
 }
 
-/* Širší kontejner pro hlavní obsah – “roztáhnutý střed” */
-.site-main > .container,
-.page-main > .container,
-main.container,
-main .container{
-  max-width: var(--container-wide);
+/* ==== Lepivá patička: vždy dole, i když je málo obsahu ==== */
+html, body { height: 100%; }
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.site-main { flex: 1 0 auto; }         /* obsah zabere zbytek výšky */
+.site-footer {                          /* optické oddělení patičky */
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding-block: 16px;
 }
 
-/* Projekty: karty do pružné mřížky */
-.pjs-grid, .grid-cards{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 24px;
-}
+/* ==== Lehké sjednocení typografie a mezer ==== */
+h1 { margin: 12px 0 8px; }
+.lead { max-width: 65ch; }
 
-/* Typografie a rozestupy na větších šířkách */
-@media (min-width: 1200px){
-  .hero h1, .page-title, .hero--center h1{
-    /* menší nárůst velikosti, ať není nadpis přestřelený na širokých monitorech */
-    font-size: clamp(2.2rem, 3.4vw, 3.4rem);
-    line-height: 1.1;
-  }
-  .lead{ max-width: 75ch; }
-}
+/* Volitelné: konzistentní vnitřní svislé mezery sekcí */
+section, .page-section { padding-block: 16px; }
 
-/* Jemné doladění tlačítek v kartách */
-.btn, .btn--gold{
-  white-space: nowrap;
-}
+/* Pokud bys měl někde jiný wrapper než .container, můžeš přidat: */
+/* .page-wrap { width: min(100% - 2*var(--gutter), var(--content-max)); margin-inline: auto; } */
