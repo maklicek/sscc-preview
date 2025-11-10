@@ -481,3 +481,52 @@ main, .site-main, .page-wrap { flex: 1 0 auto; }
   color: #e0d5a2;
   letter-spacing: .03em;
 }
+/* ===========================================================
+   SSCC · Logo shine efekt (čisté CSS)
+   =========================================================== */
+
+/* kontejner loga */
+.site-header .brand .logo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0; /* ostré rohy – čtverec */
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+/* jemné zvětšení při hoveru */
+.site-header .brand:hover .logo {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(255,215,106,.25);
+}
+
+/* odlesk – pseudo-element */
+.site-header .brand .logo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.7) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: skewX(-25deg);
+  opacity: 0;
+}
+
+/* při hoveru přejede zleva doprava */
+.site-header .brand:hover .logo::after {
+  animation: logoShine 1.2s ease-in-out forwards;
+  opacity: 1;
+}
+
+/* definice animace */
+@keyframes logoShine {
+  0%   { left: -120%; opacity: 0; }
+  20%  { opacity: .5; }
+  50%  { left: 120%; opacity: .6; }
+  100% { left: 140%; opacity: 0; }
+}
