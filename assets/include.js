@@ -1,56 +1,56 @@
-(function (start) {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', start);
-  } else {
-    start();
+// assets/include.js
+(function () {
+  // Pomocné: normalizace a zjištění aktuálního souboru z URL
+  function fileFromUrl(path) {
+    // /user/repo/projekty.html?x#y -> projekty.html
+    const last = (path.split('/').pop() || '').split('#')[0].split('?')[0];
+    return last === '' ? 'index.html' : last;
   }
-})(function () {
-  const slots = document.querySelectorAll('[data-include]');
+  function currentFile() {
+    return fileFromUrl(location.pathname);
+  }
+
+  // Najdi placeholdery pro include
+  const slots = Array.from(document.querySelectorAll('[data-include]'));
   if (!slots.length) return;
-function currentFile() {
-  // 1) primárně z URL
-  let file = (location.pathname.split('/').pop() || '').trim();
-  if (!file || file === '/') file = 'index.html';
 
-  // 2) sekundárně z data-page (pokud je)
-  const map = {
-    index: 'index.html',
-    sscc: 'sscc.html',
-    projekty: 'projekty.html',
-    spoluprace: 'spoluprace.html',
-    edukace: 'edukace.html',
-    konsorcium: 'konsorcium.html',
-    napady: 'napady.html',
-    podminky: 'terms.html'
-  };
-  const pageKey = (document.body.dataset.page || '').toLowerCase();
-  return map[pageKey] || file;
-}
-
-
-  const cur = currentFile();
-
-  slots.forEach(async el => {
+  // Načti všechny partialy a vlož je do DOM
+  const tasks = slots.map(async el => {
     const url = el.getAttribute('data-include');
     try {
       const res = await fetch(url, { cache: 'no-cache' });
       if (!res.ok) throw new Error(res.status + ' ' + res.statusText);
-
       const html = await res.text();
       el.insertAdjacentHTML('afterend', html);
       el.remove();
-
-      const nav = document.querySelector('.main-nav');
-      if (nav) {
-        const links = Array.from(nav.querySelectorAll('a'));
-        links.forEach(a => a.removeAttribute('aria-current'));
-        const active =
-          links.find(a => (a.getAttribute('href') || '').endsWith(cur)) ||
-          links.find(a => (a.pathname.split('/').pop() || '').endsWith(cur));
-        if (active) active.setAttribute('aria-current', 'page');
-      }
     } catch (e) {
       console.warn('Include failed:', url, e);
     }
   });
-});
+
+  // Až jsou VŠECHNY include hotové → zvýrazni aktivní odkaz
+  Promise.allSettled(tasks).then(() => {
+    const nav = document.querySelector('.main-nav');
+    if (!nav) return;
+
+    const links = Array.from(nav.querySelectorAll('a'));
+    links.forEach(a => a.removeAttribute('aria-current'));
+
+    const cur = currentFile(); // např. "sscc.html"
+
+    // Porovnáváme jen koncové názvy souborů
+    const match = links.find(a => {
+      const href = a.getAttribute('href') || '';
+      const fname = fileFromUrl(href); // "projekty.html" nebo "index.html"
+      return fname === cur;
+    });
+
+    // Speciál: pokud jsme na indexu a žádný odkaz není přesně "index.html"
+    // (např. logo vede na index), necháme bez aktivního nav — to je OK.
+    if (match) match.setAttribute('aria-current', 'page');
+
+    // Rok v patičce (pokud je)
+    const year = document.getElementById('year');
+    if (year) year.textContent = new Date().getFullYear();
+  });
+})();
