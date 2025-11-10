@@ -39,7 +39,7 @@ body{
 
 /* ========= Pomocné ========= */
 .container, .site-main, .page-wrap{
-  max-width:1180px; margin:26px auto; padding:0 18px;
+  max-width:1280px; margin:26px auto; padding:0 24px;
 }
 .lead{ color:var(--muted) }
 
@@ -96,4 +96,9 @@ h3{ font-size:22px }
   h1{ font-size:36px }
   h2{ font-size:28px }
   .main-nav{ gap:10px; flex-wrap:wrap }
+}
+/* u hrdinské sekce na homepage (je-li) klidně ještě víc */
+.hero .container,
+.hero.page-wrap {
+  max-width: 1360px;
 }
