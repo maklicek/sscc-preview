@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Projekty | SSCC — SolarSpace Carbon Cycle</title>
-
-  <link rel="stylesheet" href="assets/style-v4.css?v=8">
-  <link rel="stylesheet" href="assets/projects.css?v=2">
-</head>
 <body data-page="projekty" class="page-projects">
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="index.html" class="brand">
-        <img src="assets/sscc-logo.jpg" alt="SSCC logo" class="logo">
-        <span class="site-title">SolarSpace Carbon Cycle — SSCC</span>
-      </a>
-      <nav class="main-nav" id="mainNav">
+  <a class="skip-link" href="#main">Přeskočit na obsah</a>
+
+  <!-- sjednocená hlavička jako na homepage -->
+  <header class="nav">
+    <div class="container flex items-center justify-between">
+      <a class="brand" href="index.html">SolarSpace Carbon Cycle</a>
+      <nav class="main-nav" aria-label="Hlavní navigace">
         <a href="sscc.html">SSCC</a>
         <a href="projekty.html">Projekty</a>
         <a href="spoluprace.html">Spolupráce</a>
@@ -26,86 +16,32 @@
     </div>
   </header>
 
-  <main class="page-wrap">
+  <main id="main" class="page-wrap container">
     <div class="kicker">Projekty</div>
-    <h2 class="page-title">Orbitální solární farma → přenos energie</h2>
-    <p class="page-intro">Přehled pilotních aktivit a otevřených iniciativ…</p>
+    <h1 class="page-title">Orbitální solární farma → přenos energie</h1>
+    <p class="page-intro lead">Přehled pilotních aktivit a otevřených iniciativ…</p>
 
     <div class="pjs-layout">
-      <!-- Sidebar -->
-      <aside class="pjs-nav" aria-label="Projekty">
-        <details class="pjs-acc" open>
-          <summary>Orbitální solární</summary>
-          <a href="#p-orbital" class="is-active">Přenos energie</a>
-        </details>
-        <details class="pjs-acc">
-          <summary>DAC & NH₃</summary>
-          <a href="#p-rd">RD: DAC → NH₃</a>
-          <a href="#p-obec">Obec: DAC + NH₃ hub</a>
-          <a href="#p-doupov">Doupov: geotermální hub</a>
-        </details>
-        <details class="pjs-acc">
-          <summary>Další směry</summary>
-          <a href="#p-lidar">Lidar / rámec</a>
-          <a href="#p-bezpecnost">Bezpečnostní zóny</a>
-        </details>
-      <section class="project-card" aria-labelledby="p2">
-        <section class="container">
-  <div class="grid" style="display:grid; grid-template-columns: 260px 1fr; gap: 24px;">
-    <aside class="sidenav" role="navigation" aria-label="Sekce projektu">
-      <a href="#orbitalni" aria-current="true">Orbitální solární</a>
-      <a href="#prenos">Přenos energie</a>
-      <a href="#dac">DAC & NH₃</a>
-      <a href="#dalsi">Další směry</a>
-    </aside>
+      <!-- ========== SIDENAV ========== -->
+      <aside class="pjs-nav" role="navigation" aria-label="Sekce projektů">
+        <a href="#p-orbital" class="pjs-link is-active">Orbitální solární: přenos</a>
+        <a href="#p-rd" class="pjs-link">RD: DAC → NH₃</a>
+        <a href="#p-obec" class="pjs-link">Obecní hub: DAC + NH₃</a>
+        <a href="#p-doupov" class="pjs-link">Doupov: geotermální hub</a>
+        <a href="#p-lidar" class="pjs-link">Lidar / rámec</a>
+        <a href="#p-bezpecnost" class="pjs-link">Bezpečnostní zóny</a>
+      </aside>
 
-    <div class="grid-cards" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 16px;">
-      <article class="card">
-        <div class="badge">Pilot RD</div>
-        <h3>DAC → zelený NH₃: domácnosti a obce</h3>
-        <p class="lead">Pilotní linky pro zachytávání CO₂ a syntézu NH₃…</p>
-        <div class="mt-3">
-          <a class="btn btn--primary" href="#rd">Detail projektu</a>
-          <a class="btn btn--ghost" href="#milniky">Milníky</a>
-        </div>
-      </article>
-      <!-- další karty -->
-    </div>
-  </div>
-</section>
-
-  <figure class="project-ill" aria-hidden="true">
-    <figcaption class="ill-caption">Decentralizovaný hub: DAC → NH₃</figcaption>
-  </figure>
-
-  <div class="project-body">
-    <h2 id="p2">DAC → zelený NH₃: domácnosti a obce</h2>
-    <div class="badges" aria-label="Kategorie projektu">
-      <span class="badge"><span class="dot"></span> Pilot RD</span>
-      <span class="badge"><span class="dot"></span> Obecní hub</span>
-      <span class="badge"><span class="dot"></span> Geotermální integrace</span>
-    </div>
-    <p>
-      Pilotní linky pro zachytávání CO₂ a syntézu NH₃ v měřítku rodinných domů (≈20&nbsp;MWh/rok),
-      obcí (≈400 RD) a geotermálního uzlu (EGS). Cíl: náhrada fosilních paliv a ukládání energie
-      v čistém nosiči se zápornou uhlíkovou stopou.
-    </p>
-    <div class="cta-row">
-      <a class="btn primary" href="spoluprace.html">Zapojit se</a>
-      <a class="btn" href="edukace.html">Jak to funguje</a>
-    </div>
-  </div>
-</section>
-
-
-      <!-- Obsah -->
+      <!-- ========== CONTENT ========== -->
       <div class="pjs-content">
-        <section id="p-orbital" data-pjs-section class="project-card" aria-labelledby="p1">
+
+        <!-- 1) Orbitální → přenos -->
+        <section id="p-orbital" data-pjs-section class="project-card">
           <figure class="project-ill" aria-hidden="true">
             <figcaption class="ill-caption">Koncept přenosu energie z orbitální solární farmy</figcaption>
           </figure>
           <div class="project-body">
-            <h2 id="p1">Orbitální solární farma → přenos energie</h2>
+            <h2>Orbitální solární farma → přenos energie</h2>
             <div class="badges">
               <span class="badge"><span class="dot"></span> Studie bezpečnosti</span>
               <span class="badge"><span class="dot"></span> Účinnost &amp; ekonomika</span>
@@ -113,35 +49,49 @@
             </div>
             <p>Pilotní studie…</p>
             <div class="cta-row">
-              <a class="btn primary" href="spoluprace.html">Zapojit se</a>
-              <a class="btn" href="konsorcium.html">Konsorcium &amp; role</a>
+              <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
+              <a class="btn btn--ghost" href="konsorcium.html">Konsorcium &amp; role</a>
             </div>
           </div>
         </section>
 
-        <section id="p-rd" data-pjs-section class="pjs-card">
-          <div class="pjs-card__head">
-            <h3>RD: DAC → zelený NH₃</h3>
-            <span class="pjs-badge pjs-badge--pilot">PILOT</span>
-          </div>
-          <p class="pjs-card__text">Dekarbonizace RD (≈20 MWh/rok)…</p>
-          <div class="pjs-card__cta">
-            <a class="btn primary" href="spoluprace.html">Zapojit se</a>
-            <a class="btn" href="konsorcium.html">Role & partneři</a>
+        <!-- 2) RD: DAC → NH3 -->
+        <section id="p-rd" data-pjs-section class="project-card">
+          <div class="badge">PILOT</div>
+          <h3>RD: DAC → zelený NH₃</h3>
+          <p class="lead">Dekarbonizace RD (≈20 MWh/rok)…</p>
+          <div class="cta-row">
+            <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
+            <a class="btn btn--ghost" href="konsorcium.html">Role &amp; partneři</a>
           </div>
         </section>
 
-        <!-- … další karty … -->
-      </div>
-    </div>
-  </main>
+        <!-- 3) Obecní hub -->
+        <section id="p-obec" data-pjs-section class="project-card">
+          <div class="badge">Obecní hub</div>
+          <h3>Obec: DAC + NH₃ hub</h3>
+          <p class="lead">Pilot pro obec (~400 RD)…</p>
+          <div class="cta-row">
+            <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
+            <a class="btn btn--ghost" href="edukace.html">Jak to funguje</a>
+          </div>
+        </section>
 
-  <footer class="site-footer">
-    <small>© <span id="year"></span> SSCC — SolarSpace Carbon Cycle · Preview</small>
-  </footer>
+        <!-- 4) Doupov / geotermál -->
+        <section id="p-doupov" data-pjs-section class="project-card">
+          <div class="badge">Geotermální integrace</div>
+          <h3>Doupov: geotermální hub</h3>
+          <p class="lead">Integrace EGS, lokální příjem a skladování…</p>
+          <div class="cta-row">
+            <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
+            <a class="btn btn--ghost" href="edukace.html">Jak to funguje</a>
+          </div>
+        </section>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+        <!-- 5) Lidar -->
+        <section id="p-lidar" data-pjs-section class="project-card">
+          <div class="badge">Metrologie</div>
+          <h3>Lidar / regulační rámec</h3>
+          <p class="lead">Zónování, monitoring svazku, fail-safe režimy…</p>
+          <div class="cta-row">
+            <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
