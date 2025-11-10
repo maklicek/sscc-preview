@@ -1,14 +1,10 @@
 <footer class="site-footer">
   <div class="footer-inner">
     <small>© <span id="year"></span> SSCC — SolarSpace Carbon Cycle</small>
-    <span class="sep">•</span>
+    <span class="sep" aria-hidden="true">•</span>
     <a href="terms.html">Podmínky</a>
   </div>
 </footer>
 <script>
-  // Rok v patičce
-  (function(){
-    const y = document.getElementById('year');
-    if (y) y.textContent = new Date().getFullYear();
-  })();
+  (function(){ var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear(); })();
 </script>
