@@ -1,176 +1,83 @@
-/* =========================================================
-   SSCC — Projekty (page-scoped CSS)
-   Závisí na proměnných z assets/style-v4.css (–bg, –panel, –ink…)
-   ========================================================= */
+/* ===== Projekty – layout a komponenty ===== */
 
-/* ----- layout: sidebar + obsah ----- */
-.pjs-layout {
-  display: grid;
-  grid-template-columns: 300px 1fr;
+.pjs-layout{
+  display:grid;
+  grid-template-columns: 260px 1fr;
   gap: 24px;
-  align-items: start;
-  margin-top: 10px; /* od headeru */
+  margin-top: 18px;
 }
 
-.pjs-content {
-  min-width: 0;
-}
-
-/* Sidebar držíme pod sticky hlavičkou */
-.pjs-nav {
+/* Side nav */
+.pjs-nav{
   position: sticky;
-  top: calc(72px + 12px);
-  background: linear-gradient(180deg, var(--panel), var(--panel-2));
-  border: 1px solid var(--line);
-  border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-1);
-  padding: 12px;
+  top: 92px; /* pod sticky headerem */
+  align-self: start;
+  display:flex;
+  flex-direction: column;
+  gap: 6px;
 }
-
-/* Skupiny (accordion) */
-.pjs-acc {
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  margin: 10px 0;
-  background: rgba(255,255,255,.02);
-  overflow: hidden;
-}
-
-.pjs-acc > summary {
-  list-style: none;
-  cursor: pointer;
-  user-select: none;
-  padding: 12px 14px;
-  font-weight: 800;
-  color: var(--ink);
-  background: rgba(255,255,255,.03);
-  border-bottom: 1px solid var(--line);
-}
-.pjs-acc > summary::-webkit-details-marker { display: none; }
-
-/* Odkazy v navigaci */
-.pjs-acc a {
-  display: block;
-  color: var(--ink);
-  text-decoration: none;
-  padding: 10px 12px;
+.pjs-link{
+  display:block;
+  padding: .55rem .7rem;
   border-radius: 10px;
-  margin: 8px 10px;
-  font-weight: 700;
+  color: var(--muted);
+  text-decoration: none;
   border: 1px solid transparent;
 }
-.pjs-acc a:hover {
-  background: var(--btn-hover);
-  border-color: var(--btn-line);
-}
-.pjs-acc a.is-active {
-  background: rgba(255,215,106,.12);
-  color: var(--accent);
-  border-color: rgba(255,215,106,.35);
-}
-
-/* ----- velká karta (hlavní projekt) i menší karty ----- */
-.project-card,
-.pjs-card {
-  background: linear-gradient(180deg, var(--panel), var(--panel-2));
-  border: 1px solid var(--line);
-  border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-1);
-  padding: 22px;
-}
-
-.project-card {
-  display: grid;
-  grid-template-columns: 1.05fr 1.15fr;
-  gap: 22px;
-}
-
-/* Ilustrace / placeholder vlevo */
-.project-ill {
-  min-height: 280px;
-  border-radius: 16px;
-  border: 1px solid var(--line);
-  background:
-    radial-gradient(600px 450px at 30% 30%,
-      rgba(255,210,110,.18), rgba(255,210,110,.08) 45%, rgba(0,0,0,0) 66%)
-    ,linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
-  box-shadow: var(--shadow-2) inset;
-  position: relative;
-  overflow: hidden;
-}
-.ill-caption{
-  position:absolute; left:16px; bottom:14px;
-  background:rgba(10,14,12,.6); border:1px solid var(--line);
-  color:var(--muted); font-size:12px; padding:8px 10px; border-radius:10px;
-  backdrop-filter:blur(2px); box-shadow:0 8px 22px rgba(0,0,0,.35);
-}
-
-/* Obsah karty */
-.project-body h2,
-.pjs-card__head h3 {
-  margin: 0 0 10px;
-  line-height: 1.16;
+.pjs-link:hover{
+  background: rgba(255,255,255,.05);
   color: var(--ink);
 }
-.project-body h2 { font-size: 34px; }
-.pjs-card__head h3 { font-size: 22px; }
-
-.badges {
-  display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0 14px;
+.pjs-link.is-active{
+  background: rgba(255,215,106,.12);
+  border-color: rgba(255,215,106,.35);
+  color: #ffd76a;
 }
-.badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-weight: 700; color: var(--ink); background: var(--badge);
-  border: 1px solid var(--line); border-radius: 100px;
-  padding: 8px 12px; font-size: 13px;
+
+/* Sekce/karty */
+.project-card{
+  background: linear-gradient(180deg, rgba(16,33,28,.9), #0c1915);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+  padding: 1.1rem 1.1rem 1.2rem;
+  margin-bottom: 16px;
 }
-.badge .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 16px var(--accent); }
-
-.project-body p,
-.pjs-card__text { color: var(--muted); margin: 0 0 18px; }
-
-/* CTA */
-.cta-row, .pjs-card__cta { display:flex; gap:12px; flex-wrap:wrap; }
-
-/* Menší karty – hlavička s badge vpravo */
-.pjs-card + .pjs-card { margin-top: 18px; }
-.pjs-card__head {
-  display:flex; align-items:center; justify-content:space-between;
-  gap:12px; margin-bottom: 8px;
+.project-card .cta-row{
+  display:flex; gap:10px; flex-wrap:wrap; margin-top:.5rem;
 }
-.pjs-badge{
-  display:inline-flex; align-items:center; gap:6px;
-  padding: 6px 10px; font-size: 12px; font-weight: 800;
-  border-radius: 999px; border: 1px solid var(--line);
-  background: var(--badge); color: var(--ink);
-}
-.pjs-badge--pilot  { color:#9be2b1; border-color: rgba(155,226,177,.35); }
-.pjs-badge--plan   { color:#cfd6e6; border-color: rgba(207,214,230,.35); }
-.pjs-badge--study  { color:#ffd76a; border-color: rgba(255,215,106,.35); }
 
-/* Tip: můžeš použít .pjs-badge pjs-badge--pilot / --plan / --study */
-
-/* ----- responsivita ----- */
-@media (max-width: 1180px){
-  .pjs-layout{
-    grid-template-columns: 260px 1fr;
-  }
+/* Badges */
+.badges{ display:flex; gap:8px; flex-wrap:wrap; margin:.4rem 0 .8rem }
+.badge{
+  display:inline-flex; align-items:center; gap:.45rem;
+  padding:.28rem .6rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.08);
+  font-size:.9rem; color: var(--muted);
 }
+.badge .dot{
+  width:.45rem; height:.45rem; border-radius:999px;
+  background:#ffe49a; box-shadow: 0 0 10px rgba(255,215,106,.75);
+}
+
+/* Ilustrace placeholder (volitelné) */
+.project-ill{
+  height: 140px;
+  border-radius: 14px;
+  background: radial-gradient(600px 220px at 12% 0%, rgba(255,215,106,.12), transparent);
+  border: 1px dashed rgba(255,255,255,.08);
+  display:flex; align-items:flex-end; justify-content:flex-end;
+  margin:0 0 .8rem 0;
+}
+.ill-caption{
+  font-size:.85rem; color: var(--muted); padding:.4rem .6rem;
+}
+
+/* Responsivita */
 @media (max-width: 980px){
-  .pjs-layout{
-    grid-template-columns: 1fr;
-  }
-  .pjs-nav{
-    position: relative;
-    top: 0;
-  }
-  .project-card{
-    grid-template-columns: 1fr;
-  }
-  .project-ill{ min-height: 220px; }
-}
-
-/* Preferuje-li uživatel méně animací */
-@media (prefers-reduced-motion: reduce){
-  * { scroll-behavior: auto !important; }
+  .pjs-layout{ grid-template-columns: 1fr }
+  .pjs-nav{ position: static; display: grid; grid-auto-flow: column; overflow: auto; gap: 8px; padding-bottom: 6px }
+  .pjs-link{ white-space: nowrap }
 }
