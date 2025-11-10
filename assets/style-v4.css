@@ -410,3 +410,74 @@ main, .site-main, .page-wrap { flex: 1 0 auto; }
   .site-header .logo { width: 46px; height: 46px; }
   .site-header .main-nav a { padding: 8px 10px; }
 }
+/* ===========================================================
+   SSCC · Zlaté ladění typografie (page-scoped verze)
+   =========================================================== */
+
+/* --- HOME --------------------------------------------------- */
+.page-home h1,
+[data-page="index"] h1 {
+  font-size: 3rem;
+  line-height: 1.15;
+  font-weight: 800;
+  background: linear-gradient(180deg, #ffe38a 0%, #e8c04f 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 3px rgba(0,0,0,.35);
+}
+
+.page-home h2,
+[data-page="index"] h2 {
+  color: #f5e7b0;
+  text-shadow: 0 1px 2px rgba(0,0,0,.25);
+}
+
+.page-home .btn.primary {
+  background: linear-gradient(180deg, #ffd76a, #e8b93f);
+  color: #0b1411;
+  font-weight: 700;
+  border: 1px solid rgba(0,0,0,.15);
+}
+.page-home .btn.primary:hover {
+  filter: brightness(1.08);
+}
+
+/* --- PROJEKTY ---------------------------------------------- */
+.page-projects h1,
+[data-page="projekty"] h1 {
+  color: #f3df96;
+  text-shadow: 0 1px 2px rgba(0,0,0,.25);
+}
+.page-projects h2,
+[data-page="projekty"] h2 {
+  color: #eddc94;
+}
+
+.page-projects .badge {
+  color: #0b1411;
+  background: linear-gradient(180deg, #ffd76a, #e8b93f);
+  border-color: rgba(0,0,0,.12);
+  box-shadow: 0 4px 10px rgba(0,0,0,.25);
+}
+.page-projects .badge .dot {
+  background: #fff6cc;
+  box-shadow: 0 0 12px #ffe892;
+}
+
+/* --- HLAVIČKA – jemné zvýraznění loga a textu --------------- */
+.site-header .site-title {
+  background: linear-gradient(90deg, #ffe38a, #e8c04f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  letter-spacing: .01em;
+  text-shadow: 0 1px 2px rgba(0,0,0,.25);
+}
+
+/* --- PATIČKA ------------------------------------------------ */
+.site-footer small {
+  color: #e0d5a2;
+  letter-spacing: .03em;
+}
