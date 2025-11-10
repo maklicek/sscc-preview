@@ -4,18 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nápady — SSCC</title>
-  <link rel="stylesheet" href="assets/style-v4.css?v=7">
+  <link rel="stylesheet" href="assets/style-v4.css?v=7" />
 </head>
-
 <body data-page="napady">
-  <!-- ======= HEADER ======= -->
   <header class="site-header">
     <div class="header-inner">
       <a href="index.html" class="brand">
-        <img src="assets/sscc-logo.jpg" alt="SSCC logo" class="logo">
+        <img src="assets/sscc-logo.jpg" alt="SSCC logo" class="logo" />
         <span class="site-title">SolarSpace Carbon Cycle — SSCC</span>
       </a>
-
       <nav class="main-nav" id="mainNav">
         <a href="sscc.html">SSCC</a>
         <a href="projekty.html">Projekty</a>
@@ -26,40 +23,29 @@
       </nav>
     </div>
   </header>
-  <!-- ======= /HEADER ======= -->
 
   <main class="container site-main">
     <h1>Nápady a hypotézy</h1>
-    <p>Pracovní náčrt. Tady budou geotermální inovace, simulátor a návrhy čtenářů.</p>
+    <p>Pracovní náčrt: geotermální inovace, simulátor, návrhy čtenářů. (Postupně doplníme sekce.)</p>
   </main>
 
-  <!-- ======= FOOTER ======= -->
   <footer class="site-footer">
     <div data-include="partials/footer.html"></div>
-    <script src="assets/include.js"></script>
     <small>© <span id="year"></span> SSCC — SolarSpace Carbon Cycle</small>
   </footer>
-  <!-- ======= /FOOTER ======= -->
 
+  <script src="assets/include.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
     (function(){
-      const page = document.body.dataset.page || "";
       const map = {
-        index: "index.html",
-        sscc: "sscc.html",
-        projekty: "projekty.html",
-        spoluprace: "spoluprace.html",
-        edukace: "edukace.html",
-        konsorcium: "konsorcium.html",
-        napady: "napady.html"
+        index:"index.html", sscc:"sscc.html", projekty:"projekty.html",
+        spoluprace:"spoluprace.html", edukace:"edukace.html",
+        konsorcium:"konsorcium.html", napady:"napady.html"
       };
-      const current = map[page];
-      if(current){
-        const link = document.querySelector('.main-nav a[href="'+current+'"]');
-        if(link){ link.setAttribute('aria-current','page'); }
-      }
+      const cur = map[document.body.dataset.page];
+      const a = document.querySelector('.main-nav a[href="'+cur+'"]');
+      if (a) a.setAttribute('aria-current','page');
     })();
   </script>
 </body>
