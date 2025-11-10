@@ -691,3 +691,7 @@ a:hover {
   letter-spacing: .15em;
   font-weight: 700;
 }
+.page-head .kicker{ text-transform:uppercase; letter-spacing:.12em; font-weight:700; opacity:.8; }
+.page-head .lead{ color: var(--muted); max-width: 880px; }
+main p{ max-width: 880px; }
+main ul, main ol{ max-width: 880px; }
