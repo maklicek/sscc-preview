@@ -165,3 +165,53 @@ header.nav .main-nav a{
 
 /* 4) Kotvy neschovávej pod header */
 [id]{ scroll-margin-top: 84px; }
+/* ===== SSCC · Stabilizační patch (2025-01) =============================== */
+/* 1) Hlavička nad vším + vyrovnání obsahu */
+header.nav{
+  position: fixed; top:0; left:0; right:0;
+  z-index: 2147483647 !important;
+  pointer-events: auto !important;
+}
+body{ padding-top:72px; }
+
+/* 2) Zákaz overlayům chytat kliky a překrývat obsah */
+html::before, html::after,
+body::before, body::after,
+main::before, main::after,
+.hero::before, .hero::after,
+.page-wrap::before, .page-wrap::after,
+.container::before, .container::after{
+  pointer-events:none !important;
+}
+
+/* 3) Konzistentní šířka a vnější odsazení obsahu */
+.container, .site-main, .page-wrap{
+  max-width: 1180px; margin: 0 auto; padding: 0 24px;
+}
+main > section{ margin: 32px 0 48px; }
+
+/* 4) Nadpisy – civilnější velikosti + stejné řádkování */
+h1,h2,h3{ line-height:1.18; margin:.25rem 0 .75rem; letter-spacing:-.01em; }
+h1{ font-size: clamp(34px, 2.4vw + 12px, 56px); }
+h2{ font-size: clamp(24px, 1.4vw + 12px, 34px); }
+h3{ font-size: clamp(18px, 1.0vw + 10px, 24px); }
+
+/* 5) Obsahové stránky (SSCC, Spolupráce, Konsorcium, Nápady) – jemnější zlato */
+.page-sscc h1, .page-sscc h2, .page-sscc h3,
+.page-spoluprace h1, .page-spoluprace h2, .page-spoluprace h3,
+.page-konsorcium h1, .page-konsorcium h2, .page-konsorcium h3,
+.page-napady h1, .page-napady h2, .page-napady h3{
+  background: linear-gradient(180deg, #ffe38a 0%, #e8c04f 80%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  text-shadow: 0 2px 4px rgba(0,0,0,.35);
+}
+
+/* 6) Listy, texty, kotvy */
+main p{ max-width: 880px; }
+main ul, main ol{ padding-left: 1.2rem; max-width: 880px; }
+[id]{ scroll-margin-top: 84px; }   /* aby skoky nekryla hlavička */
+
+/* 7) Hero – odstup pod hlavičkou, ať se „nelepí“ */
+.hero{ padding-top: 12px; }
+
+/* 8) Projekty – jistota layoutu, i kd*
