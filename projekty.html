@@ -8,28 +8,16 @@
   <!-- Globální styl -->
   <link rel="stylesheet" href="assets/style-v4.css?v=7">
 
-  <!-- Page-scoped CSS (VŠECHNA pravidla pouze zde, nic mimo <style>) -->
+  <!-- Page-scoped CSS (jen CSS, žádné HTML) -->
   <style>
     :root{
-      --bg:#0b1411;
-      --panel:rgba(18,26,23,.82);
-      --panel-2:rgba(18,26,23,.66);
-      --ink:#e7f4e9;
-      --muted:#a9c5b0;
-      --accent:#ffd76a;
-      --accent-2:#f1b93b;
-      --badge:#22362c;
-      --line:rgba(255,255,255,.06);
-      --ok:#9be2b1;
-      --btn:#1c2e26;
-      --btn-line:rgba(255,255,255,.08);
-      --btn-hover:#233a30;
-      --shadow-1:0 12px 35px rgba(0,0,0,.45);
-      --shadow-2:0 22px 60px rgba(0,0,0,.55);
-      --radius-xl:20px;
-      --radius-2xl:26px;
+      --bg:#0b1411; --panel:rgba(18,26,23,.82); --panel-2:rgba(18,26,23,.66);
+      --ink:#e7f4e9; --muted:#a9c5b0; --accent:#ffd76a; --accent-2:#f1b93b;
+      --badge:#22362c; --line:rgba(255,255,255,.06); --ok:#9be2b1;
+      --btn:#1c2e26; --btn-line:rgba(255,255,255,.08); --btn-hover:#233a30;
+      --shadow-1:0 12px 35px rgba(0,0,0,.45); --shadow-2:0 22px 60px rgba(0,0,0,.55);
+      --radius-xl:20px; --radius-2xl:26px;
     }
-
     html,body{
       background:
         radial-gradient(1200px 800px at 12% 8%,
@@ -38,144 +26,51 @@
           rgba(255,190,80,.06) 55%,
           rgba(0,0,0,0) 70%),
         linear-gradient(#0b1411,#0b1411);
-      color:var(--ink);
-      min-height:100%;
+      color:var(--ink); min-height:100%;
     }
-<!-- PŘED tím, co máš teď v <main class="page-wrap"> -->
-<div class="pjs-layout page-wrap">
-  <!-- Levý rozcestník -->
-  <aside class="pjs-nav" aria-label="Projekty">
-    <details class="pjs-acc" open>
-      <summary>Orbitální solární</summary>
-      <a href="#p-orbital">Přenos energie</a>
-    </details>
 
-    <details class="pjs-acc">
-      <summary>DAC & NH₃</summary>
-      <a href="#p-rd">RD: DAC → NH₃</a>
-      <a href="#p-obec">Obec: DAC + NH₃ hub</a>
-      <a href="#p-doupov">Doupov: geotermální hub</a>
-    </details>
-
-    <details class="pjs-acc">
-      <summary>Další směry</summary>
-      <a href="#p-…">Lidar / regulační rámec</a>
-      <a href="#p-…2">Bezpečnostní zóny</a>
-    </details>
-  </aside>
-
-  <!-- Pravý obsah (sem patří tvoje karty/sekce) -->
-  <div class="pjs-content">
-    <!-- EXISTUJÍCÍ velká karta – jen jí přidej id + data-pjs-section -->
-    <section id="p-orbital" data-pjs-section class="project-card" aria-labelledby="p1">
-      <!-- ... beze změn tvůj obsah ... -->
-    </section>
-
-    <!-- Doplňující karty (příklad) – musí mít id + data-pjs-section -->
-    <section id="p-rd" data-pjs-section class="pjs-card">
-      <div class="pjs-card__head"><h3>RD: DAC → zelený NH₃</h3></div>
-      <p class="pjs-card__text">Pilot pro rodinné domy (≈20 MWh/rok)…</p>
-      <div class="pjs-card__cta">
-        <a class="btn primary" href="spoluprace.html">Zapojit se</a>
-        <a class="btn" href="konsorcium.html">Role & partneři</a>
-      </div>
-    </section>
-
-    <section id="p-obec" data-pjs-section class="pjs-card">
-      <div class="pjs-card__head"><h3>Obec: DAC + NH₃ hub</h3></div>
-      <p class="pjs-card__text">Obec 1 000 obyvatel: decentralizovaný hub…</p>
-      <div class="pjs-card__cta">
-        <a class="btn primary" href="spoluprace.html">Zapojit se</a>
-        <a class="btn" href="edukace.html">Jak to funguje</a>
-      </div>
-    </section>
-
-    <section id="p-doupov" data-pjs-section class="pjs-card">
-      <div class="pjs-card__head"><h3>Doupov: geotermální hub</h3></div>
-      <p class="pjs-card__text">EGS + DAC + NH₃, 24/7 stabilní zdroj…</p>
-      <div class="pjs-card__cta">
-        <a class="btn primary" href="spoluprace.html">Zapojit se</a>
-        <a class="btn" href="konsorcium.html">Konsorcium</a>
-      </div>
-    </section>
-  </div>
-</div>
-
-    /* ---------- Blok úvodu ---------- */
+    /* ---------- Úvod ---------- */
     .page-wrap{ max-width:1180px; margin:26px auto 80px; padding:0 18px; }
     .kicker{ color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.12em; font-size:12px; }
     .page-title{ margin:.25rem 0 1rem; font-size:42px; line-height:1.14; }
     .page-intro{ color:var(--muted); max-width:800px; }
 
-    /* ---------- Karta projektu ---------- */
-    .project-card{
-      display:grid; grid-template-columns: 1.1fr 1.2fr; gap:26px;
-      background:linear-gradient(180deg, var(--panel), var(--panel-2));
-      border:1px solid var(--line);
-      border-radius:var(--radius-2xl);
+    /* ---------- Layout se sidebarem ---------- */
+    .pjs-layout{ display:grid; grid-template-columns: 260px 1fr; gap:28px; margin-top:22px; }
+    .pjs-nav{
+      position:sticky; top:86px;
+      align-self:start;
+      background:linear-gradient(180deg,var(--panel),var(--panel-2));
+      border:1px solid var(--line); border-radius:18px; padding:16px;
       box-shadow:var(--shadow-1);
-      padding:26px; margin-top:28px;
     }
-    <section class="pjs-sections">
-  <!-- RD / domácnosti -->
-  <article class="pjs-card">
-    <div class="pjs-card__head">
-      <h3>RD: DAC → zelený NH₃ pro vytápění</h3>
-      <span class="pjs-badge">Pilot</span>
-    </div>
-    <p class="pjs-card__text">
-      Dekarbonizace rodinných domů (20 MWh/rok) pomocí kombinace PV, DAC a nízkotlaké syntézy NH₃.
-      Cíl: nahradit 100 % plynu, LCA &lt; 0,05 kg CO₂e/kg NH₃.
-    </p>
-    <div class="pjs-card__cta">
-      <a class="btn primary" href="spoluprace.html">Zapojit se</a>
-      <a class="btn" href="konsorcium.html">Role & partneři</a>
-    </div>
-  </article>
+    .pjs-nav .pjs-acc{ margin:6px 0 10px; }
+    .pjs-nav summary{
+      cursor:pointer; list-style:none; font-weight:800; color:var(--ink);
+      padding:8px 10px; border-radius:10px;
+    }
+    .pjs-nav a{
+      display:block; padding:8px 12px; margin:2px 0; border-radius:10px;
+      color:var(--muted); text-decoration:none; font-weight:700;
+    }
+    .pjs-nav a:is(:hover,.is-active){ background:var(--btn-hover); color:var(--ink); }
 
-  <!-- Obec / město -->
-  <article class="pjs-card">
-    <div class="pjs-card__head">
-      <h3>Obec: DAC + NH₃ hub</h3>
-      <span class="pjs-badge pjs-badge--plan">Plán</span>
-    </div>
-    <p class="pjs-card__text">
-      Obec 1 000 obyvatel (≈ 400 RD): decentralizovaný hub pro zachyt CO₂ a syntézu NH₃.
-      Integrace s distribuční sítí a teplárenstvím.
-    </p>
-    <div class="pjs-card__cta">
-      <a class="btn primary" href="spoluprace.html">Zapojit se</a>
-      <a class="btn" href="edukace.html">Jak to funguje</a>
-    </div>
-  </article>
+    .pjs-content{ display:flex; flex-direction:column; gap:22px; }
 
-  <!-- Doupov / geotermál -->
-  <article class="pjs-card">
-    <div class="pjs-card__head">
-      <h3>Doupov: geotermální NH₃ hub</h3>
-      <span class="pjs-badge pjs-badge--study">Studie</span>
-    </div>
-    <p class="pjs-card__text">
-      EGS + DAC + NH₃ pro stabilní 24/7 zdroj energie a uhlíkově negativní nosič.
-      Pilot 5–10 MW → 5–10 t NH₃/den; škálovatelné pro region.
-    </p>
-    <div class="pjs-card__cta">
-      <a class="btn primary" href="spoluprace.html">Zapojit se</a>
-      <a class="btn" href="konsorcium.html">Konsorcium & governance</a>
-    </div>
-  </article>
-</section>
-
+    /* ---------- Karta projektu (velká) ---------- */
+    .project-card{
+      display:grid; grid-template-columns: 1.05fr 1.15fr; gap:26px;
+      background:linear-gradient(180deg, var(--panel), var(--panel-2));
+      border:1px solid var(--line); border-radius:var(--radius-2xl);
+      box-shadow:var(--shadow-1); padding:26px;
+    }
     .project-ill{
       min-height:300px; border-radius:16px; border:1px solid var(--line);
       background:
         radial-gradient(600px 450px at 30% 30%,
-          rgba(255,210,110,.18),
-          rgba(255,210,110,.08) 45%,
-          rgba(0,0,0,0) 66%),
+          rgba(255,210,110,.18), rgba(255,210,110,.08) 45%, rgba(0,0,0,0) 66%),
         linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
-      box-shadow:var(--shadow-2) inset;
-      position:relative; overflow:hidden;
+      box-shadow:var(--shadow-2) inset; position:relative; overflow:hidden;
     }
     .ill-caption{
       position:absolute; left:16px; bottom:14px;
@@ -183,43 +78,48 @@
       color:var(--muted); font-size:12px; padding:8px 10px; border-radius:10px;
       backdrop-filter:blur(2px); box-shadow:0 8px 22px rgba(0,0,0,.35);
     }
-
     .project-body h2{ margin:0 0 10px; font-size:34px; line-height:1.16; }
     .badges{ display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 14px; }
-    .badge{
-      display:inline-flex; align-items:center; gap:6px;
-      font-weight:700; color:var(--ink); background:var(--badge);
-      border:1px solid var(--line); border-radius:100px; padding:8px 12px; font-size:13px;
-    }
+    .badge{ display:inline-flex; align-items:center; gap:6px; font-weight:700; color:var(--ink);
+            background:var(--badge); border:1px solid var(--line); border-radius:100px; padding:8px 12px; font-size:13px;}
     .badge .dot{ width:8px; height:8px; border-radius:99px; background:var(--accent); box-shadow:0 0 16px var(--accent); }
     .project-body p{ color:var(--muted); margin:0 0 18px; }
-
     .cta-row{ display:flex; gap:12px; flex-wrap:wrap; }
-    .btn{
-      background:var(--btn); color:var(--ink);
-      border:1px solid var(--btn-line); padding:10px 14px; border-radius:12px;
-      text-decoration:none; font-weight:700; font-size:14px;
-    }
+    .btn{ background:var(--btn); color:var(--ink); border:1px solid var(--btn-line); padding:10px 14px; border-radius:12px; text-decoration:none; font-weight:700; font-size:14px; }
     .btn:hover{ background:var(--btn-hover); }
     .btn.primary{ background:linear-gradient(180deg,#1f332a,#1a2a23); border-color:var(--btn-line); }
 
-    /* ---------- Patička ---------- */
-    .site-footer{
-      margin-top:60px; padding:26px 18px; border-top:1px solid var(--line);
-      color:var(--muted); text-align:center; background:rgba(12,18,16,.4);
+    /* ---------- Doplňkové karty (příklad) ---------- */
+    .pjs-card{
+      background:linear-gradient(180deg,var(--panel),var(--panel-2));
+      border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow-1);
+      padding:18px 18px 16px;
     }
+    .pjs-card__head{ display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+    .pjs-badge{ font-weight:800; font-size:12px; padding:4px 8px; border-radius:999px; background:#203228; color:var(--ok); border:1px solid var(--line); }
+    .pjs-badge--plan{ color:#e7e09d; }
+    .pjs-badge--study{ color:#9ec8ff; }
+    .pjs-card__text{ color:var(--muted); margin:0 0 12px; }
+    .pjs-card__cta{ display:flex; gap:10px; flex-wrap:wrap; }
+
+    /* ---------- Patička ---------- */
+    .site-footer{ margin-top:60px; padding:26px 18px; border-top:1px solid var(--line);
+                  color:var(--muted); text-align:center; background:rgba(12,18,16,.4); }
 
     /* ---------- Responzivita ---------- */
-    @media (max-width:920px){
-      .page-title{ font-size:34px; }
-      .project-card{ grid-template-columns:1fr; }
+    @media (max-width: 1024px){
+      .pjs-layout{ grid-template-columns: 1fr; }
+      .pjs-nav{ position:static; }
+      .project-card{ grid-template-columns: 1fr; }
+      .page-title{ font-size:36px; }
+    }
+    @media (max-width: 920px){
       .project-ill{ min-height:220px; }
     }
   </style>
 </head>
 
 <body data-page="projekty" class="page-projects">
-  <!-- ======= HEADER (sjednocený) ======= -->
   <header class="site-header">
     <div class="header-inner">
       <a href="index.html" class="brand">
@@ -236,7 +136,6 @@
       </nav>
     </div>
   </header>
-  <!-- ======= /HEADER ======= -->
 
   <main class="page-wrap">
     <div class="kicker">Projekty</div>
@@ -246,36 +145,102 @@
       Další projekty schováme, dokud je nebudeme chtít odemknout.
     </p>
 
-    <!-- JEDEN PROJEKT -->
-    <section class="project-card" aria-labelledby="p1">
-      <figure class="project-ill" aria-hidden="true">
-        <figcaption class="ill-caption">Koncept přenosu energie z orbitální solární farmy</figcaption>
-      </figure>
+    <!-- GRID: sidebar + obsah -->
+    <div class="pjs-layout">
+      <!-- Levý rozcestník -->
+      <aside class="pjs-nav" aria-label="Projekty">
+        <details class="pjs-acc" open>
+          <summary>Orbitální solární</summary>
+          <a href="#p-orbital" class="is-active">Přenos energie</a>
+        </details>
 
-      <div class="project-body">
-        <h2 id="p1">Orbitální solární farma → přenos energie</h2>
+        <details class="pjs-acc">
+          <summary>DAC &amp; NH₃</summary>
+          <a href="#p-rd">RD: DAC → NH₃</a>
+          <a href="#p-obec">Obec: DAC + NH₃ hub</a>
+          <a href="#p-doupov">Doupov: geotermální hub</a>
+        </details>
 
-        <div class="badges" aria-label="Kategorie projektu">
-          <span class="badge"><span class="dot"></span> Studie bezpečnosti</span>
-          <span class="badge"><span class="dot"></span> Účinnost &amp; ekonomika</span>
-          <span class="badge"><span class="dot"></span> Mikrovlnný příjem</span>
-        </div>
+        <details class="pjs-acc">
+          <summary>Další směry</summary>
+          <a href="#p-lidar">Lidar / regulační rámec</a>
+          <a href="#p-bezpecnost">Bezpečnostní zóny</a>
+        </details>
+      </aside>
 
-        <p>
-          Pilotní studie přenosu energie z orbitální solární farmy a bezpečný příjem v pozemní stanici.
-          Zaměřujeme se na <strong>účinnost</strong>, <strong>regulační rámec</strong> a
-          <strong>nutná bezpečnostní opatření</strong> spojená s mikrovlnným (případně laserovým) paprskem.
-        </p>
+      <!-- Pravý obsah -->
+      <div class="pjs-content">
+        <!-- Velká karta -->
+        <section id="p-orbital" data-pjs-section class="project-card" aria-labelledby="p1">
+          <figure class="project-ill" aria-hidden="true">
+            <figcaption class="ill-caption">Koncept přenosu energie z orbitální solární farmy</figcaption>
+          </figure>
 
-        <div class="cta-row">
-          <a class="btn primary" href="spoluprace.html">Zapojit se</a>
-          <a class="btn" href="konsorcium.html">Konsorcium &amp; role</a>
-        </div>
+          <div class="project-body">
+            <h2 id="p1">Orbitální solární farma → přenos energie</h2>
+
+            <div class="badges" aria-label="Kategorie projektu">
+              <span class="badge"><span class="dot"></span> Studie bezpečnosti</span>
+              <span class="badge"><span class="dot"></span> Účinnost &amp; ekonomika</span>
+              <span class="badge"><span class="dot"></span> Mikrovlnný příjem</span>
+            </div>
+
+            <p>
+              Pilotní studie přenosu energie z orbitální solární farmy a bezpečný příjem v pozemní stanici.
+              Zaměřujeme se na <strong>účinnost</strong>, <strong>regulační rámec</strong> a
+              <strong>nutná bezpečnostní opatření</strong> spojená s mikrovlnným (případně laserovým) paprskem.
+            </p>
+
+            <div class="cta-row">
+              <a class="btn primary" href="spoluprace.html">Zapojit se</a>
+              <a class="btn" href="konsorcium.html">Konsorcium &amp; role</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Doplňkové karty (příklad) -->
+        <section id="p-rd" data-pjs-section class="pjs-card">
+          <div class="pjs-card__head"><h3>RD: DAC → zelený NH₃</h3><span class="pjs-badge">Pilot</span></div>
+          <p class="pjs-card__text">Dekarbonizace RD (≈20 MWh/rok) kombinací PV, DAC a nízkotlaké syntézy NH₃.</p>
+          <div class="pjs-card__cta">
+            <a class="btn primary" href="spoluprace.html">Zapojit se</a>
+            <a class="btn" href="konsorcium.html">Role &amp; partneři</a>
+          </div>
+        </section>
+
+        <section id="p-obec" data-pjs-section class="pjs-card">
+          <div class="pjs-card__head"><h3>Obec: DAC + NH₃ hub</h3><span class="pjs-badge pjs-badge--plan">Plán</span></div>
+          <p class="pjs-card__text">Obec 1 000 obyvatel: decentralizovaný hub pro zachyt CO₂ a syntézu NH₃.</p>
+          <div class="pjs-card__cta">
+            <a class="btn primary" href="spoluprace.html">Zapojit se</a>
+            <a class="btn" href="edukace.html">Jak to funguje</a>
+          </div>
+        </section>
+
+        <section id="p-doupov" data-pjs-section class="pjs-card">
+          <div class="pjs-card__head"><h3>Doupov: geotermální hub</h3><span class="pjs-badge pjs-badge--study">Studie</span></div>
+          <p class="pjs-card__text">EGS + DAC + NH₃, 24/7 stabilní zdroj; pilot 5–10 MW → 5–10 t NH₃/den.</p>
+          <div class="pjs-card__cta">
+            <a class="btn primary" href="spoluprace.html">Zapojit se</a>
+            <a class="btn" href="konsorcium.html">Konsorcium</a>
+          </div>
+        </section>
+
+        <!-- placeholdery pro „Další směry“ -->
+        <section id="p-lidar" data-pjs-section class="pjs-card">
+          <div class="pjs-card__head"><h3>Lidar / regulační rámec</h3></div>
+          <p class="pjs-card__text">Stručný popis + odkazy na metodiky.</p>
+        </section>
+
+        <section id="p-bezpecnost" data-pjs-section class="pjs-card">
+          <div class="pjs-card__head"><h3>Bezpečnostní zóny</h3></div>
+          <p class="pjs-card__text">Parametry zón, standardy, měření.</p>
+        </section>
       </div>
-    </section>
+    </div>
+    <!-- /pjs-layout -->
   </main>
 
-  <!-- ======= FOOTER (sjednocený) ======= -->
   <footer class="site-footer">
     <small>© <span id="year"></span> SSCC — SolarSpace Carbon Cycle · Preview</small>
   </footer>
@@ -283,17 +248,9 @@
   <!-- Aktivace aktuální položky v menu + rok -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
     (function(){
       const page = document.body.dataset.page || "";
-      const map = {
-        sscc: "sscc.html",
-        projekty: "projekty.html",
-        spoluprace: "spoluprace.html",
-        edukace: "edukace.html",
-        konsorcium: "konsorcium.html",
-        napady: "napady.html"
-      };
+      const map = { sscc:"sscc.html", projekty:"projekty.html", spoluprace:"spoluprace.html", edukace:"edukace.html", konsorcium:"konsorcium.html", napady:"napady.html" };
       const current = map[page];
       if(current){
         const link = document.querySelector('.main-nav a[href="'+current+'"]');
@@ -301,58 +258,52 @@
       }
     })();
   </script>
+
+  <!-- Logika sidebaru (výběr sekcí / scroll spy) -->
   <script>
-(function(){
-  const nav = document.querySelector('.pjs-nav');
-  if(!nav) return;
+  (function(){
+    const nav = document.querySelector('.pjs-nav');
+    if(!nav) return;
 
-  // 1) Klik v menu – zvýraznit a auto-zavřít ostatní skupiny
-  nav.addEventListener('click', e=>{
-    const a = e.target.closest('a[href^="#"]');
-    if(!a) return;
-    nav.querySelectorAll('a.is-active').forEach(x=>x.classList.remove('is-active'));
-    a.classList.add('is-active');
-    // Otevři jeho <details>, zavři ostatní
-    const det = a.closest('details.pjs-acc');
-    nav.querySelectorAll('details.pjs-acc').forEach(d => { d.open = (d===det); });
-  });
+    // Klik v menu – zvýraznit a otevřít skupinu
+    nav.addEventListener('click', e=>{
+      const a = e.target.closest('a[href^="#"]');
+      if(!a) return;
+      nav.querySelectorAll('a.is-active').forEach(x=>x.classList.remove('is-active'));
+      a.classList.add('is-active');
+      const det = a.closest('details.pjs-acc');
+      nav.querySelectorAll('details.pjs-acc').forEach(d => { d.open = (d===det); });
+    });
 
-  // 2) Při scrollu zvýrazňuj aktivní sekci
-  const links = [...nav.querySelectorAll('a[href^="#"]')];
-  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
-  const sections = [...document.querySelectorAll('[data-pjs-section]')];
+    // Scroll spy
+    const links = [...nav.querySelectorAll('a[href^="#"]')];
+    const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+    const sections = [...document.querySelectorAll('[data-pjs-section]')];
 
-  const io = new IntersectionObserver((entries)=>{
-    const visible = entries
-      .filter(e => e.isIntersecting)
-      .sort((a,b)=> b.intersectionRatio - a.intersectionRatio)[0];
-    if(!visible) return;
-    const id = visible.target.id;
-    const link = map.get(id);
-    if(!link) return;
-    links.forEach(x=>x.classList.remove('is-active'));
-    link.classList.add('is-active');
-    // zajisti otevřenou skupinu
-    const det = link.closest('details.pjs-acc');
-    if(det) det.open = true;
-  }, { rootMargin: '0px 0px -60% 0px', threshold:[0.25,0.5,0.75] });
+    const io = new IntersectionObserver((entries)=>{
+      const vis = entries.filter(e => e.isIntersecting).sort((a,b)=> b.intersectionRatio - a.intersectionRatio)[0];
+      if(!vis) return;
+      const link = map.get(vis.target.id);
+      if(!link) return;
+      links.forEach(x=>x.classList.remove('is-active'));
+      link.classList.add('is-active');
+      const det = link.closest('details.pjs-acc'); if(det) det.open = true;
+    }, { rootMargin:'0px 0px -60% 0px', threshold:[0.25,0.5,0.75] });
 
-  sections.forEach(s => io.observe(s));
+    sections.forEach(s => io.observe(s));
 
-  // 3) Pokud je hash v URL, otevři správnou skupinu a zvýrazni
-  function openFromHash(){
-    const id = location.hash.replace('#','');
-    const link = map.get(id);
-    if(!link) return;
-    nav.querySelectorAll('a.is-active').forEach(x=>x.classList.remove('is-active'));
-    link.classList.add('is-active');
-    const det = link.closest('details.pjs-acc');
-    if(det) det.open = true;
-  }
-  openFromHash();
-  window.addEventListener('hashchange', openFromHash);
-})();
-</script>
-
+    // Podle hash při načtení
+    function openFromHash(){
+      const id = location.hash.replace('#','');
+      const link = map.get(id);
+      if(!link) return;
+      links.forEach(x=>x.classList.remove('is-active'));
+      link.classList.add('is-active');
+      const det = link.closest('details.pjs-acc'); if(det) det.open = true;
+    }
+    openFromHash();
+    window.addEventListener('hashchange', openFromHash);
+  })();
+  </script>
 </body>
 </html>
