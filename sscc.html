@@ -1,91 +1,100 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SSCC — Rámec & mise</title>
- <link rel="stylesheet" href="assets/style-v4.css?v=8">
+  <title>SolarSpace Carbon Cycle — SSCC</title>
+  <style>
+    :root{
+      --bg: #0d1a16;
+      --bg-elev: #10211c;
+      --text: #e9f0ec;
+      --muted: #b7c6bf;
+      --ink: rgba(233,240,236,.08);
+      --accent: #c9b26a;          /* matná „zlatá“ */
+      --accent-strong: #d8c27a;
+      --accent-ink: rgba(201,178,106,.15);
+      --border: rgba(233,240,236,.08);
 
+      --radius: 16px;
+      --shadow: 0 1px 1px rgba(0,0,0,.2), 0 8px 24px rgba(0,0,0,.35);
+    }
+
+    html{scroll-behavior:smooth}
+    body{
+      background: radial-gradient(1200px 600px at 25% 0%, rgba(255,255,255,0.03), transparent), var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, Inter, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height: 1.6;
+      margin:0;
+    }
+
+    .container{max-width: 1120px; margin-inline:auto; padding-inline: 1.25rem}
+    .prose{max-width: 72ch}
+
+    h1,h2,h3{letter-spacing:-.01em; margin:0}
+    h1{font-weight:800; line-height:1.15; margin: 0 0 12px; font-size:clamp(2rem, 1.2rem + 2.5vw, 3.4rem)}
+    h2{font-weight:700; margin: 32px 0 12px; font-size:clamp(1.5rem, 1rem + 1.6vw, 2.4rem)}
+    h3{font-weight:700; margin: 24px 0 8px; font-size:clamp(1.25rem, .9rem + 1vw, 1.5rem)}
+    .lead{color:var(--muted); font-size:clamp(1rem,.95rem + .35vw,1.125rem)}
+
+    a{color:inherit; text-decoration: none; border-bottom: 1px dotted transparent; transition: border-color .2s ease}
+    a:hover{border-bottom-color: var(--muted)}
+    a:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-bottom-color: transparent}
+
+    .btn{
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.7rem 1rem; border-radius: calc(var(--radius) - 4px);
+      border:1px solid var(--border); background: var(--ink); backdrop-filter:saturate(120%);
+      font-weight:600; transition: transform .04s ease, background .2s ease, border-color .2s ease;
+    }
+    .btn:hover{background: var(--accent-ink); border-color: var(--accent-strong)}
+    .btn:active{transform: translateY(1px)}
+    .btn--primary{background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+      color:#17150b; border-color: transparent}
+    .btn--primary:hover{filter:brightness(1.05)}
+    .btn--ghost{background: transparent}
+
+    .badge{ display:inline-block; padding:.25rem .5rem; border-radius:999px; border:1px solid var(--border); background:var(--ink); font-size:.85rem; color:var(--muted) }
+
+    /* Nav Bar */
+    .nav{ position: sticky; top:0; z-index:50; backdrop-filter: blur(8px) saturate(140%);
+      background: linear-gradient(to bottom, rgba(13,26,22,.85), rgba(13,26,22,.6)); border-bottom: 1px solid var(--border); }
+    .nav-inner{ display:flex; align-items:center; justify-content:space-between }
+    .nav a{padding:.9rem .8rem; border-bottom: 2px solid transparent}
+    .nav a[aria-current="page"]{border-bottom-color: var(--accent); color: var(--text)}
+    .brand{font-weight: 800; letter-spacing:.02em}
+
+    /* Hero */
+    .hero{ padding: 56px 0 32px }
+    .hero .cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 12px }
+
+    /* Side nav + cards layout */
+    .grid-projects{ display:grid; grid-template-columns: 260px 1fr; gap: 24px }
+    .sidenav{position: sticky; top: 84px}
+    .sidenav a{ display:block; padding:.6rem .75rem; border-radius: 10px; color:var(--muted) }
+    .sidenav a:hover{background: var(--ink); color: var(--text)}
+    .sidenav a[aria-current="true"]{background: var(--accent-ink); color: var(--text); border-left:2px solid var(--accent)}
+
+    .grid-cards{ display:grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 16px }
+    .card{ background: linear-gradient(180deg, var(--bg-elev), #0c1915); border:1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding:1.1rem; transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease }
+    .card:hover{transform: translateY(-2px); border-color: var(--accent-strong)}
+
+    ul{padding-left: 1.2rem}
+    li{margin: .4rem 0}
+
+    .footer{margin-top:64px; padding:24px 0; border-top:1px solid var(--border); color:var(--muted)}
+
+    /* Skip link */
+    .skip-link{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden }
+    .skip-link:focus{left:16px; top:16px; width:auto; height:auto; padding:.5rem .75rem; background:#000; color:#fff; border-radius:8px}
+
+    /* Small screens */
+    @media (max-width:900px){ .grid-projects{ grid-template-columns: 1fr } .sidenav{ position:static; display:flex; gap:8px; overflow:auto; white-space:nowrap } }
+  </style>
 </head>
-<body data-page="sscc">
+<body>
+  <a class="skip-link" href="#main">Přeskočit na obsah</a>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="index.html" class="brand">
-        <img src="assets/sscc-logo.jpg" alt="SSCC" class="logo">
-        <span class="site-title">SolarSpace Carbon Cycle — SSCC</span>
-      </a>
-      <nav class="main-nav" id="mainNav">
-        <a href="sscc.html">SSCC</a>
-        <a href="projekty.html">Projekty</a>
-        <a href="spoluprace.html">Spolupráce</a>
-        <a href="edukace.html">Edukace</a>
-        <a href="konsorcium.html">Konsorcium</a>
-        <a href="napady.html">Nápady</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="container site-main">
-    <header class="page-head">
-  <p class="kicker">SSCC</p>
-  <h1>Rámec, mise a metriky</h1>
-  <p class="lead">SolarSpace Carbon Cycle (SSCC) je otevřená iniciativa pro praktickou demonstraci orbitální solární energie a uhlíkových cyklů založených na čistých nosičích (NH₃). Zaměřujeme se na měřitelné výsledky, bezpečnost a regulační řád.</p>
-</header>
-
-<section aria-labelledby="mission">
-  <h2 id="mission">Mise</h2>
-  <ul>
-    <li>Bezpečně demonstrovat přenos energie z oběžné dráhy na zemský povrch.</li>
-    <li>Vybudovat reálné prototypy příjmu, měření a řízení svazku.</li>
-    <li>Propojit energii s uhlíkově negativními nosiči (např. zelený NH₃).</li>
-  </ul>
-</section>
-
-<section aria-labelledby="scope">
-  <h2 id="scope">Rozsah a kroky</h2>
-  <ol>
-    <li>Bezpečnostní studie a regulační rámec (mikrovlny / laser, zóny, LIDAR).</li>
-    <li>Pozemní prototyp příjmu, metrologie a ověřování účinnosti.</li>
-    <li>Integrace s piloty DAC → NH₃ (RD, obec, geotermální hub).</li>
-  </ol>
-</section>
-
-<section aria-labelledby="metrics">
-  <h2 id="metrics">Metriky</h2>
-  <ul>
-    <li>Účinnost přenosu a příjmu (W/m², celková bilance).</li>
-    <li>Bezpečnostní limity (expozice, zónování, fail-safe režimy).</li>
-    <li>Ekonomika prototypu (CAPEX/OPEX, LCOE/LCNH₃).</li>
-  </ul>
-</section>
-
-<section aria-labelledby="roadmap">
-  <h2 id="roadmap">Roadmapa</h2>
-  <p>Aktuální projekty a milníky najdeš v sekci <a href="projekty.html">Projekty</a>. Výzvy k zapojení průběžně zveřejňujeme v <a href="spoluprace.html">Spolupráci</a>.</p>
-</section>
-
-    <h1>SSCC — rámec a mise</h1>
-    <p>Stránka rámce programu, governance, roadmapy a metrik.</p>
-  </main>
-
-  <footer class="site-footer">
-    <div data-include="partials/footer.html"></div>
-    <small>© <span id="year"></span> SSCC — SolarSpace Carbon Cycle</small>
-  </footer>
-
-  <script src="assets/include.js"></script>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    (function(){
-      const p = document.body.dataset.page;
-      const m = {
-        sscc:"sscc.html", projekty:"projekty.html", spoluprace:"spoluprace.html",
-        edukace:"edukace.html", konsorcium:"konsorcium.html", napady:"napady.html"
-      };
-      const a = document.querySelector('.main-nav a[href="'+m[p]+'"]');
-      if(a) a.setAttribute('aria-current','page');
-    })();
-  </script>
-</body>
-</html>
+  <header class="nav">
+    <div class="container nav-inn
