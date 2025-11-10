@@ -4,28 +4,31 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SolarSpace Carbon Cycle — SSCC</title>
- <link rel="stylesheet" href="assets/style-v4.css?v=8">
-
+  <link rel="stylesheet" href="assets/style-v4.css?v=8">
+  <!-- Doporučení do CSS (assets/style-v4.css):
+       [id]{scroll-margin-top:84px;}  .skip-link:focus{outline:2px solid #c9b26a; outline-offset:2px;}
+  -->
 </head>
 <body data-page="index">
   <a class="skip-link" href="#main">Přeskočit na obsah</a>
 
- <header class="nav">
-  <div class="container flex items-center justify-between">
-    <a class="brand" href="/">SolarSpace Carbon Cycle</a>
-    <nav aria-label="Hlavní navigace">
-      <a href="/sscc" aria-current="page">SSCC</a>
-      <a href="/projekty">Projekty</a>
-      <a href="/spoluprace">Spolupráce</a>
-      <a href="/edukace">Edukace</a>
-      <a href="/konsorcium">Konsorcium</a>
-      <a href="/napady">Nápady</a>
-    </nav>
-  </div>
-</header>
-<main id="main">
+  <header class="nav">
+    <div class="container flex items-center justify-between">
+      <a class="brand" href="index.html">SolarSpace Carbon Cycle</a>
+      <nav class="main-nav" aria-label="Hlavní navigace">
+        <a href="sscc.html">SSCC</a>
+        <a href="projekty.html">Projekty</a>
+        <a href="spoluprace.html">Spolupráce</a>
+        <a href="edukace.html">Edukace</a>
+        <a href="konsorcium.html">Konsorcium</a>
+        <a href="napady.html">Nápady</a>
+      </nav>
+    </div>
+  </header>
 
-  <main class="container site-main">
+  <!-- ✔ jen jeden <main> -->
+  <main id="main" class="container site-main">
+
     <section class="hero hero--center">
       <h1>Orbitální solární energie, prakticky</h1>
       <p class="lead">
@@ -42,6 +45,7 @@
       <h2>Elegantní základ</h2>
       <p>Tmavě zelené pozadí, světlejší hlavička/patička, zlatá typografie. Bez rámečků, klidný layout.</p>
     </section>
+
   </main>
 
   <footer class="site-footer">
@@ -51,16 +55,25 @@
 
   <script src="assets/include.js"></script>
   <script>
+    // rok ve footeru
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // zvýraznění aktivní položky v top navigaci podle data-page
     (function(){
       const map = {
-        index:"index.html", sscc:"sscc.html", projekty:"projekty.html",
-        spoluprace:"spoluprace.html", edukace:"edukace.html",
-        konsorcium:"konsorcium.html", napady:"napady.html"
+        index:"index.html",
+        sscc:"sscc.html",
+        projekty:"projekty.html",
+        spoluprace:"spoluprace.html",
+        edukace:"edukace.html",
+        konsorcium:"konsorcium.html",
+        napady:"napady.html"
       };
       const cur = map[document.body.dataset.page];
-      const a = document.querySelector('.main-nav a[href="'+cur+'"]');
-      if (a) a.setAttribute('aria-current','page');
+      // buď používáme třídu .main-nav (doplněna v HTML)…
+      const link = document.querySelector('.main-nav a[href="'+cur+'"]')
+                || document.querySelector('header nav a[href="'+cur+'"]'); // …nebo fallback
+      if (link) link.setAttribute('aria-current','page');
     })();
   </script>
 </body>
