@@ -1,0 +1,99 @@
+/* ========= Globální proměnné ========= */
+:root{
+  --bg:         #0b1411;
+  --panel:      rgba(18, 26, 23, 0.82);
+  --panel-2:    rgba(18, 26, 23, 0.66);
+  --ink:        #e7f4e9;
+  --muted:      #a9c5b0;
+  --accent:     #ffd76a;
+  --accent-2:   #f1b93b;
+  --badge:      #22362c;
+  --line:       rgba(255,255,255,.06);
+  --ok:         #9be2b1;
+  --btn:        #1c2e26;
+  --btn-line:   rgba(255,255,255,.08);
+  --btn-hover:  #233a30;
+  --shadow-1:   0 12px 35px rgba(0,0,0,.45);
+  --shadow-2:   0 22px 60px rgba(0,0,0,.55);
+  --radius:     14px;
+  --radius-xl:  20px;
+  --radius-2xl: 26px;
+}
+
+/* ========= Základ ========= */
+*{ box-sizing:border-box }
+html,body{ height:100% }
+html{ scroll-behavior:smooth }
+body{
+  margin:0;
+  color:var(--ink);
+  background:
+    radial-gradient(1200px 800px at 12% 8%,
+      rgba(255,221,120,.22),
+      rgba(250,200,95,.12) 40%,
+      rgba(255,190,80,.06) 55%,
+      rgba(0,0,0,0) 70%),
+    linear-gradient(#0b1411,#0b1411);
+  font: 16px/1.55 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* ========= Pomocné ========= */
+.container, .site-main, .page-wrap{
+  max-width:1180px; margin:26px auto; padding:0 18px;
+}
+.lead{ color:var(--muted) }
+
+/* ========= Tlačítka ========= */
+.btn{
+  display:inline-flex; align-items:center; gap:.5rem;
+  background:var(--btn); color:var(--ink);
+  border:1px solid var(--btn-line); border-radius:12px;
+  padding:10px 14px; text-decoration:none; font-weight:700; font-size:14px;
+  transition:.15s ease-in-out background, .15s ease-in-out transform;
+}
+.btn:hover{ background:var(--btn-hover) }
+.btn.primary{ background:linear-gradient(180deg,#1f332a,#1a2a23); border-color:var(--btn-line) }
+.btn--gold{ background:linear-gradient(180deg,#2b3f31,#23352b); border-color:var(--accent-2) }
+.btn--ghost{ background:transparent; border-color:var(--line) }
+
+/* ========= Hlavička ========= */
+.site-header{
+  position:sticky; top:0; z-index:40;
+  background:rgba(12,18,16,.75); backdrop-filter:saturate(1.2) blur(6px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  max-width:1180px; margin:0 auto; padding:10px 18px;
+}
+.brand{ display:flex; align-items:center; gap:.6rem; color:var(--ink); text-decoration:none }
+.logo{ width:46px; height:46px; border-radius:50%; box-shadow:0 6px 16px rgba(0,0,0,.35) }
+.site-title{ font-weight:700 }
+
+.main-nav{ display:flex; gap:24px; align-items:center }
+.main-nav a{
+  color:var(--muted); text-decoration:none; padding:8px 10px; border-radius:10px;
+}
+.main-nav a[aria-current="page"]{
+  color:#0b1411; background:linear-gradient(180deg,#ffd76a,#f1b93b);
+  font-weight:800; text-shadow:none;
+}
+
+/* ========= Patička ========= */
+.site-footer{
+  margin-top:60px; padding:26px 18px; border-top:1px solid var(--line);
+  color:var(--muted); text-align:center; background:rgba(12,18,16,.4);
+}
+
+/* ========= Titulky / texty ========= */
+h1,h2,h3{ line-height:1.18; margin:.25rem 0 .6rem }
+h1{ font-size:42px }
+h2{ font-size:34px }
+h3{ font-size:22px }
+
+/* ========= Responzivita ========= */
+@media (max-width:920px){
+  h1{ font-size:36px }
+  h2{ font-size:28px }
+  .main-nav{ gap:10px; flex-wrap:wrap }
+}
