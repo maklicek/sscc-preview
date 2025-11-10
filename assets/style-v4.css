@@ -1,790 +1,135 @@
-/* ========= Globální proměnné ========= */
+/* ========= SSCC · v5 (čisté a sjednocené) ========= */
+
+/* --- Proměnné (převzato z tvé palety) --- */
 :root{
-  --bg:         #0b1411;
-  --panel:      rgba(18, 26, 23, 0.82);
-  --panel-2:    rgba(18, 26, 23, 0.66);
-  --ink:        #e7f4e9;
-  --muted:      #a9c5b0;
-  --accent:     #ffd76a;
-  --accent-2:   #f1b93b;
-  --badge:      #22362c;
-  --line:       rgba(255,255,255,.06);
-  --ok:         #9be2b1;
-  --btn:        #1c2e26;
-  --btn-line:   rgba(255,255,255,.08);
-  --btn-hover:  #233a30;
-  --shadow-1:   0 12px 35px rgba(0,0,0,.45);
-  --shadow-2:   0 22px 60px rgba(0,0,0,.55);
-  --radius:     14px;
-  --radius-xl:  20px;
-  --radius-2xl: 26px;
+  --bg: #0b1411;
+  --panel: rgba(18,26,23,.82);
+  --panel-2: rgba(18,26,23,.66);
+  --ink: #e7f4e9;
+  --muted: #a9c5b0;
+  --accent: #ffd76a;
+  --accent-2: #f1b93b;
+  --line: rgba(255,255,255,.08);
+  --btn: #1c2e26;
+  --btn-hover: #233a30;
+  --radius: 14px;
+  --radius-xl: 20px;
+  --shadow-1: 0 12px 35px rgba(0,0,0,.45);
+  --shadow-2: 0 22px 60px rgba(0,0,0,.55);
 }
 
-/* ========= Základ ========= */
-*{ box-sizing:border-box }
-html,body{ height:100% }
+/* --- Základ --- */
+*{ box-sizing: border-box }
 html{ scroll-behavior:smooth }
 body{
   margin:0;
   color:var(--ink);
   background:
     radial-gradient(1200px 800px at 12% 8%,
-      rgba(255,221,120,.22),
-      rgba(250,200,95,.12) 40%,
-      rgba(255,190,80,.06) 55%,
+      rgba(255,221,120,.18),
+      rgba(250,200,95,.10) 40%,
+      rgba(255,190,80,.05) 55%,
       rgba(0,0,0,0) 70%),
     linear-gradient(#0b1411,#0b1411);
-  font: 16px/1.55 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font: 16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-/* ========= Pomocné ========= */
-.container, .site-main, .page-wrap{
-  max-width:1280px; margin:26px auto; padding:0 24px;
-}
-.lead{ color:var(--muted) }
-
-/* ========= Tlačítka ========= */
-.btn{
-  display:inline-flex; align-items:center; gap:.5rem;
-  background:var(--btn); color:var(--ink);
-  border:1px solid var(--btn-line); border-radius:12px;
-  padding:10px 14px; text-decoration:none; font-weight:700; font-size:14px;
-  transition:.15s ease-in-out background, .15s ease-in-out transform;
-}
-.btn:hover{ background:var(--btn-hover) }
-.btn.primary{ background:linear-gradient(180deg,#1f332a,#1a2a23); border-color:var(--btn-line) }
-.btn--gold{ background:linear-gradient(180deg,#2b3f31,#23352b); border-color:var(--accent-2) }
-.btn--ghost{ background:transparent; border-color:var(--line) }
-
-/* ========= Hlavička ========= */
-.site-header{
-  position:sticky; top:0; z-index:40;
-  background:rgba(12,18,16,.75); backdrop-filter:saturate(1.2) blur(6px);
-  border-bottom:1px solid var(--line);
-}
-.header-inner{
-  display:flex; align-items:center; justify-content:space-between;
-  max-width:1180px; margin:0 auto; padding:10px 18px;
-}
-.brand{ display:flex; align-items:center; gap:.6rem; color:var(--ink); text-decoration:none }
-.logo{ width:46px; height:46px; border-radius:50%; box-shadow:0 6px 16px rgba(0,0,0,.35) }
-.site-title{ font-weight:700 }
-
-.main-nav{ display:flex; gap:24px; align-items:center }
-.main-nav a{
-  color:var(--muted); text-decoration:none; padding:8px 10px; border-radius:10px;
-}
-.main-nav a[aria-current="page"]{
-  color:#0b1411; background:linear-gradient(180deg,#ffd76a,#f1b93b);
-  font-weight:800; text-shadow:none;
-}
-
-/* ========= Patička ========= */
-.site-footer {
-  background: rgba(255,255,255,.035); /* světlejší než dřív */
-  border-top: 1px solid rgba(255,255,255,.08);
-  color: rgba(231,244,233,.86);        /* lehce světlejší text */
-}
-.site-footer a { color: #ffd76a; }
-.site-footer a:hover { opacity: .9; }
-
-
-/* ========= Titulky / texty ========= */
-h1,h2,h3{ line-height:1.18; margin:.25rem 0 .6rem }
-h1{ font-size:42px }
-h2{ font-size:34px }
-h3{ font-size:22px }
-
-/* ========= Responzivita ========= */
-@media (max-width:920px){
-  h1{ font-size:36px }
-  h2{ font-size:28px }
-  .main-nav{ gap:10px; flex-wrap:wrap }
-}
-/* u hrdinské sekce na homepage (je-li) klidně ještě víc */
-.hero .container,
-.hero.page-wrap {
-  max-width: 1360px;
-}
-/* Logo v navigaci – zvětšeno */
-.site-header .logo {
-  width: 48px;
-  height: 48px;
-  object-fit: cover;
-  border-radius: 0; /* ostré rohy */
-  box-shadow: 0 6px 16px rgba(0,0,0,.35);
-}
-.site-header .logo {
-  border: 1px solid rgba(255,255,255,.08);
-}
-
-.site-header .brand { gap: 12px; }  /* trochu víc místa mezi logem a názvem */
-/* Šířka layoutu */
-.page-wrap, .container, .header-inner, .footer-inner {
-  max-width: 1280px;         /* zvětšeno, ať „střed“ není úzký */
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-/* ===== HEADER ===== */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: rgba(12,18,16,.82);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-.site-header .header-inner {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  height: 72px;              /* pevná výška = stabilní layout */
-}
-.site-header .brand {
-  display: inline-flex; align-items: center; gap: 12px;
-  color: #e7f4e9; text-decoration: none; font-weight: 700;
-}
-.site-header .logo {
-  width: 56px; height: 56px; object-fit: cover;
-  border-radius: 50%;        /* kulaté logo; smaž pro čtverec */
-}
-.site-title { white-space: nowrap; }
-
-.main-nav {
-  margin-left: auto; display: flex; gap: 18px; flex-wrap: wrap;
-}
-.main-nav a {
-  color: #cfe6d7; text-decoration: none; font-weight: 700;
-  padding: 8px 10px; border-radius: 10px;
-}
-.main-nav a[aria-current="page"] {
-  background: rgba(255,215,106,.12);
-  border: 1px solid rgba(255,215,106,.35);
-  color: #ffd76a;
-}
-
-/* Pokud ti „hero“ hned navazuje pod sticky header a překrývá se,
-   můžeš přidat top padding na první sekci stránky.
-   .page-wrap:first-child { padding-top: 12px; } */
-
-/* ===== FOOTER ===== */
-.site-footer {
-  margin-top: 64px;
-  background: rgba(255,255,255,.035); /* světlejší */
-  border-top: 1px solid rgba(255,255,255,.08);
-  color: rgba(231,244,233,.86);
-}
-.footer-inner {
-  height: 72px; display:flex; align-items:center; gap: 10px;
-}
-.site-footer a { color: #ffd76a; text-decoration: none; }
-.site-footer a:hover { opacity: .9; }
-.footer-inner .sep { opacity: .4; }
-/* === LAYOUT: tělo a patička === */
-html, body { height: 100%; }
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: radial-gradient(1200px 800px at 12% 8%,
-              rgba(255,221,120,.22),
-              rgba(250,200,95,.12) 40%,
-              rgba(255,190,80,.06) 55%,
-              rgba(0,0,0,0) 70%),
-            linear-gradient(#0b1411,#0b1411);
-}
-main, .site-main, .page-wrap { flex: 1 0 auto; }
-
-/* konzistentní maximální šířka obsahu */
-.container, .site-main, .page-wrap {
+/* --- Layout --- */
+.container, .site-main{
   max-width: 1180px;
-  width: 100%;
   margin: 0 auto;
   padding: 0 18px;
 }
-/* === HEADER === */
-.site-header {
-  position: sticky; /* pokud nechceš sticky, dej 'static' */
-  top: 0;
-  z-index: 50;
-  background: rgba(18, 26, 23, 0.92);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  box-shadow: 0 6px 24px rgba(0,0,0,.35);
-}
+[id]{ scroll-margin-top: 84px }  /* kotvy nepodjedou pod hlavičku */
 
-.site-header .header-inner{
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 12px 18px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
+/* --- Odkazy / focus --- */
+a{ color: #ffe49a; text-decoration: none; text-decoration-color: rgba(255,215,106,.45) }
+a:hover{ text-decoration-color: rgba(255,215,106,.8) }
+:focus-visible{ outline:2px solid #ffd76a; outline-offset:2px }
 
-/* logo větší (čtverec nebo kruh): jen si vyber tvar */
-.site-header .logo{
-  width: 48px;               /* 44–56px podle chuti */
-  height: 48px;
-  object-fit: cover;
-  border-radius: 12px;       /* čtverec se zaoblením */
-  /* border-radius: 999px;  // pokud chceš čistě kulaté */
-  box-shadow: 0 6px 16px rgba(0,0,0,.35);
-}
+/* --- Typografie --- */
+.lead{ color:var(--muted) }
+h1,h2,h3{ line-height:1.18; margin:.25rem 0 .6rem; letter-spacing:.01em }
+h1{ font-size: clamp(2.2rem, 1.8rem + 1.8vw, 3.2rem); font-weight:800 }
+h2{ font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.2rem); font-weight:700 }
+h3{ font-size: 1.25rem; font-weight:700 }
 
-.site-header .brand{
-  display:flex; align-items:center; gap:12px;
-  text-decoration:none;
-}
-
-.site-header .site-title{
-  font-weight: 700;
-  color: #e7f4e9;
-}
-
-/* menu */
-.main-nav{
-  margin-left: auto;
-  display:flex; gap: 18px; flex-wrap: wrap;
-}
-.main-nav a{
-  color:#dfeee6;
-  text-decoration:none;
-  padding:8px 12px;
-  border-radius:10px;
-  border:1px solid transparent;
-}
-.main-nav a:hover{
-  background:#1a2a23;
-  border-color: rgba(255,255,255,.08);
-}
-.main-nav a[aria-current="page"]{
-  background: linear-gradient(180deg, #25382f, #1c2e26);
-  border-color: rgba(255,255,255,.12);
-}
-/* === FOOTER === */
-.site-footer{
-  flex-shrink: 0;
-  background: rgba(12,18,16,.55);
-  border-top: 1px solid rgba(255,255,255,.08);
-  color: #a9c5b0;
-  text-align:center;
-  padding: 22px 18px;
-  box-shadow: 0 -12px 28px rgba(0,0,0,.35) inset;
-}
-.site-footer small, .site-footer a{
-  color: #b9d3c0;
-  text-decoration: none;
-}
-.site-footer a:hover{ text-decoration: underline; }
-/* ===========================================================
-   SSCC · Header & Footer — 2025 compact fix
-   Bezpečné přepsání existujících stylů (specifické selektory)
-   =========================================================== */
-:root{
-  --bg: #0d1a16;
-  --bg-elev: #10211c;
-  --text: #e9f0ec;
-  --muted: #b7c6bf;
-  --ink: rgba(233,240,236,.08);
-  --accent: #c9b26a;          /* matná „zlatá“ */
-  --accent-strong: #d8c27a;
-  --accent-ink: rgba(201,178,106,.15);
-  --border: rgba(233,240,236,.08);
-
-  --radius: 16px;
-  --shadow: 0 1px 1px rgba(0,0,0,.2), 0 8px 24px rgba(0,0,0,.35);
-}
-
-html{scroll-behavior:smooth}
-body{
-  background: radial-gradient(1200px 600px at 25% 0%, rgba(255,255,255,0.03), transparent) , var(--bg);
-  color: var(--text);
-  font-family: ui-sans-serif, system-ui, Inter, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  line-height: 1.6;
-}
-
-.container{max-width: 1120px; margin-inline:auto; padding-inline: 1.25rem;}
-.prose{max-width: 72ch}
-
-h1,h2,h3{letter-spacing:-.01em}
-h1{font-weight:800; line-height:1.15; margin: 0 0 12px}
-h2{font-weight:700; margin: 32px 0 12px}
-h3{font-weight:700; margin: 24px 0 8px}
-.lead{color:var(--muted); font-size:clamp(1rem,.95rem + .35vw,1.125rem)}
-
-a{color:inherit; text-decoration: none; border-bottom: 1px dotted transparent; transition: border-color .2s ease}
-a:hover{border-bottom-color: var(--muted)}
-a:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-bottom-color: transparent}
-
-.btn{
-  display:inline-flex; align-items:center; gap:.5rem;
-  padding:.7rem 1rem; border-radius: calc(var(--radius) - 4px);
-  border:1px solid var(--border); background: var(--ink); backdrop-filter:saturate(120%);
-  font-weight:600; transition: transform .04s ease, background .2s ease, border-color .2s ease;
-}
-.btn:hover{background: var(--accent-ink); border-color: var(--accent-strong)}
-.btn:active{transform: translateY(1px)}
-.btn--primary{background: linear-gradient(180deg, var(--accent), var(--accent-strong));
-  color:#17150b; border-color: transparent}
-.btn--primary:hover{filter:brightness(1.05)}
-.btn--ghost{background: transparent}
-
-.badge{
-  display:inline-block; padding:.25rem .5rem; border-radius:999px;
-  border:1px solid var(--border); background:var(--ink); font-size:.85rem; color:var(--muted)
-}
-
-/* Nav Bar */
-.nav{
-  position: sticky; top:0; z-index:50; backdrop-filter: blur(8px) saturate(140%);
-  background: linear-gradient(to bottom, rgba(13,26,22,.85), rgba(13,26,22,.6));
-  border-bottom: 1px solid var(--border);
-}
-.nav a{padding:.9rem .8rem; border-bottom: 2px solid transparent}
-.nav a[aria-current="page"]{border-bottom-color: var(--accent); color: var(--text)}
-.nav .brand{font-weight: 800; letter-spacing:.02em}
-
-/* Side nav (Projekty) */
-.sidenav{position: sticky; top: 84px}
-.sidenav a{
-  display:block; padding:.6rem .75rem; border-radius: 10px; color:var(--muted)
-}
-.sidenav a:hover{background: var(--ink); color: var(--text)}
-.sidenav a[aria-current="true"]{background: var(--accent-ink); color: var(--text); border-left:2px solid var(--accent)}
-
-/* Cards */
-.card{
-  background: linear-gradient(180deg, var(--bg-elev), #0c1915);
-  border:1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow);
-  padding:1.1rem; transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease;
-}
-.card:hover{transform: translateY(-2px); border-color: var(--accent-strong)}
-
-/* Lists */
-ul{padding-left: 1.2rem}
-li{margin: .4rem 0}
-
-/* Footer */
-.footer{margin-top:64px; padding:24px 0; border-top:1px solid var(--border); color:var(--muted)}
-
-/* Skip link */
-.skip-link{
-  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden
-}
-.skip-link:focus{left:16px; top:16px; width:auto; height:auto; padding:.5rem .75rem; background:#000; color:#fff; border-radius:8px}
-
-
-:root {
-  --hdr-bg: rgba(14, 22, 19, 0.78);      /* světlejší pruh než stránka */
-  --hdr-line: rgba(255, 255, 255, 0.06); /* jemná linka pod hlavičkou */
-  --hdr-shadow: 0 10px 24px rgba(0,0,0,.35);
-  --hdr-max: 1180px;
-  --ink: #e7f4e9;
-  --muted: #a9c5b0;
-  --accent: #ffd76a;
-}
-
-/* ----- HEADER ------------------------------------------------------------ */
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background:
-    radial-gradient(900px 420px at 12% -60%, rgba(255,220,120,.15), rgba(0,0,0,0) 55%)
-    ,var(--hdr-bg);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid var(--hdr-line);
-  box-shadow: var(--hdr-shadow);
-}
-
-.site-header .header-inner {
-  max-width: var(--hdr-max);
-  margin: 0 auto;
-  padding: 10px 18px;
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-/* Brand (logo + název) */
-.site-header .brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--ink);
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.site-header .logo {
-  width: 52px;              /* Mírně větší logo */
-  height: 52px;
-  object-fit: cover;
-  border-radius: 0;         /* OSTRÉ ROHY */
-  border: 1px solid rgba(255,255,255,.10);
-  box-shadow: 0 6px 16px rgba(0,0,0,.35);
-}
-
-.site-header .site-title {
-  font-weight: 700;
-  letter-spacing: .02em;
-  color: var(--ink);
-  opacity: .95;
-}
-
-/* Hlavní navigace */
-.site-header .main-nav {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.site-header .main-nav a {
-  color: var(--ink);
-  text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 12px;
-  border: 1px solid transparent;
-  opacity: .95;
-}
-
-.site-header .main-nav a:hover {
-  background: rgba(255,255,255,.06);
-  border-color: rgba(255,255,255,.08);
-}
-
-.site-header .main-nav a[aria-current="page"] {
-  color: #0b1411;
-  background: linear-gradient(180deg,#ffd76a,#eec158);
-  border-color: rgba(0,0,0,.1);
-  font-weight: 700;
-  box-shadow: 0 8px 18px rgba(0,0,0,.25);
-}
-
-/* ----- WIDTH CONSISTENCY (centrace obsahu na všech stránkách) ----------- */
-
-.container,
-.site-main,
-.page-wrap {
-  max-width: var(--hdr-max);
-  margin-inline: auto;
-  padding-inline: 18px;
-}
-
-/* ----- FOOTER ------------------------------------------------------------ */
-
-.site-footer {
-  margin-top: 60px;
-  border-top: 1px solid var(--hdr-line);
-  background: rgba(12,18,16,.42);       /* lehce světlejší než stránka */
-  color: var(--muted);
-  text-align: center;
-  padding: 24px 18px;
-}
-
-.site-footer a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.site-footer a:hover {
-  text-decoration: underline;
-}
-
-/* ----- RESPONSIVE -------------------------------------------------------- */
-
-@media (max-width: 820px) {
-  .site-header .site-title { display: none; }  /* úspora místa na mobilu */
-  .site-header .logo { width: 46px; height: 46px; }
-  .site-header .main-nav a { padding: 8px 10px; }
-}
-/* ===========================================================
-   SSCC · Zlaté ladění typografie (page-scoped verze)
-   =========================================================== */
-
-/* --- HOME --------------------------------------------------- */
-.page-home h1,
-[data-page="index"] h1 {
-  font-size: 3rem;
-  line-height: 1.15;
-  font-weight: 800;
-  background: linear-gradient(180deg, #ffe38a 0%, #e8c04f 70%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 2px 3px rgba(0,0,0,.35);
-}
-
-.page-home h2,
-[data-page="index"] h2 {
-  color: #f5e7b0;
-  text-shadow: 0 1px 2px rgba(0,0,0,.25);
-}
-
-.page-home .btn.primary {
-  background: linear-gradient(180deg, #ffd76a, #e8b93f);
-  color: #0b1411;
-  font-weight: 700;
-  border: 1px solid rgba(0,0,0,.15);
-}
-.page-home .btn.primary:hover {
-  filter: brightness(1.08);
-}
-
-/* --- PROJEKTY ---------------------------------------------- */
-.page-projects h1,
-[data-page="projekty"] h1 {
-  color: #f3df96;
-  text-shadow: 0 1px 2px rgba(0,0,0,.25);
-}
-.page-projects h2,
-[data-page="projekty"] h2 {
-  color: #eddc94;
-}
-
-.page-projects .badge {
-  color: #0b1411;
-  background: linear-gradient(180deg, #ffd76a, #e8b93f);
-  border-color: rgba(0,0,0,.12);
-  box-shadow: 0 4px 10px rgba(0,0,0,.25);
-}
-.page-projects .badge .dot {
-  background: #fff6cc;
-  box-shadow: 0 0 12px #ffe892;
-}
-
-/* --- HLAVIČKA – jemné zvýraznění loga a textu --------------- */
-.site-header .site-title {
-  background: linear-gradient(90deg, #ffe38a, #e8c04f);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-weight: 800;
-  letter-spacing: .01em;
-  text-shadow: 0 1px 2px rgba(0,0,0,.25);
-}
-
-/* --- PATIČKA ------------------------------------------------ */
-.site-footer small {
-  color: #e0d5a2;
-  letter-spacing: .03em;
-}
-/* ===========================================================
-   SSCC · Logo shine efekt (čisté CSS)
-   =========================================================== */
-
-/* kontejner loga */
-.site-header .brand .logo {
-  position: relative;
-  overflow: hidden;
-  border-radius: 0; /* ostré rohy – čtverec */
-  transition: transform .3s ease, box-shadow .3s ease;
-}
-
-/* jemné zvětšení při hoveru */
-.site-header .brand:hover .logo {
-  transform: scale(1.03);
-  box-shadow: 0 0 20px rgba(255,215,106,.25);
-}
-
-/* odlesk – pseudo-element */
-.site-header .brand .logo::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -120%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.7) 50%,
-    rgba(255,255,255,0) 100%
-  );
-  transform: skewX(-25deg);
-  opacity: 0;
-}
-
-/* při hoveru přejede zleva doprava */
-.site-header .brand:hover .logo::after {
-  animation: logoShine 1.2s ease-in-out forwards;
-  opacity: 1;
-}
-
-/* definice animace */
-@keyframes logoShine {
-  0%   { left: -120%; opacity: 0; }
-  20%  { opacity: .5; }
-  50%  { left: 120%; opacity: .6; }
-  100% { left: 140%; opacity: 0; }
-}
-/* ===== HLAVIČKA · Titulek — zlatý shimmer při hoveru ===== */
-.site-header .brand .site-title{
-  transition: text-shadow .25s ease, filter .25s ease;
-  text-shadow: 0 0 0 transparent;
-  position: relative;
-  will-change: filter;
-}
-
-/* animovaný zlatý přeliv přes text */
-.site-header .brand:hover .site-title{
-  filter: brightness(1.07);
-  text-shadow: 0 0 12px rgba(255,215,106,.15);
-  background: linear-gradient(
-    90deg,
-    var(--ink) 0%,
-    #ffe49a 25%,
-    var(--ink) 50%,
-    #ffd76a 75%,
-    var(--ink) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent; /* zobrazíme jen přeliv */
-  animation: ssccTitleShimmer 1.2s ease-in-out forwards;
-}
-
-@keyframes ssccTitleShimmer{
-  0%   { background-position: -120% 0; }
-  100% { background-position: 120% 0; }
-}
-
-/* Respekt ke snížení pohybu */
-@media (prefers-reduced-motion: reduce){
-  .site-header .brand:hover .site-title{
-    animation: none;
-    background: none;
-    color: var(--ink);
-    text-shadow: 0 0 10px rgba(255,215,106,.18);
-  }
-}
-/* ===== HLAVIČKA · Navigace — jemné zvýraznění ===== */
-.main-nav a{
-  position: relative;
-  text-decoration: none;
-  transition: color .2s ease, filter .2s ease;
-}
-
-/* aktivní / hover barva písma */
-.main-nav a:hover,
-.main-nav a[aria-current="page"]{
-  color: #ffe49a;
-}
-
-/* podtržení jako tenký zlatý proužek */
-.main-nav a::after{
-  content:"";
-  position:absolute;
-  left: 12%;
-  right: 12%;
-  bottom: -6px;
-  height: 2px;
-  background: linear-gradient(90deg, rgba(255,215,106,.0), rgba(255,215,106,.75), rgba(255,215,106,.0));
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform .24s ease;
-}
-
-.main-nav a:hover::after,
-.main-nav a[aria-current="page"]::after{
-  transform: scaleX(1);
-}
-
-/* méně pohybu */
-@media (prefers-reduced-motion: reduce){
-  .main-nav a::after{ transition:none; }
-}
-/* ===== PATIČKA · světlejší pozadí a kontrast ===== */
-.site-footer{
-  background: rgba(12,18,16,.50);   /* jemně světlejší než dřív */
-  border-top: 1px solid rgba(255,255,255,.08);
-  color: var(--muted);
-}
-
-.site-footer small{
-  color: #cfe3d4;                   /* lepší čitelnost na tmavém */
-  letter-spacing: .01em;
-}
-/* ===========================================================
-   SSCC · Zlatý text – sjednocení napříč stránkami
-   =========================================================== */
-
-/* --- Obecný styl nadpisů (H1–H4) --- */
-h1, h2, h3, h4 {
+/* Zlaté nadpisy – střídmě */
+h1,h2{ 
   background: linear-gradient(180deg, #ffe38a 0%, #e8c04f 80%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, .35);
-  font-weight: 700;
-  letter-spacing: 0.01em;
-}
-
-/* --- Specificky H1 větší síla (homepage, projekty, edukace…) --- */
-h1 {
-  font-weight: 800;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, .4);
-}
-
-/* --- Zvýraznění (strong, b) --- */
-strong, b {
-  color: #f5dd87;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .25);
-}
-
-/* --- Nadpisy v kartách projektů --- */
-.project-card h2, 
-.pjs-card__head h3 {
-  background: linear-gradient(180deg, #ffd76a 0%, #e8b93f 90%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow: 0 2px 4px rgba(0,0,0,.35);
 }
 
 /* --- Tlačítka --- */
-.btn.primary {
+.btn{
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:10px 14px; border-radius:12px; font-weight:700; font-size:14px;
+  background:var(--btn); color:var(--ink);
+  border:1px solid rgba(255,255,255,.08);
+  transition: background .15s ease, transform .05s ease, border-color .15s ease;
+}
+.btn:hover{ background:var(--btn-hover); border-color: rgba(255,255,255,.16) }
+.btn:active{ transform: translateY(1px) }
+.btn--gold{
   background: linear-gradient(180deg, #ffd76a, #e8b93f);
-  color: #0b1411;
-  border: 1px solid rgba(0,0,0,.12);
-  font-weight: 700;
-  box-shadow: 0 4px 14px rgba(0,0,0,.3);
-  transition: all .25s ease;
+  color: #0b1411; border-color: rgba(0,0,0,.15); box-shadow: 0 4px 14px rgba(0,0,0,.3);
+}
+.btn--gold:hover{ filter: brightness(1.08) }
+.btn--ghost{ background: transparent }
+
+/* --- Hlavička (odpovídá HTML: <header class="nav">) --- */
+.nav{
+  position: sticky; top:0; z-index:50;
+  background: rgba(12,18,16,.82);
+  backdrop-filter: blur(6px) saturate(1.1);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 10px 24px rgba(0,0,0,.35);
+}
+.nav .container{ display:flex; align-items:center; justify-content:space-between; gap:18px; height:72px }
+.nav .brand{ color:var(--ink); text-decoration:none; font-weight:700; display:inline-flex; align-items:center; gap:12px }
+.nav .main-nav{ margin-left:auto; display:flex; align-items:center; gap:18px; flex-wrap:wrap }
+.nav .main-nav a{
+  color:#cfe6d7; padding:8px 12px; border-radius:10px; border:1px solid transparent;
+}
+.nav .main-nav a:hover{ background:#1a2a23; border-color: rgba(255,255,255,.08) }
+/* aktivní položka – decentní „ink line“ */
+.nav .main-nav a[aria-current="page"]{
+  color:#ffd76a; background: rgba(255,215,106,.12); border-color: rgba(255,215,106,.35);
+  position:relative;
+}
+.nav .main-nav a[aria-current="page"]::after{
+  content:""; position:absolute; left:12%; right:12%; bottom:-6px; height:2px;
+  background: linear-gradient(90deg, rgba(255,215,106,0), rgba(255,215,106,.8), rgba(255,215,106,0));
 }
 
-.btn.primary:hover {
-  filter: brightness(1.1);
-  box-shadow: 0 6px 18px rgba(255,215,106,.3);
+/* --- Hero --- */
+.hero{ padding: 52px 0 28px; text-align:center }
+.hero .lead{ max-width: 72ch; margin: 0 auto }
+.hero-cta{ display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:12px }
+
+/* --- Patička --- */
+.site-footer{
+  margin-top:64px; text-align:center; padding:24px 18px;
+  background: rgba(12,18,16,.5);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+.site-footer a{ color:#ffd76a }
+.site-footer small{ color:#cfe3d4 }
+
+/* --- Skip link --- */
+.skip-link{
+  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden
+}
+.skip-link:focus{
+  left:16px; top:16px; width:auto; height:auto;
+  padding:.5rem .75rem; background:#000; color:#fff; border-radius:8px
 }
 
-/* --- Sekundární tlačítka --- */
-.btn:not(.primary):hover {
-  border-color: rgba(255,215,106,.4);
-  color: #ffe49a;
+/* --- Responzivita --- */
+@media (max-width:920px){
+  h1{ font-size: clamp(1.9rem, 1.6rem + 2.4vw, 2.4rem) }
+  .nav .container{ height:64px }
+  .nav .main-nav{ gap:10px }
 }
-
-/* --- Odkazy v textu (všude stejný odstín) --- */
-a {
-  color: #ffe49a;
-  text-decoration-color: rgba(255,215,106,.5);
-}
-a:hover {
-  color: #fff0b5;
-  text-decoration-color: rgba(255,215,106,.8);
-}
-
-/* --- Kicker (malé podtitulky) --- */
-.kicker {
-  color: #e0c878;
-  text-transform: uppercase;
-  letter-spacing: .15em;
-  font-weight: 700;
-}
-.page-head .kicker{ text-transform:uppercase; letter-spacing:.12em; font-weight:700; opacity:.8; }
-.page-head .lead{ color: var(--muted); max-width: 880px; }
-main p{ max-width: 880px; }
-main ul, main ol{ max-width: 880px; }
