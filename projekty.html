@@ -301,5 +301,58 @@
       }
     })();
   </script>
+  <script>
+(function(){
+  const nav = document.querySelector('.pjs-nav');
+  if(!nav) return;
+
+  // 1) Klik v menu – zvýraznit a auto-zavřít ostatní skupiny
+  nav.addEventListener('click', e=>{
+    const a = e.target.closest('a[href^="#"]');
+    if(!a) return;
+    nav.querySelectorAll('a.is-active').forEach(x=>x.classList.remove('is-active'));
+    a.classList.add('is-active');
+    // Otevři jeho <details>, zavři ostatní
+    const det = a.closest('details.pjs-acc');
+    nav.querySelectorAll('details.pjs-acc').forEach(d => { d.open = (d===det); });
+  });
+
+  // 2) Při scrollu zvýrazňuj aktivní sekci
+  const links = [...nav.querySelectorAll('a[href^="#"]')];
+  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const sections = [...document.querySelectorAll('[data-pjs-section]')];
+
+  const io = new IntersectionObserver((entries)=>{
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a,b)=> b.intersectionRatio - a.intersectionRatio)[0];
+    if(!visible) return;
+    const id = visible.target.id;
+    const link = map.get(id);
+    if(!link) return;
+    links.forEach(x=>x.classList.remove('is-active'));
+    link.classList.add('is-active');
+    // zajisti otevřenou skupinu
+    const det = link.closest('details.pjs-acc');
+    if(det) det.open = true;
+  }, { rootMargin: '0px 0px -60% 0px', threshold:[0.25,0.5,0.75] });
+
+  sections.forEach(s => io.observe(s));
+
+  // 3) Pokud je hash v URL, otevři správnou skupinu a zvýrazni
+  function openFromHash(){
+    const id = location.hash.replace('#','');
+    const link = map.get(id);
+    if(!link) return;
+    nav.querySelectorAll('a.is-active').forEach(x=>x.classList.remove('is-active'));
+    link.classList.add('is-active');
+    const det = link.closest('details.pjs-acc');
+    if(det) det.open = true;
+  }
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
+})();
+</script>
+
 </body>
 </html>
