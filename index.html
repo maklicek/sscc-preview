@@ -9,119 +9,23 @@
        [id]{scroll-margin-top:84px;}  .skip-link:focus{outline:2px solid #c9b26a; outline-offset:2px;}
   -->
 </head>
-<body data-page="index">
+<body data-page="projekty" class="page-projects">
   <a class="skip-link" href="#main">Přeskočit na obsah</a>
 
-  <header class="nav">
-    <div class="container flex items-center justify-between">
-      <a class="brand" href="index.html">SolarSpace Carbon Cycle</a>
-      <nav class="main-nav" aria-label="Hlavní navigace">
-        <a href="sscc.html">SSCC</a>
-        <a href="projekty.html">Projekty</a>
-        <a href="spoluprace.html">Spolupráce</a>
-        <a href="edukace.html">Edukace</a>
-        <a href="konsorcium.html">Konsorcium</a>
-        <a href="napady.html">Nápady</a>
-      </nav>
-    </div>
-  </header>
+  <!-- 🔽 místo celé hlavičky -->
+  <div data-include="partials/header.html"></div>
 
-  <!-- ✔ jen jeden <main> -->
-  <main id="main" class="container site-main">
-
-    <section class="hero hero--center">
-      <h1>Orbitální solární energie, prakticky</h1>
-      <p class="lead">
-        Otevřená iniciativa SSCC: pilotní přenos energie, bezpečnost mikrovln,
-        regulační rámec a prototyp pozemního příjmu.
-      </p>
-      <div class="hero-cta">
-        <a class="btn btn--gold" href="projekty.html">Projekty a roadmapa</a>
-        <a class="btn btn--ghost" href="sscc.html">Jak to funguje</a>
-      </div>
-    </section>
-
-    <section class="intro">
-      <h2>Elegantní základ</h2>
-      <p>Tmavě zelené pozadí, světlejší hlavička/patička, zlatá typografie. Bez rámečků, klidný layout.</p>
-    </section>
-
+  <!-- 🔽 obsah zůstává -->
+  <main id="main" class="container">
+    <h1>Projekty a roadmapa</h1>
+    <p>Obsah stránky…</p>
   </main>
 
-  <footer class="site-footer">
-    <div data-include="partials/footer.html"></div>
-    <small>© <span id="year"></span> SSCC — SolarSpace Carbon Cycle</small>
-  </footer>
+  <!-- 🔽 místo celé patičky -->
+  <div data-include="partials/footer.html"></div>
 
-<script>
-  // Aktivní položka v horním menu podle skutečné URL
-  (function(){
-    const navLinks = Array.from(document.querySelectorAll('.main-nav a'));
-    // 1) vyčistit staré stavy
-    navLinks.forEach(a => a.removeAttribute('aria-current'));
-
-    // 2) zjistit aktuální soubor (funguje i na GitHub Pages & podsložkách)
-    let file = location.pathname.split('/').pop() || 'index.html';
-    if (file === '' || file === '/') file = 'index.html';
-
-    // 3) najít link – nejdřív přes přesnou shodu, pak přes „stem“ bez .html
-    let active =
-      navLinks.find(a => a.getAttribute('href') === file) ||
-      navLinks.find(a => (a.pathname.split('/').pop() || 'index.html') === file) ||
-      (function(){
-        const stem = file.replace(/\.html?$/,'');
-        return navLinks.find(a => a.getAttribute('href')?.replace(/\.html?$/,'') === stem);
-      })();
-
-    if (active) active.setAttribute('aria-current','page');
-  })();
-</script>
-<script>
-(function(){
-  const MAP = {
-    index: 'index.html',
-    sscc: 'sscc.html',
-    projekty: 'projekty.html',
-    spoluprace: 'spoluprace.html',
-    edukace: 'edukace.html',
-    konsorcium: 'konsorcium.html',
-    napady: 'napady.html'
-  };
-
-  const nav = document.querySelector('.main-nav');
-  if (!nav) return;
-  const links = Array.from(nav.querySelectorAll('a'));
-
-  // 1) Normalizace href (když by byly #sscc apod.)
-  links.forEach(a=>{
-    let href = a.getAttribute('href') || '';
-    // vyhoď případné leading "./" nebo "#"
-    href = href.replace(/^\.?\/*#?/, '');
-    const key = href.replace(/\.html?(\?.*)?(\#.*)?$/,'').toLowerCase();
-    if (MAP[key]) a.setAttribute('href', MAP[key]);
-  });
-
-  // 2) Přebití kliknutí – tvrdý přechod na .html
-  links.forEach(a=>{
-    a.addEventListener('click', function(ev){
-      const url = a.getAttribute('href');
-      if (!url) return;
-      ev.stopPropagation();
-      // nepřerušuj, jen zajisti přechod (když někdo udělal preventDefault)
-      setTimeout(()=>{ window.location.href = url; }, 0);
-    }, {capture:true});
-  });
-
-  // 3) Aktivní položka podle URL
-  links.forEach(a=>a.removeAttribute('aria-current'));
-  let file = location.pathname.split('/').pop() || 'index.html';
-  if (file === '' || file === '/') file = 'index.html';
-  const active =
-    links.find(a => (a.getAttribute('href')||'').endsWith(file)) ||
-    links.find(a => (a.pathname.split('/').pop()||'') === file);
-  if (active) active.setAttribute('aria-current','page');
-})();
-</script>
-
+  <!-- 🔽 malý skript, který hlavičku a patičku natáhne -->
+  <script src="assets/include.js?v=1"></script>
 </body>
+
 </html>
