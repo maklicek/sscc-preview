@@ -74,5 +74,52 @@
       if (active) active.setAttribute('aria-current','page');
     })();
   </script>
+  <script>
+(function(){
+  const MAP = {
+    index: 'index.html',
+    sscc: 'sscc.html',
+    projekty: 'projekty.html',
+    spoluprace: 'spoluprace.html',
+    edukace: 'edukace.html',
+    konsorcium: 'konsorcium.html',
+    napady: 'napady.html'
+  };
+
+  const nav = document.querySelector('.main-nav');
+  if (!nav) return;
+  const links = Array.from(nav.querySelectorAll('a'));
+
+  // 1) Normalizace href (když by byly #sscc apod.)
+  links.forEach(a=>{
+    let href = a.getAttribute('href') || '';
+    // vyhoď případné leading "./" nebo "#"
+    href = href.replace(/^\.?\/*#?/, '');
+    const key = href.replace(/\.html?(\?.*)?(\#.*)?$/,'').toLowerCase();
+    if (MAP[key]) a.setAttribute('href', MAP[key]);
+  });
+
+  // 2) Přebití kliknutí – tvrdý přechod na .html
+  links.forEach(a=>{
+    a.addEventListener('click', function(ev){
+      const url = a.getAttribute('href');
+      if (!url) return;
+      ev.stopPropagation();
+      // nepřerušuj, jen zajisti přechod (když někdo udělal preventDefault)
+      setTimeout(()=>{ window.location.href = url; }, 0);
+    }, {capture:true});
+  });
+
+  // 3) Aktivní položka podle URL
+  links.forEach(a=>a.removeAttribute('aria-current'));
+  let file = location.pathname.split('/').pop() || 'index.html';
+  if (file === '' || file === '/') file = 'index.html';
+  const active =
+    links.find(a => (a.getAttribute('href')||'').endsWith(file)) ||
+    links.find(a => (a.pathname.split('/').pop()||'') === file);
+  if (active) active.setAttribute('aria-current','page');
+})();
+</script>
+
 </body>
 </html>
