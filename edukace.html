@@ -1,30 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SSCC — SolarSpace Carbon Cycle</title>
-  <link rel="stylesheet" href="assets/style-v4.css?v=12">
+  <link rel="stylesheet" href="assets/style-v4.css?v=10">
+  <!-- pokud POTŘEBUJEŠ něco navíc pro TUTO stránku, přidej druhý CSS až sem -->
+  <!-- <link rel="stylesheet" href="assets/edukace.css?v=1"> -->
 </head>
 <body>
-  <!-- 🔼 Hlavička (načte se z partials/header.html) -->
-  <div data-include="partials/header.html"></div>
+  <div data-include="assets/partials/header.html"></div>
 
-  <!-- 🔹 Obsah stránky -->
-  <main id="main" class="container site-main">
-    <h1>Projekty a roadmapa</h1>
-    <p>Obsah stránky…</p>
+  <main class="page-wrap">
+    <h1>Jak to funguje</h1>
+    <p class="lead">EDUKACE<p>
+    <!-- tvůj obsah -->
   </main>
 
-  <!-- 🔽 Patička (načte se z partials/footer.html) -->
-  <div data-include="partials/footer.html"></div>
-
-  <!-- 🔸 Skript pro include (vždy až na konci těla!) -->
-  <script src="assets/include.js?v=3" defer></script>
-  <div data-include="assets/partials/header.html"></div>
-<!-- ... obsah stránky ... -->
-<div data-include="assets/partials/footer.html"></div>
-
-<script src="assets/include.js?v=7" defer></script>
+  <div data-include="assets/partials/footer.html"></div>
+  <script src="assets/include.js?v=8" defer></script>
 </body>
 </html>
