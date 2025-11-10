@@ -3112,3 +3112,49 @@ h1,h2,h3 { margin-block-start: 0.6em; }
 
 .pjs-card__cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 6px; }
 .pjs-card__cta .btn{ font-size: 14px; padding: 10px 14px; border-radius: 12px; }
+/* ===== Projects: sticky sidebar + content (pjs-) ===== */
+.pjs-layout{
+  display:grid; grid-template-columns: 280px 1fr; gap: 28px;
+  align-items:start;
+}
+@media (max-width: 1080px){ .pjs-layout{ grid-template-columns: 1fr; } }
+
+.pjs-nav{
+  position: sticky; top: 84px; /* cca výška headeru + mezera */
+  align-self:start;
+  background: linear-gradient(180deg, rgba(18,26,23,.82), rgba(18,26,23,.66));
+  border:1px solid rgba(255,255,255,.06);
+  border-radius: 16px;
+  padding: 10px;
+}
+@media (max-width:1080px){ .pjs-nav{ position:static; } }
+
+.pjs-acc{ border:1px solid rgba(255,255,255,.06); border-radius:12px; margin:8px 0; overflow:hidden; }
+.pjs-acc[open]{ border-color: rgba(255,221,120,.16); }
+.pjs-acc > summary{
+  cursor:pointer; list-style:none; padding:10px 12px; font-weight:800;
+  background:rgba(12,18,16,.35);
+}
+.pjs-acc > summary::-webkit-details-marker{ display:none; }
+.pjs-acc a{
+  display:block; padding:8px 12px; border-top:1px solid rgba(255,255,255,.05);
+  color:#cfe6d6; text-decoration:none; font-weight:700; font-size:14px;
+}
+.pjs-acc a:hover{ background: rgba(34, 54, 44, .42); }
+.pjs-acc a.is-active{
+  background: rgba(34, 54, 44, .6);
+  border-left:3px solid #ffd76a; padding-left:9px;
+}
+
+/* drobná úprava obsahu pro spacing */
+.pjs-content > section{ margin-top:26px; }
+
+/* karty z dřívějška (pjs-card) – pro jistotu, kdyby ještě nebyly v CSS */
+.pjs-card{
+  background: linear-gradient(180deg, rgba(18,26,23,.82), rgba(18,26,23,.66));
+  border:1px solid rgba(255,255,255,.06);
+  border-radius: 18px; padding: 18px; box-shadow: 0 12px 35px rgba(0,0,0,.35);
+}
+.pjs-card__head h3{ margin:0 0 6px; font-size: clamp(18px, 2.2vw, 22px); }
+.pjs-card__text{ color:#a9c5b0; margin: 0 0 8px; }
+.pjs-card__cta{ display:flex; gap:10px; flex-wrap:wrap; }
