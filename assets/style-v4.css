@@ -282,6 +282,99 @@ main, .site-main, .page-wrap { flex: 1 0 auto; }
    SSCC · Header & Footer — 2025 compact fix
    Bezpečné přepsání existujících stylů (specifické selektory)
    =========================================================== */
+:root{
+  --bg: #0d1a16;
+  --bg-elev: #10211c;
+  --text: #e9f0ec;
+  --muted: #b7c6bf;
+  --ink: rgba(233,240,236,.08);
+  --accent: #c9b26a;          /* matná „zlatá“ */
+  --accent-strong: #d8c27a;
+  --accent-ink: rgba(201,178,106,.15);
+  --border: rgba(233,240,236,.08);
+
+  --radius: 16px;
+  --shadow: 0 1px 1px rgba(0,0,0,.2), 0 8px 24px rgba(0,0,0,.35);
+}
+
+html{scroll-behavior:smooth}
+body{
+  background: radial-gradient(1200px 600px at 25% 0%, rgba(255,255,255,0.03), transparent) , var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, Inter, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  line-height: 1.6;
+}
+
+.container{max-width: 1120px; margin-inline:auto; padding-inline: 1.25rem;}
+.prose{max-width: 72ch}
+
+h1,h2,h3{letter-spacing:-.01em}
+h1{font-weight:800; line-height:1.15; margin: 0 0 12px}
+h2{font-weight:700; margin: 32px 0 12px}
+h3{font-weight:700; margin: 24px 0 8px}
+.lead{color:var(--muted); font-size:clamp(1rem,.95rem + .35vw,1.125rem)}
+
+a{color:inherit; text-decoration: none; border-bottom: 1px dotted transparent; transition: border-color .2s ease}
+a:hover{border-bottom-color: var(--muted)}
+a:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-bottom-color: transparent}
+
+.btn{
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.7rem 1rem; border-radius: calc(var(--radius) - 4px);
+  border:1px solid var(--border); background: var(--ink); backdrop-filter:saturate(120%);
+  font-weight:600; transition: transform .04s ease, background .2s ease, border-color .2s ease;
+}
+.btn:hover{background: var(--accent-ink); border-color: var(--accent-strong)}
+.btn:active{transform: translateY(1px)}
+.btn--primary{background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+  color:#17150b; border-color: transparent}
+.btn--primary:hover{filter:brightness(1.05)}
+.btn--ghost{background: transparent}
+
+.badge{
+  display:inline-block; padding:.25rem .5rem; border-radius:999px;
+  border:1px solid var(--border); background:var(--ink); font-size:.85rem; color:var(--muted)
+}
+
+/* Nav Bar */
+.nav{
+  position: sticky; top:0; z-index:50; backdrop-filter: blur(8px) saturate(140%);
+  background: linear-gradient(to bottom, rgba(13,26,22,.85), rgba(13,26,22,.6));
+  border-bottom: 1px solid var(--border);
+}
+.nav a{padding:.9rem .8rem; border-bottom: 2px solid transparent}
+.nav a[aria-current="page"]{border-bottom-color: var(--accent); color: var(--text)}
+.nav .brand{font-weight: 800; letter-spacing:.02em}
+
+/* Side nav (Projekty) */
+.sidenav{position: sticky; top: 84px}
+.sidenav a{
+  display:block; padding:.6rem .75rem; border-radius: 10px; color:var(--muted)
+}
+.sidenav a:hover{background: var(--ink); color: var(--text)}
+.sidenav a[aria-current="true"]{background: var(--accent-ink); color: var(--text); border-left:2px solid var(--accent)}
+
+/* Cards */
+.card{
+  background: linear-gradient(180deg, var(--bg-elev), #0c1915);
+  border:1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding:1.1rem; transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.card:hover{transform: translateY(-2px); border-color: var(--accent-strong)}
+
+/* Lists */
+ul{padding-left: 1.2rem}
+li{margin: .4rem 0}
+
+/* Footer */
+.footer{margin-top:64px; padding:24px 0; border-top:1px solid var(--border); color:var(--muted)}
+
+/* Skip link */
+.skip-link{
+  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden
+}
+.skip-link:focus{left:16px; top:16px; width:auto; height:auto; padding:.5rem .75rem; background:#000; color:#fff; border-radius:8px}
+
 
 :root {
   --hdr-bg: rgba(14, 22, 19, 0.78);      /* světlejší pruh než stránka */
