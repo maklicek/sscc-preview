@@ -278,3 +278,135 @@ main, .site-main, .page-wrap { flex: 1 0 auto; }
   text-decoration: none;
 }
 .site-footer a:hover{ text-decoration: underline; }
+/* ===========================================================
+   SSCC · Header & Footer — 2025 compact fix
+   Bezpečné přepsání existujících stylů (specifické selektory)
+   =========================================================== */
+
+:root {
+  --hdr-bg: rgba(14, 22, 19, 0.78);      /* světlejší pruh než stránka */
+  --hdr-line: rgba(255, 255, 255, 0.06); /* jemná linka pod hlavičkou */
+  --hdr-shadow: 0 10px 24px rgba(0,0,0,.35);
+  --hdr-max: 1180px;
+  --ink: #e7f4e9;
+  --muted: #a9c5b0;
+  --accent: #ffd76a;
+}
+
+/* ----- HEADER ------------------------------------------------------------ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background:
+    radial-gradient(900px 420px at 12% -60%, rgba(255,220,120,.15), rgba(0,0,0,0) 55%)
+    ,var(--hdr-bg);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--hdr-line);
+  box-shadow: var(--hdr-shadow);
+}
+
+.site-header .header-inner {
+  max-width: var(--hdr-max);
+  margin: 0 auto;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Brand (logo + název) */
+.site-header .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-header .logo {
+  width: 52px;              /* Mírně větší logo */
+  height: 52px;
+  object-fit: cover;
+  border-radius: 0;         /* OSTRÉ ROHY */
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 6px 16px rgba(0,0,0,.35);
+}
+
+.site-header .site-title {
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: var(--ink);
+  opacity: .95;
+}
+
+/* Hlavní navigace */
+.site-header .main-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.site-header .main-nav a {
+  color: var(--ink);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  opacity: .95;
+}
+
+.site-header .main-nav a:hover {
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.08);
+}
+
+.site-header .main-nav a[aria-current="page"] {
+  color: #0b1411;
+  background: linear-gradient(180deg,#ffd76a,#eec158);
+  border-color: rgba(0,0,0,.1);
+  font-weight: 700;
+  box-shadow: 0 8px 18px rgba(0,0,0,.25);
+}
+
+/* ----- WIDTH CONSISTENCY (centrace obsahu na všech stránkách) ----------- */
+
+.container,
+.site-main,
+.page-wrap {
+  max-width: var(--hdr-max);
+  margin-inline: auto;
+  padding-inline: 18px;
+}
+
+/* ----- FOOTER ------------------------------------------------------------ */
+
+.site-footer {
+  margin-top: 60px;
+  border-top: 1px solid var(--hdr-line);
+  background: rgba(12,18,16,.42);       /* lehce světlejší než stránka */
+  color: var(--muted);
+  text-align: center;
+  padding: 24px 18px;
+}
+
+.site-footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ----- RESPONSIVE -------------------------------------------------------- */
+
+@media (max-width: 820px) {
+  .site-header .site-title { display: none; }  /* úspora místa na mobilu */
+  .site-header .logo { width: 46px; height: 46px; }
+  .site-header .main-nav a { padding: 8px 10px; }
+}
