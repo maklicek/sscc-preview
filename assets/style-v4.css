@@ -135,3 +135,33 @@ h1,h2{
 }
 [id]{ scroll-margin-top:84px; }
 header.nav{ z-index: 9999; }
+/* === NAV KILLER FIX — proklik zaručený === */
+
+/* 1) Zvedni hlavičku úplně nahoru a vyjmi ji ze špatných kontextů */
+header.nav{
+  position: fixed;        /* obejde zlobivé stacking-contexty */
+  top: 0; left: 0; right: 0;
+  z-index: 2147483647 !important;  /* nad vším */
+  pointer-events: auto !important; /* ať bere kliky */
+}
+body{ padding-top: 72px; }         /* aby obsah nezačínal pod headerem */
+
+/* 2) Všem běžným overlayům zakaž chytat myš */
+html::before, html::after,
+body::before, body::after,
+main::before, main::after,
+.hero::before, .hero::after,
+.page-wrap::before, .page-wrap::after,
+.container::before, .container::after {
+  pointer-events: none !important;
+}
+
+/* 3) Pro jistotu i na samotné odkazy */
+header.nav .main-nav a{
+  position: relative;
+  z-index: 1;
+  pointer-events: auto !important;
+}
+
+/* 4) Kotvy neschovávej pod header */
+[id]{ scroll-margin-top: 84px; }
