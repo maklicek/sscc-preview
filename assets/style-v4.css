@@ -617,3 +617,77 @@ main, .site-main, .page-wrap { flex: 1 0 auto; }
   color: #cfe3d4;                   /* lepší čitelnost na tmavém */
   letter-spacing: .01em;
 }
+/* ===========================================================
+   SSCC · Zlatý text – sjednocení napříč stránkami
+   =========================================================== */
+
+/* --- Obecný styl nadpisů (H1–H4) --- */
+h1, h2, h3, h4 {
+  background: linear-gradient(180deg, #ffe38a 0%, #e8c04f 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, .35);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* --- Specificky H1 větší síla (homepage, projekty, edukace…) --- */
+h1 {
+  font-weight: 800;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+}
+
+/* --- Zvýraznění (strong, b) --- */
+strong, b {
+  color: #f5dd87;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .25);
+}
+
+/* --- Nadpisy v kartách projektů --- */
+.project-card h2, 
+.pjs-card__head h3 {
+  background: linear-gradient(180deg, #ffd76a 0%, #e8b93f 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* --- Tlačítka --- */
+.btn.primary {
+  background: linear-gradient(180deg, #ffd76a, #e8b93f);
+  color: #0b1411;
+  border: 1px solid rgba(0,0,0,.12);
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0,0,0,.3);
+  transition: all .25s ease;
+}
+
+.btn.primary:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 6px 18px rgba(255,215,106,.3);
+}
+
+/* --- Sekundární tlačítka --- */
+.btn:not(.primary):hover {
+  border-color: rgba(255,215,106,.4);
+  color: #ffe49a;
+}
+
+/* --- Odkazy v textu (všude stejný odstín) --- */
+a {
+  color: #ffe49a;
+  text-decoration-color: rgba(255,215,106,.5);
+}
+a:hover {
+  color: #fff0b5;
+  text-decoration-color: rgba(255,215,106,.8);
+}
+
+/* --- Kicker (malé podtitulky) --- */
+.kicker {
+  color: #e0c878;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  font-weight: 700;
+}
