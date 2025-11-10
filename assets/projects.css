@@ -81,3 +81,21 @@
   .pjs-nav{ position: static; display: grid; grid-auto-flow: column; overflow: auto; gap: 8px; padding-bottom: 6px }
   .pjs-link{ white-space: nowrap }
 }
+/* --- FIX: klikatelnost top navigace --- */
+header.nav{
+  position: sticky;
+  top: 0;
+  z-index: 9999;          /* nad všemi překryvy */
+  pointer-events: auto;   /* jistota, že bere kliky */
+}
+
+/* Žádný overlay nesmí chytat události přes hlavičku */
+header.nav::before,
+header.nav::after,
+body::before, body::after,
+.hero::before, .hero::after {
+  pointer-events: none !important;
+}
+
+/* pro jistotu: nic neplave přes header */
+main, .site-main, .page-wrap, .hero { position: relative; z-index: 1; }
