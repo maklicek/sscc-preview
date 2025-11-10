@@ -249,5 +249,29 @@ INSTALACE (rychlé):
       </nav>
     </div>
   </footer>
+  <script>
+  // Aktivní položka v horním menu podle skutečné URL
+  (function(){
+    const navLinks = Array.from(document.querySelectorAll('.main-nav a'));
+    // 1) vyčistit staré stavy
+    navLinks.forEach(a => a.removeAttribute('aria-current'));
+
+    // 2) zjistit aktuální soubor (funguje i na GitHub Pages & podsložkách)
+    let file = location.pathname.split('/').pop() || 'index.html';
+    if (file === '' || file === '/') file = 'index.html';
+
+    // 3) najít link – nejdřív přes přesnou shodu, pak přes „stem“ bez .html
+    let active =
+      navLinks.find(a => a.getAttribute('href') === file) ||
+      navLinks.find(a => (a.pathname.split('/').pop() || 'index.html') === file) ||
+      (function(){
+        const stem = file.replace(/\.html?$/,'');
+        return navLinks.find(a => a.getAttribute('href')?.replace(/\.html?$/,'') === stem);
+      })();
+
+    if (active) active.setAttribute('aria-current','page');
+  })();
+</script>
+
 </body>
 </html>
