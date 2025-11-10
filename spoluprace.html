@@ -7,136 +7,23 @@
   <link rel="stylesheet" href="assets/style-v4.css?v=10">
 
 </head>
-<body data-page="spoluprace">
+<body data-page="projekty" class="page-projects">
+  <a class="skip-link" href="#main">Přeskočit na obsah</a>
 
- <header class="page-head">
-  <p class="kicker">Spolupráce</p>
-  <h1>Partnerství, role a kontaktní body</h1>
-  <p class="lead">Otevíráme konkrétní role pro průmysl, univerzity, municipality a investory. Cílem jsou rychlé průkazy proveditelnosti a měřitelné výsledky.</p>
-</header>
+  <!-- 🔽 místo celé hlavičky -->
+  <div data-include="partials/header.html"></div>
 
-<section aria-labelledby="roles">
-  <h2 id="roles">Role</h2>
-  <ul>
-    <li><strong>Průmysl:</strong> RF/optika, energetika, metrologie, bezpečnost.</li>
-    <li><strong>Akademie:</strong> modelování svazků, regulace, LIDAR, materiály.</li>
-    <li><strong>Municipality:</strong> lokality, povolování, veřejná bezpečnost.</li>
-    <li><strong>Investoři a granty:</strong> sdílené financování pilotů, IP governance.</li>
-  </ul>
-</section>
-
-<section aria-labelledby="join">
-  <h2 id="join">Jak se zapojit</h2>
-  <ol>
-    <li>Vyber projekt v <a href="projekty.html">Projektech</a>.</li>
-    <li>Napiš nám stručný profil a kapacity (1–2 odstavce).</li>
-    <li>Dostaneš návrh role, NDA a milníků.</li>
-  </ol>
-  <p>Kontaktní e-mail: <a href="mailto:join@sscc.example">join@sscc.example</a></p>
-</section>
-
-
-<section aria-labelledby="scope">
-  <h2 id="scope">Rozsah a kroky</h2>
-  <ol>
-    <li>Bezpečnostní studie a regulační rámec (mikrovlny / laser, zóny, LIDAR).</li>
-    <li>Pozemní prototyp příjmu, metrologie a ověřování účinnosti.</li>
-    <li>Integrace s piloty DAC → NH₃ (RD, obec, geotermální hub).</li>
-  </ol>
-</section>
-
-<section aria-labelledby="metrics">
-  <h2 id="metrics">Metriky</h2>
-  <ul>
-    <li>Účinnost přenosu a příjmu (W/m², celková bilance).</li>
-    <li>Bezpečnostní limity (expozice, zónování, fail-safe režimy).</li>
-    <li>Ekonomika prototypu (CAPEX/OPEX, LCOE/LCNH₃).</li>
-  </ul>
-</section>
-
-<section aria-labelledby="roadmap">
-  <h2 id="roadmap">Roadmapa</h2>
-  <p>Aktuální projekty a milníky najdeš v sekci <a href="projekty.html">Projekty</a>. Výzvy k zapojení průběžně zveřejňujeme v <a href="spoluprace.html">Spolupráci</a>.</p>
-</section>
-
-    <h1>Spolupráce</h1>
-    <p>Partnerství, role, contact points (ČEZ, univerzity, municipalita, atd.).</p>
+  <!-- 🔽 obsah zůstává -->
+  <main id="main" class="container">
+    <h1>Projekty a roadmapa</h1>
+    <p>Obsah stránky…</p>
   </main>
 
-  <footer class="site-footer">
-    <div data-include="partials/footer.html"></div>
-    <small>© <span id="year"></span> SSCC — SolarSpace Carbon Cycle</small>
-  </footer>
+  <!-- 🔽 místo celé patičky -->
+  <div data-include="partials/footer.html"></div>
 
-<script>
-  // Aktivní položka v horním menu podle skutečné URL
-  (function(){
-    const navLinks = Array.from(document.querySelectorAll('.main-nav a'));
-    // 1) vyčistit staré stavy
-    navLinks.forEach(a => a.removeAttribute('aria-current'));
-
-    // 2) zjistit aktuální soubor (funguje i na GitHub Pages & podsložkách)
-    let file = location.pathname.split('/').pop() || 'index.html';
-    if (file === '' || file === '/') file = 'index.html';
-
-    // 3) najít link – nejdřív přes přesnou shodu, pak přes „stem“ bez .html
-    let active =
-      navLinks.find(a => a.getAttribute('href') === file) ||
-      navLinks.find(a => (a.pathname.split('/').pop() || 'index.html') === file) ||
-      (function(){
-        const stem = file.replace(/\.html?$/,'');
-        return navLinks.find(a => a.getAttribute('href')?.replace(/\.html?$/,'') === stem);
-      })();
-
-    if (active) active.setAttribute('aria-current','page');
-  })();
-</script>
-<script>
-(function(){
-  const MAP = {
-    index: 'index.html',
-    sscc: 'sscc.html',
-    projekty: 'projekty.html',
-    spoluprace: 'spoluprace.html',
-    edukace: 'edukace.html',
-    konsorcium: 'konsorcium.html',
-    napady: 'napady.html'
-  };
-
-  const nav = document.querySelector('.main-nav');
-  if (!nav) return;
-  const links = Array.from(nav.querySelectorAll('a'));
-
-  // 1) Normalizace href (když by byly #sscc apod.)
-  links.forEach(a=>{
-    let href = a.getAttribute('href') || '';
-    // vyhoď případné leading "./" nebo "#"
-    href = href.replace(/^\.?\/*#?/, '');
-    const key = href.replace(/\.html?(\?.*)?(\#.*)?$/,'').toLowerCase();
-    if (MAP[key]) a.setAttribute('href', MAP[key]);
-  });
-
-  // 2) Přebití kliknutí – tvrdý přechod na .html
-  links.forEach(a=>{
-    a.addEventListener('click', function(ev){
-      const url = a.getAttribute('href');
-      if (!url) return;
-      ev.stopPropagation();
-      // nepřerušuj, jen zajisti přechod (když někdo udělal preventDefault)
-      setTimeout(()=>{ window.location.href = url; }, 0);
-    }, {capture:true});
-  });
-
-  // 3) Aktivní položka podle URL
-  links.forEach(a=>a.removeAttribute('aria-current'));
-  let file = location.pathname.split('/').pop() || 'index.html';
-  if (file === '' || file === '/') file = 'index.html';
-  const active =
-    links.find(a => (a.getAttribute('href')||'').endsWith(file)) ||
-    links.find(a => (a.pathname.split('/').pop()||'') === file);
-  if (active) active.setAttribute('aria-current','page');
-})();
-</script>
-
+  <!-- 🔽 malý skript, který hlavičku a patičku natáhne -->
+  <script src="assets/include.js?v=1"></script>
 </body>
+
 </html>
