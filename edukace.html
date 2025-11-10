@@ -7,121 +7,23 @@
 <link rel="stylesheet" href="assets/style-v4.css?v=10">
 
 </head>
-<body data-page="edukace">
-  <header class="page-head">
-  <p class="kicker">Edukace</p>
-  <h1>Jak to funguje</h1>
-  <p class="lead">Základy přenosu energie z oběžné dráhy, bezpečnost a integrační scénáře s čistými nosiči.</p>
-</header>
+<body data-page="projekty" class="page-projects">
+  <a class="skip-link" href="#main">Přeskočit na obsah</a>
 
-<section aria-labelledby="os">
-  <h2 id="os">Orbitální solární energie (OS)</h2>
-  <p>OS využívá nepřetržité sluneční záření mimo atmosféru. Energie je přenášena na Zemi svazkem (mikrovlnným / laserovým) do pozemní stanice s řízením a metrologií.</p>
-</section>
+  <!-- 🔽 místo celé hlavičky -->
+  <div data-include="partials/header.html"></div>
 
-<section aria-labelledby="safety">
-  <h2 id="safety">Bezpečnost a regulace</h2>
-  <ul>
-    <li>Definice zón (provozní, nárazová, vyloučená) a fail-safe módy.</li>
-    <li>Monitoring: LIDAR, kamerové a RF senzory, automatické vypínání.</li>
-    <li>Regulační rámec: spektrum, EIRP, standardy expozice.</li>
-  </ul>
-</section>
-
-<section aria-labelledby="integration">
-  <h2 id="integration">Integrace s NH₃</h2>
-  <p>Energetický přebytek převádíme na zelený NH₃: stabilní nosič pro teplo, průmysl i sezónní úložiště. Toky a LCA vysvětlujeme v projektech DAC → NH₃.</p>
-</section>
-
-<section aria-labelledby="materials">
-  <h2 id="materials">Materiály</h2>
-  <ul>
-    <li>Datasety a měření (bude doplněno)</li>
-    <li>Schémata a standardy (bude doplněno)</li>
-    <li>Video–minikurzy (bude doplněno)</li>
-  </ul>
-</section>
-
-
-  <main class="container site-main" id="jak-to-funguje">
-    <h1>Edukace</h1>
-    <p>Zde bude „Jak to funguje“, materiály, videa, datasety.</p>
+  <!-- 🔽 obsah zůstává -->
+  <main id="main" class="container">
+    <h1>Projekty a roadmapa</h1>
+    <p>Obsah stránky…</p>
   </main>
 
-  <footer class="site-footer">
-    <div data-include="partials/footer.html"></div>
-    <small>© <span id="year"></span> SSCC — SolarSpace Carbon Cycle</small>
-  </footer>
+  <!-- 🔽 místo celé patičky -->
+  <div data-include="partials/footer.html"></div>
 
- <script>
-  // Aktivní položka v horním menu podle skutečné URL
-  (function(){
-    const navLinks = Array.from(document.querySelectorAll('.main-nav a'));
-    // 1) vyčistit staré stavy
-    navLinks.forEach(a => a.removeAttribute('aria-current'));
-
-    // 2) zjistit aktuální soubor (funguje i na GitHub Pages & podsložkách)
-    let file = location.pathname.split('/').pop() || 'index.html';
-    if (file === '' || file === '/') file = 'index.html';
-
-    // 3) najít link – nejdřív přes přesnou shodu, pak přes „stem“ bez .html
-    let active =
-      navLinks.find(a => a.getAttribute('href') === file) ||
-      navLinks.find(a => (a.pathname.split('/').pop() || 'index.html') === file) ||
-      (function(){
-        const stem = file.replace(/\.html?$/,'');
-        return navLinks.find(a => a.getAttribute('href')?.replace(/\.html?$/,'') === stem);
-      })();
-
-    if (active) active.setAttribute('aria-current','page');
-  })();
-</script>
-<script>
-(function(){
-  const MAP = {
-    index: 'index.html',
-    sscc: 'sscc.html',
-    projekty: 'projekty.html',
-    spoluprace: 'spoluprace.html',
-    edukace: 'edukace.html',
-    konsorcium: 'konsorcium.html',
-    napady: 'napady.html'
-  };
-
-  const nav = document.querySelector('.main-nav');
-  if (!nav) return;
-  const links = Array.from(nav.querySelectorAll('a'));
-
-  // 1) Normalizace href (když by byly #sscc apod.)
-  links.forEach(a=>{
-    let href = a.getAttribute('href') || '';
-    // vyhoď případné leading "./" nebo "#"
-    href = href.replace(/^\.?\/*#?/, '');
-    const key = href.replace(/\.html?(\?.*)?(\#.*)?$/,'').toLowerCase();
-    if (MAP[key]) a.setAttribute('href', MAP[key]);
-  });
-
-  // 2) Přebití kliknutí – tvrdý přechod na .html
-  links.forEach(a=>{
-    a.addEventListener('click', function(ev){
-      const url = a.getAttribute('href');
-      if (!url) return;
-      ev.stopPropagation();
-      // nepřerušuj, jen zajisti přechod (když někdo udělal preventDefault)
-      setTimeout(()=>{ window.location.href = url; }, 0);
-    }, {capture:true});
-  });
-
-  // 3) Aktivní položka podle URL
-  links.forEach(a=>a.removeAttribute('aria-current'));
-  let file = location.pathname.split('/').pop() || 'index.html';
-  if (file === '' || file === '/') file = 'index.html';
-  const active =
-    links.find(a => (a.getAttribute('href')||'').endsWith(file)) ||
-    links.find(a => (a.pathname.split('/').pop()||'') === file);
-  if (active) active.setAttribute('aria-current','page');
-})();
-</script>
-
+  <!-- 🔽 malý skript, který hlavičku a patičku natáhne -->
+  <script src="assets/include.js?v=1"></script>
 </body>
+
 </html>
