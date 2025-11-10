@@ -7,25 +7,26 @@
 })(function () {
   const slots = document.querySelectorAll('[data-include]');
   if (!slots.length) return;
+function currentFile() {
+  // 1) primárně z URL
+  let file = (location.pathname.split('/').pop() || '').trim();
+  if (!file || file === '/') file = 'index.html';
 
-  function currentFile() {
-    const map = {
-      index: 'index.html',
-      sscc: 'sscc.html',
-      projekty: 'projekty.html',
-      spoluprace: 'spoluprace.html',
-      edukace: 'edukace.html',
-      konsorcium: 'konsorcium.html',
-      napady: 'napady.html',
-      podminky: 'terms.html'
-    };
-    const pageKey = (document.body.dataset.page || '').toLowerCase();
-    if (map[pageKey]) return map[pageKey];
+  // 2) sekundárně z data-page (pokud je)
+  const map = {
+    index: 'index.html',
+    sscc: 'sscc.html',
+    projekty: 'projekty.html',
+    spoluprace: 'spoluprace.html',
+    edukace: 'edukace.html',
+    konsorcium: 'konsorcium.html',
+    napady: 'napady.html',
+    podminky: 'terms.html'
+  };
+  const pageKey = (document.body.dataset.page || '').toLowerCase();
+  return map[pageKey] || file;
+}
 
-    let file = location.pathname.split('/').pop() || 'index.html';
-    if (file === '' || file === '/') file = 'index.html';
-    return file;
-  }
 
   const cur = currentFile();
 
