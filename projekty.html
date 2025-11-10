@@ -95,3 +95,46 @@
           <p class="lead">Zónování, monitoring svazku, fail-safe režimy…</p>
           <div class="cta-row">
             <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
+            <a class="btn btn--ghost" href="edukace.html">Jak to funguje</a>
+          </div>
+        </section>
+
+        <!-- 6) Bezpečnostní zóny -->
+        <section id="p-bezpecnost" data-pjs-section class="project-card">
+          <div class="badge">Bezpečnost</div>
+          <h3>Bezpečnostní zóny</h3>
+          <p class="lead">Definice, měření a komunikace bezpečných zón…</p>
+          <div class="cta-row">
+            <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
+            <a class="btn btn--ghost" href="edukace.html">Jak to funguje</a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <small>© <span id="year"></span> SSCC — SolarSpace Carbon Cycle · Preview</small>
+  </footer>
+
+  <script>
+    // rok
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Scrollspy: zvýrazní aktivní položku v side-nav
+    const links = [...document.querySelectorAll('.pjs-nav .pjs-link')];
+    const sections = [...document.querySelectorAll('[data-pjs-section]')];
+    const byId = id => links.find(a => a.getAttribute('href') === '#'+id);
+
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          links.forEach(a=>a.classList.remove('is-active'));
+          const a = byId(e.target.id); if(a) a.classList.add('is-active');
+        }
+      });
+    }, {rootMargin: '-35% 0px -60% 0px', threshold: .01});
+    sections.forEach(s=>io.observe(s));
+  </script>
+</body>
