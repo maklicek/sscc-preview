@@ -114,3 +114,65 @@ h3{ font-size:22px }
   object-fit: cover;
 }
 .site-header .brand { gap: 12px; }  /* trochu víc místa mezi logem a názvem */
+/* Šířka layoutu */
+.page-wrap, .container, .header-inner, .footer-inner {
+  max-width: 1280px;         /* zvětšeno, ať „střed“ není úzký */
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== HEADER ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(12,18,16,.82);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.site-header .header-inner {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: 72px;              /* pevná výška = stabilní layout */
+}
+.site-header .brand {
+  display: inline-flex; align-items: center; gap: 12px;
+  color: #e7f4e9; text-decoration: none; font-weight: 700;
+}
+.site-header .logo {
+  width: 56px; height: 56px; object-fit: cover;
+  border-radius: 50%;        /* kulaté logo; smaž pro čtverec */
+}
+.site-title { white-space: nowrap; }
+
+.main-nav {
+  margin-left: auto; display: flex; gap: 18px; flex-wrap: wrap;
+}
+.main-nav a {
+  color: #cfe6d7; text-decoration: none; font-weight: 700;
+  padding: 8px 10px; border-radius: 10px;
+}
+.main-nav a[aria-current="page"] {
+  background: rgba(255,215,106,.12);
+  border: 1px solid rgba(255,215,106,.35);
+  color: #ffd76a;
+}
+
+/* Pokud ti „hero“ hned navazuje pod sticky header a překrývá se,
+   můžeš přidat top padding na první sekci stránky.
+   .page-wrap:first-child { padding-top: 12px; } */
+
+/* ===== FOOTER ===== */
+.site-footer {
+  margin-top: 64px;
+  background: rgba(255,255,255,.035); /* světlejší */
+  border-top: 1px solid rgba(255,255,255,.08);
+  color: rgba(231,244,233,.86);
+}
+.footer-inner {
+  height: 72px; display:flex; align-items:center; gap: 10px;
+}
+.site-footer a { color: #ffd76a; text-decoration: none; }
+.site-footer a:hover { opacity: .9; }
+.footer-inner .sep { opacity: .4; }
