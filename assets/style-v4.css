@@ -198,3 +198,78 @@ main, .site-main, .page-wrap { flex: 1 0 auto; }
   margin: 0 auto;
   padding: 0 18px;
 }
+/* === HEADER === */
+.site-header {
+  position: sticky; /* pokud nechceš sticky, dej 'static' */
+  top: 0;
+  z-index: 50;
+  background: rgba(18, 26, 23, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  box-shadow: 0 6px 24px rgba(0,0,0,.35);
+}
+
+.site-header .header-inner{
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* logo větší (čtverec nebo kruh): jen si vyber tvar */
+.site-header .logo{
+  width: 48px;               /* 44–56px podle chuti */
+  height: 48px;
+  object-fit: cover;
+  border-radius: 12px;       /* čtverec se zaoblením */
+  /* border-radius: 999px;  // pokud chceš čistě kulaté */
+  box-shadow: 0 6px 16px rgba(0,0,0,.35);
+}
+
+.site-header .brand{
+  display:flex; align-items:center; gap:12px;
+  text-decoration:none;
+}
+
+.site-header .site-title{
+  font-weight: 700;
+  color: #e7f4e9;
+}
+
+/* menu */
+.main-nav{
+  margin-left: auto;
+  display:flex; gap: 18px; flex-wrap: wrap;
+}
+.main-nav a{
+  color:#dfeee6;
+  text-decoration:none;
+  padding:8px 12px;
+  border-radius:10px;
+  border:1px solid transparent;
+}
+.main-nav a:hover{
+  background:#1a2a23;
+  border-color: rgba(255,255,255,.08);
+}
+.main-nav a[aria-current="page"]{
+  background: linear-gradient(180deg, #25382f, #1c2e26);
+  border-color: rgba(255,255,255,.12);
+}
+/* === FOOTER === */
+.site-footer{
+  flex-shrink: 0;
+  background: rgba(12,18,16,.55);
+  border-top: 1px solid rgba(255,255,255,.08);
+  color: #a9c5b0;
+  text-align:center;
+  padding: 22px 18px;
+  box-shadow: 0 -12px 28px rgba(0,0,0,.35) inset;
+}
+.site-footer small, .site-footer a{
+  color: #b9d3c0;
+  text-decoration: none;
+}
+.site-footer a:hover{ text-decoration: underline; }
