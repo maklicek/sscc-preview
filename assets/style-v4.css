@@ -266,3 +266,7 @@ main ul, main ol{ padding-left: 1.2rem; max-width: 880px; }
   display:flex; align-items:center; gap:10px;
 }
 .site-
+/* rozestup pod sticky hlavičkou */
+main, .site-main, .page-wrap {
+  padding-top: 16px;
+}
