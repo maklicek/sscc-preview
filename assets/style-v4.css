@@ -133,3 +133,5 @@ h1,h2{
   .nav .container{ height:64px }
   .nav .main-nav{ gap:10px }
 }
+[id]{ scroll-margin-top:84px; }
+header.nav{ z-index: 9999; }
