@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Edukace — SSCC</title>
-<link rel="stylesheet" href="assets/style-v4.css?v=10">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SSCC — SolarSpace Carbon Cycle</title>
+  <link rel="stylesheet" href="assets/style-v4.css?v=10">
 </head>
-<body data-page="projekty" class="page-projects">
-  <a class="skip-link" href="#main">Přeskočit na obsah</a>
 
-  <!-- 🔽 místo celé hlavičky -->
+<body data-page="projekty" class="page-projects">
+  <!-- 🔼 Hlavička (načte se z partials/header.html) -->
   <div data-include="partials/header.html"></div>
 
-  <!-- 🔽 obsah zůstává -->
-  <main id="main" class="container">
+  <!-- 🔹 Obsah stránky -->
+  <main id="main" class="container site-main">
     <h1>Projekty a roadmapa</h1>
     <p>Obsah stránky…</p>
   </main>
 
-  <!-- 🔽 místo celé patičky -->
+  <!-- 🔽 Patička (načte se z partials/footer.html) -->
   <div data-include="partials/footer.html"></div>
 
-  <!-- 🔽 malý skript, který hlavičku a patičku natáhne -->
-  <script src="assets/include.js?v=1"></script>
+  <!-- 🔸 Skript pro include (vždy až na konci těla!) -->
+  <script src="assets/include.js?v=2" defer></script>
 </body>
-
 </html>
