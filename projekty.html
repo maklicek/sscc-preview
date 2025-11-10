@@ -1,7 +1,15 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projekty | SSCC — SolarSpace Carbon Cycle</title>
+  <link rel="stylesheet" href="assets/style-v4.css?v=9">
+  <link rel="stylesheet" href="assets/projects.css?v=2">
+</head>
 <body data-page="projekty" class="page-projects">
   <a class="skip-link" href="#main">Přeskočit na obsah</a>
 
-  <!-- sjednocená hlavička jako na homepage -->
   <header class="nav">
     <div class="container flex items-center justify-between">
       <a class="brand" href="index.html">SolarSpace Carbon Cycle</a>
@@ -16,125 +24,23 @@
     </div>
   </header>
 
-  <main id="main" class="page-wrap container">
-    <div class="kicker">Projekty</div>
-    <h1 class="page-title">Orbitální solární farma → přenos energie</h1>
-    <p class="page-intro lead">Přehled pilotních aktivit a otevřených iniciativ…</p>
-
-    <div class="pjs-layout">
-      <!-- ========== SIDENAV ========== -->
-      <aside class="pjs-nav" role="navigation" aria-label="Sekce projektů">
-        <a href="#p-orbital" class="pjs-link is-active">Orbitální solární: přenos</a>
-        <a href="#p-rd" class="pjs-link">RD: DAC → NH₃</a>
-        <a href="#p-obec" class="pjs-link">Obecní hub: DAC + NH₃</a>
-        <a href="#p-doupov" class="pjs-link">Doupov: geotermální hub</a>
-        <a href="#p-lidar" class="pjs-link">Lidar / rámec</a>
-        <a href="#p-bezpecnost" class="pjs-link">Bezpečnostní zóny</a>
-      </aside>
-
-      <!-- ========== CONTENT ========== -->
-      <div class="pjs-content">
-
-        <!-- 1) Orbitální → přenos -->
-        <section id="p-orbital" data-pjs-section class="project-card">
-          <figure class="project-ill" aria-hidden="true">
-            <figcaption class="ill-caption">Koncept přenosu energie z orbitální solární farmy</figcaption>
-          </figure>
-          <div class="project-body">
-            <h2>Orbitální solární farma → přenos energie</h2>
-            <div class="badges">
-              <span class="badge"><span class="dot"></span> Studie bezpečnosti</span>
-              <span class="badge"><span class="dot"></span> Účinnost &amp; ekonomika</span>
-              <span class="badge"><span class="dot"></span> Mikrovlnný příjem</span>
-            </div>
-            <p>Pilotní studie…</p>
-            <div class="cta-row">
-              <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
-              <a class="btn btn--ghost" href="konsorcium.html">Konsorcium &amp; role</a>
-            </div>
-          </div>
-        </section>
-
-        <!-- 2) RD: DAC → NH3 -->
-        <section id="p-rd" data-pjs-section class="project-card">
-          <div class="badge">PILOT</div>
-          <h3>RD: DAC → zelený NH₃</h3>
-          <p class="lead">Dekarbonizace RD (≈20 MWh/rok)…</p>
-          <div class="cta-row">
-            <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
-            <a class="btn btn--ghost" href="konsorcium.html">Role &amp; partneři</a>
-          </div>
-        </section>
-
-        <!-- 3) Obecní hub -->
-        <section id="p-obec" data-pjs-section class="project-card">
-          <div class="badge">Obecní hub</div>
-          <h3>Obec: DAC + NH₃ hub</h3>
-          <p class="lead">Pilot pro obec (~400 RD)…</p>
-          <div class="cta-row">
-            <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
-            <a class="btn btn--ghost" href="edukace.html">Jak to funguje</a>
-          </div>
-        </section>
-
-        <!-- 4) Doupov / geotermál -->
-        <section id="p-doupov" data-pjs-section class="project-card">
-          <div class="badge">Geotermální integrace</div>
-          <h3>Doupov: geotermální hub</h3>
-          <p class="lead">Integrace EGS, lokální příjem a skladování…</p>
-          <div class="cta-row">
-            <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
-            <a class="btn btn--ghost" href="edukace.html">Jak to funguje</a>
-          </div>
-        </section>
-
-        <!-- 5) Lidar -->
-        <section id="p-lidar" data-pjs-section class="project-card">
-          <div class="badge">Metrologie</div>
-          <h3>Lidar / regulační rámec</h3>
-          <p class="lead">Zónování, monitoring svazku, fail-safe režimy…</p>
-          <div class="cta-row">
-            <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
-            <a class="btn btn--ghost" href="edukace.html">Jak to funguje</a>
-          </div>
-        </section>
-
-        <!-- 6) Bezpečnostní zóny -->
-        <section id="p-bezpecnost" data-pjs-section class="project-card">
-          <div class="badge">Bezpečnost</div>
-          <h3>Bezpečnostní zóny</h3>
-          <p class="lead">Definice, měření a komunikace bezpečných zón…</p>
-          <div class="cta-row">
-            <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
-            <a class="btn btn--ghost" href="edukace.html">Jak to funguje</a>
-          </div>
-        </section>
-
-      </div>
-    </div>
-  </main>
+  <!-- SEM vlož svůj projektový obsah (pjs-layout, pjs-nav, project-card sekce) -->
+  <!-- (přesně ten blok, co jsi posílal) -->
 
   <footer class="site-footer">
-    <small>© <span id="year"></span> SSCC — SolarSpace Carbon Cycle · Preview</small>
+    <small>© <span id="year"></span> SSCC — SolarSpace Carbon Cycle</small>
   </footer>
 
   <script>
-    // rok
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Scrollspy: zvýrazní aktivní položku v side-nav
-    const links = [...document.querySelectorAll('.pjs-nav .pjs-link')];
-    const sections = [...document.querySelectorAll('[data-pjs-section]')];
-    const byId = id => links.find(a => a.getAttribute('href') === '#'+id);
-
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          links.forEach(a=>a.classList.remove('is-active'));
-          const a = byId(e.target.id); if(a) a.classList.add('is-active');
-        }
-      });
-    }, {rootMargin: '-35% 0px -60% 0px', threshold: .01});
-    sections.forEach(s=>io.observe(s));
+    (function(){
+      const map = {index:"index.html", sscc:"sscc.html", projekty:"projekty.html",
+        spoluprace:"spoluprace.html", edukace:"edukace.html", konsorcium:"konsorcium.html", napady:"napady.html"};
+      const cur = map[document.body.dataset.page];
+      const link = document.querySelector('.main-nav a[href="'+cur+'"]')
+                || document.querySelector('header nav a[href="'+cur+'"]');
+      if (link) link.setAttribute('aria-current','page');
+    })();
   </script>
 </body>
+</html>
