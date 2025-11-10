@@ -530,3 +530,90 @@ main, .site-main, .page-wrap { flex: 1 0 auto; }
   50%  { left: 120%; opacity: .6; }
   100% { left: 140%; opacity: 0; }
 }
+/* ===== HLAVIČKA · Titulek — zlatý shimmer při hoveru ===== */
+.site-header .brand .site-title{
+  transition: text-shadow .25s ease, filter .25s ease;
+  text-shadow: 0 0 0 transparent;
+  position: relative;
+  will-change: filter;
+}
+
+/* animovaný zlatý přeliv přes text */
+.site-header .brand:hover .site-title{
+  filter: brightness(1.07);
+  text-shadow: 0 0 12px rgba(255,215,106,.15);
+  background: linear-gradient(
+    90deg,
+    var(--ink) 0%,
+    #ffe49a 25%,
+    var(--ink) 50%,
+    #ffd76a 75%,
+    var(--ink) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* zobrazíme jen přeliv */
+  animation: ssccTitleShimmer 1.2s ease-in-out forwards;
+}
+
+@keyframes ssccTitleShimmer{
+  0%   { background-position: -120% 0; }
+  100% { background-position: 120% 0; }
+}
+
+/* Respekt ke snížení pohybu */
+@media (prefers-reduced-motion: reduce){
+  .site-header .brand:hover .site-title{
+    animation: none;
+    background: none;
+    color: var(--ink);
+    text-shadow: 0 0 10px rgba(255,215,106,.18);
+  }
+}
+/* ===== HLAVIČKA · Navigace — jemné zvýraznění ===== */
+.main-nav a{
+  position: relative;
+  text-decoration: none;
+  transition: color .2s ease, filter .2s ease;
+}
+
+/* aktivní / hover barva písma */
+.main-nav a:hover,
+.main-nav a[aria-current="page"]{
+  color: #ffe49a;
+}
+
+/* podtržení jako tenký zlatý proužek */
+.main-nav a::after{
+  content:"";
+  position:absolute;
+  left: 12%;
+  right: 12%;
+  bottom: -6px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255,215,106,.0), rgba(255,215,106,.75), rgba(255,215,106,.0));
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .24s ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a[aria-current="page"]::after{
+  transform: scaleX(1);
+}
+
+/* méně pohybu */
+@media (prefers-reduced-motion: reduce){
+  .main-nav a::after{ transition:none; }
+}
+/* ===== PATIČKA · světlejší pozadí a kontrast ===== */
+.site-footer{
+  background: rgba(12,18,16,.50);   /* jemně světlejší než dřív */
+  border-top: 1px solid rgba(255,255,255,.08);
+  color: var(--muted);
+}
+
+.site-footer small{
+  color: #cfe3d4;                   /* lepší čitelnost na tmavém */
+  letter-spacing: .01em;
+}
