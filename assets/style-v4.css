@@ -108,11 +108,16 @@ h3{ font-size:22px }
 }
 /* Logo v navigaci – zvětšeno */
 .site-header .logo {
-  width: 56px;        /* bylo typicky 36–44px */
-  height: 56px;
-
+  width: 48px;
+  height: 48px;
   object-fit: cover;
+  border-radius: 0; /* ostré rohy */
+  box-shadow: 0 6px 16px rgba(0,0,0,.35);
 }
+.site-header .logo {
+  border: 1px solid rgba(255,255,255,.08);
+}
+
 .site-header .brand { gap: 12px; }  /* trochu víc místa mezi logem a názvem */
 /* Šířka layoutu */
 .page-wrap, .container, .header-inner, .footer-inner {
