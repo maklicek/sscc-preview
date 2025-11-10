@@ -4,94 +4,90 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SolarSpace Carbon Cycle — SSCC</title>
-<link rel="stylesheet" href="assets/style-v4.css?v=7">
-
-
+  <link rel="stylesheet" href="assets/style-v4.css?v=7">
 </head>
 
-<body>
-<header class="site-header">
-  <div class="header-inner">
-    <a href="index.html" class="brand">
-      <img src="assets/sscc-logo.jpg" alt="SSCC logo" class="logo">
-      <span class="site-title">SolarSpace Carbon Cycle — SSCC</span>
-    </a>
+<body data-page="index">
+  <!-- ======= HEADER ======= -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/sscc-logo.jpg" alt="SSCC logo" class="logo">
+        <span class="site-title">SolarSpace Carbon Cycle — SSCC</span>
+      </a>
 
-    <nav class="main-nav" id="mainNav">
-      <a href="sscc.html">SSCC</a>
-      <a href="projekty.html">Projekty</a>
-      <a href="spoluprace.html">Spolupráce</a>
-      <a href="edukace.html">Edukace</a>
-      <a href="konsorcium.html">Konsorcium</a>
-      <a href="napady.html">Nápady</a>
-    </nav>
-  </div>
-</header>
-
-
-  <!-- hlavní obsah -->
- <main class="container site-main">
-
-  <!-- HERO -->
-  <section class="hero hero--center">
-    <h1>Orbitální solární energie, prakticky</h1>
-    <p class="lead">
-      <a class="btn" href="projekty.html">Projekty a roadmapa</a>
-<a class="btn btn-ghost" href="jak-to-funguje.html">Jak to funguje</a>
-
-      Otevřená iniciativa SSCC: pilotní přenos energie, bezpečnost mikrovln,
-      regulační rámec a prototyp pozemního příjmu. Měřitelné výsledky, klid a pořádek.
-    </p>
-    <div class="hero-cta">
-      <a href="#" class="btn btn--gold">Projekty a roadmapa</a>
-      <a href="#" class="btn btn--ghost">Jak to funguje</a>
+      <nav class="main-nav" id="mainNav">
+        <a href="sscc.html">SSCC</a>
+        <a href="projekty.html">Projekty</a>
+        <a href="spoluprace.html">Spolupráce</a>
+        <a href="edukace.html">Edukace</a>
+        <a href="konsorcium.html">Konsorcium</a>
+        <a href="napady.html">Nápady</a>
+      </nav>
     </div>
-  </section>
+  </header>
+  <!-- ======= /HEADER ======= -->
 
-  <!-- (volitelné) další obsah stránky pod hero blokem -->
-  <section class="intro">
-    <h2>Testovací stránka SSCC – elegantní základ</h2>
-    <p>Tato stránka je základem jednotného stylu všech sekcí. Pozadí je tmavě zelené, hlavička a patička světlejší, písmo zlaté. Žádné rámečky, jen klid a prostor.</p>
-  </section>
+  <main class="container site-main">
+    <!-- HERO -->
+    <section class="hero hero--center">
+      <h1>Orbitální solární energie, prakticky</h1>
 
-</main>
+      <p class="lead">
+        Otevřená iniciativa SSCC: pilotní přenos energie, bezpečnost mikrovln,
+        regulační rámec a prototyp pozemního příjmu. Měřitelné výsledky, klid a pořádek.
+      </p>
 
+      <div class="hero-cta">
+        <a class="btn btn--gold" href="projekty.html">Projekty a roadmapa</a>
+        <!-- pokud zatím nemáš “Jak to funguje”, může jít na SSCC -->
+        <a class="btn btn--ghost" href="sscc.html">Jak to funguje</a>
+      </div>
+    </section>
 
+    <section class="intro">
+      <h2>Testovací stránka SSCC – elegantní základ</h2>
+      <p>
+        Tato stránka je základem jednotného stylu všech sekcí. Pozadí je tmavě zelené,
+        hlavička a patička světlejší, písmo zlaté. Žádné rámečky, jen klid a prostor.
+      </p>
+    </section>
+  </main>
+
+  <!-- ======= FOOTER ======= -->
   <footer class="site-footer">
     <div data-include="partials/footer.html"></div>
-<script src="assets/include.js"></script>
-  <small>
-    © 2025 SSCC — SolarSpace Carbon Cycle. Veřejné materiály jsou licencovány
-    jako <strong>CC BY-NC-ND 4.0</strong> (převzetí s uvedením zdroje, nekomerční, bez úprav).
-    Komerční použití nebo úpravy jen na základě písemného souhlasu SSCC.
-    <a href="terms.html">Podmínky</a>
-    <footer class="site-footer">
-  <div class="wrapper">
-    <small>© 2025 SSCC — SolarSpace Carbon Cycle</small>
-  </div>
-</footer>
+    <script src="assets/include.js"></script>
+    <small>
+      © <span id="year"></span> SSCC — SolarSpace Carbon Cycle. Veřejné materiály jsou licencovány
+      jako <strong>CC BY-NC-ND 4.0</strong>. Komerční použití nebo úpravy jen na základě písemného souhlasu SSCC.
+      <a href="terms.html">Podmínky</a>
+    </small>
+  </footer>
+  <!-- ======= /FOOTER ======= -->
 
-  </small>
-</footer>
-<script>
-  (function(){
-    const page = document.body.dataset.page || "";
-    const map = {
-      "sscc": "sscc.html",
-      "projekty": "projekty.html",
-      "spoluprace": "spoluprace.html",
-      "edukace": "edukace.html",
-      "konsorcium": "konsorcium.html",
-      "napady": "napady.html"
-    };
-    const current = map[page];
-    if(current){
-      const link = document.querySelector('.main-nav a[href="'+current+'"]');
-      if(link){ link.setAttribute('aria-current','page'); }
-    }
-  })();
-</script>
+  <script>
+    // Rok v patičce
+    document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Zvýraznění aktivní položky v menu
+    (function(){
+      const page = document.body.dataset.page || "";
+      const map = {
+        index: "index.html",
+        sscc: "sscc.html",
+        projekty: "projekty.html",
+        spoluprace: "spoluprace.html",
+        edukace: "edukace.html",
+        konsorcium: "konsorcium.html",
+        napady: "napady.html"
+      };
+      const current = map[page];
+      if(current){
+        const link = document.querySelector('.main-nav a[href="'+current+'"]');
+        if(link){ link.setAttribute('aria-current','page'); }
+      }
+    })();
+  </script>
 </body>
-
 </html>
