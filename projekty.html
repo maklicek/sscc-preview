@@ -41,6 +41,65 @@
       color:var(--ink);
       min-height:100%;
     }
+<!-- PŘED tím, co máš teď v <main class="page-wrap"> -->
+<div class="pjs-layout page-wrap">
+  <!-- Levý rozcestník -->
+  <aside class="pjs-nav" aria-label="Projekty">
+    <details class="pjs-acc" open>
+      <summary>Orbitální solární</summary>
+      <a href="#p-orbital">Přenos energie</a>
+    </details>
+
+    <details class="pjs-acc">
+      <summary>DAC & NH₃</summary>
+      <a href="#p-rd">RD: DAC → NH₃</a>
+      <a href="#p-obec">Obec: DAC + NH₃ hub</a>
+      <a href="#p-doupov">Doupov: geotermální hub</a>
+    </details>
+
+    <details class="pjs-acc">
+      <summary>Další směry</summary>
+      <a href="#p-…">Lidar / regulační rámec</a>
+      <a href="#p-…2">Bezpečnostní zóny</a>
+    </details>
+  </aside>
+
+  <!-- Pravý obsah (sem patří tvoje karty/sekce) -->
+  <div class="pjs-content">
+    <!-- EXISTUJÍCÍ velká karta – jen jí přidej id + data-pjs-section -->
+    <section id="p-orbital" data-pjs-section class="project-card" aria-labelledby="p1">
+      <!-- ... beze změn tvůj obsah ... -->
+    </section>
+
+    <!-- Doplňující karty (příklad) – musí mít id + data-pjs-section -->
+    <section id="p-rd" data-pjs-section class="pjs-card">
+      <div class="pjs-card__head"><h3>RD: DAC → zelený NH₃</h3></div>
+      <p class="pjs-card__text">Pilot pro rodinné domy (≈20 MWh/rok)…</p>
+      <div class="pjs-card__cta">
+        <a class="btn primary" href="spoluprace.html">Zapojit se</a>
+        <a class="btn" href="konsorcium.html">Role & partneři</a>
+      </div>
+    </section>
+
+    <section id="p-obec" data-pjs-section class="pjs-card">
+      <div class="pjs-card__head"><h3>Obec: DAC + NH₃ hub</h3></div>
+      <p class="pjs-card__text">Obec 1 000 obyvatel: decentralizovaný hub…</p>
+      <div class="pjs-card__cta">
+        <a class="btn primary" href="spoluprace.html">Zapojit se</a>
+        <a class="btn" href="edukace.html">Jak to funguje</a>
+      </div>
+    </section>
+
+    <section id="p-doupov" data-pjs-section class="pjs-card">
+      <div class="pjs-card__head"><h3>Doupov: geotermální hub</h3></div>
+      <p class="pjs-card__text">EGS + DAC + NH₃, 24/7 stabilní zdroj…</p>
+      <div class="pjs-card__cta">
+        <a class="btn primary" href="spoluprace.html">Zapojit se</a>
+        <a class="btn" href="konsorcium.html">Konsorcium</a>
+      </div>
+    </section>
+  </div>
+</div>
 
     /* ---------- Blok úvodu ---------- */
     .page-wrap{ max-width:1180px; margin:26px auto 80px; padding:0 18px; }
