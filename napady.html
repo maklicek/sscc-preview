@@ -4,43 +4,62 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nápady — SSCC</title>
-<link rel="stylesheet" href="assets/style-v4.css?v=7">
+  <link rel="stylesheet" href="assets/style-v4.css?v=7">
+</head>
 
-<header class="site-header">
-  <div class="header-inner">
-    <a href="index.html" class="brand">
-      <img src="assets/sscc-logo.jpg" alt="SSCC logo" class="logo">
-      <span class="site-title">SolarSpace Carbon Cycle — SSCC</span>
-    </a>
+<body data-page="napady">
+  <!-- ======= HEADER ======= -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/sscc-logo.jpg" alt="SSCC logo" class="logo">
+        <span class="site-title">SolarSpace Carbon Cycle — SSCC</span>
+      </a>
 
-    <nav class="main-nav" id="mainNav">
-      <a href="sscc.html">SSCC</a>
-      <a href="projekty.html">Projekty</a>
-      <a href="spoluprace.html">Spolupráce</a>
-      <a href="edukace.html">Edukace</a>
-      <a href="konsorcium.html">Konsorcium</a>
-      <a href="napady.html">Nápady</a>
-    </nav>
-  </div>
-</header>
-
+      <nav class="main-nav" id="mainNav">
+        <a href="sscc.html">SSCC</a>
+        <a href="projekty.html">Projekty</a>
+        <a href="spoluprace.html">Spolupráce</a>
+        <a href="edukace.html">Edukace</a>
+        <a href="konsorcium.html">Konsorcium</a>
+        <a href="napady.html">Nápady</a>
+      </nav>
+    </div>
+  </header>
+  <!-- ======= /HEADER ======= -->
 
   <main class="container site-main">
     <h1>Nápady a hypotézy</h1>
     <p>Pracovní náčrt. Tady budou geotermální inovace, simulátor a návrhy čtenářů.</p>
   </main>
 
+  <!-- ======= FOOTER ======= -->
   <footer class="site-footer">
     <div data-include="partials/footer.html"></div>
-<script src="assets/include.js"></script>
-    <small>© 2025 SSCC — SolarSpace Carbon Cycle</small>
+    <script src="assets/include.js"></script>
+    <small>© <span id="year"></span> SSCC — SolarSpace Carbon Cycle</small>
   </footer>
+  <!-- ======= /FOOTER ======= -->
 
   <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
     (function(){
-      const page=document.body.dataset.page||"";
-      const map={sscc:"sscc.html",projekty:"projekty.html",spoluprace:"spoluprace.html",edukace:"edukace.html",konsorcium:"konsorcium.html",napady:"napady.html"};
-      const current=map[page]; if(current){const a=document.querySelector('.main-nav a[href="'+current+'"]'); if(a) a.setAttribute('aria-current','page');}
+      const page = document.body.dataset.page || "";
+      const map = {
+        index: "index.html",
+        sscc: "sscc.html",
+        projekty: "projekty.html",
+        spoluprace: "spoluprace.html",
+        edukace: "edukace.html",
+        konsorcium: "konsorcium.html",
+        napady: "napady.html"
+      };
+      const current = map[page];
+      if(current){
+        const link = document.querySelector('.main-nav a[href="'+current+'"]');
+        if(link){ link.setAttribute('aria-current','page'); }
+      }
     })();
   </script>
 </body>
