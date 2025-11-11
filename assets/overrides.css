@@ -181,3 +181,52 @@ section, .page-section { padding-block: 16px; }
 /* Při skrolu a skoku nepřekrývej nadpis sticky hlavičkou */
 .projects-content .project { scroll-margin-top: 6.5rem; }
 
+.projects-shell {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: clamp(16px, 2vw, 28px);
+  min-height: 70vh;
+}
+
+.toc ul { list-style: none; margin: 0; padding: 0; }
+.toc a {
+  display: block;
+  padding: .5rem .6rem;
+  border-radius: .5rem;
+  text-decoration: none;
+  color: var(--muted);
+  transition: all .2s ease;
+}
+.toc a:hover { color: var(--accent); }
+.toc a.is-active {
+  background: rgba(255, 215, 106, .12);
+  outline: 1px solid rgba(255, 215, 106, .35);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* pravý panel – jeden aktivní projekt */
+.projects-pane { position: relative; overflow: hidden; }
+.project {
+  display: none;
+  animation: fadeIn .4s ease forwards;
+}
+.project.is-active { display: block; }
+@keyframes fadeIn { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:none;} }
+
+.project-figure { margin: 1rem 0; text-align: center; }
+.project-figure img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 22px rgba(0,0,0,.3);
+}
+.project-figure figcaption {
+  font-size: .92rem;
+  color: #cdbf8a;
+  margin-top: .4rem;
+}
+
+@media (max-width: 960px) {
+  .projects-shell { grid-template-columns: 1fr; }
+  .toc { margin-bottom: 1rem; }
+}
