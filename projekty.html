@@ -12,76 +12,65 @@
 <body data-page="projekty" class="page-projects">
   <div data-include="assets/partials/header.html"></div>
 
-  <main class="container site-main">
-    <header class="page-head">
-      <p class="kicker">Roadmapa</p>
-      <h1>Projekty a roadmapa</h1>
-      <p class="lead">Přehled pilotních aktivit a otevřených iniciativ.</p>
-    </header>
+ <main class="container site-main">
+  <header class="page-head">
+    <p class="kicker">Roadmapa</p>
+    <h1>Projekty a roadmapa</h1>
+    <p class="lead">Přehled pilotních aktivit a otevřených iniciativ.</p>
+  </header>
 
-    <section class="prose">
-      <h2>Orbitální farma → bezpečný přenos</h2>
-      <p>Bezpečnostní studie zón (mikrovlny/laser), LIDAR, metrologie a regulace.</p>
-      <p>
-        <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
-        <a class="btn btn--ghost" href="konsorcium.html">Konsorcium & role</a>
-      </p>
-    </section>
+  <div class="layout-two">
+    <!-- Levý rozcestník -->
+    <aside class="toc" aria-label="Navigace v projektech">
+      <nav>
+        <a href="#dac-nh3"      class="toc-link">DAC → NH₃: ukládání energie</a>
+        <a href="#nh3-pilot"    class="toc-link">DAC → zelený NH₃ (linky)</a>
+        <a href="#doupov-hub"   class="toc-link">Doupov – geotermální hub</a>
+        <a href="#safe-transfer" class="toc-link">Orbitální farma → bezpečný přenos</a>
+        <!-- přidej další podle potřeby -->
+      </nav>
+    </aside>
 
-    <section class="prose">
-          <section class="prose">
-      <h2>DAC + NH₃: Ukládání energie z CO₂ a vodíku</h2>
-      <p>
-        Vybrané lokality s nízkou hustotou obyvatelstva mohou sloužit jako uzly pro syntézu
-        zeleného amoniaku (NH₃) – přeměnou zachyceného CO₂ a vodíku z obnovitelných zdrojů.
-        Projekt kombinuje zachytávání uhlíku, chemickou syntézu a využití amoniaku jako
-        energetického nosiče i akumulátoru.
-      </p>
+    <!-- Pravý obsah -->
+    <article class="projects-content">
+      <section id="safe-transfer" class="prose project">
+        <h2>Orbitální farma → bezpečný přenos</h2>
+        <p>Bezpečnostní studie zón (mikrovlny/laser), LIDAR, metrologie a regulace.</p>
+        <p>
+          <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
+          <a class="btn btn--ghost" href="konsorcium.html">Konsorcium & role</a>
+        </p>
+      </section>
 
-      <h3>Cíle projektu</h3>
-      <ul>
-        <li>Ověřit účinnost menších modulárních jednotek DAC + NH₃.</li>
-        <li>Vyhodnotit dopad na uhlíkovou bilanci a emisní uzávěr.</li>
-        <li>Testovat přímou výrobu energie z NH₃ (spalovací články, generátory).</li>
-        <li>Definovat model regionální distribuce – přeprava NH₃ nebo lokální spotřeba.</li>
-      </ul>
+      <section id="dac-nh3" class="prose project">
+        <h2>DAC + NH₃: Ukládání energie z CO₂ a vodíku</h2>
+        <!-- … obsah … -->
+        <figure>
+          <img src="assets/img/projects/dac-nh3-concept.jpg" alt="Schéma DAC → NH₃">
+          <figcaption>Schéma uzlu DAC + NH₃.</figcaption>
+        </figure>
+      </section>
 
-      <h3>Význam</h3>
-      <p>
-        Projekt představuje cestu k dlouhodobému a stabilnímu ukládání energie bez závislosti
-        na přenosových sítích. Je určen pro odlehlé nebo průmyslově nevytížené oblasti,
-        kde lze kombinovat obnovitelné zdroje s chemickou konverzí a geotermálním teplem.
-      </p>
+      <section id="nh3-pilot" class="prose project">
+        <h2>DAC → zelený NH₃</h2>
+        <p>Pilotní linky CO₂ → NH₃ pro RD, obecní hub a geotermální integraci.</p>
+      </section>
 
-      <p>
-        <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
-        <a class="btn btn--ghost" href="edukace.html">Jak to funguje</a>
-      </p>
+      <section id="doupov-hub" class="prose project">
+        <h2>Doupov – Geotermální hub</h2>
+        <figure>
+          <img src="assets/img/projects/doupov.jpg" alt="Krajina Doupovských hor">
+          <figcaption>Zaplavovaný sopečný kráter – potenciál pro geotermální výzkum a akumulaci.</figcaption>
+        </figure>
+        <!-- … obsah … -->
+      </section>
+    </article>
+  </div>
+</main>
 
-      <figure>
-        <img src="assets/img/dac-nh3-concept.jpg" alt="Koncept DAC + NH3 – přeměna CO₂ a vodíku na amoniak" loading="lazy">
-        <figcaption>Schéma uzlu DAC + NH₃: zachycení CO₂, výroba vodíku a syntéza zeleného amoniaku.</figcaption>
-      </figure>
-    </section>
+<!-- jen na této stránce -->
+<script src="assets/js/toc.js" defer></script>
 
-      <h2>DAC → zelený NH₃</h2>
-      <p>Pilotní linky CO₂ → NH₃ pro RD, obecní hub a geotermální integraci.</p>
-    </section>
-    <section class="prose">
-  <h2>Doupov – Geotermální hub</h2>
-  <figure class="project-figure">
-    <img src="assets/img/projects/doupov.jpg" alt="Krajina Doupovských hor s bývalým sopečným kráterem" loading="lazy">
-    <figcaption>Výhled na zaplavený sopečný kráter – místo s potenciálem pro geotermální výzkum a akumulaci energie.</figcaption>
-  </figure>
-
-  <p>
-    Doupovské hory představují jedinečné území s přirozenou tepelnou stabilitou a historickou vulkanickou aktivitou.
-    Pilotní projekt se zaměřuje na využití zbytkového geotermálního gradientu a podzemních vod k vytápění a výrobě elektřiny
-    pro regionální infrastrukturu. Zvažuje se propojení s technologií DAC a lokální výrobou syntetických paliv.
-  </p>
-</section>
-
-  </main>
 
   <div data-include="assets/partials/footer.html"></div>
   <script src="assets/include.js" defer></script>
