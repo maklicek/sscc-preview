@@ -95,3 +95,70 @@ section, .page-section { padding-block: 16px; }
   .toc nav { flex-direction: row; flex-wrap: wrap; gap: .5rem; }
   .toc-link { padding: .4rem .6rem; }
 }
+/* --- Projekty: dvousloupcový layout --- */
+.projects-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: clamp(1.25rem, 2vw, 2rem);
+}
+
+/* Toc / rozcestník */
+.toc {
+  position: sticky;
+  top: 7rem;               /* drž se pod headerem */
+  align-self: start;
+  max-height: calc(100vh - 8rem);
+  overflow: auto;
+  padding-right: .5rem;
+}
+
+.toc-title {
+  font-size: 1rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  opacity: .8;
+  margin: 0 0 .5rem 0;
+}
+
+.toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc a {
+  display: block;
+  padding: .5rem .25rem;
+  border-radius: .5rem;
+  text-decoration: none;
+  opacity: .9;
+}
+
+.toc a:hover { opacity: 1; }
+
+.toc a[aria-current="true"] {
+  background: rgba(255, 215, 0, 0.10); /* jemný zlatý závoj */
+  outline: 1px solid rgba(255, 215, 0, 0.25);
+}
+
+/* Obsah */
+.projects-content .project {
+  scroll-margin-top: 6.5rem; /* ať při skoku není nadpis schovaný za headerem */
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.projects-content .project:last-of-type {
+  border-bottom: none;
+}
+
+/* Responsivita */
+@media (max-width: 960px) {
+  .projects-layout {
+    grid-template-columns: 1fr;
+  }
+  .toc {
+    position: static;
+    max-height: none;
+    margin-bottom: 1rem;
+  }
+}
