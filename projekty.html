@@ -12,60 +12,64 @@
 <body data-page="projekty" class="page-projects">
   <div data-include="assets/partials/header.html"></div>
 
- <main class="container site-main">
-  <header class="page-head">
-    <p class="kicker">Roadmapa</p>
-    <h1>Projekty a roadmapa</h1>
-    <p class="lead">Přehled pilotních aktivit a otevřených iniciativ.</p>
-  </header>
+<main class="container site-main projects-layout">
+  <aside class="toc" aria-label="Seznam projektů">
+    <nav>
+      <h2 class="toc-title">Projekty</h2>
+      <ul>
+        <li><a href="#proj-dac-nh3">DAC → zelený NH₃</a></li>
+        <li><a href="#proj-doupov">Doupov – geotermální hub</a></li>
+        <!-- přidej další: -->
+        <!-- <li><a href="#proj-bezpecny-prenos">Orbitální farma → bezpečný přenos</a></li> -->
+      </ul>
+    </nav>
+  </aside>
 
-  <div class="layout-two">
-    <!-- Levý rozcestník -->
-    <aside class="toc" aria-label="Navigace v projektech">
-      <nav>
-        <a href="#dac-nh3"      class="toc-link">DAC → NH₃: ukládání energie</a>
-        <a href="#nh3-pilot"    class="toc-link">DAC → zelený NH₃ (linky)</a>
-        <a href="#doupov-hub"   class="toc-link">Doupov – geotermální hub</a>
-        <a href="#safe-transfer" class="toc-link">Orbitální farma → bezpečný přenos</a>
-        <!-- přidej další podle potřeby -->
-      </nav>
-    </aside>
+  <article class="projects-content">
+    <!-- DAC → NH3 -->
+    <section id="proj-dac-nh3" class="prose project">
+      <p class="kicker">Pilot</p>
+      <h1>DAC → zelený NH<sub>3</sub></h1>
 
-    <!-- Pravý obsah -->
-    <article class="projects-content">
-      <section id="safe-transfer" class="prose project">
-        <h2>Orbitální farma → bezpečný přenos</h2>
-        <p>Bezpečnostní studie zón (mikrovlny/laser), LIDAR, metrologie a regulace.</p>
-        <p>
-          <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
-          <a class="btn btn--ghost" href="konsorcium.html">Konsorcium & role</a>
-        </p>
-      </section>
+      <p>
+        Vybrané lokality s nízkou hustotou obyvatelstva mohou sloužit jako uzly pro
+        syntézu zeleného amoniaku (NH₃) – přeměnou zachyceného CO₂ a vodíku z obnovitelných zdrojů.
+      </p>
 
-      <section id="dac-nh3" class="prose project">
-        <h2>DAC + NH₃: Ukládání energie z CO₂ a vodíku</h2>
-        <!-- … obsah … -->
-        <figure>
-          <img src="assets/img/projects/dac-nh3-concept.jpg" alt="Schéma DAC → NH₃">
-          <figcaption>Schéma uzlu DAC + NH₃.</figcaption>
-        </figure>
-      </section>
+      <h3>Cíle projektu</h3>
+      <ul>
+        <li>Ověřit menší modulární jednotky DAC + NH₃.</li>
+        <li>Vyhodnotit dopad na uhlíkovou bilanci a emisní uzávěr.</li>
+        <li>Testovat přímou výrobu energie z NH₃ (články/generátory) vs. distribuci.</li>
+      </ul>
 
-      <section id="nh3-pilot" class="prose project">
-        <h2>DAC → zelený NH₃</h2>
-        <p>Pilotní linky CO₂ → NH₃ pro RD, obecní hub a geotermální integraci.</p>
-      </section>
+      <p>
+        <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
+        <a class="btn btn--ghost" href="konsorcium.html">Konsorcium & role</a>
+      </p>
+    </section>
 
-      <section id="doupov-hub" class="prose project">
-        <h2>Doupov – Geotermální hub</h2>
-        <figure>
-          <img src="assets/img/projects/doupov.jpg" alt="Krajina Doupovských hor">
-          <figcaption>Zaplavovaný sopečný kráter – potenciál pro geotermální výzkum a akumulaci.</figcaption>
-        </figure>
-        <!-- … obsah … -->
-      </section>
-    </article>
-  </div>
+    <!-- Doupov -->
+    <section id="proj-doupov" class="prose project">
+      <p class="kicker">Záměr</p>
+      <h1>Doupov – geotermální hub</h1>
+
+      <p>
+        Doupovské hory mají přirozenou tepelnou stabilitu a historickou vulkanickou aktivitu.
+        Pilot ověřuje využití geotermálního gradientu a podzemních vod pro regionální infrastrukturu
+        a zvažuje spojení s technologií DAC a lokální výrobou syntetických paliv.
+      </p>
+
+      <!-- Obrázek doplníš kdykoli: -->
+      <!--
+      <figure>
+        <img src="assets/img/projects/doupov.jpg" alt="Krajina Doupovských hor s bývalým sopečným kráterem">
+        <figcaption>Výhled na zaplavený sopečný kráter – místo s potenciálem pro geotermální výzkum a akumulaci energie.</figcaption>
+      </figure>
+      -->
+    </section>
+
+  </article>
 </main>
 
 <!-- jen na této stránce -->
