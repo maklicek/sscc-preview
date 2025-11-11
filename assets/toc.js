@@ -35,3 +35,4 @@
     targets.forEach(t => io.observe(t));
   }
 })();
+<script src="assets/toc.js" defer></script>
