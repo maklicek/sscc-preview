@@ -1,35 +1,37 @@
-// Smooth scroll po kliknutí
-document.querySelectorAll('.toc-link').forEach(a => {
-  a.addEventListener('click', e => {
-    const id = a.getAttribute('href') || '';
-    if (id.startsWith('#')) {
-      e.preventDefault();
-      const target = document.querySelector(id);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        history.replaceState(null, '', id); // mění hash bez skoku
-      }
-    }
-  });
-});
+// Aktivní link v TOC podle právě viditelné sekce
+(function () {
+  const toc = document.querySelector('.toc');
+  if (!toc) return;
 
-// ScrollSpy – zvýrazni aktivní sekci v TOC
-const links = Array.from(document.querySelectorAll('.toc-link'));
-const map = new Map(links.map(a => [a.getAttribute('href'), a]));
+  const links = Array.from(toc.querySelectorAll('a[href^="#"]'));
+  const targets = links
+    .map(a => document.getElementById(a.getAttribute('href').slice(1)))
+    .filter(Boolean);
 
-const io = new IntersectionObserver((entries) => {
-  // hledáme sekci nejvýš v viewportu
-  let best = null;
-  entries.forEach(en => {
-    if (en.isIntersecting) {
-      if (!best || en.boundingClientRect.top < best.boundingClientRect.top) best = en;
-    }
+  // zvýraznění po kliknutí (funguje i bez IntersectionObserveru)
+  links.forEach(a => {
+    a.addEventListener('click', () => {
+      links.forEach(x => x.removeAttribute('aria-current'));
+      a.setAttribute('aria-current', 'true');
+    });
   });
-  if (best) {
-    const id = '#' + best.target.id;
-    links.forEach(l => l.classList.toggle('is-active', l.getAttribute('href') === id));
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      // vyber nejvýše viditelný
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+      if (!visible) return;
+      const id = visible.target.id;
+      links.forEach(a => {
+        a.setAttribute('aria-current', a.getAttribute('href') === '#' + id ? 'true' : 'false');
+      });
+    }, {
+      rootMargin: '-30% 0px -60% 0px',  // „aktivní“ když je cca horní třetina
+      threshold: [0, 0.25, 0.5, 1]
+    });
+
+    targets.forEach(t => io.observe(t));
   }
-}, { rootMargin: '-30% 0px -60% 0px', threshold: [0, 0.25, 0.5, 1] });
-
-// napojíme na všechny .project sekce
-document.querySelectorAll('.project[id]').forEach(sec => io.observe(sec));
+})();
