@@ -161,4 +161,23 @@ section, .page-section { padding-block: 16px; }
     max-height: none;
     margin-bottom: 1rem;
   }
+/* Obrázky v projektových sekcích */
+.project-figure {
+  margin: 1.25rem 0 1.25rem;
+  text-align: center;
 }
+.project-figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 22px rgba(0,0,0,.30);
+}
+.project-figure figcaption {
+  font-size: .92rem;
+  color: #cdbf8a; /* zlatavě tlumená */
+  margin-top: .5rem;
+}
+
+/* Při skrolu a skoku nepřekrývej nadpis sticky hlavičkou */
+.projects-content .project { scroll-margin-top: 6.5rem; }
+
