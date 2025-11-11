@@ -12,112 +12,77 @@
 <body data-page="projekty" class="page-projects">
   <div data-include="assets/partials/header.html"></div>
 
-<main class="container site-main projects-layout">
-  <aside class="toc" aria-label="Seznam projektů">
-    <nav>
-      <h2 class="toc-title">Projekty</h2>
-      <ul>
-     <ul>
-  <li><a href="#proj-dac-nh3">DAC → zelený NH₃</a></li>
-  <li><a href="#proj-doupov">Doupov – geotermální hub</a></li>
-  <li><a href="#proj-orbitalni-farma">Orbitální farma → bezpečný přenos</a></li>
-</ul>
-    </nav>
-  </aside>
+<main class="container site-main">
+  <header class="page-head">
+    <p class="kicker">Roadmapa</p>
+    <h1>Projekty a záměry</h1>
+    <p class="lead">Přehled pilotních aktivit a otevřených iniciativ.</p>
+  </header>
 
-  <article class="projects-content">
-    <!-- DAC → NH3 -->
-    <section id="proj-dac-nh3" class="prose project">
-      <p class="kicker">Pilot</p>
-      <h1>DAC → zelený NH<sub>3</sub></h1>
+  <div class="projects-shell">
+    <!-- Levý rozcestník -->
+    <aside class="toc" aria-label="Seznam projektů">
+      <nav>
+        <ul>
+          <li><a href="#proj-dac-nh3" class="toc-link">DAC → zelený NH₃</a></li>
+          <li><a href="#proj-doupov" class="toc-link">Doupov – geotermální centrum</a></li>
+          <li><a href="#proj-orbitalni-farma" class="toc-link">Orbitální farma → bezpečný přenos</a></li>
+        </ul>
+      </nav>
+    </aside>
 
-      <p>
-        Vybrané lokality s nízkou hustotou obyvatelstva mohou sloužit jako uzly pro
-        syntézu zeleného amoniaku (NH₃) – přeměnou zachyceného CO₂ a vodíku z obnovitelných zdrojů.
-      </p>
+    <!-- Pravý panel – zobrazí vždy jen jeden projekt -->
+    <article class="projects-pane" id="projectsPane">
 
-      <h3>Cíle projektu</h3>
-      <ul>
-        <li>Ověřit menší modulární jednotky DAC + NH₃.</li>
-        <li>Vyhodnotit dopad na uhlíkovou bilanci a emisní uzávěr.</li>
-        <li>Testovat přímou výrobu energie z NH₃ (články/generátory) vs. distribuci.</li>
-        <li><a href="#proj-orbitalni-farma">Orbitální farma → bezpečný přenos</a></li>
+      <section id="proj-dac-nh3" class="project prose">
+        <p class="kicker">Pilot</p>
+        <h1>DAC → zelený NH₃</h1>
+        <p>
+          Pilotní linky zachytávání CO₂ a syntézy amoniaku (NH₃) pro
+          domácnosti, obce a geotermální lokality. Cílem je využití
+          obnovitelné energie k tvorbě čistého energetického nosiče.
+        </p>
+        <p>
+          <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
+          <a class="btn btn--ghost" href="edukace.html">Jak to funguje</a>
+        </p>
+      </section>
 
-      </ul>
+      <section id="proj-doupov" class="project prose">
+        <p class="kicker">Záměr</p>
+        <h1>Doupov – geotermální centrum</h1>
+        <figure class="project-figure">
+          <img src="assets/img/doupov.jpg"
+               alt="Krajina Doupovských hor, vhodná pro geotermální projekt"
+               loading="lazy">
+          <figcaption>Lokalita s bývalou vulkanickou aktivitou – vhodná pro ověření geotermálního využití.</figcaption>
+        </figure>
+        <p>
+          Projekt ověřuje možnosti využití podzemního tepla pro výrobu
+          energie a spojení s procesem zachytávání CO₂ (DAC).
+        </p>
+        <p>
+          <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
+          <a class="btn btn--ghost" href="edukace.html">Jak to funguje</a>
+        </p>
+      </section>
 
-      <p>
-        <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
-        <a class="btn btn--ghost" href="konsorcium.html">Konsorcium & role</a>
-      </p>
-    </section>
+      <section id="proj-orbitalni-farma" class="project prose">
+        <p class="kicker">Koncept</p>
+        <h1>Orbitální farma → bezpečný přenos</h1>
+        <p>
+          Studie zaměřená na bezpečnost a efektivitu přenosu energie
+          z orbitálních platforem pomocí mikrovln či laseru. Cílem je
+          vytvořit bezpečné zóny a metody měření.
+        </p>
+        <p>
+          <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
+          <a class="btn btn--ghost" href="konsorcium.html">Konsorcium & role</a>
+        </p>
+      </section>
 
-    <!-- Doupov -->
-    <section id="proj-doupov" class="prose project">
-      <p class="kicker">Záměr</p>
-      <h1>Doupov – geotermální hub</h1>
+    </article>
 
-      <p>
-        Doupovské hory mají přirozenou tepelnou stabilitu a historickou vulkanickou aktivitu.
-        Pilot ověřuje využití geotermálního gradientu a podzemních vod pro regionální infrastrukturu
-        a zvažuje spojení s technologií DAC a lokální výrobou syntetických paliv.
-      </p>
-
-      <!-- Obrázek doplníš kdykoli: -->
-      <!--
-      <figure>
-        <img src="assets/img/projects/doupov.jpg" alt="Krajina Doupovských hor s bývalým sopečným kráterem">
-        <figcaption>Výhled na zaplavený sopečný kráter – místo s potenciálem pro geotermální výzkum a akumulaci energie.</figcaption>
-      </figure>
-      -->
-      <section id="proj-orbitalni-farma" class="prose project">
-        <section id="proj-orbitalni-farma" class="prose project">…</section>
-
-  <p class="kicker">Pilot</p>
-  <h1>Orbitální farma → bezpečný přenos</h1>
-
-  <p>
-    Studie bezpečného bezdrátového přenosu energie z orbitálních platforem.
-    Zaměřuje se na metrologii, bezpečnost zón (mikrovlny/laser) a regulační rámec.
-  </p>
-<section id="proj-doupov" class="prose project">
-  <p class="kicker">Záměr</p>
-  <h1>Doupov – geotermální centrum</h1>
-
-  <figure class="project-figure">
-    <!-- Použij cestu, kterou už máš funkční -->
-    <img
-      src="assets/img/doupov.jpg"
-      alt="Krajina Doupovských hor, vhodná pro geotermální záměr"
-      loading="lazy" width="1600" height="900">
-    <figcaption>
-      Lokalita s nízkou hustotou osídlení a bývalou vulkanickou aktivitou – vhodná pro ověření geotermálního využití.
-    </figcaption>
-  </figure>
-
-  <p>
-    Záměr ověřuje možnosti využití geotermálního gradientu a podzemních vod pro výrobu tepla a elektřiny.
-    Uvažujeme napojení na zachytávání CO₂ (DAC) a lokální syntézu amoniaku (NH₃) jako energetického nosiče.
-  </p>
-
-  <h3>Cíle záměru</h3>
-  <ul>
-    <li>Měření teplotního profilu a modelování přenosu tepla.</li>
-    <li>Volba technologií: vrty, čerpadla, výměníky, kogenerace, akumulace.</li>
-    <li>Posouzení variant: místní spotřeba energie vs. výroba NH₃ pro dopravu/distribuci.</li>
-  </ul>
-
-  <p>
-    <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
-    <a class="btn btn--ghost" href="edukace.html">Jak to funguje</a>
-  </p>
-
-    <a class="btn btn--gold" href="spoluprace.html">Zapojit se</a>
-    <a class="btn btn--ghost" href="konsorcium.html">Konsorcium & role</a>
-  </p>
-</section>
-
-  </article>
-</main>
 
 <!-- jen na této stránce -->
 <script src="assets/js/toc.js" defer></script>
