@@ -35,3 +35,19 @@ section, .page-section { padding-block: 16px; }
 
 /* Pokud bys měl někde jiný wrapper než .container, můžeš přidat: */
 /* .page-wrap { width: min(100% - 2*var(--gutter), var(--content-max)); margin-inline: auto; } */
+.project-figure {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.project-figure img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+}
+
+.project-figure figcaption {
+  font-size: 0.9rem;
+  color: #bda96f;
+  margin-top: 0.5rem;
+}
