@@ -64,6 +64,34 @@
   <!-- SCRIPTS (DEFER!) -->
   <script src="assets/include.js" defer></script>
  <script src="assets/toc-switch.js?v=3" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const toc    = document.getElementById('project-toc');           // kontejner s odkazy vlevo
+  const links  = toc ? [...toc.querySelectorAll('a[data-target]')] : [];
+  const panels = [...document.querySelectorAll('#project-panels .project-panel')];
+
+  function show(id) {
+    // přepni aktivní odkaz
+    links.forEach(a => a.classList.toggle('is-active', a.dataset.target === id));
+    // schovej/vypiš panely
+    panels.forEach(p => p.hidden = (p.id !== id));
+    // permalink do adresy
+    if (id) history.replaceState(null, '', '#' + id);
+  }
+
+  // delegace kliknutí – funguje i když jsou odkazy jinak stylované
+  toc?.addEventListener('click', (e) => {
+    const a = e.target.closest('a[data-target]');
+    if (!a) return;
+    e.preventDefault();
+    show(a.dataset.target);
+  });
+
+  // start: hash z URL nebo první odkaz
+  const start = (location.hash || '').slice(1) || (links[0] && links[0].dataset.target);
+  if (start) show(start);
+});
+</script>
 
 </body>
 </html>
