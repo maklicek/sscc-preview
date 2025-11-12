@@ -1,249 +1,34 @@
-.projects-shell {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: clamp(16px, 3vw, 32px);
-  min-height: 75vh;
-  align-items: start;
-}
+/* assets/overrides.css */
 
-.toc ul { list-style: none; padding: 0; margin: 0; }
-.toc a {
-  display: block;
-  padding: .55rem .8rem;
-  border-radius: 8px;
-  color: var(--muted);
-  text-decoration: none;
-  transition: all .2s ease;
-}
-.toc a:hover { color: var(--accent); background: rgba(255,215,106,.08); }
-.toc a.is-active {
-  background: rgba(255,215,106,.12);
-  color: var(--accent);
-  font-weight: 600;
-}
-
-.projects-pane { position: relative; }
-.project { display: none; animation: fadeIn .3s ease; }
-.project.is-active { display: block; }
-@keyframes fadeIn { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:none;} }
-
-.project-figure img {
-  width: 100%;
-  max-width: 720px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,.3);
-}
-.project-figure figcaption {
-  color: var(--muted);
-  font-size: .9rem;
-  text-align: center;
-  margin-top: .4rem;
-}
-/* --- Projects: panel switch + animace --- */
-
-/* levý TOC – aktivní link */
-.toc a[aria-current="page"],
-.toc a.is-active {
-  background: rgba(255, 215, 0, 0.08);
-  border-radius: 8px;
-  padding: .5rem .75rem;
-  color: #f4d469;
-}
-
-/* panely – defaultně skryté, s plynulým fade */
-.project-panel {
-  opacity: 0;
-  transform: translateY(6px);
-  pointer-events: none;
-  position: relative;
-  transition: opacity .25s ease, transform .25s ease;
-  will-change: opacity, transform;
-  display: none;            /* žádné přeskakování layoutu */
-}
-
-.project-panel.is-active {
-  display: block;           /* až teď vstoupí do layoutu */
-}
-
-.project-panel.is-visible {
-  opacity: 1;
-  transform: none;
-  pointer-events: auto;
-}
-
-/* drobný odstup od levého TOC */
-.projects .panels {
-  margin-left: 1.25rem;
-}
-/* Rozvržení 2 sloupce pro stránku projektů */
-.projects {
-  display: grid;
-  grid-template-columns: 320px minmax(0, 1fr);
-  gap: 2rem;
-  align-items: start;
-}
-
-/* TOC vlevo */
-.toc a {
-  display: block;
-  padding: 12px 16px;
-  border-radius: 12px;
-  margin: 8px 0;
-  line-height: 1.2;
-  border: 1px solid transparent;
-  background: rgba(255, 255, 255, 0.04);
-}
-.toc a:is(:hover, :focus) {
-  border-color: rgba(255, 215, 0, .35);
-}
-.toc a.is-active {
-  border-color: rgba(255, 215, 0, .65);
-  box-shadow: 0 0 0 2px rgba(255, 215, 0, .15) inset;
-}
-
-/* Panely vpravo */
-.project-panel { display: none; }
-.project-panel.is-visible { display: block; animation: fade .25s ease-out; }
-
-@keyframes fade {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: none; }
-}
-/* Levý rozcestník – ať se text nezkracuje na „…“ a je celý čitelný */
-.toc-nav { display: flex; flex-direction: column; gap: 12px; max-width: 32rem; }
-.toc-link {
-  display: block;
-  width: 100%;
-  padding: 12px 16px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.06);
-  color: var(--text, #f3f3f3);   /* tvoje proměnná, nebo nech #f3f3f3 */
-  text-decoration: none;
-
-  /* Zrušit elipsy a skryté přetékání */
-  overflow: visible;
-  text-overflow: clip;
-  white-space: normal;
-}
-.toc-link.is-active {
-  outline: 2px solid var(--gold, #f5cc66);
-  background: rgba(245, 204, 102, 0.08);
-}
-
-(function () {
-  // Najdi TOC (buď #project-toc, nebo .toc-nav)
-  const nav =
-    document.querySelector('#project-toc') ||
-    document.querySelector('.toc-nav');
-
-  // Najdi odkazy a panely
-  const links  = nav ? Array.from(nav.querySelectorAll('a')) : [];
-  const panels = Array.from(document.querySelectorAll('.project-panel'));
-
-  console.log('[TOC]', nav, 'links:', links.length, 'panels:', panels.length);
-
-  function linkId(a) {
-    // podpora href="#proj-…" i data-target="proj-…"
-    if (a.dataset && a.dataset.target) return a.dataset.target;
-    return (a.hash || '').replace(/^#/, '');
-  }
-
-  function show(id) {
-    if (!id) return;
-    console.log('[SHOW]', id);
-
-    // aktivní odkaz
-    links.forEach(a => {
-      const isActive = linkId(a) === id;
-      a.classList.toggle('is-active', isActive);
-      a.setAttribute('aria-current', isActive ? 'page' : '');
-    });
-
-    // panely
-    panels.forEach(p => p.classList.toggle('is-visible', p.id === id));
-
-    // permalink do URL
-    history.replaceState(null, '', '#' + id);
-  }
-
-  // Přepínání na klik
-  links.forEach(a => {
-    a.addEventListener('click', e => {
-      // potlač default (jinak by to scrollovalo na hash)
-      e.preventDefault();
-      show(linkId(a));
-    });
-  });
-
-  
-/* panely: defaultně skryté, jen .is-visible je vidět */
-.project-panel { display: none; }
-.project-panel.is-visible { display: block; }
-.project-panel { display: none; }
-.project-panel.is-visible { display: block; }
-.project-panel[hidden] { display: none !important; }
-.toc-link.is-active { outline: 2px solid rgba(255, 205, 72, 0.6); border-radius: 10px; }
-
-/* pokud používáš hidden, prohlížeče to stejně skryjí,
-   ale tohle pomůže, kdyby něco přetloukl jiný styl */
-.project-panel[hidden] { display: none !important; }
-
-.toc-link.is-active { outline: 2px solid rgba(255, 205, 72, 0.6); border-radius: 10px; }
-    /* pojistka, ať [hidden] opravdu skrývá panely */
-.project-panel[hidden] { display: none !important; }
-
-/* zvýraznění aktivního odkazu vlevo */
-.toc-link.is-active {
-  outline: 2px solid rgba(255, 205, 72, 0.6);
-  border-radius: 10px;
-}
-/* pojistka: schovej panely s atributem hidden */
-.project-panel[hidden] { display: none !important; }
-
-/* vzhled aktivního odkazu vlevo */
-.toc-link.is-active {
-  outline: 2px solid rgba(255, 205, 72, 0.7);
-  border-radius: 10px;
-}
-
-/* drobný spacing, ať nav nepřetéká do patičky */
-.project-toc { margin-block: 1rem 2rem; }
-
-/* jistota, že skryté panely jsou pryč */
-.project-panel[hidden] { display: none !important; }
-
-/* vizuální aktivní stav v levém menu */
-#project-toc .toc-link.is-active {
-  outline: 2px solid rgba(255, 205, 72, 0.7);
-  border-radius: 10px;
-}
-.project-panel[hidden] { display: none !important; }
-
-#project-toc .toc-link.is-active {
-  outline: 2px solid rgba(255, 205, 72, 0.7);
-  border-radius: 10px;
-}
-/* Panely projektů – jistota, že se chovají správně */
-.project-panel {
-  display: block;
-}
-
+/* pojistka – hidden opravdu schová panely */
 .project-panel[hidden] {
   display: none;
 }
-/* --- Projekty: přepínatelné panely ---------------------------- */
 
-/* jistota, že panely mají nějaký prostor */
-.projects .panels {
-  min-height: 300px;
+/* rozložení levého sloupce a panelů – jemně odsazené */
+.page-projects .container.projects {
+  display: grid;
+  grid-template-columns: 18rem minmax(0, 1fr);
+  gap: 2rem;
 }
 
-/* výchozí: všechny panely schovat */
-.project-panel {
-  display: none !important;
+/* levý TOC */
+#project-toc {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-/* viditelný panel */
-.project-panel.is-active {
-  display: block !important;
+#project-toc .toc-link {
+  display: block;
+}
+
+/* ať je jasně vidět aktivní projekt */
+#project-toc .toc-link.is-active {
+  outline: 2px solid #f0c96b;
+}
+
+/* pravé panely */
+.page-projects .panels {
+  /* nic speciálního, jen aby se chovaly jako blok */
 }
