@@ -1,6 +1,5 @@
 // assets/js/toc-switch.js
-
-window.addEventListener('DOMContentLoaded', function () {
+(function () {
   const nav    = document.getElementById('project-toc');
   if (!nav) return;
 
@@ -8,28 +7,34 @@ window.addEventListener('DOMContentLoaded', function () {
   const panels = Array.from(document.querySelectorAll('#project-panels .project-panel'));
 
   function idFromLink(a) {
-    return (a.hash || '').replace(/^#/, '');
+    return (a.getAttribute('href') || '').replace(/^#/, '');
   }
 
   function show(id) {
     if (!id) return;
 
-    // panely: nastav is-active
-    panels.forEach(panel => {
-      const on = panel.id === id;
-      panel.classList.toggle('is-active', on);
-    });
+    let found = false;
 
-    // odkazy vlevo: is-active
+    // přepni aktivní odkaz
     links.forEach(a => {
-      a.classList.toggle('is-active', idFromLink(a) === id);
+      const active = idFromLink(a) === id;
+      a.classList.toggle('is-active', active);
     });
 
-    // aktualizace URL hashe (jen kosmetika)
-    history.replaceState(null, '', '#' + id);
+    // přepni panely
+    panels.forEach(p => {
+      const on = p.id === id;
+      p.hidden = !on;
+      p.classList.toggle('is-visible', on);
+      if (on) found = true;
+    });
+
+    if (found) {
+      history.replaceState(null, '', '#' + id);
+    }
   }
 
-  // kliky v levém menu
+  // kliknutí v levém TOC
   nav.addEventListener('click', (e) => {
     const a = e.target.closest('a[href^="#"]');
     if (!a) return;
@@ -37,7 +42,7 @@ window.addEventListener('DOMContentLoaded', function () {
     show(idFromLink(a));
   });
 
-  // start – hash z URL nebo DAC
-  const start = (location.hash || '').slice(1) || 'proj-dac';
-  show(start);
-});
+  // start – hash v URL nebo první panel
+  const start = (location.hash || '').slice(1) || (panels[0] && panels[0].id);
+  if (start) show(start);
+})();
