@@ -130,3 +130,54 @@
   background: rgba(245, 204, 102, 0.08);
 }
 .project-panel[hidden] { display: none; }
+<script>
+(function () {
+  // Najdi TOC (buď #project-toc, nebo .toc-nav)
+  const nav =
+    document.querySelector('#project-toc') ||
+    document.querySelector('.toc-nav');
+
+  // Najdi odkazy a panely
+  const links  = nav ? Array.from(nav.querySelectorAll('a')) : [];
+  const panels = Array.from(document.querySelectorAll('.project-panel'));
+
+  console.log('[TOC]', nav, 'links:', links.length, 'panels:', panels.length);
+
+  function linkId(a) {
+    // podpora href="#proj-…" i data-target="proj-…"
+    if (a.dataset && a.dataset.target) return a.dataset.target;
+    return (a.hash || '').replace(/^#/, '');
+  }
+
+  function show(id) {
+    if (!id) return;
+    console.log('[SHOW]', id);
+
+    // aktivní odkaz
+    links.forEach(a => {
+      const isActive = linkId(a) === id;
+      a.classList.toggle('is-active', isActive);
+      a.setAttribute('aria-current', isActive ? 'page' : '');
+    });
+
+    // panely
+    panels.forEach(p => p.classList.toggle('is-visible', p.id === id));
+
+    // permalink do URL
+    history.replaceState(null, '', '#' + id);
+  }
+
+  // Přepínání na klik
+  links.forEach(a => {
+    a.addEventListener('click', e => {
+      // potlač default (jinak by to scrollovalo na hash)
+      e.preventDefault();
+      show(linkId(a));
+    });
+  });
+
+  // Start: hash z URL, jinak 1. položka
+  const start = (location.hash || '').slice(1) || (links[0] && linkId(links[0]));
+  if (start) show(start);
+})();
+</script>
