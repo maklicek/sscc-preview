@@ -1,72 +1,28 @@
 (function () {
-  const toc = document.querySelector('#toc-projects');
-  const panelsWrap = document.querySelector('#project-panels');
-  if (!toc || !panelsWrap) return;
+  const toc = document.getElementById('toc-projects');
+  const panels = document.getElementById('project-panels');
+  if (!toc || !panels) return;
 
   const links = Array.from(toc.querySelectorAll('a[href^="#"]'));
-  const panels = Array.from(panelsWrap.querySelectorAll('.project-panel'));
+  const panes = Array.from(panels.querySelectorAll('.project-panel'));
 
-  function getTargetFromHash() {
-    const id = (location.hash || '').trim();
-    if (!id) return null;
-    const panel = panels.find(p => '#' + p.id === id);
-    return panel || null;
+  function show(id) {
+    links.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + id));
+    panes.forEach(p => p.classList.toggle('is-visible', p.id === id));
   }
 
-  function showPanel(panel) {
-    if (!panel) return;
-
-    // 1) zruš aktivní stav
-    panels.forEach(p => {
-      p.classList.remove('is-visible');
-    });
-
-    // odstranění aria-current z TOC
-    links.forEach(a => a.removeAttribute('aria-current'));
-
-    // 2) po krátké chvíli skryj ostatní a aktivuj cílový
-    window.requestAnimationFrame(() => {
-      panels.forEach(p => p.classList.remove('is-active'));
-      panel.classList.add('is-active');
-
-      // navázání správného odkazového zvýraznění
-      const activeLink = links.find(a => a.getAttribute('href') === '#' + panel.id);
-      if (activeLink) activeLink.setAttribute('aria-current', 'page');
-
-      // 3) vizuální fade-in
-      window.requestAnimationFrame(() => {
-        panel.classList.add('is-visible');
-      });
-    });
-  }
-
-  // Kliknutí vlevo v TOC
+  // klik vlevo
   toc.addEventListener('click', (e) => {
     const a = e.target.closest('a[href^="#"]');
     if (!a) return;
-
     e.preventDefault();
-    const id = a.getAttribute('href');
-    const target = panels.find(p => '#' + p.id === id);
-    if (!target) return;
-
-    // pushState, aby šlo sdílet odkaz a fungovalo zpět/vpřed
-    history.pushState({ t: id }, '', id);
-    showPanel(target);
+    const id = a.getAttribute('href').slice(1);
+    history.replaceState(null, '', '#' + id);
+    show(id);
   });
 
-  // Inicializace podle hash (nebo první položky)
-  function init() {
-    const initial = getTargetFromHash() || panels[0];
-    if (!initial) return;
-    showPanel(initial);
-  }
-
-  // Reakce na tlačítko zpět/vpřed
-  window.addEventListener('popstate', () => {
-    const target = getTargetFromHash() || panels[0];
-    showPanel(target);
-  });
-
-  init();
+  // první načtení / změna hashe
+  const initial = (location.hash || links[0]?.getAttribute('href') || '#').slice(1);
+  show(initial);
+  window.addEventListener('hashchange', () => show(location.hash.slice(1)));
 })();
