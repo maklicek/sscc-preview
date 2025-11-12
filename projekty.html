@@ -5,98 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projekty a záměry — SSCC</title>
 
-  <!-- ZÁKLADNÍ STYLY + PŘEPISY -->
+  <!-- Základní styl + drobné úpravy -->
   <link rel="stylesheet" href="assets/style-v4.css?v=9">
-  <link rel="stylesheet" href="assets/overrides.css?v=3"><!-- důležité -->
+  <link rel="stylesheet" href="assets/overrides.css?v=1">
 </head>
 <body data-page="projekty" class="page-projects">
 
-  <!-- HLAVIČKA přes include -->
+  <!-- Hlavička (include) -->
   <div data-include="assets/partials/header.html"></div>
 
   <main class="container projects">
-    
-<!-- LEVÝ ROZCESTNÍK -->
-nav id="project-toc" aria-label="Přepínač projektů">
-  <a href="#proj-dac"     class="toc-link is-active">DAC → zelený NH₃</a>
-  <a href="#proj-doupov"  class="toc-link">Doupov — geotermální centrum</a>
-  <a href="#proj-orbital" class="toc-link">Orbitální farma → přenos</a>
-</nav>
-<!-- PRAVÉ PANELY -->
-<section id="project-panels" class="panels">
-  <article id="proj-dac" class="project-panel">…</article>
-    <header class="page-head">
-      <h1>DAC → Zelený amoniak</h1>
-      <p class="lead">Pilotní linky zachytávání CO₂ a syntézy amoniaku (NH₃) pro obce a lokální využití.</p>
-    </header>
-    <figure>
-      <img src="assets/img/projects/dac-nh3-concept.jpg" alt="DAC NH3 pilot" width="960" height="540" loading="lazy">
-      <figcaption>Schéma uzlu DAC → NH₃.</figcaption>
-    </figure>
-  </article>
 
- <article id="proj-doupov" class="project-panel" hidden>…</article>
-    <header class="page-head">
-      <h1>Doupov — Geotermální centrum</h1>
-      <p class="lead">Vulkanické území vhodné pro hlubinné vrty a geotermální integraci.</p>
-    </header>
-    <figure>
-      <img src="assets/img/projects/doupov.jpg" alt="Doupovské území" width="960" height="540" loading="lazy">
-      <figcaption>Potenciál geotermálního výzkumu a akumulace energie.</figcaption>
-    </figure>
-  </article>
+    <!-- Levý rozcestník -->
+    <nav id="project-toc" aria-label="Přepínač projektů" class="project-toc">
+      <a href="#proj-dac"     class="toc-link is-active">DAC → zelený NH₃</a>
+      <a href="#proj-doupov"  class="toc-link">Doupov — geotermální centrum</a>
+      <a href="#proj-orbital" class="toc-link">Orbitální farma → přenos</a>
+    </nav>
 
-<article id="proj-doupov" class="project-panel" hidden>…</article>
-    <header class="page-head">
-      <h1>Orbitální farma → Bezpečný přenos</h1>
-      <p class="lead">Koncept bezdrátového přenosu energie mikrovlnným svazkem a jeho pozemní rámec.</p>
-    </header>
-    <figure>
-      <img src="assets/img/projects/orbitalni-farma.jpg" alt="Orbitální farma" width="960" height="540" loading="lazy">
-      <figcaption>Obezřetně, s důrazem na bezpečnost a regulaci.</figcaption>
-    </figure>
-  </article>
-</section>
+    <!-- Pravé panely -->
+    <section id="project-panels" class="panels">
 
-<!-- PATIČKA přes include -->
-<div data-include="assets/partials/footer.html"></div>
+      <article id="proj-dac" class="project-panel">
+        <header class="page-head">
+          <h1>DAC → Zelený amoniak</h1>
+          <p class="lead">Pilotní linky zachytávání CO₂ a syntézy amoniaku (NH₃) pro obce a lokální využití.</p>
+        </header>
+        <figure>
+          <img src="assets/img/projects/dac-nh3-concept.jpg" alt="DAC NH3 pilot" width="960" height="540" loading="lazy">
+          <figcaption>Schéma uzlu DAC → NH₃.</figcaption>
+        </figure>
+      </article>
 
-<!-- JEN TYHLE DVA skripty, nic víc -->
-<script src="assets/include.js" defer></script>
-<script src="assets/toc-switch.js?v=4" defer></script>
-    <style>
-  /* pojistka – ať jsou hidden panely opravdu schované */
-  .project-panel[hidden] { display: none; }
-</style>
+      <article id="proj-doupov" class="project-panel" hidden>
+        <header class="page-head">
+          <h1>Doupov — Geotermální centrum</h1>
+          <p class="lead">Vulkanické území vhodné pro hlubinné vrty a geotermální integraci.</p>
+        </header>
+        <figure>
+          <img src="assets/img/projects/doupov.jpg" alt="Doupovské území" width="960" height="540" loading="lazy">
+          <figcaption>Potenciál geotermálního výzkumu a akumulace energie.</figcaption>
+        </figure>
+      </article>
 
-<script>
-(function () {
-  const nav    = document.getElementById('project-toc');
-  if (!nav) return;
+      <article id="proj-orbital" class="project-panel" hidden>
+        <header class="page-head">
+          <h1>Orbitální farma → Bezpečný přenos</h1>
+          <p class="lead">Koncept bezdrátového přenosu energie mikrovlnným svazkem a jeho pozemní rámec.</p>
+        </header>
+        <figure>
+          <img src="assets/img/projects/orbitalni-farma.jpg" alt="Orbitální farma" width="960" height="540" loading="lazy">
+          <figcaption>Obezřetně, s důrazem na bezpečnost a regulaci.</figcaption>
+        </figure>
+      </article>
 
-  const links  = Array.from(nav.querySelectorAll('a[href^="#"]'));
-  const panels = Array.from(document.querySelectorAll('#project-panels .project-panel'));
+    </section>
+  </main>
 
-  function show(id) {
-    if (!id) return;
-    panels.forEach(p => p.hidden = (p.id !== id));
-    links.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + id));
-    history.replaceState(null, '', '#' + id);
-  }
+  <!-- Patička (include) -->
+  <div data-include="assets/partials/footer.html"></div>
 
-  nav.addEventListener('click', (e) => {
-    const a = e.target.closest('a[href^="#"]');
-    if (!a) return;
-    e.preventDefault();
-    show(a.getAttribute('href').slice(1));
-  });
-
-  // Start – hash z URL, nebo první panel
-  const start = (location.hash || '').slice(1) || (panels[0] && panels[0].id);
-  if (start) show(start);
-})();
-</script>
-
-</main>
+  <!-- Jediné dva skripty -->
+  <script src="assets/include.js" defer></script>
+  <script src="assets/toc-switch.js?v=1" defer></script>
 </body>
 </html>
