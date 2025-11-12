@@ -109,3 +109,23 @@
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: none; }
 }
+/* Levý rozcestník – ať se text nezkracuje na „…“ a je celý čitelný */
+.toc-nav { display: flex; flex-direction: column; gap: 12px; max-width: 32rem; }
+.toc-link {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.06);
+  color: var(--text, #f3f3f3);   /* tvoje proměnná, nebo nech #f3f3f3 */
+  text-decoration: none;
+
+  /* Zrušit elipsy a skryté přetékání */
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+}
+.toc-link.is-active {
+  outline: 2px solid var(--gold, #f5cc66);
+  background: rgba(245, 204, 102, 0.08);
+}
