@@ -39,3 +39,39 @@
   text-align: center;
   margin-top: .4rem;
 }
+/* --- Projects: panel switch + animace --- */
+
+/* levý TOC – aktivní link */
+.toc a[aria-current="page"],
+.toc a.is-active {
+  background: rgba(255, 215, 0, 0.08);
+  border-radius: 8px;
+  padding: .5rem .75rem;
+  color: #f4d469;
+}
+
+/* panely – defaultně skryté, s plynulým fade */
+.project-panel {
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  position: relative;
+  transition: opacity .25s ease, transform .25s ease;
+  will-change: opacity, transform;
+  display: none;            /* žádné přeskakování layoutu */
+}
+
+.project-panel.is-active {
+  display: block;           /* až teď vstoupí do layoutu */
+}
+
+.project-panel.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+/* drobný odstup od levého TOC */
+.projects .panels {
+  margin-left: 1.25rem;
+}
