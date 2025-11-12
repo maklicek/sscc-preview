@@ -308,3 +308,11 @@ main, .site-main, .page-wrap {
 .toc a:hover {
   color: #ffe49a;
 }
+.project-panel img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.project-panel figure {
+  min-height: 220px; /* ať to neskočí, když se obrázek chvilku načítá */
+}
