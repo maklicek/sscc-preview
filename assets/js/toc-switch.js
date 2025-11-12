@@ -1,41 +1,32 @@
 // assets/js/toc-switch.js
 
 window.addEventListener('DOMContentLoaded', function () {
-  // najdi kontejner levého TOC
-  const nav = document.getElementById('project-toc');
+  const nav    = document.getElementById('project-toc');
   if (!nav) return;
 
-  // odkazy vlevo
-  const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+  const links  = Array.from(nav.querySelectorAll('a[href^="#"]'));
+  const panels = Array.from(document.querySelectorAll('#project-panels .project-panel'));
 
-  // panely vpravo
-  const panels = Array.from(
-    document.querySelectorAll('#project-panels .project-panel')
-  );
+  function idFromLink(a) {
+    return (a.hash || '').replace(/^#/, '');
+  }
 
   function show(id) {
     if (!id) return;
 
-    let found = false;
-
-    // přepni panely
+    // panely: nastav is-active
     panels.forEach(panel => {
       const on = panel.id === id;
-      panel.hidden = !on;                 // atribut hidden
-      panel.classList.toggle('is-visible', on);
-      if (on) found = true;
+      panel.classList.toggle('is-active', on);
     });
 
-    // aktivní odkaz vlevo
+    // odkazy vlevo: is-active
     links.forEach(a => {
-      const hrefId = (a.hash || '').slice(1);
-      a.classList.toggle('is-active', hrefId === id);
+      a.classList.toggle('is-active', idFromLink(a) === id);
     });
 
-    if (found) {
-      // čistý hash v URL
-      history.replaceState(null, '', '#' + id);
-    }
+    // aktualizace URL hashe (jen kosmetika)
+    history.replaceState(null, '', '#' + id);
   }
 
   // kliky v levém menu
@@ -43,14 +34,10 @@ window.addEventListener('DOMContentLoaded', function () {
     const a = e.target.closest('a[href^="#"]');
     if (!a) return;
     e.preventDefault();
-    const id = (a.hash || '').slice(1);
-    show(id);
+    show(idFromLink(a));
   });
 
-  // start – hash z URL, nebo první panel podle pořadí
-  const startId =
-    (location.hash || '').slice(1) ||
-    (panels[0] && panels[0].id);
-
-  if (startId) show(startId);
+  // start – hash z URL nebo DAC
+  const start = (location.hash || '').slice(1) || 'proj-dac';
+  show(start);
 });
