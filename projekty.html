@@ -1,58 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="cs">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Projekty | SSCC — SolarSpace Carbon Cycle</title>
+  <title>Projekty a záměry — SSCC</title>
 
-  <link rel="stylesheet" href="assets/css/style-v4.css?v=9">
-  <link rel="stylesheet" href="assets/css/overrides.css?v=3">
+  <!-- ZÁKLADNÍ STYLY + PŘEPISY -->
+  <link rel="stylesheet" href="assets/style-v4.css?v=9">
+  <link rel="stylesheet" href="assets/overrides.css?v=3"><!-- důležité -->
 </head>
 <body data-page="projekty" class="page-projects">
+
+  <!-- HLAVIČKA přes include -->
   <div data-include="assets/partials/header.html"></div>
 
- <main class="container projects">
-  <aside class="toc" id="toc-projects">
-    <a href="#proj-dac">DAC → zelený NH₃</a>
-    <a href="#proj-doupov">Doupov – geotermální centrum</a>
-    <a href="#proj-orbital">Orbitální farma → přenos</a>
-  </aside>
+  <main class="container projects">
+    <!-- LEVÉ MENU (TOC) -->
+    <aside class="toc" id="toc-projects" aria-label="Výběr projektu">
+      <a href="#proj-dac" class="is-active">DAC → zelený NH₃</a>
+      <a href="#proj-doupov">Doupov – geotermální centrum</a>
+      <a href="#proj-orbital">Orbitální farma → přenos</a>
+    </aside>
 
-  <section class="panels" id="project-panels">
-    <article id="proj-dac" class="project-panel">
-      <h2>DAC → Zelený amoniak</h2>
-      <p>Pilotní linky zachytávání CO₂ a syntézy amoniaku (NH₃) pro obce a lokální využití.</p>
-      <figure>
-        <img src="assets/img/projects/dac-nh3-concept.jpg" alt="DAC NH3 pilot">
-      </figure>
-    </article>
+    <!-- PRAVÝ OBSAH (PANELY) -->
+    <section class="panels" id="project-panels">
+      <article id="proj-dac" class="project-panel is-visible">
+        <header class="page-head">
+          <h1>DAC → Zelený amoniak</h1>
+          <p class="lead">Pilotní linky zachytávání CO₂ a syntézy amoniaku (NH₃) pro obce a lokální využití.</p>
+        </header>
+        <figure>
+          <img src="assets/img/projects/dac-nh3-concept.jpg" alt="DAC NH3 pilot" width="960" height="540" loading="lazy">
+          <figcaption>Schéma uzlu DAC → NH₃.</figcaption>
+        </figure>
+      </article>
 
-    <article id="proj-doupov" class="project-panel">
-      <h2>Doupov — Geotermální centrum</h2>
-      <p>Doupovské hory představují vhodné prostředí pro pilotní geotermální integraci...</p>
-      <figure>
-        <img src="assets/img/projects/doupov.jpg" alt="Doupovské území">
-      </figure>
-    </article>
+      <article id="proj-doupov" class="project-panel">
+        <header class="page-head">
+          <h1>Doupov — Geotermální centrum</h1>
+          <p class="lead">Vulkanické území vhodné pro hlubinné vrty a geotermální integraci.</p>
+        </header>
+        <figure>
+          <img src="assets/img/projects/doupov.jpg" alt="Doupovské území" width="960" height="540" loading="lazy">
+          <figcaption>Potenciál geotermálního výzkumu a akumulace energie.</figcaption>
+        </figure>
+      </article>
 
-    <article id="proj-orbital" class="project-panel">
-      <h2>Orbitální farma → Bezpečný přenos</h2>
-      <p>Koncept bezdrátového přenosu energie s využitím mikrovlnného svazku.</p>
-      <figure>
-        <img src="assets/img/projects/orbitalni-farma.jpg" alt="Orbitální farma">
-      </figure>
-    </article>
-  </section>
-</main>
+      <article id="proj-orbital" class="project-panel">
+        <header class="page-head">
+          <h1>Orbitální farma → Bezpečný přenos</h1>
+          <p class="lead">Koncept bezdrátového přenosu energie mikrovlnným svazkem a jeho pozemní rámec.</p>
+        </header>
+        <figure>
+          <img src="assets/img/projects/orbitalni-farma.jpg" alt="Orbitální farma" width="960" height="540" loading="lazy">
+          <figcaption>Obezřetně, s důrazem na bezpečnost a regulaci.</figcaption>
+        </figure>
+      </article>
+    </section>
+  </main>
 
+  <!-- PATIČKA přes include -->
   <div data-include="assets/partials/footer.html"></div>
-  <script src="assets/js/include.js" defer></script>
-<script src="assets/js/toc-switch.js" defer></script>
 
- 
-<link rel="stylesheet" href="assets/style-v4.css?v=9">
-<link rel="stylesheet" href="assets/overrides.css?v=3">
-
-
+  <!-- SCRIPTS (DEFER!) -->
+  <script src="assets/include.js" defer></script>
+  <script src="assets/toc-switch.js" defer></script>
 </body>
 </html>
