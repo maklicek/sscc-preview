@@ -197,4 +197,15 @@
   outline: 2px solid rgba(255, 205, 72, 0.6);
   border-radius: 10px;
 }
+/* pojistka: schovej panely s atributem hidden */
+.project-panel[hidden] { display: none !important; }
+
+/* vzhled aktivního odkazu vlevo */
+.toc-link.is-active {
+  outline: 2px solid rgba(255, 205, 72, 0.7);
+  border-radius: 10px;
+}
+
+/* drobný spacing, ať nav nepřetéká do patičky */
+.project-toc { margin-block: 1rem 2rem; }
 
