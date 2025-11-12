@@ -60,7 +60,6 @@
       <figcaption>Obezřetně, s důrazem na bezpečnost a regulaci.</figcaption>
     </figure>
   </article>
-
 </section>
 
 <!-- PATIČKA přes include -->
@@ -69,6 +68,39 @@
 <!-- JEN TYHLE DVA skripty, nic víc -->
 <script src="assets/include.js" defer></script>
 <script src="assets/toc-switch.js?v=4" defer></script>
+    <style>
+  /* pojistka – ať jsou hidden panely opravdu schované */
+  .project-panel[hidden] { display: none; }
+</style>
+
+<script>
+(function () {
+  const nav    = document.getElementById('project-toc');
+  if (!nav) return;
+
+  const links  = Array.from(nav.querySelectorAll('a[href^="#"]'));
+  const panels = Array.from(document.querySelectorAll('#project-panels .project-panel'));
+
+  function show(id) {
+    if (!id) return;
+    panels.forEach(p => p.hidden = (p.id !== id));
+    links.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + id));
+    history.replaceState(null, '', '#' + id);
+  }
+
+  nav.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    e.preventDefault();
+    show(a.getAttribute('href').slice(1));
+  });
+
+  // Start – hash z URL, nebo první panel
+  const start = (location.hash || '').slice(1) || (panels[0] && panels[0].id);
+  if (start) show(start);
+})();
+</script>
+
 </main>
 </body>
 </html>
