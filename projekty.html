@@ -16,50 +16,48 @@
 
   <main class="container projects">
     
-    <!-- LEVÉ MENU (TOC) -->
-   <aside id="toc-projects" class="toc">
-  <a href="#proj-dac" class="is-active">…</a>
-  <a href="#proj-doupov">…</a>
-  <a href="#proj-orbital">…</a>
-</aside>
+ <!-- LEVÝ ROZCESTNÍK -->
+<nav class="toc-nav" id="project-toc">
+  <a href="#proj-dac"     class="toc-link is-active" data-target="proj-dac">DAC → zelený NH₃</a>
+  <a href="#proj-doupov"  class="toc-link"           data-target="proj-doupov">Doupov — geotermální centrum</a>
+  <a href="#proj-orbital" class="toc-link"           data-target="proj-orbital">Orbitální farma → přenos</a>
+</nav>
 
-    <!-- PRAVÝ OBSAH (PANELY) -->
-    <section class="panels" id="project-panels">
-      <article id="proj-dac" class="project-panel is-visible">
-        <header class="page-head">
-          <h1>DAC → Zelený amoniak</h1>
-          <p class="lead">Pilotní linky zachytávání CO₂ a syntézy amoniaku (NH₃) pro obce a lokální využití.</p>
-        </header>
-        <figure>
-          <img src="assets/img/projects/dac-nh3-concept.jpg" alt="DAC NH3 pilot" width="960" height="540" loading="lazy">
-          <figcaption>Schéma uzlu DAC → NH₃.</figcaption>
-        </figure>
-      </article>
+<!-- PRAVÉ PANELY -->
+<section class="panels" id="project-panels">
+  <article id="proj-dac" class="project-panel is-visible">
+    <header class="page-head">
+      <h1>DAC → Zelený amoniak</h1>
+      <p class="lead">Pilotní linky zachytávání CO₂ a syntézy amoniaku (NH₃) pro obce a lokální využití.</p>
+    </header>
+    <figure>
+      <img src="assets/img/projects/dac-nh3-concept.jpg" alt="DAC NH3 pilot" width="960" height="540" loading="lazy">
+      <figcaption>Schéma uzlu DAC → NH₃.</figcaption>
+    </figure>
+  </article>
 
-      <article id="proj-doupov" class="project-panel">
-        <header class="page-head">
-          <h1>Doupov — Geotermální centrum</h1>
-          <p class="lead">Vulkanické území vhodné pro hlubinné vrty a geotermální integraci.</p>
-        </header>
-        <figure>
-          <img src="assets/img/projects/doupov.jpg" alt="Doupovské území" width="960" height="540" loading="lazy">
-          <figcaption>Potenciál geotermálního výzkumu a akumulace energie.</figcaption>
-        </figure>
-      </article>
+  <article id="proj-doupov" class="project-panel">
+    <header class="page-head">
+      <h1>Doupov — Geotermální centrum</h1>
+      <p class="lead">Vulkanické území vhodné pro hlubinné vrty a geotermální integraci.</p>
+    </header>
+    <figure>
+      <img src="assets/img/projects/doupov.jpg" alt="Doupovské území" width="960" height="540" loading="lazy">
+      <figcaption>Potenciál geotermálního výzkumu a akumulace energie.</figcaption>
+    </figure>
+  </article>
 
-      <article id="proj-orbital" class="project-panel">
-        <header class="page-head">
-          <h1>Orbitální farma → Bezpečný přenos</h1>
-          <p class="lead">Koncept bezdrátového přenosu energie mikrovlnným svazkem a jeho pozemní rámec.</p>
-        </header>
-        <figure>
-          <img src="assets/img/projects/orbitalni-farma.jpg" alt="Orbitální farma" width="960" height="540" loading="lazy">
-          <figcaption>Obezřetně, s důrazem na bezpečnost a regulaci.</figcaption>
-        </figure>
-      </article>
-    </section>
-  </main>
-
+  <article id="proj-orbital" class="project-panel">
+    <header class="page-head">
+      <h1>Orbitální farma → Bezpečný přenos</h1>
+      <p class="lead">Koncept bezdrátového přenosu energie mikrovlnným svazkem a jeho pozemní rámec.</p>
+    </header>
+    <figure>
+      <img src="assets/img/projects/orbitalni-farma.jpg" alt="Orbitální farma" width="960" height="540" loading="lazy">
+      <figcaption>Obezřetně, s důrazem na bezpečnost a regulaci.</figcaption>
+    </figure>
+  </article>
+</section>
   <!-- PATIČKA přes include -->
   <div data-include="assets/partials/footer.html"></div>
 
