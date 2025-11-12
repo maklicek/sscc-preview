@@ -316,3 +316,5 @@ main, .site-main, .page-wrap {
 .project-panel figure {
   min-height: 220px; /* ať to neskočí, když se obrázek chvilku načítá */
 }
+/* Skrytí panelů pomocí [hidden] (používá to skript) */
+.project-panel[hidden] { display: none; }
