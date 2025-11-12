@@ -129,8 +129,7 @@
   outline: 2px solid var(--gold, #f5cc66);
   background: rgba(245, 204, 102, 0.08);
 }
-.project-panel[hidden] { display: none; }
-<script>
+
 (function () {
   // Najdi TOC (buď #project-toc, nebo .toc-nav)
   const nav =
@@ -176,19 +175,17 @@
     });
   });
 
-  // Start: hash z URL, jinak 1. položka
-  const start = (location.hash || '').slice(1) || (links[0] && linkId(links[0]));
-  if (start) show(start);
-})();
-</script>
+  
 /* panely: defaultně skryté, jen .is-visible je vidět */
 .project-panel { display: none; }
 .project-panel.is-visible { display: block; }
 .project-panel { display: none; }
 .project-panel.is-visible { display: block; }
+.project-panel[hidden] { display: none !important; }
+.toc-link.is-active { outline: 2px solid rgba(255, 205, 72, 0.6); border-radius: 10px; }
 
 /* pokud používáš hidden, prohlížeče to stejně skryjí,
    ale tohle pomůže, kdyby něco přetloukl jiný styl */
 .project-panel[hidden] { display: none !important; }
-.project-panel[hidden] { display: none !important; }
+
 .toc-link.is-active { outline: 2px solid rgba(255, 205, 72, 0.6); border-radius: 10px; }
