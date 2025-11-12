@@ -1,42 +1,37 @@
+// assets/toc-switch.js
 (function () {
-  // najdi kontejner TOC
-  const nav =
-    document.querySelector('#project-toc, .project-toc, .toc-nav, .toc, [data-toc]');
-  if (!nav) return;
+  console.log('[TOC] script loaded');
 
-  const links  = Array.from(nav.querySelectorAll('a[href^="#"], a[data-target]'));
+  const nav    = document.getElementById('project-toc');
   const panels = Array.from(document.querySelectorAll('#project-panels .project-panel'));
+  if (!nav || panels.length === 0) {
+    console.warn('[TOC] Nenalezen nav nebo panely.');
+    return;
+  }
 
-  const idFromLink = (a) => (a.dataset?.target || (a.hash || '').replace(/^#/, ''));
+  const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
 
   function show(id) {
     if (!id) return;
-
-    // aktivuj odkaz
-    links.forEach(a => a.classList.toggle('is-active', idFromLink(a) === id));
-
-    // přepni panely
-    let found = false;
-    panels.forEach(p => {
-      const on = p.id === id;
-      p.hidden = !on;
-      p.classList.toggle('is-visible', on);
-      if (on) found = true;
-    });
-
-    // permalink
-    if (found) history.replaceState(null, '', '#' + id);
+    panels.forEach(p => p.hidden = (p.id !== id));
+    links.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + id));
+    history.replaceState(null, '', '#' + id);
   }
 
-  // delegace kliků
   nav.addEventListener('click', (e) => {
-    const a = e.target.closest('a[href^="#"], a[data-target]');
+    const a = e.target.closest('a[href^="#"]');
     if (!a) return;
     e.preventDefault();
-    show(idFromLink(a));
+    show(a.getAttribute('href').slice(1));
   });
 
-  // start: hash z URL, jinak první odkaz
-  const start = (location.hash || '').slice(1) || (links[0] && idFromLink(links[0]));
-  if (start) show(start);
+  // podpora Zpět/Vpřed
+  window.addEventListener('hashchange', () => {
+    const id = (location.hash || '').slice(1);
+    if (id) show(id);
+  });
+
+  // start: hash z URL nebo první panel
+  const start = (location.hash || '').slice(1) || panels[0].id;
+  show(start);
 })();
