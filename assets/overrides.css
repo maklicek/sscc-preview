@@ -181,3 +181,6 @@
   if (start) show(start);
 })();
 </script>
+/* panely: defaultně skryté, jen .is-visible je vidět */
+.project-panel { display: none; }
+.project-panel.is-visible { display: block; }
