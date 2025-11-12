@@ -1,38 +1,29 @@
-// Aktivní link v TOC podle právě viditelné sekce
-(function () {
-  const toc = document.querySelector('.toc');
-  if (!toc) return;
+(function(){
+  const pane = document.getElementById('projectsPane');
+  if (!pane) return;
 
-  const links = Array.from(toc.querySelectorAll('a[href^="#"]'));
-  const targets = links
-    .map(a => document.getElementById(a.getAttribute('href').slice(1)))
-    .filter(Boolean);
+  const links = [...document.querySelectorAll('.toc-link')];
+  const sections = [...pane.querySelectorAll('.project[id]')];
 
-  // zvýraznění po kliknutí (funguje i bez IntersectionObserveru)
+  function show(id){
+    sections.forEach(s => s.classList.toggle('is-active', '#'+s.id === id));
+    links.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === id));
+    history.replaceState(null, '', id);
+    pane.scrollTop = 0;
+  }
+
   links.forEach(a => {
-    a.addEventListener('click', () => {
-      links.forEach(x => x.removeAttribute('aria-current'));
-      a.setAttribute('aria-current', 'true');
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (!id.startsWith('#')) return;
+      e.preventDefault();
+      show(id);
     });
   });
 
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      // vyber nejvýše viditelný
-      const visible = entries
-        .filter(e => e.isIntersecting)
-        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-      if (!visible) return;
-      const id = visible.target.id;
-      links.forEach(a => {
-        a.setAttribute('aria-current', a.getAttribute('href') === '#' + id ? 'true' : 'false');
-      });
-    }, {
-      rootMargin: '-30% 0px -60% 0px',  // „aktivní“ když je cca horní třetina
-      threshold: [0, 0.25, 0.5, 1]
-    });
-
-    targets.forEach(t => io.observe(t));
-  }
+  // Po načtení: zobraz sekci podle URL nebo první
+  const start = sections.some(s => '#'+s.id === location.hash)
+    ? location.hash
+    : '#'+sections[0].id;
+  show(start);
 })();
-<script src="assets/toc.js" defer></script>
