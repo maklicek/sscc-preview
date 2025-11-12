@@ -231,3 +231,19 @@
 .project-panel[hidden] {
   display: none;
 }
+/* --- Projekty: přepínatelné panely ---------------------------- */
+
+/* jistota, že panely mají nějaký prostor */
+.projects .panels {
+  min-height: 300px;
+}
+
+/* výchozí: všechny panely schovat */
+.project-panel {
+  display: none !important;
+}
+
+/* viditelný panel */
+.project-panel.is-active {
+  display: block !important;
+}
