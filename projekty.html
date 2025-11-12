@@ -11,61 +11,39 @@
 <body data-page="projekty" class="page-projects">
   <div data-include="assets/partials/header.html"></div>
 
-  <main class="projects-shell container">
-    <!-- Levý panel -->
-    <aside class="toc">
-      <nav>
-        <ul>
-          <li><a href="#proj-dac-nh3" class="toc-link">DAC → zelený NH₃</a></li>
-          <li><a href="#proj-doupov" class="toc-link">Doupov – geotermální centrum</a></li>
-          <li><a href="#proj-orbitalni-farma" class="toc-link">Orbitální farma → přenos</a></li>
-        </ul>
-      </nav>
-    </aside>
+ <main class="container projects">
+  <aside class="toc" id="toc-projects">
+    <a href="#proj-dac">DAC → zelený NH₃</a>
+    <a href="#proj-doupov">Doupov – geotermální centrum</a>
+    <a href="#proj-orbital">Orbitální farma → přenos</a>
+  </aside>
 
-    <!-- Pravý panel -->
-    <article class="projects-pane" id="projectsPane">
-
-      <!-- DAC → NH3 -->
-      <section id="proj-dac-nh3" class="project prose">
-        <h2>DAC → Zelený amoniak</h2>
-        <figure class="project-figure">
-          <img src="assets/img/projects/dac-nh3.jpg" alt="Pilotní linka DAC → NH₃">
-          <figcaption>Zachytávání CO₂ a přeměna na NH₃ pomocí vodíku.</figcaption>
-        </figure>
-        <p>
-          Technologie přímého zachytávání CO₂ z atmosféry a jeho syntézy na NH₃. 
-          Cíl: ukládání energie ve formě čistého paliva, využitelného lokálně.
-        </p>
-      </section>
-
-      <!-- Doupov -->
-      <section id="proj-doupov" class="project prose">
-        <h2>Doupov — Geotermální pilot</h2>
-        <figure class="project-figure">
-          <img src="assets/img/projects/doupov.jpg" alt="Doupovské geotermální území">
-          <figcaption>Vulkanická oblast vhodná pro hlubinné vrty a geotermální cyklus.</figcaption>
-        </figure>
-        <p>
-          Využití geotermálního potenciálu a CO₂ oběhu v bývalé sopečné oblasti Doupov. 
-          Studie proveditelnosti zahrnuje i návrh decentralizovaného energetického modulu.
-        </p>
-      </section>
-
-      <!-- Orbitální farma -->
-      <section id="proj-orbitalni-farma" class="project prose">
-        <h2>Orbitální farma → Bezpečný přenos</h2>
-        <figure class="project-figure">
-          <img src="assets/img/projects/orbitalni-farma.jpg" alt="Orbitální solární systém">
-          <figcaption>Koncept přenosu energie z orbity mikrovlnným svazkem.</figcaption>
-        </figure>
-        <p>
-          Ověřování bezpečnosti a účinnosti bezdrátového přenosu energie, 
-          s důrazem na mikrovlnný příjem a regulační rámec.
-        </p>
-      </section>
+  <section class="panels" id="project-panels">
+    <article id="proj-dac" class="project-panel">
+      <h2>DAC → Zelený amoniak</h2>
+      <p>Pilotní linky zachytávání CO₂ a syntézy amoniaku (NH₃) pro obce a lokální využití.</p>
+      <figure>
+        <img src="assets/img/projects/dac-nh3-concept.jpg" alt="DAC NH3 pilot">
+      </figure>
     </article>
-  </main>
+
+    <article id="proj-doupov" class="project-panel">
+      <h2>Doupov — Geotermální centrum</h2>
+      <p>Doupovské hory představují vhodné prostředí pro pilotní geotermální integraci...</p>
+      <figure>
+        <img src="assets/img/projects/doupov.jpg" alt="Doupovské území">
+      </figure>
+    </article>
+
+    <article id="proj-orbital" class="project-panel">
+      <h2>Orbitální farma → Bezpečný přenos</h2>
+      <p>Koncept bezdrátového přenosu energie s využitím mikrovlnného svazku.</p>
+      <figure>
+        <img src="assets/img/projects/orbitalni-farma.jpg" alt="Orbitální farma">
+      </figure>
+    </article>
+  </section>
+</main>
 
   <div data-include="assets/partials/footer.html"></div>
   <script src="assets/js/include.js" defer></script>
