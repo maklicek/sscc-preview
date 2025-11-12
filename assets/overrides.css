@@ -217,3 +217,9 @@
   outline: 2px solid rgba(255, 205, 72, 0.7);
   border-radius: 10px;
 }
+.project-panel[hidden] { display: none !important; }
+
+#project-toc .toc-link.is-active {
+  outline: 2px solid rgba(255, 205, 72, 0.7);
+  border-radius: 10px;
+}
