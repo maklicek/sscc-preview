@@ -5,28 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projekty a záměry — SSCC</title>
 
-  <!-- ZÁKLADNÍ STYLY -->
+  <!-- Základní styl + drobné úpravy -->
   <link rel="stylesheet" href="assets/style-v4.css?v=9">
-  <link rel="stylesheet" href="assets/overrides.css?v=3">
+  <link rel="stylesheet" href="assets/overrides.css?v=2">
 </head>
 <body data-page="projekty" class="page-projects">
 
-  <!-- HLAVIČKA přes include -->
+  <!-- Hlavička (include) -->
   <div data-include="assets/partials/header.html"></div>
 
   <main class="container projects">
 
-    <!-- LEVÝ ROZCESTNÍK -->
+    <!-- Levý rozcestník -->
     <nav id="project-toc" aria-label="Přepínač projektů" class="project-toc">
       <a href="#proj-dac"     class="toc-link is-active">DAC → zelený NH₃</a>
       <a href="#proj-doupov"  class="toc-link">Doupov — geotermální centrum</a>
       <a href="#proj-orbital" class="toc-link">Orbitální farma → přenos</a>
     </nav>
 
-    <!-- PRAVÉ PANELY -->
+    <!-- Pravé panely -->
     <section id="project-panels" class="panels">
 
-      <article id="proj-dac" class="project-panel">
+      <!-- 1) DAC – viditelný po načtení (NENÍ hidden) -->
+      <article id="proj-dac" class="project-panel is-visible">
         <header class="page-head">
           <h1>DAC → Zelený amoniak</h1>
           <p class="lead">
@@ -35,11 +36,13 @@
         </header>
         <figure>
           <img src="assets/img/projects/dac-nh3-concept.jpg"
-               alt="DAC NH₃ pilot" width="960" height="540" loading="lazy">
+               alt="DAC NH₃ pilot"
+               width="960" height="540" loading="lazy">
           <figcaption>Schéma uzlu DAC → NH₃.</figcaption>
         </figure>
       </article>
 
+      <!-- 2) Doupov – na start skrytý (hidden) -->
       <article id="proj-doupov" class="project-panel" hidden>
         <header class="page-head">
           <h1>Doupov — Geotermální centrum</h1>
@@ -49,11 +52,13 @@
         </header>
         <figure>
           <img src="assets/img/projects/doupov.jpg"
-               alt="Doupovské území" width="960" height="540" loading="lazy">
+               alt="Doupovské území"
+               width="960" height="540" loading="lazy">
           <figcaption>Potenciál geotermálního výzkumu a akumulace energie.</figcaption>
         </figure>
       </article>
 
+      <!-- 3) Orbitální farma – taky skrytá -->
       <article id="proj-orbital" class="project-panel" hidden>
         <header class="page-head">
           <h1>Orbitální farma → Bezpečný přenos</h1>
@@ -63,7 +68,8 @@
         </header>
         <figure>
           <img src="assets/img/projects/orbitalni-farma.jpg"
-               alt="Orbitální farma" width="960" height="540" loading="lazy">
+               alt="Orbitální farma"
+               width="960" height="540" loading="lazy">
           <figcaption>Obezřetně, s důrazem na bezpečnost a regulaci.</figcaption>
         </figure>
       </article>
@@ -71,15 +77,11 @@
     </section>
   </main>
 
-  <!-- PATIČKA přes include -->
- 
-<div data-include="assets/partials/footer.html"></div>
+  <!-- Patička (include) -->
+  <div data-include="assets/partials/footer.html"></div>
 
-  <!-- JEDINÉ DVA SCRIPTY -->
-<!-- Skripty -->
-<script src="assets/include.js" defer></script>
-<script src="assets/js/toc-switch.js" defer></script>
-</body>
-</html>
+  <!-- Skripty -->
+  <script src="assets/include.js" defer></script>
+  <script src="assets/js/toc-switch.js?v=2" defer></script>
 </body>
 </html>
