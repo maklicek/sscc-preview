@@ -209,3 +209,11 @@
 /* drobný spacing, ať nav nepřetéká do patičky */
 .project-toc { margin-block: 1rem 2rem; }
 
+/* jistota, že skryté panely jsou pryč */
+.project-panel[hidden] { display: none !important; }
+
+/* vizuální aktivní stav v levém menu */
+#project-toc .toc-link.is-active {
+  outline: 2px solid rgba(255, 205, 72, 0.7);
+  border-radius: 10px;
+}
