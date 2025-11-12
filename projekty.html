@@ -5,30 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projekty a záměry — SSCC</title>
 
-  <!-- Základní styl + drobné úpravy -->
+  <!-- Základní styl + úpravy -->
   <link rel="stylesheet" href="assets/style-v4.css?v=9">
-  <link rel="stylesheet" href="assets/overrides.css?v=2">
-  
+  <link rel="stylesheet" href="assets/overrides.css?v=1">
 </head>
+
 <body data-page="projekty" class="page-projects">
 
-  <!-- Hlavička (include) -->
+  <!-- HLAVIČKA přes include -->
   <div data-include="assets/partials/header.html"></div>
 
-   <main class="container projects">
+  <main class="container projects">
 
-    <!-- Levý rozcestník -->
+    <!-- LEVÝ ROZCESTNÍK -->
     <nav id="project-toc" aria-label="Přepínač projektů" class="project-toc">
       <a href="#proj-dac"     class="toc-link is-active">DAC → zelený NH₃</a>
       <a href="#proj-doupov"  class="toc-link">Doupov — geotermální centrum</a>
       <a href="#proj-orbital" class="toc-link">Orbitální farma → přenos</a>
     </nav>
 
-    <!-- Pravé panely -->
+    <!-- PRAVÉ PANELY -->
     <section id="project-panels" class="panels">
 
-      <!-- 1) DAC – na start AKTIVNÍ -->
-      <article id="proj-dac" class="project-panel is-active">
+      <!-- 1) DAC -->
+      <article id="proj-dac" class="project-panel">
         <header class="page-head">
           <h1>DAC → Zelený amoniak</h1>
           <p class="lead">
@@ -37,14 +37,14 @@
         </header>
         <figure>
           <img src="assets/img/projects/dac-nh3-concept.jpg"
-               alt="DAC NH₃ pilot"
+               alt="DAC NH3 pilot"
                width="960" height="540" loading="lazy">
           <figcaption>Schéma uzlu DAC → NH₃.</figcaption>
         </figure>
       </article>
 
-      <!-- 2) Doupov – zatím NEaktivní -->
-      <article id="proj-doupov" class="project-panel">
+      <!-- 2) Doupov -->
+      <article id="proj-doupov" class="project-panel" hidden>
         <header class="page-head">
           <h1>Doupov — Geotermální centrum</h1>
           <p class="lead">
@@ -59,8 +59,8 @@
         </figure>
       </article>
 
-      <!-- 3) Orbitální farma – zatím NEaktivní -->
-      <article id="proj-orbital" class="project-panel">
+      <!-- 3) Orbitální farma -->
+      <article id="proj-orbital" class="project-panel" hidden>
         <header class="page-head">
           <h1>Orbitální farma → Bezpečný přenos</h1>
           <p class="lead">
@@ -78,16 +78,11 @@
     </section>
   </main>
 
-  <!-- Patička (include) -->
+  <!-- PATIČKA přes include -->
   <div data-include="assets/partials/footer.html"></div>
 
-  <!-- Skripty -->
-<!-- include header/footer -->
-<script src="assets/js/include.js" defer></script>
-
-<!-- přepínač panelů -->
-<script src="assets/js/toc-switch.js?v=1" defer></script>
-
-  
+  <!-- Skripty – pozor na cesty -->
+  <script src="assets/js/include.js" defer></script>
+  <script src="assets/js/toc-switch.js" defer></script>
 </body>
 </html>
