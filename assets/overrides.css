@@ -129,3 +129,4 @@
   outline: 2px solid var(--gold, #f5cc66);
   background: rgba(245, 204, 102, 0.08);
 }
+.project-panel[hidden] { display: none; }
