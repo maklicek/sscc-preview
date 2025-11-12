@@ -5,25 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projekty a záměry — SSCC</title>
 
-  <!-- Základní styl + drobné úpravy -->
   <link rel="stylesheet" href="assets/style-v4.css?v=9">
   <link rel="stylesheet" href="assets/overrides.css?v=1">
 </head>
 <body data-page="projekty" class="page-projects">
 
-  <!-- Hlavička (include) -->
+  <!-- HLAVIČKA (volitelné) -->
   <div data-include="assets/partials/header.html"></div>
 
   <main class="container projects">
 
-    <!-- Levý rozcestník -->
-    <nav id="project-toc" aria-label="Přepínač projektů" class="project-toc">
-      <a href="#proj-dac"     class="toc-link is-active">DAC → zelený NH₃</a>
+    <!-- LEVÝ ROZCESTNÍK -->
+    <nav id="project-toc" aria-label="Přepínač projektů">
+      <a href="#proj-dac"     class="toc-link">DAC → zelený NH₃</a>
       <a href="#proj-doupov"  class="toc-link">Doupov — geotermální centrum</a>
       <a href="#proj-orbital" class="toc-link">Orbitální farma → přenos</a>
     </nav>
 
-    <!-- Pravé panely -->
+    <!-- PRAVÉ PANELY -->
     <section id="project-panels" class="panels">
 
       <article id="proj-dac" class="project-panel">
@@ -62,12 +61,11 @@
     </section>
   </main>
 
-  <!-- Patička (include) -->
+  <!-- PATIČKA (volitelné) -->
   <div data-include="assets/partials/footer.html"></div>
 
-  <!-- Jediné dva skripty -->
- <script src="assets/include.js" defer></script>
-<script src="assets/toc-switch.js?v=1" defer></script>
-
+  <!-- SCRIPTS – jen tyto dva -->
+  <script src="assets/include.js" defer></script>
+  <script src="assets/toc-switch.js?v=1" defer></script>
 </body>
 </html>
