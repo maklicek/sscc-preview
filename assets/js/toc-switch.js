@@ -3,13 +3,10 @@
     document.querySelector('#project-toc, .project-toc, .toc-nav, .toc, [data-toc]');
   if (!nav) return;
 
-  const links  = Array.from(nav.querySelectorAll('a[data-target], a[href^="#"]'));
-  const panels = Array.from(document.querySelectorAll('.project-panel'));
+  const links  = Array.from(nav.querySelectorAll('a[href^="#"], a[data-target]'));
+  const panels = Array.from(document.querySelectorAll('#project-panels .project-panel'));
 
-  function idFromLink(a) {
-    if (a.dataset && a.dataset.target) return a.dataset.target;
-    return (a.hash || '').replace(/^#/, '');
-  }
+  const idFromLink = (a) => (a.dataset?.target || (a.hash || '').replace(/^#/, ''));
 
   function show(id) {
     if (!id) return;
@@ -25,7 +22,7 @@
   }
 
   nav.addEventListener('click', (e) => {
-    const a = e.target.closest('a[data-target], a[href^="#"]');
+    const a = e.target.closest('a[href^="#"], a[data-target]');
     if (!a) return;
     e.preventDefault();
     show(idFromLink(a));
@@ -34,4 +31,3 @@
   const start = (location.hash || '').slice(1) || (links[0] && idFromLink(links[0]));
   if (start) show(start);
 })();
-.project-panel[hidden] { display:none; }
