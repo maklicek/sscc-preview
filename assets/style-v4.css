@@ -318,3 +318,7 @@ main, .site-main, .page-wrap {
 }
 /* Skrytí panelů pomocí [hidden] (používá to skript) */
 .project-panel[hidden] { display: none; }
+/* panely jsou skryté přes [hidden]; pokud bys někdy místo hidden použil třídu: */
+.project-panel { display: none; }
+.project-panel:not([hidden]) { display: block; }
+.toc-link.is-active { outline: 2px solid #e5c970; border-radius: 8px; }
