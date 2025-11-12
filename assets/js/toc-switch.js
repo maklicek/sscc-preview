@@ -34,3 +34,4 @@
   const start = (location.hash || '').slice(1) || (links[0] && idFromLink(links[0]));
   if (start) show(start);
 })();
+.project-panel[hidden] { display:none; }
