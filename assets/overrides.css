@@ -223,3 +223,11 @@
   outline: 2px solid rgba(255, 205, 72, 0.7);
   border-radius: 10px;
 }
+/* Panely projektů – jistota, že se chovají správně */
+.project-panel {
+  display: block;
+}
+
+.project-panel[hidden] {
+  display: none;
+}
