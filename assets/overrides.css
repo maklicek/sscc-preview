@@ -1,232 +1,41 @@
-/* ==== Layout – společné nastavení ==== */
-:root{
-  /* tady si “roztáhneš střed” – klidně 1200–1280 px podle chuti */
-  --content-max: 1200px;
-  --gutter: 24px;
-}
-
-/* Jednotná šířka kontejneru napříč stránkami */
-.container,
-.site-header .header-inner,
-.site-footer .footer-inner {
-  width: min(100% - 2*var(--gutter), var(--content-max));
-  margin-inline: auto;
-}
-
-/* ==== Lepivá patička: vždy dole, i když je málo obsahu ==== */
-html, body { height: 100%; }
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-.site-main { flex: 1 0 auto; }         /* obsah zabere zbytek výšky */
-.site-footer {                          /* optické oddělení patičky */
-  border-top: 1px solid rgba(255,255,255,.08);
-  padding-block: 16px;
-}
-
-/* ==== Lehké sjednocení typografie a mezer ==== */
-h1 { margin: 12px 0 8px; }
-.lead { max-width: 65ch; }
-
-/* Volitelné: konzistentní vnitřní svislé mezery sekcí */
-section, .page-section { padding-block: 16px; }
-
-/* Pokud bys měl někde jiný wrapper než .container, můžeš přidat: */
-/* .page-wrap { width: min(100% - 2*var(--gutter), var(--content-max)); margin-inline: auto; } */
-.project-figure {
-  margin: 2rem 0;
-  text-align: center;
-}
-
-.project-figure img {
-  max-width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
-}
-
-.project-figure figcaption {
-  font-size: 0.9rem;
-  color: #bda96f;
-  margin-top: 0.5rem;
-}
-/* Dvousloupcový layout pro Projekty */
-.layout-two {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 2rem;
-}
-
-/* Levý TOC */
-.toc {
-  position: sticky;
-  top: 96px; /* aby nelezl pod header */
-  align-self: start;
-}
-.toc nav {
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
-}
-.toc-link {
-  display: block;
-  padding: .5rem .75rem;
-  border-radius: .5rem;
-  text-decoration: none;
-  color: var(--text-weak, #d9d9d9);
-  transition: background .2s, color .2s;
-}
-.toc-link:hover { background: rgba(255,255,255,.05); color: #fff; }
-.toc-link.is-active {
-  background: rgba(255, 211, 91, .15);
-  color: #ffd35b;
-  font-weight: 600;
-  box-shadow: inset 0 0 0 1px rgba(255,211,91,.35);
-}
-
-/* Obsah vpravo */
-.projects-content .project + .project { margin-top: 3.5rem; }
-
-/* Responsivně: na úzkých displejích pod sebe */
-@media (max-width: 980px) {
-  .layout-two { grid-template-columns: 1fr; }
-  .toc { position: static; margin-bottom: 1rem; }
-  .toc nav { flex-direction: row; flex-wrap: wrap; gap: .5rem; }
-  .toc-link { padding: .4rem .6rem; }
-}
-/* --- Projekty: dvousloupcový layout --- */
-.projects-layout {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: clamp(1.25rem, 2vw, 2rem);
-}
-
-/* Toc / rozcestník */
-.toc {
-  position: sticky;
-  top: 7rem;               /* drž se pod headerem */
-  align-self: start;
-  max-height: calc(100vh - 8rem);
-  overflow: auto;
-  padding-right: .5rem;
-}
-
-.toc-title {
-  font-size: 1rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  opacity: .8;
-  margin: 0 0 .5rem 0;
-}
-
-.toc ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.toc a {
-  display: block;
-  padding: .5rem .25rem;
-  border-radius: .5rem;
-  text-decoration: none;
-  opacity: .9;
-}
-
-.toc a:hover { opacity: 1; }
-
-.toc a[aria-current="true"] {
-  background: rgba(255, 215, 0, 0.10); /* jemný zlatý závoj */
-  outline: 1px solid rgba(255, 215, 0, 0.25);
-}
-
-/* Obsah */
-.projects-content .project {
-  scroll-margin-top: 6.5rem; /* ať při skoku není nadpis schovaný za headerem */
-  padding-bottom: 3rem;
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-.projects-content .project:last-of-type {
-  border-bottom: none;
-}
-
-/* Responsivita */
-@media (max-width: 960px) {
-  .projects-layout {
-    grid-template-columns: 1fr;
-  }
-  .toc {
-    position: static;
-    max-height: none;
-    margin-bottom: 1rem;
-  }
-/* Obrázky v projektových sekcích */
-.project-figure {
-  margin: 1.25rem 0 1.25rem;
-  text-align: center;
-}
-.project-figure img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 6px 22px rgba(0,0,0,.30);
-}
-.project-figure figcaption {
-  font-size: .92rem;
-  color: #cdbf8a; /* zlatavě tlumená */
-  margin-top: .5rem;
-}
-
-/* Při skrolu a skoku nepřekrývej nadpis sticky hlavičkou */
-.projects-content .project { scroll-margin-top: 6.5rem; }
-
 .projects-shell {
   display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: clamp(16px, 2vw, 28px);
-  min-height: 70vh;
+  grid-template-columns: 260px 1fr;
+  gap: clamp(16px, 3vw, 32px);
+  min-height: 75vh;
+  align-items: start;
 }
 
-.toc ul { list-style: none; margin: 0; padding: 0; }
+.toc ul { list-style: none; padding: 0; margin: 0; }
 .toc a {
   display: block;
-  padding: .5rem .6rem;
-  border-radius: .5rem;
-  text-decoration: none;
+  padding: .55rem .8rem;
+  border-radius: 8px;
   color: var(--muted);
+  text-decoration: none;
   transition: all .2s ease;
 }
-.toc a:hover { color: var(--accent); }
+.toc a:hover { color: var(--accent); background: rgba(255,215,106,.08); }
 .toc a.is-active {
-  background: rgba(255, 215, 106, .12);
-  outline: 1px solid rgba(255, 215, 106, .35);
+  background: rgba(255,215,106,.12);
   color: var(--accent);
   font-weight: 600;
 }
 
-/* pravý panel – jeden aktivní projekt */
-.projects-pane { position: relative; overflow: hidden; }
-.project {
-  display: none;
-  animation: fadeIn .4s ease forwards;
-}
+.projects-pane { position: relative; }
+.project { display: none; animation: fadeIn .3s ease; }
 .project.is-active { display: block; }
 @keyframes fadeIn { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:none;} }
 
-.project-figure { margin: 1rem 0; text-align: center; }
 .project-figure img {
-  max-width: 100%;
+  width: 100%;
+  max-width: 720px;
   border-radius: 12px;
-  box-shadow: 0 6px 22px rgba(0,0,0,.3);
+  box-shadow: 0 6px 20px rgba(0,0,0,.3);
 }
 .project-figure figcaption {
-  font-size: .92rem;
-  color: #cdbf8a;
+  color: var(--muted);
+  font-size: .9rem;
+  text-align: center;
   margin-top: .4rem;
-}
-
-@media (max-width: 960px) {
-  .projects-shell { grid-template-columns: 1fr; }
-  .toc { margin-bottom: 1rem; }
 }
