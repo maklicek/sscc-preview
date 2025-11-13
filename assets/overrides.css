@@ -38,14 +38,7 @@
 body.page-projects #project-toc {
   margin-top: 1.5rem;
 }
-/* Pozadí pro stránku Projektů – podobné jako jinde, trochu světlejší */
-body.page-projects {
-  background: radial-gradient(circle at 0 0,
-    #414625 0%,     /* světlejší flek nahoře vlevo */
-    #121a12 40%,
-    #050807 100%
-  );
-}
+
 /* Větší mezera mezi levým TOC a panely na stránce Projektů */
 body.page-projects .projects {
   column-gap: 4rem;   /* zkus 3–5rem, jak se ti bude líbit */
@@ -67,15 +60,7 @@ body[data-page="projekty"] .main-nav a[href$="projekty.html"] {
   color: #f5d26a;
   font-weight: 600;
 }
-/* Stejné světlejší pozadí na stránce Projektů jako u ostatních */
-body.page-projects {
-  background:
-    radial-gradient(circle at 0% 0%, 
-      rgba(120, 130, 60, 0.18) 0%,
-      rgba(20, 30, 20, 0.85) 40%,
-      #050807 100%
-    );
-}
+
 /* Větší mezera mezi levým menu a pravým panelem */
 body.page-projects #project-panels {
   margin-left: 4rem;   /* můžeš dát 3–6rem podle oka */
@@ -92,15 +77,6 @@ body[data-page="projekty"] .main-nav a[href$="projekty.html"] {
 /* Aby obsah stránky Projekty vždy sahal až k patičce */
 body.page-projects main.container.projects {
   min-height: 70vh; /* 70–80 podle chuti */
-}
-/* 1) Tmavší pozadí (sjednocené s ostatními stránkami) */
-body.page-projects {
-  background:
-    radial-gradient(circle at 0% 0%, 
-      rgba(80, 90, 50, 0.12) 0%,
-      rgba(20, 27, 20, 0.90) 35%,
-      #050807 100%
-    );
 }
 
 /* 2) Minimální výška stránky, aby patička nelezla nahoru */
@@ -126,15 +102,7 @@ body.page-projects {
 body.page-projects #project-panels {
   padding-left: 2rem;
 }
-/* Konečné, jemné a správně tmavé pozadí pro Projekty */
-body.page-projects {
-  background:
-    radial-gradient(circle at 0% 0%,
-      rgba(90, 105, 60, 0.05) 0%,     /* jen slabé světlo */
-      rgba(10, 15, 10, 0.90) 40%,     /* tmavší přechod */
-      #050807 100%                    /* čistě tmavé dno */
-    );
-}
+
 body.page-projects {
   color-scheme: dark;
 }
