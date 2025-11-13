@@ -312,3 +312,14 @@ body {
   margin: 0;
   background-color: #111a16; /* tmavě zelená/černá – podobná tomu pod patičkou */
 }
+body {
+  color: #f3edd8;      /* hlavní barva textu */
+}
+
+/* pokud máš někde extra tmavý text a mizí,
+   můžeš ho explicitně zesvětlit takhle: */
+.prose,
+.page-main,
+.site-main {
+  color: #f3edd8;
+}
