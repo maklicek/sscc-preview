@@ -129,4 +129,15 @@ body.page-projects {
       #050807 100%
     ) !important;
 }
+body.page-projects {
+  background: ...;
+}
+
+.page-projects {
+  background: ...;
+}
+
+body.page-projects .container.projects {
+  background: ...;
+}
 
