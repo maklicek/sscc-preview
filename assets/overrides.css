@@ -1,15 +1,16 @@
 /* assets/overrides.css */
 
-/* pojistka – hidden opravdu schová panely */
+/* schovat panely s atributem hidden */
 .project-panel[hidden] {
   display: none;
 }
 
-/* rozložení levého sloupce a panelů – jemně odsazené */
-.page-projects .container.projects {
+/* rozložení levého sloupce a panelů na stránce Projektů */
+body.page-projects main.container.projects {
   display: grid;
   grid-template-columns: 18rem minmax(0, 1fr);
-  gap: 2rem;
+  gap: 2.5rem;
+  min-height: 75vh; /* aby patička nebyla nalepená nahoře */
 }
 
 /* levý TOC */
@@ -17,110 +18,44 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-top: 1.5rem;
 }
 
 #project-toc .toc-link {
   display: block;
 }
 
-/* ať je jasně vidět aktivní projekt */
+/* aktivní projekt v levém menu */
 #project-toc .toc-link.is-active {
   outline: 2px solid #f0c96b;
 }
 
-/* pravé panely */
-.page-projects .panels {
-  /* nic speciálního, jen aby se chovaly jako blok */
+/* pravé panely – lehce doprava */
+body.page-projects #project-panels {
+  margin-left: 3rem;
+  padding-left: 1rem;
 }
+
+/* offset pro skrolování na id, aby to nelehalo pod hlavičku */
 :target {
   scroll-margin-top: 6rem;
 }
-body.page-projects #project-toc {
-  margin-top: 1.5rem;
-}
 
-/* Větší mezera mezi levým TOC a panely na stránce Projektů */
-body.page-projects .projects {
-  column-gap: 4rem;   /* zkus 3–5rem, jak se ti bude líbit */
-}
-
-/* Kdyby column-gap nezabral (podle základního layoutu),
-   tak ještě jemné odsunuti panelů doprava: */
-body.page-projects #project-panels {
-  margin-left: 3rem;
-}
-/* Zvýraznění aktivní položky 'Projekty' podle data-page */
-body[data-page="projekty"] .main-nav a[href$="projekty.html"] {
-  color: #f5d26a;              /* stejná zlatá jako jinde */
-  font-weight: 600;
-}
-
-/* (pro jistotu) obecný styl pro aria-current, kdyby ho JS nastavil */
+/* Zvýraznění aktivní položky "Projekty" v hlavním menu */
+body[data-page="projekty"] .main-nav a[href$="projekty.html"],
 .main-nav a[aria-current="page"] {
-  color: #f5d26a;
+  color: #f3d57b;
   font-weight: 600;
-}
-
-/* Větší mezera mezi levým menu a pravým panelem */
-body.page-projects #project-panels {
-  margin-left: 4rem;   /* můžeš dát 3–6rem podle oka */
-}
-body.page-projects #project-panels h1 {
-  margin-left: 1rem;
-}
-/* Aktivní zvýraznění položky "Projekty" */
-body[data-page="projekty"] .main-nav a[href$="projekty.html"] {
-  color: #f3d57b;        /* ta tvoje krásná zlatá */
   border-bottom: 2px solid #f3d57b;
   padding-bottom: 2px;
 }
-/* Aby obsah stránky Projekty vždy sahal až k patičce */
-body.page-projects main.container.projects {
-  min-height: 70vh; /* 70–80 podle chuti */
-}
 
-/* 2) Minimální výška stránky, aby patička nelezla nahoru */
-body.page-projects main.container.projects {
-  min-height: 75vh;
-}
-
-/* 3) Jemný posun panelů doprava */
-body.page-projects #project-panels {
-  padding-left: 2.5rem;
-}
-/* Jemné, tmavé, sjednocené pozadí pro Projekty */
-body.page-projects {
-  background:
-    radial-gradient(circle at 0% 0%, 
-      rgba(80, 90, 50, 0.12) 0%,
-      rgba(20, 27, 20, 0.90) 35%,
-      #050807 100%
-    );
-}
-
-/* Odsazení pravé části u všech panelů */
-body.page-projects #project-panels {
-  padding-left: 2rem;
-}
-
-body.page-projects {
-  color-scheme: dark;
-}
-/* FINÁLNÍ pozadí pro Projekty – tmavé, jen jemný nádech vlevo */
-body.page-projects {
-  background:
-    radial-gradient(circle at 15% 0%,
-      rgba(120, 130, 90, 0.04) 0%,
-      #050807 55%,
-      #050807 100%
-    ) !important;
-}
-/* 1) Vypnout světlé pozadí kontejneru na stránce Projektů */
+/* Pozadí pro Projekty – odstraníme světlé pozadí kontejneru,
+   a dáme tmavé pozadí celé stránce */
 body.page-projects .container.projects {
   background: none !important;
 }
 
-/* 2) Tmavé pozadí pro Projekty – jen jemný nádech vlevo jako jinde */
 body.page-projects {
   background:
     radial-gradient(circle at 0% 0%,
@@ -128,16 +63,6 @@ body.page-projects {
       rgba(10, 15, 10, 0.95) 40%,
       #050807 100%
     ) !important;
-}
-body.page-projects {
-  background: ...;
-}
-
-.page-projects {
-  background: ...;
-}
-
-body.page-projects .container.projects {
-  background: ...;
+  color-scheme: dark;
 }
 
