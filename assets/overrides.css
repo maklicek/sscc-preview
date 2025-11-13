@@ -83,4 +83,10 @@ body.page-projects #project-panels {
 body.page-projects #project-panels h1 {
   margin-left: 1rem;
 }
+/* Aktivní zvýraznění položky "Projekty" */
+body[data-page="projekty"] .main-nav a[href$="projekty.html"] {
+  color: #f3d57b;        /* ta tvoje krásná zlatá */
+  border-bottom: 2px solid #f3d57b;
+  padding-bottom: 2px;
+}
 
