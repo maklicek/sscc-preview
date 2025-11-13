@@ -126,4 +126,13 @@ body.page-projects {
 body.page-projects #project-panels {
   padding-left: 2rem;
 }
+/* Konečné, jemné a správně tmavé pozadí pro Projekty */
+body.page-projects {
+  background:
+    radial-gradient(circle at 0% 0%,
+      rgba(90, 105, 60, 0.05) 0%,     /* jen slabé světlo */
+      rgba(10, 15, 10, 0.90) 40%,     /* tmavší přechod */
+      #050807 100%                    /* čistě tmavé dno */
+    );
+}
 
