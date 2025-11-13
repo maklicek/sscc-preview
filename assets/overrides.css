@@ -56,13 +56,8 @@ body.page-projects .container.projects {
   background: none !important;
 }
 
+/* klidně takhle, pokud chceš dark režim zachovat */
 body.page-projects {
-  background:
-    radial-gradient(circle at 0% 0%,
-      rgba(90, 105, 60, 0.05) 0%,
-      rgba(10, 15, 10, 0.95) 40%,
-      #050807 100%
-    ) !important;
   color-scheme: dark;
 }
 
