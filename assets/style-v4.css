@@ -309,15 +309,6 @@ main, .site-main, .page-wrap {
 .toc-link.is-active { outline: 2px solid #e5c970; border-radius: 8px; }
 
 body {
-  /* tmavě zelený, ale ne pohřební 💀 */
-  background:
-    linear-gradient(
-      to bottom,
-      #1b261b 0%,    /* světlejší temně zelená nahoře */
-      #050807 40%,   /* tmavý střed */
-      #050807 60%,   /* tmavý střed */
-      #1b261b 100%   /* zase trochu světlejší dole */
-    );
+  margin: 0;
+  background-color: #111a16; /* tmavě zelená/černá – podobná tomu pod patičkou */
 }
-
-
