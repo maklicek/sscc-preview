@@ -73,3 +73,13 @@ main {
 footer, .site-footer {
   flex-shrink: 0;
 }
+/* Hlavička – lehce světlejší a oddělená od zbytku stránky */
+header.nav {
+  background: linear-gradient(to bottom, #1c2620 0%, #111a16 100%);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Jemná linka dole v hlavičce */
+header.nav .container {
+  border-bottom: 1px solid rgba(240, 217, 120, 0.18);
+}
