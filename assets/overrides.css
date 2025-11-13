@@ -83,3 +83,17 @@ header.nav {
 header.nav .container {
   border-bottom: 1px solid rgba(240, 217, 120, 0.18);
 }
+/* Úvodní text na stránce Projektů */
+body.page-projects .projects-intro {
+  grid-column: 2;          /* vpravo, vedle levého TOC */
+  max-width: 38rem;
+  font-size: 0.9rem;       /* klidně 11–12 px ekvivalent */
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #f3edd8;
+}
+
+body.page-projects .projects-intro h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.75rem;
+}
