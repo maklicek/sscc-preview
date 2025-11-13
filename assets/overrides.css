@@ -32,3 +32,7 @@
 .page-projects .panels {
   /* nic speciálního, jen aby se chovaly jako blok */
 }
+/* Aby se panely neschovávaly pod fixní hlavičku */
+#project-panels .project-panel {
+  scroll-margin-top: 6rem; /* uprav podle skutečné výšky headeru */
+}
