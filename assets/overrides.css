@@ -115,12 +115,20 @@ body.page-projects .projects-intro h1 {
 .site-motto {
   text-align: center;
   font-size: 0.95rem;
-  letter-spacing: 0.03em;
-  padding: 0.3rem 1rem;
-  background: #19231c;
-  color: #f3edd8;
-  border-bottom: 1px solid rgba(240, 217, 120, 0.25);
+  letter-spacing: 0.06em;
+  padding: 0.35rem 1rem;
+
+  /* tmavý podklad s lehkým přechodem */
+  background: linear-gradient(to right, #151f19 0%, #1b221c 50%, #151f19 100%);
+
+  /* zlatá barva textu */
+  color: #f3d57b;
+  font-weight: 600;
+
+  border-bottom: 1px solid rgba(243, 213, 123, 0.35);
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
 }
+
 
 /* ať mezi mottem+hlavičkou a obsahem není těsno */
 /* Odstup obsahu od hlavičky, aby nadpis neležel nalepený */
