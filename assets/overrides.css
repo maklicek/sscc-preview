@@ -67,4 +67,20 @@ body[data-page="projekty"] .main-nav a[href$="projekty.html"] {
   color: #f5d26a;
   font-weight: 600;
 }
+/* Stejné světlejší pozadí na stránce Projektů jako u ostatních */
+body.page-projects {
+  background:
+    radial-gradient(circle at 0% 0%, 
+      rgba(120, 130, 60, 0.18) 0%,
+      rgba(20, 30, 20, 0.85) 40%,
+      #050807 100%
+    );
+}
+/* Větší mezera mezi levým menu a pravým panelem */
+body.page-projects #project-panels {
+  margin-left: 4rem;   /* můžeš dát 3–6rem podle oka */
+}
+body.page-projects #project-panels h1 {
+  margin-left: 1rem;
+}
 
