@@ -93,4 +93,23 @@ body[data-page="projekty"] .main-nav a[href$="projekty.html"] {
 body.page-projects main.container.projects {
   min-height: 70vh; /* 70–80 podle chuti */
 }
+/* 1) Tmavší pozadí (sjednocené s ostatními stránkami) */
+body.page-projects {
+  background:
+    radial-gradient(circle at 0% 0%, 
+      rgba(80, 90, 50, 0.12) 0%,
+      rgba(20, 27, 20, 0.90) 35%,
+      #050807 100%
+    );
+}
+
+/* 2) Minimální výška stránky, aby patička nelezla nahoru */
+body.page-projects main.container.projects {
+  min-height: 75vh;
+}
+
+/* 3) Jemný posun panelů doprava */
+body.page-projects #project-panels {
+  padding-left: 2.5rem;
+}
 
