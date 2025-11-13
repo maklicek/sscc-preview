@@ -131,3 +131,9 @@ body.page-projects .projects-intro h1 {
 .page-head {
   margin-top: 3.5rem;   /* klidně 3–4 rem podle oka */
 }
+/* Globální odstup obsahu od hlavičky */
+main.container,
+main.site-main,
+main.container.site-main {
+  padding-top: 3.5rem;  /* klidně si zkus 3–4 rem podle oka */
+}
