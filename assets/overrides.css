@@ -1,3 +1,11 @@
+/* Jednotné pozadí pro celý web – stejný odstín jako pod patičkou */
+html, body {
+  background: #111a16 !important;
+  background-color: #111a16 !important;
+  margin: 0;
+  padding: 0;
+}
+
 /* assets/overrides.css */
 
 /* Skrytí panelů pomocí [hidden] (používá to skript) */
