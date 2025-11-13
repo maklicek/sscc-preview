@@ -138,4 +138,13 @@ body.page-projects {
 body.page-projects {
   color-scheme: dark;
 }
+/* FINÁLNÍ pozadí pro Projekty – tmavé, jen jemný nádech vlevo */
+body.page-projects {
+  background:
+    radial-gradient(circle at 15% 0%,
+      rgba(120, 130, 90, 0.04) 0%,
+      #050807 55%,
+      #050807 100%
+    ) !important;
+}
 
