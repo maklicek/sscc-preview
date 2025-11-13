@@ -1,76 +1,59 @@
-<!doctype html>
+!doctype html>
 <html lang="cs">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projekty a záměry — SSCC<title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projekty a záměry — SSCC</title>
 
-  <!-- Základní styl + úpravy -->
   <link rel="stylesheet" href="assets/style-v4.css?v=9">
   <link rel="stylesheet" href="assets/overrides.css?v=1">
 </head>
-
 <body data-page="projekty" class="page-projects">
 
-  <!-- HLAVIČKA přes include -->
-  <div data-include="assets/partials/header.html"><div>
+  <!-- HLAVIČKA (volitelné) -->
+  <div data-include="assets/partials/header.html"></div>
 
   <main class="container projects">
 
     <!-- LEVÝ ROZCESTNÍK -->
-    <nav id="project-toc"aria-label="Přepínač projektů" class="project-toc">
-      <a href="proj-dac"class="toc-link is-active">DAC → zelený NH₃<a>
-      <a href="proj-doupov"class="toc-link">Doupov — geotermální centrum<a>
-      <a href="proj-orbital"class="toc-link">Orbitální farma → přenos<a>
+    <nav id="project-toc" aria-label="Přepínač projektů">
+      <a href="#proj-dac"     class="toc-link">DAC → zelený NH₃</a>
+      <a href="#proj-doupov"  class="toc-link">Doupov — geotermální centrum</a>
+      <a href="#proj-orbital" class="toc-link">Orbitální farma → přenos</a>
     </nav>
 
     <!-- PRAVÉ PANELY -->
     <section id="project-panels" class="panels">
 
-      <!-- 1) DAC -->
       <article id="proj-dac" class="project-panel">
         <header class="page-head">
           <h1>DAC → Zelený amoniak</h1>
-          <p class="lead">
-            Pilotní linky zachytávání CO₂ a syntézy amoniaku (NH₃) pro obce a lokální využití.
-          </p>
+          <p class="lead">Pilotní linky zachytávání CO₂ a syntézy amoniaku (NH₃) pro obce a lokální využití.</p>
         </header>
         <figure>
-          <img src="assets/img/projects/dac-nh3-concept.jpg"
-               alt="DAC NH3 pilot"
-               width="960" height="540" loading="lazy">
-          <figcaption>Schéma uzlu DAC → NH₃.<figcaption>
+          <img src="assets/img/projects/dac-nh3-concept.jpg" alt="DAC NH3 pilot" width="960" height="540" loading="lazy">
+          <figcaption>Schéma uzlu DAC → NH₃.</figcaption>
         </figure>
       </article>
 
-      <!-- 2) Doupov -->
       <article id="proj-doupov" class="project-panel" hidden>
         <header class="page-head">
           <h1>Doupov — Geotermální centrum</h1>
-          <p class="lead">
-            Vulkanické území vhodné pro hlubinné vrty a geotermální integraci.
-          </p>
+          <p class="lead">Vulkanické území vhodné pro hlubinné vrty a geotermální integraci.</p>
         </header>
         <figure>
-          <img src="assets/img/projects/doupov.jpg"
-               alt="Doupovské území"
-               width="960" height="540" loading="lazy">
-          <figcaption>Potenciál geotermálního výzkumu a akumulace energie.<figcaption>
+          <img src="assets/img/projects/doupov.jpg" alt="Doupovské území" width="960" height="540" loading="lazy">
+          <figcaption>Potenciál geotermálního výzkumu a akumulace energie.</figcaption>
         </figure>
       </article>
 
-      <!-- 3) Orbitální farma -->
       <article id="proj-orbital" class="project-panel" hidden>
         <header class="page-head">
           <h1>Orbitální farma → Bezpečný přenos</h1>
-          <p class="lead">
-            Koncept bezdrátového přenosu energie mikrovlnným svazkem a jeho pozemní rámec.
-          </p>
+          <p class="lead">Koncept bezdrátového přenosu energie mikrovlnným svazkem a jeho pozemní rámec.</p>
         </header>
         <figure>
-          <img src="assets/img/projects/orbitalni-farma.jpg"
-               alt="Orbitální farma"
-               width="960" height="540" loading="lazy">
+          <img src="assets/img/projects/orbitalni-farma.jpg" alt="Orbitální farma" width="960" height="540" loading="lazy">
           <figcaption>Obezřetně, s důrazem na bezpečnost a regulaci.</figcaption>
         </figure>
       </article>
@@ -78,11 +61,11 @@
     </section>
   </main>
 
-  <!-- PATIČKA přes include -->
+  <!-- PATIČKA (volitelné) -->
   <div data-include="assets/partials/footer.html"></div>
 
-  <!-- Skripty – pozor na cesty -->
-  <script src="assets/js/include.js" defer></script>
-  <script src="assets/js/toc-switch.js" defer></script>
+  <!-- SCRIPTS – jen tyto dva -->
+  <script src="assets/include.js" defer></script>
+  <script src="assets/toc-switch.js?v=1" defer></script>
 </body>
 </html>
