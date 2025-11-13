@@ -1,28 +1,28 @@
-!doctype html>
+<!doctype html>
 <html lang="cs">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Projekty a záměry — SSCC</title>
 
+  <!-- pokud používáš include do <head>, klidně přidej -->
+  <!-- <div data-include="assets/partials/head.html"></div> -->
+
   <link rel="stylesheet" href="assets/style-v4.css?v=10">
   <link rel="stylesheet" href="assets/overrides.css?v=3">
 </head>
 <body data-page="projekty" class="page-projects">
 
-  <!-- HLAVIČKA (volitelné) -->
-  <div data-include="assets/partials/header.html"><div>
+  <!-- HLAVIČKA -->
+  <div data-include="assets/partials/header.html"></div>
 
   <main class="container projects">
 
-   
-<nav id="project-toc" aria-label="Přepínač projektů">
-  <a href="#proj-dac"     class="toc-link">DAC → zelený NH₃</a>
-  <a href="#proj-doupov"  class="toc-link">Doupov — geotermální centrum</a>
-  <a href="#proj-orbital" class="toc-link">Orbitální farma → přenos</a>
-</nav>
-
-
+    <nav id="project-toc" aria-label="Přepínač projektů">
+      <a href="#proj-dac"     class="toc-link">DAC → zelený NH₃</a>
+      <a href="#proj-doupov"  class="toc-link">Doupov — geotermální centrum</a>
+      <a href="#proj-orbital" class="toc-link">Orbitální farma → přenos</a>
+    </nav>
 
     <!-- PRAVÉ PANELY -->
     <section id="project-panels" class="panels">
@@ -34,7 +34,7 @@
         </header>
         <figure>
           <img src="assets/img/projects/dac-nh3-concept.jpg" alt="DAC NH3 pilot" width="960" height="540" loading="lazy">
-          <figcaption>Schéma uzlu DAC → NH₃.<figcaption>
+          <figcaption>Schéma uzlu DAC → NH₃.</figcaption>
         </figure>
       </article>
 
@@ -50,24 +50,4 @@
       </article>
 
       <article id="proj-orbital" class="project-panel" hidden>
-        <header class="page-head">
-          <h1>Orbitální farma → Bezpečný přenos</h1>
-          <p class="lead">Koncept bezdrátového přenosu energie mikrovlnným svazkem a jeho pozemní rámec.</p>
-        </header>
-        <figure>
-          <img src="assets/img/projects/orbitalni-farma.jpg" alt="Orbitální farma" width="960" height="540" loading="lazy">
-          <figcaption>Obezřetně, s důrazem na bezpečnost a regulaci.</figcaption>
-        </figure>
-      </article>
-
-    </section>
-  </main>
-
-  <!-- PATIČKA (volitelné) -->
-  <div data-include="assets/partials/footer.html"></div>
-
-  <!-- SCRIPTS – jen tyto dva -->
-  <script src="assets/include.js" defer></script>
-  <script src="assets/toc-switch.js?v=5" defer></script>
-</body>
-</html>
+        <he
