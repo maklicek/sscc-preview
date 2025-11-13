@@ -311,8 +311,8 @@ main, .site-main, .page-wrap {
 body {
   background:
     radial-gradient(circle at 10% 0%,
-      rgba(60, 70, 40, 0.02) 0%,
-      rgba(8, 12, 8, 0.97) 35%,
+      rgba(80, 90, 60, 0.03) 0%,
+      rgba(8, 12, 8, 0.97) 40%,
       #050807 100%
     );
 }
