@@ -97,3 +97,7 @@ body.page-projects .projects-intro h1 {
   font-size: 2.2rem;
   margin-bottom: 0.75rem;
 }
+.footer-motto {
+  opacity: 0.75;
+  font-size: 0.8rem;
+}
