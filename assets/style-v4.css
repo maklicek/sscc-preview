@@ -331,3 +331,12 @@ main, .site-main, .page-wrap {
 .project-panel { display: none; }
 .project-panel:not([hidden]) { display: block; }
 .toc-link.is-active { outline: 2px solid #e5c970; border-radius: 8px; }
+body {
+  background:
+    radial-gradient(circle at 10% 0%,
+      rgba(60, 70, 40, 0.02) 0%,
+      rgba(8, 12, 8, 0.97) 35%,
+      #050807 100%
+    );
+}
+
