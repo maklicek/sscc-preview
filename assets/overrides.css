@@ -135,4 +135,7 @@ body.page-projects {
       #050807 100%                    /* čistě tmavé dno */
     );
 }
+body.page-projects {
+  color-scheme: dark;
+}
 
