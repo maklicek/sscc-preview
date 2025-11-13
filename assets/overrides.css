@@ -89,4 +89,8 @@ body[data-page="projekty"] .main-nav a[href$="projekty.html"] {
   border-bottom: 2px solid #f3d57b;
   padding-bottom: 2px;
 }
+/* Aby obsah stránky Projekty vždy sahal až k patičce */
+body.page-projects main.container.projects {
+  min-height: 70vh; /* 70–80 podle chuti */
+}
 
