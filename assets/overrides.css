@@ -6,8 +6,6 @@ html, body {
   padding: 0;
 }
 
-/* assets/overrides.css */
-
 /* Skrytí panelů pomocí [hidden] (používá to skript) */
 .project-panel[hidden] {
   display: none;
@@ -73,12 +71,12 @@ main {
 footer, .site-footer {
   flex-shrink: 0;
 }
-/* Hlavička – lehce světlejší a oddělená od zbytku stránky */
+
+/* Hlavička trochu světlejší než zbytek stránky */
 header.nav {
-  background: linear-gradient(to bottom, #1c2620 0%, #111a16 100%);
+  background: linear-gradient(to bottom, #1b241e 0%, #111a16 100%);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
 }
-
 /* Jemná linka dole v hlavičce */
 header.nav .container {
   border-bottom: 1px solid rgba(240, 217, 120, 0.18);
@@ -112,20 +110,22 @@ body.page-projects .projects-intro h1 {
   font-size: 0.85rem;
   opacity: 0.8;
 }
-/* Globální motto nad hlavičkou */
+
+/* Motto nad navigací */
 .site-motto {
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   letter-spacing: 0.03em;
-  padding: 0.4rem 1rem;
-  background: #151f19;
+  padding: 0.3rem 1rem;
+  background: #19231c;
   color: #f3edd8;
   border-bottom: 1px solid rgba(240, 217, 120, 0.25);
 }
 
 /* ať mezi mottem+hlavičkou a obsahem není těsno */
+/* Odstup obsahu od hlavičky, aby nadpis neležel nalepený */
 .page-head {
-  margin-top: 3rem;
+  margin-top: 3.5rem;
 }
 /* Globální odstup obsahu od hlavičky (pro všechny page-head) */
 .page-head {
