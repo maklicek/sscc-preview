@@ -1,19 +1,24 @@
 /* assets/overrides.css */
 
-/* schovat panely s atributem hidden */
+/* Skrytí panelů pomocí [hidden] (používá to skript) */
 .project-panel[hidden] {
   display: none;
 }
 
-/* rozložení levého sloupce a panelů na stránce Projektů */
+/* Layout stránky Projekty: levý TOC + pravé panely */
 body.page-projects main.container.projects {
   display: grid;
   grid-template-columns: 18rem minmax(0, 1fr);
   gap: 2.5rem;
-  min-height: 75vh; /* aby patička nebyla nalepená nahoře */
+  min-height: 75vh; /* aby patička neseděla uprostřed */
 }
 
-/* levý TOC */
+/* !!! Zrušit jakékoli pozadí v kontejneru Projektů */
+body.page-projects .container.projects {
+  background: none !important;
+}
+
+/* Levý TOC */
 #project-toc {
   display: flex;
   flex-direction: column;
@@ -25,23 +30,18 @@ body.page-projects main.container.projects {
   display: block;
 }
 
-/* aktivní projekt v levém menu */
+/* Aktivní odkaz v levém TOC */
 #project-toc .toc-link.is-active {
-  outline: 2px solid #f0c96b;
+  outline: 2px solid #e5c970;
+  border-radius: 8px;
 }
 
-/* pravé panely – lehce doprava */
-body.page-projects #project-panels {
-  margin-left: 3rem;
-  padding-left: 1rem;
-}
-
-/* offset pro skrolování na id, aby to nelehalo pod hlavičku */
+/* Offset pro skrolování na id, aby to nelehalo pod hlavičku */
 :target {
   scroll-margin-top: 6rem;
 }
 
-/* Zvýraznění aktivní položky "Projekty" v hlavním menu */
+/* Zvýraznění položky "Projekty" v hlavním menu */
 body[data-page="projekty"] .main-nav a[href$="projekty.html"],
 .main-nav a[aria-current="page"] {
   color: #f3d57b;
@@ -49,15 +49,3 @@ body[data-page="projekty"] .main-nav a[href$="projekty.html"],
   border-bottom: 2px solid #f3d57b;
   padding-bottom: 2px;
 }
-
-/* Pozadí pro Projekty – odstraníme světlé pozadí kontejneru,
-   a dáme tmavé pozadí celé stránce */
-body.page-projects .container.projects {
-  background: none !important;
-}
-
-/* klidně takhle, pokud chceš dark režim zachovat */
-body.page-projects {
-  color-scheme: dark;
-}
-
