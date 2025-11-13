@@ -38,4 +38,33 @@
 body.page-projects #project-toc {
   margin-top: 1.5rem;
 }
+/* Pozadí pro stránku Projektů – podobné jako jinde, trochu světlejší */
+body.page-projects {
+  background: radial-gradient(circle at 0 0,
+    #414625 0%,     /* světlejší flek nahoře vlevo */
+    #121a12 40%,
+    #050807 100%
+  );
+}
+/* Větší mezera mezi levým TOC a panely na stránce Projektů */
+body.page-projects .projects {
+  column-gap: 4rem;   /* zkus 3–5rem, jak se ti bude líbit */
+}
+
+/* Kdyby column-gap nezabral (podle základního layoutu),
+   tak ještě jemné odsunuti panelů doprava: */
+body.page-projects #project-panels {
+  margin-left: 3rem;
+}
+/* Zvýraznění aktivní položky 'Projekty' podle data-page */
+body[data-page="projekty"] .main-nav a[href$="projekty.html"] {
+  color: #f5d26a;              /* stejná zlatá jako jinde */
+  font-weight: 600;
+}
+
+/* (pro jistotu) obecný styl pro aria-current, kdyby ho JS nastavil */
+.main-nav a[aria-current="page"] {
+  color: #f5d26a;
+  font-weight: 600;
+}
 
