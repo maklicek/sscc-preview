@@ -309,10 +309,6 @@ main, .site-main, .page-wrap {
 .toc-link.is-active { outline: 2px solid #e5c970; border-radius: 8px; }
 
 body {
-  background: radial-gradient(circle at 10% 0%,
-    rgba(40, 45, 30, 0.01) 0%,   /* mnohem slabší světlo */
-    rgba(8, 12, 8, 0.98) 40%,    /* o fous tmavší střed */
-    #050807 100%
-  );
+  background-color: #050807;
 }
 
