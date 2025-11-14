@@ -439,3 +439,30 @@ body.page-projects #project-panels {
 body.page-projects #project-panels .project-panel:first-of-type .page-head {
   margin-top: 0;
 }
+/* ==== Projekty – zarovnání intro / TOC / panelů ==== */
+
+/* Intro jen do levého sloupce, první řádek */
+body.page-projects .projects-intro {
+  grid-column: 1 / 2;
+  grid-row: 1;
+}
+
+/* Rozcestník pod intro, pořád vlevo */
+body.page-projects #project-toc {
+  grid-column: 1 / 2;
+  grid-row: 2;
+  position: sticky;
+  top: 6rem;
+}
+
+/* Panely vpravo, odshora – přes řádek 1 i 2 */
+body.page-projects #project-panels {
+  grid-column: 2 / -1;
+  grid-row: 1 / span 2;
+  margin-top: 0;          /* tady klidně nechte 0, už není potřeba hackovat */
+}
+
+/* První nadpis v prvním panelu bez zbytečného odskoku */
+body.page-projects #project-panels .project-panel:first-of-type .page-head {
+  margin-top: 0;
+}
