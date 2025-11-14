@@ -305,3 +305,38 @@ body.page-projects main.container.projects {
   grid-template-columns: 22rem minmax(0, 1fr) !important;
   column-gap: 3rem !important;
 }
+/* ==== PRO STRÁNKU PROJEKTŮ – FINÁLNÍ LADĚNÍ ==== */
+
+/* 1) Žádný globální padding-top na mainu pro projekty */
+body.page-projects main.container,
+body.page-projects main.container.site-main,
+body.page-projects main.container.projects {
+  padding-top: 0;
+}
+
+/* 2) Hlavní grid pro projekty */
+body.page-projects main.container.projects {
+  max-width: 1200px;
+  margin: 3.2rem auto 4rem;     /* odstup od hlavičky i patičky */
+  display: grid;
+  grid-template-columns: 22rem minmax(0, 1fr);
+  column-gap: 3rem;
+}
+
+/* 3) Rozcestník vlevo – sticky, s obrázkem pod ním už máš vyřešené */
+body.page-projects #project-toc {
+  grid-column: 1 / 2;
+  position: sticky;
+  top: 6rem;
+}
+
+/* 4) Pravý sloupec s panely – vytáhnout o kousek nahoru */
+body.page-projects #project-panels {
+  grid-column: 2 / -1;
+  margin-top: -1.4rem;      /* klidně si dolaď -1.2 až -1.8 podle oka */
+}
+
+/* 5) Ať první projektový nadpis nesnižuje layout dalším margeinem */
+body.page-projects #project-panels .project-panel:first-of-type .page-head {
+  margin-top: 0;
+}
