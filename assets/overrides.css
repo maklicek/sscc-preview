@@ -217,3 +217,27 @@ body.page-projects #project-toc-image img {
       transparent 100%
   );
 }
+/* Jemné vytracení obrázků v projektových panelech do stran */
+body.page-projects .project-panel > figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  object-fit: cover;
+
+  /* fade-out po stranách */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 15%,
+    black 85%,
+    transparent 100%
+  );
+}
