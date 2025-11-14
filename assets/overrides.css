@@ -177,3 +177,43 @@ body.page-projects .page-head {
   font-size: 0.8rem;
   opacity: 0.85;
 }
+/* Hlavní blok „Projekty SSCC“ – odstup od hlavičky a patičky */
+body.page-projects main.container.projects {
+  max-width: 1200px;
+  margin: 4.5rem auto 4rem;   /* nahoře odstup od menu, dole od patičky */
+}
+
+/* Layout: rozcestník vlevo, obsah vpravo */
+body.page-projects .container.projects {
+  display: grid;
+  grid-template-columns: 22rem minmax(0, 1fr);
+  column-gap: 3rem;
+}
+
+/* Rozcestník projektů vlevo – větší „chlívečky“, sticky */
+body.page-projects #project-toc {
+  position: sticky;
+  top: 6rem;                  /* aby to „sedělo“ pod hlavním menu */
+  align-self: flex-start;
+  padding: 1.25rem 1.5rem;
+  border-radius: 18px;
+  border: 1px solid #f3d57b;
+  font-size: 0.95rem;
+}
+
+body.page-projects #project-toc .toc-link {
+  display: block;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  line-height: 1.4;
+}
+
+body.page-projects #project-toc .toc-link.is-active {
+  background: rgba(243, 213, 123, 0.16);
+  outline: 0;
+}
+
+/* Titulek „Projekty SSCC“ – víc dolů od hlavičky */
+body.page-projects .page-head {
+  margin-top: 1.5rem;
+}
