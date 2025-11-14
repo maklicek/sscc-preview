@@ -280,3 +280,18 @@ body.page-projects #project-toc .toc-link.is-active {
   background: rgba(243, 213, 123, 0.16);
   outline: 0;
 }
+/* Obrázek pod rozcestníkem */
+body.page-projects .projects-hero {
+  margin: 0;
+  padding: 0.5rem 0.75rem 0.75rem;
+  background: radial-gradient(circle at 50% 0%, rgba(243, 213, 123, 0.15), transparent 70%);
+  border-radius: 20px;
+}
+
+body.page-projects .projects-hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;    /* zaoblí hrany – žádné ostré obrysy */
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.65);
+}
