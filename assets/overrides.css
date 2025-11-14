@@ -247,3 +247,64 @@ body.page-projects #project-panels ul {
 body.page-projects main.container.projects {
   min-height: calc(100vh - 9rem);  /* přibližně výška okna mínus hlavička+patička */
 }
+/* === PRO STRÁNKU PROJEKTŮ (data-page="projekty") === */
+
+/* Hlavní layout: 2 sloupce – vlevo TOC, vpravo obsah */
+body.page-projects main.container.projects {
+  max-width: 1200px;
+  margin: 4.5rem auto 4rem;                 /* odstup od hlavičky i patičky */
+  display: grid !important;
+  grid-template-columns: 22rem minmax(0, 1fr) !important;
+  column-gap: 3rem !important;
+}
+
+/* Hlavička "Projekty SSCC" do pravého sloupce */
+body.page-projects main.container.projects .page-head {
+  grid-column: 2 / -1;
+  margin-bottom: 2rem;
+}
+/* Rozcestník projektů – vlevo, větší, sticky */
+body.page-projects #project-toc {
+  grid-column: 1 / 2;
+  position: sticky;
+  top: 6rem;                                /* pod hlavní menu */
+  align-self: flex-start;
+  padding: 1.25rem 1.5rem;
+  border-radius: 18px;
+  border: 1px solid #f3d57b;
+  background: rgba(10, 15, 10, 0.96);
+  font-size: 0.95rem;
+}
+
+body.page-projects #project-toc .toc-link {
+  display: block;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  line-height: 1.4;
+}
+
+body.page-projects #project-toc .toc-link.is-active {
+  background: rgba(243, 213, 123, 0.16);
+  outline: 0;
+}
+/* Pravý sloupec s panely */
+body.page-projects #project-panels {
+  grid-column: 2 / -1;
+}
+
+/* Žádné ultra úzké sloupce – normální šířka textu */
+body.page-projects .project-panel {
+  column-count: 1 !important;   /* jistota, že nebude vícesloupcový layout z base CSS */
+  max-width: 50rem;
+}
+
+/* Odstavce a seznamy čitelně široké */
+body.page-projects #project-panels p,
+body.page-projects #project-panels ul {
+  max-width: 46rem;
+}
+
+/* Aby poslední panel nekončil pod patičkou */
+body.page-projects main.container.projects {
+  min-height: calc(100vh - 9rem);
+}
