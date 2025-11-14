@@ -187,3 +187,18 @@ body.page-projects .project-panel > figure img {
   height: auto;
   border-radius: 18px;
 }
+/* Typografie – použitelné všude */
+h1, h2, h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin: 0 0 0.9rem;
+  line-height: 1.6;
+}
+
+ul, ol {
+  margin: 0 0 1rem 1.3rem;
+  line-height: 1.6;
+}
