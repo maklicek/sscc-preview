@@ -145,3 +145,35 @@ main.site-main,
 main.container.site-main {
   padding-top: 3.5rem;  /* klidně si zkus 3–4 rem podle oka */
 }
+/* Odstup obsahu od hlavičky u běžných stránek */
+main.container.site-main {
+  padding-top: 3.5rem;
+}
+
+/* Odstup obsahu od hlavičky u Projekty */
+body.page-projects main.container.projects {
+  padding-top: 3.5rem;
+}
+
+/* Prose bloky uvnitř projektových panelů */
+.project-panel .project-copy {
+  margin-top: 1.5rem;
+}
+
+/* Trochu menší šířka řádku v projektech, ať se to lépe čte */
+body.page-projects .project-copy {
+  max-width: 60rem;
+}
+
+/* Headery v projektech – trochu vzduchu pod nadpisem */
+body.page-projects .page-head {
+  margin-bottom: 1.5rem;
+}
+
+/* Kicker – aby byl sjednocený všude */
+.page-head .kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
