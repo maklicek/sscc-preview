@@ -1,47 +1,112 @@
-/* 1) Globální layout pro Projekty */
-body.page-projects main.container.projects {
+/* === GLOBÁLNÍ NASTAVENÍ ====================================== */
+
+/* Jednotné tmavé pozadí – přebije původní gradient */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #111a16 !important;
+  background-color: #111a16 !important;
+}
+
+/* Panely projektů, které mají [hidden], se opravdu schovají */
+.project-panel[hidden] {
+  display: none;
+}
+
+/* Hlavička trochu světlejší než zbytek stránky */
+header.nav {
+  background: linear-gradient(to bottom, #1b241e 0%, #111a16 100%);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Jemná linka dole v hlavičce */
+header.nav .container {
+  border-bottom: 1px solid rgba(240, 217, 120, 0.18);
+}
+
+/* Motto nad navigací (pokud ho máš) */
+.site-motto {
+  text-align: center;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  padding: 0.35rem 1rem;
+  background: linear-gradient(to right, #151f19 0%, #1b221c 50%, #151f19 100%);
+  color: #f3d57b;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(243, 213, 123, 0.35);
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+}
+
+/* === STRÁNKA PROJEKTŮ ======================================== */
+/* body má atribut data-page="projekty" */
+
+body[data-page="projekty"] main.container.projects {
   max-width: 1200px;
-  margin: 3.2rem auto 4rem;      /* tady doladíš výšku celé stránky pod hlavičkou */
+  margin: 3.2rem auto 4rem;       /* odstup od hlavičky i patičky */
   display: grid;
   grid-template-columns: 22rem minmax(0, 1fr);
   column-gap: 3rem;
 }
 
-/* 2) Levý textový sloupec (SSCC) */
-body.page-projects .projects-intro {
-  margin-top: 1.5rem;            /* tohle je jemné doladění levého sloupce */
-}
-
-/* 3) Pravý sloupec s panely */
-body.page-projects #project-panels {
-  grid-column: 2 / -1;
-  margin-top: -1.8rem;           /* a tohle je jemné doladění pravého sloupce */
-}
-/* Levý textový sloupec – typografie */
-body.page-projects .projects-intro {
-  font-size: 1rem;
+/* Levý textový sloupec – úvodní text „Projekty SSCC“ */
+body[data-page="projekty"] .projects-intro {
+  grid-column: 1 / 2;
+  font-size: 0.95rem;
   line-height: 1.55;
-  max-width: 38rem;        /* aby řádek nebyl moc široký */
+  max-width: 22rem;
+}
+
+body[data-page="projekty"] .projects-intro p {
+  margin-bottom: 1.1rem;
+}
+
+/* Levý rozcestník (DAC / Doupov / Orbitální farma) */
+body[data-page="projekty"] #project-toc {
+  grid-column: 1 / 2;
   margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 18px;
+  border: 1px solid #f3d57b;
+  background: rgba(10, 15, 10, 0.96);
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-body.page-projects .projects-intro p {
-  margin-bottom: 1.1rem;   /* mezera mezi odstavci */
+body[data-page="projekty"] #project-toc .toc-link {
+  display: block;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  line-height: 1.4;
 }
 
-body.page-projects .projects-intro h2,
-body.page-projects .projects-intro h3 {
-  margin-top: 2rem;
-  margin-bottom: 0.8rem;
-  font-weight: 600;
-  color: #f3d57b;
+body[data-page="projekty"] #project-toc .toc-link.is-active {
+  background: rgba(243, 213, 123, 0.16);
 }
 
-body.page-projects .projects-intro ul {
-  margin: 0 0 1.2rem 1.2rem;
-  padding: 0;
+/* Pravý sloupec – samotné panely projektů */
+body[data-page="projekty"] #project-panels {
+  grid-column: 2 / -1;
+  margin-top: -1.2rem;            /* vytáhne to nahoru, aby byl nadpis blíž hlavičce */
 }
 
-body.page-projects .projects-intro li {
-  margin-bottom: 0.4rem;
+/* První panel (DAC) nezačíná dalším velkým odsazením nahoře */
+body[data-page="projekty"] #project-panels .project-panel:first-of-type .page-head {
+  margin-top: 0;
+}
+
+/* Čitelnější šířka textu v panelech */
+body[data-page="projekty"] #project-panels p,
+body[data-page="projekty"] #project-panels ul {
+  max-width: 46rem;
+}
+
+/* Obrázky v panelech – pěkně zarovnané a ne přes celý strop */
+body[data-page="projekty"] #project-panels figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  margin: 1.5rem 0;
 }
