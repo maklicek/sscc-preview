@@ -444,7 +444,7 @@ body.page-projects #project-panels .project-panel:first-of-type .page-head {
 /* Intro jen do levého sloupce, první řádek */
 body.page-projects .projects-intro {
   grid-column: 1 / 2;
-  grid-row: 1;
+  grid-row: 2;
 }
 
 /* Rozcestník pod intro, pořád vlevo */
