@@ -467,5 +467,5 @@ body.page-projects #project-panels .project-panel:first-of-type .page-head {
   margin-top: 0;
 }
 body.page-projects main.container.projects {
-  margin: 1.5rem auto 4rem;  /* první číslo = vzdálenost od hlavičky */
+  margin: 0.5rem auto 4rem;  /* první číslo = vzdálenost od hlavičky */
 }
