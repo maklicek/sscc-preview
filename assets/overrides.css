@@ -296,5 +296,12 @@ body.page-projects .projects-hero img {
   box-shadow: 0 18px 35px rgba(0, 0, 0, 0.65);
 }
 body.page-projects main.container.projects {
-  margin-top: 1.0rem;  /* místo 4.5rem */
+  margin-top: 3.5rem;  /* místo 4.5rem */
+}
+body.page-projects main.container.projects {
+  max-width: 1200px;
+  margin: 3.2rem auto 4rem;   /* kolem 3–3.5 rem je bezpečné */
+  display: grid !important;
+  grid-template-columns: 22rem minmax(0, 1fr) !important;
+  column-gap: 3rem !important;
 }
