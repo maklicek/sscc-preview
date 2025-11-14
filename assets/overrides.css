@@ -356,7 +356,7 @@ body.page-projects main.container.projects {
   display: grid;
   grid-template-columns: 22rem minmax(0, 1fr);
   column-gap: 3rem;
-}
+} 
 
 /* 3) Rozcestník vlevo – sticky, s obrázkem pod ním už máš vyřešené */
 body.page-projects #project-toc {
