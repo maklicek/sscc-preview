@@ -392,13 +392,7 @@ body.page-projects #project-toc {
 /* 4) Pravý sloupec s panely – vytáhnout o kousek nahoru */
 body.page-projects #project-panels {
   grid-column: 2 / -1;
-  margin-top: -1.4rem;      /* klidně si dolaď -1.2 až -1.8 podle oka */
-}
-
-/* 4) Pravý sloupec s panely – vytáhnout o kousek nahoru */
-body.page-projects #project-panels {
-  grid-column: 2 / -1;
-  margin-top: -1.4rem;      /* klidně si dolaď -1.2 až -1.8 podle oka */
+  margin-top: -1.8rem;      /* klidně si dolaď -1.2 až -1.8 podle oka */
 }
 
 /* 5) Ať první projektový nadpis nesnižuje layout dalším margeinem */
