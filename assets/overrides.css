@@ -182,3 +182,38 @@ body.page-projects #project-panels svg {
   margin: 1.5rem 0;
   break-inside: avoid;
 }
+/* Obrázek pod rozcestníkem – do levého sloupce, pod TOC */
+body.page-projects #project-toc-image {
+  grid-column: 1 / 2;      /* stejný sloupec jako #project-toc */
+  margin-top: 1.5rem;
+}
+
+body.page-projects #project-toc-image img {
+  display: block;
+  width: 100%;             /* přizpůsobí se šířce sloupce */
+  height: auto;
+  border-radius: 18px;
+  object-fit: cover;
+}
+/* Jemné vytracení obrázku do pozadí po stranách */
+body.page-projects #project-toc-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  object-fit: cover;
+
+  /* Fade efekt maskou */
+  -webkit-mask-image: linear-gradient(to right, 
+      transparent 0%, 
+      black 20%, 
+      black 80%, 
+      transparent 100%
+  );
+  mask-image: linear-gradient(to right, 
+      transparent 0%, 
+      black 20%, 
+      black 80%, 
+      transparent 100%
+  );
+}
