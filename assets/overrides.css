@@ -147,3 +147,31 @@ body.page-projects .project-panel > figure img {
   height: auto;
   border-radius: 18px;
 }
+/* ==== PRO STRÁNKU PROJEKTŮ – FINÁLNÍ LADĚNÍ (v overrides.css) ==== */
+
+/* Hlavní grid pro projekty */
+body.page-projects main.container.projects {
+  max-width: 1200px;
+  margin: 3.2rem auto 4rem;     /* odstup od hlavičky i patičky */
+  display: grid;
+  grid-template-columns: 22rem minmax(0, 1fr);
+  column-gap: 3rem;
+}
+
+/* Rozcestník vlevo – sticky */
+body.page-projects #project-toc {
+  grid-column: 1 / 2;
+  position: sticky;
+  top: 6rem;                    /* sedí pod hlavním menu */
+}
+
+/* Pravý sloupec s panely – vytáhnout trochu nahoru */
+body.page-projects #project-panels {
+  grid-column: 2 / -1;
+  margin-top: -1.2rem;          /* můžeš si doladit mezi -1.0 až -1.8 podle oka */
+}
+
+/* Ať první nadpis panelu nesnižuje layout dalším margeinem */
+body.page-projects #project-panels .project-panel:first-of-type .page-head {
+  margin-top: 0;
+}
