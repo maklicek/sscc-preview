@@ -217,3 +217,33 @@ body.page-projects #project-toc .toc-link.is-active {
 body.page-projects .page-head {
   margin-top: 1.5rem;
 }
+/* Pravá část s panely – žádné dodatečné odsuny */
+body.page-projects #project-panels {
+  padding-left: 0;
+  max-width: 100%;
+}
+
+/* Širší běžný text – aby se to nelámalo po jednom slově */
+body.page-projects #project-panels p,
+body.page-projects #project-panels ul {
+  max-width: 46rem;
+}
+
+/* Na velkých monitorech 2 sloupce textu + obrázky v pravém sloupci */
+@media (min-width: 1100px) {
+  body.page-projects #project-panels .project-panel {
+    columns: 2 26rem;   /* dva sloupce o šířce cca 26rem */
+    column-gap: 3rem;
+  }
+
+  body.page-projects #project-panels .project-panel img,
+  body.page-projects #project-panels .project-panel svg {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Záruka, že pilotní uzel neskončí pod patičkou */
+body.page-projects main.container.projects {
+  min-height: calc(100vh - 9rem);  /* přibližně výška okna mínus hlavička+patička */
+}
