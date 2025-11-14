@@ -1,3 +1,24 @@
+/* === ZÁKLAD PRO VŠECHNY STRÁNKY (mimo Projekty) =================== */
+
+/* Kontejner hlavního obsahu */
+main.container,
+main.site-main,
+main.container.site-main {
+  max-width: 1200px;
+  margin: 3.2rem auto 4rem;   /* nahoře pod hlavičkou, dole nad patičkou */
+  padding: 0 1.5rem;          /* trochu vzduchu od okrajů viewportu */
+}
+
+/* Projekty mají vlastní grid – na ně se tohle nevztahuje */
+body.page-projects main.container.projects {
+  max-width: 1200px;
+  margin: 3.2rem auto 4rem;
+  display: grid;
+  grid-template-columns: 22rem minmax(0, 1fr);
+  column-gap: 3rem;
+}
+
+
 /* =========================================================
    SSCC – BEZPEČNÝ ZÁKLAD overrides.css
    – globální věci (pozadí, hlavička, motto, aktivní menu)
