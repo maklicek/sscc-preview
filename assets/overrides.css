@@ -464,7 +464,7 @@ body.page-projects #project-panels {
 
 /* První nadpis v prvním panelu bez zbytečného odskoku */
 body.page-projects #project-panels .project-panel:first-of-type .page-head {
-  margin-top: 0;
+  margin-top: 0.5;
 }
 body.page-projects main.container.projects {
   margin: 0.5rem auto 4rem;  /* první číslo = vzdálenost od hlavičky */
