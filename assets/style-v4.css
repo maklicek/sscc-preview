@@ -323,3 +323,12 @@ body {
 .site-main {
   color: #f3edd8;
 }
+/* Globální pozadí – jemný nádech shora, jinak tmavé */
+body {
+  background:
+    radial-gradient(circle at 50% 0%,
+      rgba(120, 140, 90, 0.10) 0%,
+      #050807 55%,
+      #050807 100%) !important;
+  color-scheme: dark;
+}
