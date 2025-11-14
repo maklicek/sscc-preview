@@ -1,48 +1,45 @@
 // assets/js/toc-switch.js
-(function () {
-  const nav    = document.getElementById('project-toc');
-  if (!nav) return;
+document.addEventListener("DOMContentLoaded", () => {
+  const toc = document.querySelector("#project-toc");
+  if (!toc) return;
 
-  const links  = Array.from(nav.querySelectorAll('a[href^="#"]'));
-  const panels = Array.from(document.querySelectorAll('#project-panels .project-panel'));
+  const links  = toc.querySelectorAll("a");
+  const panels = document.querySelectorAll(".project-panel");
 
-  function idFromLink(a) {
-    return (a.getAttribute('href') || '').replace(/^#/, '');
-  }
+  if (!links.length || !panels.length) return;
 
-  function show(id) {
-    if (!id) return;
+  function showPanel(targetId) {
+    const target = document.querySelector(targetId);
+    if (!target) return;
 
-    let found = false;
-
-    // přepni aktivní odkaz
-    links.forEach(a => {
-      const active = idFromLink(a) === id;
-      a.classList.toggle('is-active', active);
+    // Schovat / ukázat panely
+    panels.forEach(panel => {
+      panel.hidden = panel !== target;
     });
 
-    // přepni panely
-    panels.forEach(p => {
-      const on = p.id === id;
-      p.hidden = !on;
-      p.classList.toggle('is-visible', on);
-      if (on) found = true;
+    // Aktivní odkaz
+    links.forEach(link => {
+      const isActive = link.getAttribute("href") === targetId;
+      link.classList.toggle("is-active", isActive);
     });
-
-    if (found) {
-      history.replaceState(null, '', '#' + id);
-    }
   }
 
-  // kliknutí v levém TOC
-  nav.addEventListener('click', (e) => {
-    const a = e.target.closest('a[href^="#"]');
-    if (!a) return;
-    e.preventDefault();
-    show(idFromLink(a));
+  // Klikání na přepínače
+  links.forEach(link => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      const targetId = link.getAttribute("href");
+      showPanel(targetId);
+
+      // Posunout stránku nahoru k nadpisu projektu
+      const target = document.querySelector(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
   });
 
-  // start – hash v URL nebo první panel
-  const start = (location.hash || '').slice(1) || (panels[0] && panels[0].id);
-  if (start) show(start);
-})();
+  // Výchozí stav – první panel
+  const firstHref = links[0].getAttribute("href");
+  showPanel(firstHref);
+});
