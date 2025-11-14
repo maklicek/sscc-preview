@@ -432,7 +432,7 @@ body.page-projects #project-toc {
 /* Pravý sloupec s panely – můžeš ho jemně vytáhnout nahoru/dolů */
 body.page-projects #project-panels {
   grid-column: 2 / -1;
-  margin-top: -4.8rem;            /* když ho chceš víc nahoru, dej třeba -1.2; dolů 0 nebo +0.5 */
+  margin-top: -6.8rem;            /* když ho chceš víc nahoru, dej třeba -1.2; dolů 0 nebo +0.5 */
 }
 
 /* První nadpis v prvním panelu bez dalšího offsetu navíc */
