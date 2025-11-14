@@ -17,3 +17,31 @@ body.page-projects #project-panels {
   grid-column: 2 / -1;
   margin-top: -1.8rem;           /* a tohle je jemné doladění pravého sloupce */
 }
+/* Levý textový sloupec – typografie */
+body.page-projects .projects-intro {
+  font-size: 1rem;
+  line-height: 1.55;
+  max-width: 38rem;        /* aby řádek nebyl moc široký */
+  margin-top: 1.5rem;
+}
+
+body.page-projects .projects-intro p {
+  margin-bottom: 1.1rem;   /* mezera mezi odstavci */
+}
+
+body.page-projects .projects-intro h2,
+body.page-projects .projects-intro h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  color: #f3d57b;
+}
+
+body.page-projects .projects-intro ul {
+  margin: 0 0 1.2rem 1.2rem;
+  padding: 0;
+}
+
+body.page-projects .projects-intro li {
+  margin-bottom: 0.4rem;
+}
