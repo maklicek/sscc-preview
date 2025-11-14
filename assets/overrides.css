@@ -444,7 +444,7 @@ body.page-projects #project-panels .project-panel:first-of-type .page-head {
 /* Intro jen do levého sloupce, první řádek */
 body.page-projects .projects-intro {
   grid-column: 1 / 2;
-  grid-row: 1;
+  grid-row: 1.5;
 }
 
 /* Rozcestník pod intro, pořád vlevo */
@@ -468,4 +468,7 @@ body.page-projects #project-panels .project-panel:first-of-type .page-head {
 }
 body.page-projects main.container.projects {
   margin: 0.5rem auto 4rem;  /* první číslo = vzdálenost od hlavičky */
+}
+body.page-projects .projects-intro {
+  margin-top: 1.5rem !important;
 }
