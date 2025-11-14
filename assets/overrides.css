@@ -241,3 +241,42 @@ body.page-projects .project-panel > figure img {
     transparent 100%
   );
 }
+/* Hlavní layout – zůstává, jen doplníme levý sloupec */
+body.page-projects main.container.projects {
+  max-width: 1200px;
+  margin: 4.5rem auto 4rem;
+  display: grid !important;
+  grid-template-columns: 22rem minmax(0, 1fr) !important;
+  column-gap: 3rem !important;
+}
+
+/* Levý sloupec: TOC + obrázek = sticky blok */
+body.page-projects .projects-left {
+  grid-column: 1 / 2;
+  position: sticky;
+  top: 6rem;                 /* sedí pod hlavním menu */
+  align-self: flex-start;
+}
+
+/* SAMOTNÝ TOC už není sticky, jen hezky vypadající krabička */
+body.page-projects #project-toc {
+  position: static;          /* zrušíme sticky z dřívějška */
+  padding: 1.25rem 1.5rem;
+  border-radius: 18px;
+  border: 1px solid #f3d57b;
+  background: rgba(10, 15, 10, 0.96);
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+body.page-projects #project-toc .toc-link {
+  display: block;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  line-height: 1.4;
+}
+
+body.page-projects #project-toc .toc-link.is-active {
+  background: rgba(243, 213, 123, 0.16);
+  outline: 0;
+}
