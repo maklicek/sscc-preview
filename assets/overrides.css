@@ -1,30 +1,26 @@
-/* === GLOBÁLNÍ NASTAVENÍ ====================================== */
+/* === GLOBÁLNÍ NASTAVENÍ (pro všechny stránky) ======================= */
 
-/* Jednotné tmavé pozadí – přebije původní gradient */
-html, body {
+/* Pozadí a text */
+html,
+body {
   margin: 0;
   padding: 0;
-  background: #111a16 !important;
-  background-color: #111a16 !important;
+  background: #111a16;
+  color: #f3edd8;
 }
 
-/* Panely projektů, které mají [hidden], se opravdu schovají */
-.project-panel[hidden] {
-  display: none;
-}
-
-/* Hlavička trochu světlejší než zbytek stránky */
+/* Hlavička – gradient, lehký stín */
 header.nav {
   background: linear-gradient(to bottom, #1b241e 0%, #111a16 100%);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
 }
 
-/* Jemná linka dole v hlavičce */
+/* jemná linka dole v hlavičce */
 header.nav .container {
   border-bottom: 1px solid rgba(240, 217, 120, 0.18);
 }
 
-/* Motto nad navigací (pokud ho máš) */
+/* Motto nad navigací */
 .site-motto {
   text-align: center;
   font-size: 0.95rem;
@@ -37,76 +33,117 @@ header.nav .container {
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
 }
 
-/* === STRÁNKA PROJEKTŮ ======================================== */
-/* body má atribut data-page="projekty" */
+/* Zvýraznění aktivní položky v hlavním menu */
+.main-nav a[aria-current="page"] {
+  color: #f3d57b;
+  font-weight: 600;
+  border-bottom: 2px solid #f3d57b;
+  padding-bottom: 2px;
+}
 
-body[data-page="projekty"] main.container.projects {
+/* Odstup nadpisů od hlavičky – společný rytmus */
+.page-head {
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* cíle pro skrolování (#kotvy) neleží pod hlavičkou */
+:target {
+  scroll-margin-top: 6rem;
+}
+
+/* drobná kosmetika textu */
+.prose p,
+.prose ul,
+.prose ol {
+  line-height: 1.6;
+}
+
+/* === SPECIFICKY STRÁNKA PROJEKTŮ =========================== */
+
+/* Layout: dva sloupce – vlevo text + TOC, vpravo panely */
+body.page-projects main.container.projects {
   max-width: 1200px;
-  margin: 3.2rem auto 4rem;       /* odstup od hlavičky i patičky */
+  margin: 4.5rem auto 4rem;   /* bezpečný odstup od hlavičky i patičky */
   display: grid;
-  grid-template-columns: 22rem minmax(0, 1fr);
+  grid-template-columns: 24rem minmax(0, 1fr);
   column-gap: 3rem;
 }
 
-/* Levý textový sloupec – úvodní text „Projekty SSCC“ */
-body[data-page="projekty"] .projects-intro {
+/* Levý sloupec – hlavička + text + rozcestník */
+body.page-projects .projects-left {
   grid-column: 1 / 2;
-  font-size: 0.95rem;
-  line-height: 1.55;
-  max-width: 22rem;
 }
 
-body[data-page="projekty"] .projects-intro p {
-  margin-bottom: 1.1rem;
+/* Text v levém sloupci (ten dlouhý popis) */
+body.page-projects .projects-left .projects-summary p {
+  margin: 0 0 0.9rem;
+  line-height: 1.6;
+  max-width: 26rem;
 }
 
-/* Levý rozcestník (DAC / Doupov / Orbitální farma) */
-body[data-page="projekty"] #project-toc {
-  grid-column: 1 / 2;
-  margin-top: 1.5rem;
-  padding: 1.25rem 1.5rem;
+/* Rozcestník (DAC / Doupov / Orbitální farma) */
+body.page-projects #project-toc {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
   border-radius: 18px;
   border: 1px solid #f3d57b;
   background: rgba(10, 15, 10, 0.96);
   font-size: 0.95rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
-body[data-page="projekty"] #project-toc .toc-link {
+body.page-projects #project-toc .toc-link {
   display: block;
-  padding: 0.45rem 0.9rem;
+  padding: 0.4rem 0.9rem;
   border-radius: 999px;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
-body[data-page="projekty"] #project-toc .toc-link.is-active {
+body.page-projects #project-toc .toc-link.is-active {
   background: rgba(243, 213, 123, 0.16);
 }
 
-/* Pravý sloupec – samotné panely projektů */
-body[data-page="projekty"] #project-panels {
-  grid-column: 2 / -1;
-  margin-top: -1.2rem;            /* vytáhne to nahoru, aby byl nadpis blíž hlavičce */
+/* Obrázek pod rozcestníkem (pokud ho tam máš) */
+body.page-projects .projects-hero {
+  margin: 0.5rem 0 0;
 }
 
-/* První panel (DAC) nezačíná dalším velkým odsazením nahoře */
-body[data-page="projekty"] #project-panels .project-panel:first-of-type .page-head {
-  margin-top: 0;
-}
-
-/* Čitelnější šířka textu v panelech */
-body[data-page="projekty"] #project-panels p,
-body[data-page="projekty"] #project-panels ul {
-  max-width: 46rem;
-}
-
-/* Obrázky v panelech – pěkně zarovnané a ne přes celý strop */
-body[data-page="projekty"] #project-panels figure img {
+body.page-projects .projects-hero img {
   display: block;
   width: 100%;
   height: auto;
   border-radius: 16px;
-  margin: 1.5rem 0;
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.65);
+}
+
+/* Pravý sloupec – obsah jednotlivých projektů */
+body.page-projects #project-panels {
+  grid-column: 2 / -1;
+  max-width: 60rem;
+}
+
+/* Každý panel */
+body.page-projects .project-panel {
+  margin-bottom: 3rem;
+}
+
+body.page-projects .project-panel .page-head {
+  margin-top: 0;     /* aby první nadpis panelu neposouval vše dolů */
+}
+
+/* Šířka odstavců v projektech – ať se nelámou po jednom slově */
+body.page-projects #project-panels p,
+body.page-projects #project-panels ul {
+  max-width: 46rem;
+}
+
+/* Obrázky v panelech */
+body.page-projects .project-panel > figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
 }
